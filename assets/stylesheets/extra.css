@@ -3,6 +3,7 @@
 }
 
 :root {
+    --docs-main-grid-width: 2460px;
     --docs-border-color: rgba(23, 36, 55, 0.12);
     --docs-nav-divider-color: rgba(23, 36, 55, 0.14);
     --docs-subtle-bg: rgba(23, 36, 55, 0.035);
@@ -18,6 +19,9 @@
     --docs-primary-sidebar-width: 18.75rem;
     --docs-primary-nav-scroll-width: 15.5rem;
     --docs-secondary-sidebar-width: 15.75rem;
+    --docs-content-readable-width: 1350px;
+    --docs-toc-readable-width: 10.75rem;
+    --docs-toc-scroll-width: 12rem;
     --docs-content-side-space: 1rem;
     --docs-toc-side-space: 1.5rem;
 }
@@ -180,6 +184,7 @@
 .md-sidebar--secondary .md-nav {
     border-left: 1px solid var(--docs-border-color);
     padding-left: 0.48rem;
+    max-width: var(--docs-toc-readable-width);
     color: var(--docs-nav-color);
     font-size: 0.58rem;
 }
@@ -216,6 +221,10 @@
 }
 
 @media screen and (min-width: 76.25em) {
+    .md-main__inner.md-grid {
+        max-width: min(var(--docs-main-grid-width), calc(100% - 2rem));
+    }
+
     .md-grid {
         margin-left: auto;
         margin-right: auto;
@@ -254,6 +263,7 @@
     }
 
     .md-content__inner {
+        max-width: var(--docs-content-readable-width);
         margin-left: 0;
         margin-right: 0;
     }
@@ -264,6 +274,18 @@
 
     [dir="rtl"] .md-sidebar--secondary {
         padding-right: var(--docs-toc-side-space);
+    }
+
+    [dir="ltr"] .md-sidebar--secondary .md-sidebar__scrollwrap {
+        width: min(var(--docs-toc-scroll-width), 100%);
+        margin-left: 0;
+        margin-right: auto;
+    }
+
+    [dir="rtl"] .md-sidebar--secondary .md-sidebar__scrollwrap {
+        width: min(var(--docs-toc-scroll-width), 100%);
+        margin-left: auto;
+        margin-right: 0;
     }
 
     [dir="ltr"] .md-sidebar__inner {

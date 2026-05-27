@@ -6065,25 +6065,42 @@
 <li>如果需要清理，可以靠定时器或 log_by_lua 做善后。</li>
 </ul>
 <h3 id="3">3. 生命周期总结</h3>
-<p><code>plain text
-Nginx master start
-  └── init_by_lua (once per master)
-Worker start
-  └── init_worker_by_lua (once per worker)
-Request start
-  ├── set_by_lua
-  ├── rewrite_by_lua
-  ├── access_by_lua
-  ├── content_by_lua
-  ├── header_filter_by_lua
-  ├── body_filter_by_lua
-  └── log_by_lua
-Background
-  ├── timer callbacks
-  ├── cosocket operations
-  └── light threads
-Worker exit
-  └── (no direct lua hook)</code></p>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-0-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-0-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-0-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-0-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-0-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-0-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-0-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-0-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-0-10">10</a></span>
+<span class="normal"><a href="#__codelineno-0-11">11</a></span>
+<span class="normal"><a href="#__codelineno-0-12">12</a></span>
+<span class="normal"><a href="#__codelineno-0-13">13</a></span>
+<span class="normal"><a href="#__codelineno-0-14">14</a></span>
+<span class="normal"><a href="#__codelineno-0-15">15</a></span>
+<span class="normal"><a href="#__codelineno-0-16">16</a></span>
+<span class="normal"><a href="#__codelineno-0-17">17</a></span>
+<span class="normal"><a href="#__codelineno-0-18">18</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a>Nginx master start
+<a id="__codelineno-0-2" name="__codelineno-0-2"></a>  └── init_by_lua (once per master)
+<a id="__codelineno-0-3" name="__codelineno-0-3"></a>Worker start
+<a id="__codelineno-0-4" name="__codelineno-0-4"></a>  └── init_worker_by_lua (once per worker)
+<a id="__codelineno-0-5" name="__codelineno-0-5"></a>Request start
+<a id="__codelineno-0-6" name="__codelineno-0-6"></a>  ├── set_by_lua
+<a id="__codelineno-0-7" name="__codelineno-0-7"></a>  ├── rewrite_by_lua
+<a id="__codelineno-0-8" name="__codelineno-0-8"></a>  ├── access_by_lua
+<a id="__codelineno-0-9" name="__codelineno-0-9"></a>  ├── content_by_lua
+<a id="__codelineno-0-10" name="__codelineno-0-10"></a>  ├── header_filter_by_lua
+<a id="__codelineno-0-11" name="__codelineno-0-11"></a>  ├── body_filter_by_lua
+<a id="__codelineno-0-12" name="__codelineno-0-12"></a>  └── log_by_lua
+<a id="__codelineno-0-13" name="__codelineno-0-13"></a>Background
+<a id="__codelineno-0-14" name="__codelineno-0-14"></a>  ├── timer callbacks
+<a id="__codelineno-0-15" name="__codelineno-0-15"></a>  ├── cosocket operations
+<a id="__codelineno-0-16" name="__codelineno-0-16"></a>  └── light threads
+<a id="__codelineno-0-17" name="__codelineno-0-17"></a>Worker exit
+<a id="__codelineno-0-18" name="__codelineno-0-18"></a>  └── (no direct lua hook)
+</code></pre></div></td></tr></table></div>
 
 
 
