@@ -4,6 +4,7 @@
 
 :root {
     --docs-border-color: rgba(23, 36, 55, 0.12);
+    --docs-nav-divider-color: rgba(23, 36, 55, 0.14);
     --docs-subtle-bg: rgba(23, 36, 55, 0.035);
     --docs-accent-color: #0f766e;
     --docs-nav-color: rgba(45, 55, 72, 0.78);
@@ -23,6 +24,7 @@
 
 [data-md-color-scheme="slate"] {
     --docs-border-color: rgba(255, 255, 255, 0.14);
+    --docs-nav-divider-color: rgba(148, 163, 184, 0.42);
     --docs-subtle-bg: rgba(255, 255, 255, 0.045);
     --docs-accent-color: #2dd4bf;
     --docs-nav-color: rgba(255, 255, 255, 0.7);
@@ -233,14 +235,14 @@
 
     [dir="ltr"] .md-sidebar--primary .md-sidebar__scrollwrap {
         width: min(var(--docs-primary-nav-scroll-width), 100%);
-        border-right: 1px solid var(--docs-border-color);
+        border-right: 1px solid var(--docs-nav-divider-color);
         margin-left: 0;
         margin-right: auto;
     }
 
     [dir="rtl"] .md-sidebar--primary .md-sidebar__scrollwrap {
         width: min(var(--docs-primary-nav-scroll-width), 100%);
-        border-left: 1px solid var(--docs-border-color);
+        border-left: 1px solid var(--docs-nav-divider-color);
         margin-left: auto;
         margin-right: 0;
     }
