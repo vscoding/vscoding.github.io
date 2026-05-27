@@ -8,29 +8,31 @@
       
       
       
-        <link rel="canonical" href="https://blog.kubectl.net/">
+        <link rel="canonical" href="https://blog.kubectl.net/mml/linear-algebra/linear-transformation/">
       
       
+        <link rel="prev" href="../linearly-independent/">
       
-        <link rel="next" href="mml/">
+      
+        <link rel="next" href="../basis-rank/">
       
       
         
       
       
-      <link rel="icon" href="assets/images/favicon.png">
+      <link rel="icon" href="../../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
     
     
       
-        <title>Mind and Hand</title>
+        <title>Linear Transformation - Mind and Hand</title>
       
     
     
-      <link rel="stylesheet" href="assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.484c7ddc.min.css">
       
         
-        <link rel="stylesheet" href="assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
       
       
 
@@ -45,13 +47,13 @@
     
       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
     
-      <link rel="stylesheet" href="assets/stylesheets/extra.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/extra.css">
     
-      <link rel="stylesheet" href="assets/stylesheets/table.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/table.css">
     
-      <link rel="stylesheet" href="assets/stylesheets/font.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/font.css">
     
-    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -76,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#build-project" class="md-skip">
+        <a href="#linear-transformation" class="md-skip">
           Skip to content
         </a>
       
@@ -92,7 +94,7 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="." title="Mind and Hand" class="md-header__button md-logo" aria-label="Mind and Hand" data-md-component="logo">
+    <a href="../../.." title="Mind and Hand" class="md-header__button md-logo" aria-label="Mind and Hand" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -112,7 +114,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              build project
+              Linear Transformation
             
           </span>
         </div>
@@ -218,7 +220,7 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="." title="Mind and Hand" class="md-nav__button md-logo" aria-label="Mind and Hand" data-md-component="logo">
+    <a href="../../.." title="Mind and Hand" class="md-nav__button md-logo" aria-label="Mind and Hand" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -233,37 +235,10 @@
       
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    build project
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="." class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
         
   
   
@@ -279,309 +254,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#basic-variables" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        basic variables
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#functions" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        functions
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="functions">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#log-func" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        log func
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#command_exists-func" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        command_exists func
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#detect-ssh-port" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        detect ssh port
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#detect-os" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        detect os
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#date-format" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        date format
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#build-gradles-project" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        build gradle's project
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#build-mavens-project" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        build maven's project
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#build-golangs-project" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        build golang's project
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#build-nodes-project" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        build node's project
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="build node&#39;s project">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#nvm-on-linux" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        nvm on linux
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#build-writersides-project" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        build writerside's project
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#docker" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        docker
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="docker">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#build-dockers-image-and-push" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        build docker's image (and push)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#remove-dockers-image" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        remove docker's image
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#install-docker" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        install docker
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#develop" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        develop
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="develop">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#config-maven" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        config maven
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#verify-nginx-configuration" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        verify nginx configuration
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#proxy-config" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        proxy config
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="proxy config">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#bashrc-proxy-config" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        bashrc proxy config
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#docker-daemon-proxy-config" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        docker daemon proxy config
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -590,6 +262,8 @@
       
   
   
+    
+  
   
   
     
@@ -619,15 +293,15 @@
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="mml/" class="md-nav__link ">
+            <a href="../../" class="md-nav__link ">
               
   
   
@@ -651,7 +325,7 @@
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
             
@@ -668,6 +342,8 @@
                 
   
   
+    
+  
   
   
     
@@ -693,15 +369,15 @@
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" checked>
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="mml/linear-algebra/" class="md-nav__link ">
+            <a href="../" class="md-nav__link ">
               
   
   
@@ -725,7 +401,7 @@
             
           </div>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2_2">
             <span class="md-nav__icon md-icon"></span>
             
@@ -745,7 +421,7 @@
   
   
     <li class="md-nav__item">
-      <a href="mml/linear-algebra/matrix/" class="md-nav__link">
+      <a href="../matrix/" class="md-nav__link">
         
   
   
@@ -773,7 +449,7 @@
   
   
     <li class="md-nav__item">
-      <a href="mml/linear-algebra/vector-space/" class="md-nav__link">
+      <a href="../vector-space/" class="md-nav__link">
         
   
   
@@ -801,7 +477,7 @@
   
   
     <li class="md-nav__item">
-      <a href="mml/linear-algebra/linearly-independent/" class="md-nav__link">
+      <a href="../linearly-independent/" class="md-nav__link">
         
   
   
@@ -826,10 +502,37 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="mml/linear-algebra/linear-transformation/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Linear Transformation
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -845,6 +548,59 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        线性映射的矩阵表示
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        基变换
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        像与核
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -857,7 +613,7 @@
   
   
     <li class="md-nav__item">
-      <a href="mml/linear-algebra/basis-rank/" class="md-nav__link">
+      <a href="../basis-rank/" class="md-nav__link">
         
   
   
@@ -885,7 +641,7 @@
   
   
     <li class="md-nav__item">
-      <a href="mml/linear-algebra/affine-space/" class="md-nav__link">
+      <a href="../affine-space/" class="md-nav__link">
         
   
   
@@ -943,7 +699,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="mml/analytic-geometry/" class="md-nav__link ">
+            <a href="../../analytic-geometry/" class="md-nav__link ">
               
   
   
@@ -987,7 +743,7 @@
   
   
     <li class="md-nav__item">
-      <a href="mml/analytic-geometry/norm/" class="md-nav__link">
+      <a href="../../analytic-geometry/norm/" class="md-nav__link">
         
   
   
@@ -1015,7 +771,7 @@
   
   
     <li class="md-nav__item">
-      <a href="mml/analytic-geometry/inner-product/" class="md-nav__link">
+      <a href="../../analytic-geometry/inner-product/" class="md-nav__link">
         
   
   
@@ -1051,7 +807,7 @@
   
   
     <li class="md-nav__item">
-      <a href="mml/matrix-decomposition/" class="md-nav__link">
+      <a href="../../matrix-decomposition/" class="md-nav__link">
         
   
   
@@ -1079,7 +835,7 @@
   
   
     <li class="md-nav__item">
-      <a href="mml/vector-calculus/" class="md-nav__link">
+      <a href="../../vector-calculus/" class="md-nav__link">
         
   
   
@@ -1107,7 +863,7 @@
   
   
     <li class="md-nav__item">
-      <a href="mml/probability-and-distributions/" class="md-nav__link">
+      <a href="../../probability-and-distributions/" class="md-nav__link">
         
   
   
@@ -1135,7 +891,7 @@
   
   
     <li class="md-nav__item">
-      <a href="mml/continuous-optimization/" class="md-nav__link">
+      <a href="../../continuous-optimization/" class="md-nav__link">
         
   
   
@@ -1163,7 +919,7 @@
   
   
     <li class="md-nav__item">
-      <a href="mml/information-theory/" class="md-nav__link">
+      <a href="../../information-theory/" class="md-nav__link">
         
   
   
@@ -1191,7 +947,7 @@
   
   
     <li class="md-nav__item">
-      <a href="mml/latex/" class="md-nav__link">
+      <a href="../../latex/" class="md-nav__link">
         
   
   
@@ -1248,7 +1004,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="papers/" class="md-nav__link ">
+            <a href="../../../papers/" class="md-nav__link ">
               
   
   
@@ -1292,7 +1048,7 @@
   
   
     <li class="md-nav__item">
-      <a href="papers/raft/" class="md-nav__link">
+      <a href="../../../papers/raft/" class="md-nav__link">
         
   
   
@@ -1320,7 +1076,7 @@
   
   
     <li class="md-nav__item">
-      <a href="papers/sssp/" class="md-nav__link">
+      <a href="../../../papers/sssp/" class="md-nav__link">
         
   
   
@@ -1379,7 +1135,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="cs/" class="md-nav__link ">
+            <a href="../../../cs/" class="md-nav__link ">
               
   
   
@@ -1449,7 +1205,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="cs/dsa/" class="md-nav__link ">
+            <a href="../../../cs/dsa/" class="md-nav__link ">
               
   
   
@@ -1493,7 +1249,7 @@
   
   
     <li class="md-nav__item">
-      <a href="cs/dsa/dynamic-programming/" class="md-nav__link">
+      <a href="../../../cs/dsa/dynamic-programming/" class="md-nav__link">
         
   
   
@@ -1521,7 +1277,7 @@
   
   
     <li class="md-nav__item">
-      <a href="cs/dsa/sort/" class="md-nav__link">
+      <a href="../../../cs/dsa/sort/" class="md-nav__link">
         
   
   
@@ -1579,7 +1335,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="cs/dsa/data-structures/" class="md-nav__link ">
+            <a href="../../../cs/dsa/data-structures/" class="md-nav__link ">
               
   
   
@@ -1623,7 +1379,7 @@
   
   
     <li class="md-nav__item">
-      <a href="cs/dsa/data-structures/union-find/" class="md-nav__link">
+      <a href="../../../cs/dsa/data-structures/union-find/" class="md-nav__link">
         
   
   
@@ -1651,7 +1407,7 @@
   
   
     <li class="md-nav__item">
-      <a href="cs/dsa/data-structures/heap/" class="md-nav__link">
+      <a href="../../../cs/dsa/data-structures/heap/" class="md-nav__link">
         
   
   
@@ -1705,7 +1461,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="cs/dsa/data-structures/search-tree/" class="md-nav__link ">
+            <a href="../../../cs/dsa/data-structures/search-tree/" class="md-nav__link ">
               
   
   
@@ -1749,7 +1505,7 @@
   
   
     <li class="md-nav__item">
-      <a href="cs/dsa/data-structures/search-tree/bst/" class="md-nav__link">
+      <a href="../../../cs/dsa/data-structures/search-tree/bst/" class="md-nav__link">
         
   
   
@@ -1777,7 +1533,7 @@
   
   
     <li class="md-nav__item">
-      <a href="cs/dsa/data-structures/search-tree/avl/" class="md-nav__link">
+      <a href="../../../cs/dsa/data-structures/search-tree/avl/" class="md-nav__link">
         
   
   
@@ -1805,7 +1561,7 @@
   
   
     <li class="md-nav__item">
-      <a href="cs/dsa/data-structures/search-tree/tt-tree/" class="md-nav__link">
+      <a href="../../../cs/dsa/data-structures/search-tree/tt-tree/" class="md-nav__link">
         
   
   
@@ -1833,7 +1589,7 @@
   
   
     <li class="md-nav__item">
-      <a href="cs/dsa/data-structures/search-tree/rbtree/" class="md-nav__link">
+      <a href="../../../cs/dsa/data-structures/search-tree/rbtree/" class="md-nav__link">
         
   
   
@@ -1869,7 +1625,7 @@
   
   
     <li class="md-nav__item">
-      <a href="cs/dsa/data-structures/skip-list/" class="md-nav__link">
+      <a href="../../../cs/dsa/data-structures/skip-list/" class="md-nav__link">
         
   
   
@@ -1897,7 +1653,7 @@
   
   
     <li class="md-nav__item">
-      <a href="cs/dsa/data-structures/huffman/" class="md-nav__link">
+      <a href="../../../cs/dsa/data-structures/huffman/" class="md-nav__link">
         
   
   
@@ -1925,7 +1681,7 @@
   
   
     <li class="md-nav__item">
-      <a href="cs/dsa/data-structures/trie/" class="md-nav__link">
+      <a href="../../../cs/dsa/data-structures/trie/" class="md-nav__link">
         
   
   
@@ -1995,7 +1751,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="cs/dsa/graph/" class="md-nav__link ">
+            <a href="../../../cs/dsa/graph/" class="md-nav__link ">
               
   
   
@@ -2039,7 +1795,7 @@
   
   
     <li class="md-nav__item">
-      <a href="cs/dsa/graph/graph-definition/" class="md-nav__link">
+      <a href="../../../cs/dsa/graph/graph-definition/" class="md-nav__link">
         
   
   
@@ -2067,7 +1823,7 @@
   
   
     <li class="md-nav__item">
-      <a href="cs/dsa/graph/graph-algorithms/" class="md-nav__link">
+      <a href="../../../cs/dsa/graph/graph-algorithms/" class="md-nav__link">
         
   
   
@@ -2095,7 +1851,7 @@
   
   
     <li class="md-nav__item">
-      <a href="cs/dsa/graph/graph-traverse/" class="md-nav__link">
+      <a href="../../../cs/dsa/graph/graph-traverse/" class="md-nav__link">
         
   
   
@@ -2123,7 +1879,7 @@
   
   
     <li class="md-nav__item">
-      <a href="cs/dsa/graph/graph-components/" class="md-nav__link">
+      <a href="../../../cs/dsa/graph/graph-components/" class="md-nav__link">
         
   
   
@@ -2151,7 +1907,7 @@
   
   
     <li class="md-nav__item">
-      <a href="cs/dsa/graph/graph-toposort/" class="md-nav__link">
+      <a href="../../../cs/dsa/graph/graph-toposort/" class="md-nav__link">
         
   
   
@@ -2179,7 +1935,7 @@
   
   
     <li class="md-nav__item">
-      <a href="cs/dsa/graph/graph-mst/" class="md-nav__link">
+      <a href="../../../cs/dsa/graph/graph-mst/" class="md-nav__link">
         
   
   
@@ -2207,7 +1963,7 @@
   
   
     <li class="md-nav__item">
-      <a href="cs/dsa/graph/dijkstra/" class="md-nav__link">
+      <a href="../../../cs/dsa/graph/dijkstra/" class="md-nav__link">
         
   
   
@@ -2235,7 +1991,7 @@
   
   
     <li class="md-nav__item">
-      <a href="cs/dsa/graph/cycle-analyzer/" class="md-nav__link">
+      <a href="../../../cs/dsa/graph/cycle-analyzer/" class="md-nav__link">
         
   
   
@@ -2279,7 +2035,7 @@
   
   
     <li class="md-nav__item">
-      <a href="cs/computer-network/" class="md-nav__link">
+      <a href="../../../cs/computer-network/" class="md-nav__link">
         
   
   
@@ -2307,7 +2063,7 @@
   
   
     <li class="md-nav__item">
-      <a href="cs/computer-organization/" class="md-nav__link">
+      <a href="../../../cs/computer-organization/" class="md-nav__link">
         
   
   
@@ -2370,7 +2126,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="thinking/" class="md-nav__link ">
+            <a href="../../../thinking/" class="md-nav__link ">
               
   
   
@@ -2414,7 +2170,7 @@
   
   
     <li class="md-nav__item">
-      <a href="thinking/continuity/" class="md-nav__link">
+      <a href="../../../thinking/continuity/" class="md-nav__link">
         
   
   
@@ -2442,7 +2198,7 @@
   
   
     <li class="md-nav__item">
-      <a href="thinking/coding/" class="md-nav__link">
+      <a href="../../../thinking/coding/" class="md-nav__link">
         
   
   
@@ -2470,7 +2226,7 @@
   
   
     <li class="md-nav__item">
-      <a href="thinking/design-pattern/" class="md-nav__link">
+      <a href="../../../thinking/design-pattern/" class="md-nav__link">
         
   
   
@@ -2498,7 +2254,7 @@
   
   
     <li class="md-nav__item">
-      <a href="thinking/concurrency/" class="md-nav__link">
+      <a href="../../../thinking/concurrency/" class="md-nav__link">
         
   
   
@@ -2526,7 +2282,7 @@
   
   
     <li class="md-nav__item">
-      <a href="thinking/standard/" class="md-nav__link">
+      <a href="../../../thinking/standard/" class="md-nav__link">
         
   
   
@@ -2589,7 +2345,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="kubernetes/" class="md-nav__link ">
+            <a href="../../../kubernetes/" class="md-nav__link ">
               
   
   
@@ -2633,7 +2389,7 @@
   
   
     <li class="md-nav__item">
-      <a href="kubernetes/k8s-install/" class="md-nav__link">
+      <a href="../../../kubernetes/k8s-install/" class="md-nav__link">
         
   
   
@@ -2683,7 +2439,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="kubernetes/k8s-cluster-config/" class="md-nav__link ">
+            <a href="../../../kubernetes/k8s-cluster-config/" class="md-nav__link ">
               
   
   
@@ -2727,7 +2483,7 @@
   
   
     <li class="md-nav__item">
-      <a href="kubernetes/k8s-cluster-config/node-port-range/" class="md-nav__link">
+      <a href="../../../kubernetes/k8s-cluster-config/node-port-range/" class="md-nav__link">
         
   
   
@@ -2755,7 +2511,7 @@
   
   
     <li class="md-nav__item">
-      <a href="kubernetes/k8s-cluster-config/node-taint/" class="md-nav__link">
+      <a href="../../../kubernetes/k8s-cluster-config/node-taint/" class="md-nav__link">
         
   
   
@@ -2791,7 +2547,7 @@
   
   
     <li class="md-nav__item">
-      <a href="kubernetes/k8s-update/" class="md-nav__link">
+      <a href="../../../kubernetes/k8s-update/" class="md-nav__link">
         
   
   
@@ -2819,7 +2575,7 @@
   
   
     <li class="md-nav__item">
-      <a href="kubernetes/k8s-resources/" class="md-nav__link">
+      <a href="../../../kubernetes/k8s-resources/" class="md-nav__link">
         
   
   
@@ -2871,7 +2627,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="kubernetes/k8s-applications/" class="md-nav__link ">
+            <a href="../../../kubernetes/k8s-applications/" class="md-nav__link ">
               
   
   
@@ -2915,7 +2671,7 @@
   
   
     <li class="md-nav__item">
-      <a href="kubernetes/k8s-applications/busybox/" class="md-nav__link">
+      <a href="../../../kubernetes/k8s-applications/busybox/" class="md-nav__link">
         
   
   
@@ -2943,7 +2699,7 @@
   
   
     <li class="md-nav__item">
-      <a href="kubernetes/k8s-applications/metrics-server/" class="md-nav__link">
+      <a href="../../../kubernetes/k8s-applications/metrics-server/" class="md-nav__link">
         
   
   
@@ -2997,7 +2753,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="kubernetes/k8s-applications/ingress-nginx-controller/" class="md-nav__link ">
+            <a href="../../../kubernetes/k8s-applications/ingress-nginx-controller/" class="md-nav__link ">
               
   
   
@@ -3041,7 +2797,7 @@
   
   
     <li class="md-nav__item">
-      <a href="kubernetes/k8s-applications/ingress-nginx-controller/ingress/" class="md-nav__link">
+      <a href="../../../kubernetes/k8s-applications/ingress-nginx-controller/ingress/" class="md-nav__link">
         
   
   
@@ -3069,7 +2825,7 @@
   
   
     <li class="md-nav__item">
-      <a href="kubernetes/k8s-applications/ingress-nginx-controller/deploy_ingress_nginx_controller/" class="md-nav__link">
+      <a href="../../../kubernetes/k8s-applications/ingress-nginx-controller/deploy_ingress_nginx_controller/" class="md-nav__link">
         
   
   
@@ -3097,7 +2853,7 @@
   
   
     <li class="md-nav__item">
-      <a href="kubernetes/k8s-applications/ingress-nginx-controller/deployment/" class="md-nav__link">
+      <a href="../../../kubernetes/k8s-applications/ingress-nginx-controller/deployment/" class="md-nav__link">
         
   
   
@@ -3125,7 +2881,7 @@
   
   
     <li class="md-nav__item">
-      <a href="kubernetes/k8s-applications/ingress-nginx-controller/daemonset/" class="md-nav__link">
+      <a href="../../../kubernetes/k8s-applications/ingress-nginx-controller/daemonset/" class="md-nav__link">
         
   
   
@@ -3202,7 +2958,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="docker/" class="md-nav__link ">
+            <a href="../../../docker/" class="md-nav__link ">
               
   
   
@@ -3278,7 +3034,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="docker/docker-compose/" class="md-nav__link ">
+            <a href="../../../docker/docker-compose/" class="md-nav__link ">
               
   
   
@@ -3322,7 +3078,7 @@
   
   
     <li class="md-nav__item">
-      <a href="docker/docker-compose/dc-emqx/" class="md-nav__link">
+      <a href="../../../docker/docker-compose/dc-emqx/" class="md-nav__link">
         
   
   
@@ -3350,7 +3106,7 @@
   
   
     <li class="md-nav__item">
-      <a href="docker/docker-compose/dc-gitea/" class="md-nav__link">
+      <a href="../../../docker/docker-compose/dc-gitea/" class="md-nav__link">
         
   
   
@@ -3378,7 +3134,7 @@
   
   
     <li class="md-nav__item">
-      <a href="docker/docker-compose/dc-frp/" class="md-nav__link">
+      <a href="../../../docker/docker-compose/dc-frp/" class="md-nav__link">
         
   
   
@@ -3406,7 +3162,7 @@
   
   
     <li class="md-nav__item">
-      <a href="docker/docker-compose/dc-kuboard/" class="md-nav__link">
+      <a href="../../../docker/docker-compose/dc-kuboard/" class="md-nav__link">
         
   
   
@@ -3434,7 +3190,7 @@
   
   
     <li class="md-nav__item">
-      <a href="docker/docker-compose/dc-postgres/" class="md-nav__link">
+      <a href="../../../docker/docker-compose/dc-postgres/" class="md-nav__link">
         
   
   
@@ -3462,7 +3218,7 @@
   
   
     <li class="md-nav__item">
-      <a href="docker/docker-compose/dc-socks-server/" class="md-nav__link">
+      <a href="../../../docker/docker-compose/dc-socks-server/" class="md-nav__link">
         
   
   
@@ -3490,7 +3246,7 @@
   
   
     <li class="md-nav__item">
-      <a href="docker/docker-compose/dc-tinyprox/" class="md-nav__link">
+      <a href="../../../docker/docker-compose/dc-tinyprox/" class="md-nav__link">
         
   
   
@@ -3526,7 +3282,7 @@
   
   
     <li class="md-nav__item">
-      <a href="docker/docker-install/" class="md-nav__link">
+      <a href="../../../docker/docker-install/" class="md-nav__link">
         
   
   
@@ -3554,7 +3310,7 @@
   
   
     <li class="md-nav__item">
-      <a href="docker/docker-install-manually/" class="md-nav__link">
+      <a href="../../../docker/docker-install-manually/" class="md-nav__link">
         
   
   
@@ -3582,7 +3338,7 @@
   
   
     <li class="md-nav__item">
-      <a href="docker/docker-config/" class="md-nav__link">
+      <a href="../../../docker/docker-config/" class="md-nav__link">
         
   
   
@@ -3653,7 +3409,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="develop/" class="md-nav__link ">
+            <a href="../../../develop/" class="md-nav__link ">
               
   
   
@@ -3717,7 +3473,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="develop/distributed/" class="md-nav__link ">
+            <a href="../../../develop/distributed/" class="md-nav__link ">
               
   
   
@@ -3761,7 +3517,7 @@
   
   
     <li class="md-nav__item">
-      <a href="develop/distributed/routing-in-distributed-systems/" class="md-nav__link">
+      <a href="../../../develop/distributed/routing-in-distributed-systems/" class="md-nav__link">
         
   
   
@@ -3821,7 +3577,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="develop/develop-design/" class="md-nav__link ">
+            <a href="../../../develop/develop-design/" class="md-nav__link ">
               
   
   
@@ -3889,7 +3645,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="develop/develop-design/iot/" class="md-nav__link ">
+            <a href="../../../develop/develop-design/iot/" class="md-nav__link ">
               
   
   
@@ -3933,7 +3689,7 @@
   
   
     <li class="md-nav__item">
-      <a href="develop/develop-design/iot/iot-project-structure/" class="md-nav__link">
+      <a href="../../../develop/develop-design/iot/iot-project-structure/" class="md-nav__link">
         
   
   
@@ -3961,7 +3717,7 @@
   
   
     <li class="md-nav__item">
-      <a href="develop/develop-design/iot/iot-agent-client/" class="md-nav__link">
+      <a href="../../../develop/develop-design/iot/iot-agent-client/" class="md-nav__link">
         
   
   
@@ -3989,7 +3745,7 @@
   
   
     <li class="md-nav__item">
-      <a href="develop/develop-design/iot/iot-agent-server/" class="md-nav__link">
+      <a href="../../../develop/develop-design/iot/iot-agent-server/" class="md-nav__link">
         
   
   
@@ -4025,7 +3781,7 @@
   
   
     <li class="md-nav__item">
-      <a href="develop/develop-design/dev-frp/" class="md-nav__link">
+      <a href="../../../develop/develop-design/dev-frp/" class="md-nav__link">
         
   
   
@@ -4053,7 +3809,7 @@
   
   
     <li class="md-nav__item">
-      <a href="develop/develop-design/triangle-network/" class="md-nav__link">
+      <a href="../../../develop/develop-design/triangle-network/" class="md-nav__link">
         
   
   
@@ -4125,7 +3881,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="develop/lang-java/" class="md-nav__link ">
+            <a href="../../../develop/lang-java/" class="md-nav__link ">
               
   
   
@@ -4169,7 +3925,7 @@
   
   
     <li class="md-nav__item">
-      <a href="develop/lang-java/log-config/" class="md-nav__link">
+      <a href="../../../develop/lang-java/log-config/" class="md-nav__link">
         
   
   
@@ -4197,7 +3953,7 @@
   
   
     <li class="md-nav__item">
-      <a href="develop/lang-java/dsl/" class="md-nav__link">
+      <a href="../../../develop/lang-java/dsl/" class="md-nav__link">
         
   
   
@@ -4225,7 +3981,7 @@
   
   
     <li class="md-nav__item">
-      <a href="develop/lang-java/java-design/" class="md-nav__link">
+      <a href="../../../develop/lang-java/java-design/" class="md-nav__link">
         
   
   
@@ -4253,7 +4009,7 @@
   
   
     <li class="md-nav__item">
-      <a href="develop/lang-java/jdbc/" class="md-nav__link">
+      <a href="../../../develop/lang-java/jdbc/" class="md-nav__link">
         
   
   
@@ -4281,7 +4037,7 @@
   
   
     <li class="md-nav__item">
-      <a href="develop/lang-java/mybatis/" class="md-nav__link">
+      <a href="../../../develop/lang-java/mybatis/" class="md-nav__link">
         
   
   
@@ -4309,7 +4065,7 @@
   
   
     <li class="md-nav__item">
-      <a href="develop/lang-java/spring/" class="md-nav__link">
+      <a href="../../../develop/lang-java/spring/" class="md-nav__link">
         
   
   
@@ -4337,7 +4093,7 @@
   
   
     <li class="md-nav__item">
-      <a href="develop/lang-java/springboot/" class="md-nav__link">
+      <a href="../../../develop/lang-java/springboot/" class="md-nav__link">
         
   
   
@@ -4365,7 +4121,7 @@
   
   
     <li class="md-nav__item">
-      <a href="develop/lang-java/netty/" class="md-nav__link">
+      <a href="../../../develop/lang-java/netty/" class="md-nav__link">
         
   
   
@@ -4393,7 +4149,7 @@
   
   
     <li class="md-nav__item">
-      <a href="develop/lang-java/ziputils/" class="md-nav__link">
+      <a href="../../../develop/lang-java/ziputils/" class="md-nav__link">
         
   
   
@@ -4451,7 +4207,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="develop/kotlin/" class="md-nav__link ">
+            <a href="../../../develop/kotlin/" class="md-nav__link ">
               
   
   
@@ -4495,7 +4251,7 @@
   
   
     <li class="md-nav__item">
-      <a href="develop/kotlin/kotlin-syntactic-sugar/" class="md-nav__link">
+      <a href="../../../develop/kotlin/kotlin-syntactic-sugar/" class="md-nav__link">
         
   
   
@@ -4523,7 +4279,7 @@
   
   
     <li class="md-nav__item">
-      <a href="develop/kotlin/kotlin-coding-tips/" class="md-nav__link">
+      <a href="../../../develop/kotlin/kotlin-coding-tips/" class="md-nav__link">
         
   
   
@@ -4559,7 +4315,7 @@
   
   
     <li class="md-nav__item">
-      <a href="develop/lang-go/" class="md-nav__link">
+      <a href="../../../develop/lang-go/" class="md-nav__link">
         
   
   
@@ -4609,7 +4365,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="develop/lang-lua/" class="md-nav__link ">
+            <a href="../../../develop/lang-lua/" class="md-nav__link ">
               
   
   
@@ -4653,7 +4409,7 @@
   
   
     <li class="md-nav__item">
-      <a href="develop/lang-lua/lua-access-control/" class="md-nav__link">
+      <a href="../../../develop/lang-lua/lua-access-control/" class="md-nav__link">
         
   
   
@@ -4681,7 +4437,7 @@
   
   
     <li class="md-nav__item">
-      <a href="develop/lang-lua/lua-ac-redis-rules-operator/" class="md-nav__link">
+      <a href="../../../develop/lang-lua/lua-ac-redis-rules-operator/" class="md-nav__link">
         
   
   
@@ -4739,7 +4495,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="develop/sql/" class="md-nav__link ">
+            <a href="../../../develop/sql/" class="md-nav__link ">
               
   
   
@@ -4809,7 +4565,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="develop/sql/postgres/" class="md-nav__link ">
+            <a href="../../../develop/sql/postgres/" class="md-nav__link ">
               
   
   
@@ -4853,7 +4609,7 @@
   
   
     <li class="md-nav__item">
-      <a href="develop/sql/postgres/pg-tree-recursive/" class="md-nav__link">
+      <a href="../../../develop/sql/postgres/pg-tree-recursive/" class="md-nav__link">
         
   
   
@@ -4881,7 +4637,7 @@
   
   
     <li class="md-nav__item">
-      <a href="develop/sql/postgres/pg-graph-recursive/" class="md-nav__link">
+      <a href="../../../develop/sql/postgres/pg-graph-recursive/" class="md-nav__link">
         
   
   
@@ -4909,7 +4665,7 @@
   
   
     <li class="md-nav__item">
-      <a href="develop/sql/postgres/pg-attention/" class="md-nav__link">
+      <a href="../../../develop/sql/postgres/pg-attention/" class="md-nav__link">
         
   
   
@@ -4937,7 +4693,7 @@
   
   
     <li class="md-nav__item">
-      <a href="develop/sql/postgres/pg-psql-pgdump/" class="md-nav__link">
+      <a href="../../../develop/sql/postgres/pg-psql-pgdump/" class="md-nav__link">
         
   
   
@@ -4973,7 +4729,7 @@
   
   
     <li class="md-nav__item">
-      <a href="develop/sql/mysql/" class="md-nav__link">
+      <a href="../../../develop/sql/mysql/" class="md-nav__link">
         
   
   
@@ -5029,7 +4785,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="develop/shell/" class="md-nav__link ">
+            <a href="../../../develop/shell/" class="md-nav__link ">
               
   
   
@@ -5073,7 +4829,7 @@
   
   
     <li class="md-nav__item">
-      <a href="develop/shell/shell-cheat-sheet/" class="md-nav__link">
+      <a href="../../../develop/shell/shell-cheat-sheet/" class="md-nav__link">
         
   
   
@@ -5109,7 +4865,7 @@
   
   
     <li class="md-nav__item">
-      <a href="develop/env-variables/" class="md-nav__link">
+      <a href="../../../develop/env-variables/" class="md-nav__link">
         
   
   
@@ -5174,7 +4930,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="devops/" class="md-nav__link ">
+            <a href="../../../devops/" class="md-nav__link ">
               
   
   
@@ -5240,7 +4996,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="devops/nginx/" class="md-nav__link ">
+            <a href="../../../devops/nginx/" class="md-nav__link ">
               
   
   
@@ -5284,7 +5040,7 @@
   
   
     <li class="md-nav__item">
-      <a href="devops/nginx/nginx-proxy_pass/" class="md-nav__link">
+      <a href="../../../devops/nginx/nginx-proxy_pass/" class="md-nav__link">
         
   
   
@@ -5312,7 +5068,7 @@
   
   
     <li class="md-nav__item">
-      <a href="devops/nginx/nginx-lua-lifecycle/" class="md-nav__link">
+      <a href="../../../devops/nginx/nginx-lua-lifecycle/" class="md-nav__link">
         
   
   
@@ -5348,7 +5104,7 @@
   
   
     <li class="md-nav__item">
-      <a href="devops/ci/" class="md-nav__link">
+      <a href="../../../devops/ci/" class="md-nav__link">
         
   
   
@@ -5398,7 +5154,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="devops/vcs/" class="md-nav__link ">
+            <a href="../../../devops/vcs/" class="md-nav__link ">
               
   
   
@@ -5442,7 +5198,7 @@
   
   
     <li class="md-nav__item">
-      <a href="devops/vcs/gitea/" class="md-nav__link">
+      <a href="../../../devops/vcs/gitea/" class="md-nav__link">
         
   
   
@@ -5470,7 +5226,7 @@
   
   
     <li class="md-nav__item">
-      <a href="devops/vcs/gitlab/" class="md-nav__link">
+      <a href="../../../devops/vcs/gitlab/" class="md-nav__link">
         
   
   
@@ -5506,7 +5262,7 @@
   
   
     <li class="md-nav__item">
-      <a href="devops/writerside/" class="md-nav__link">
+      <a href="../../../devops/writerside/" class="md-nav__link">
         
   
   
@@ -5534,7 +5290,7 @@
   
   
     <li class="md-nav__item">
-      <a href="devops/mirrors/" class="md-nav__link">
+      <a href="../../../devops/mirrors/" class="md-nav__link">
         
   
   
@@ -5582,7 +5338,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="devops/mermaid/" class="md-nav__link ">
+            <a href="../../../devops/mermaid/" class="md-nav__link ">
               
   
   
@@ -5626,7 +5382,7 @@
   
   
     <li class="md-nav__item">
-      <a href="devops/mermaid/mermaid_example/" class="md-nav__link">
+      <a href="../../../devops/mermaid/mermaid_example/" class="md-nav__link">
         
   
   
@@ -5691,7 +5447,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="ai/" class="md-nav__link ">
+            <a href="../../../ai/" class="md-nav__link ">
               
   
   
@@ -5735,7 +5491,7 @@
   
   
     <li class="md-nav__item">
-      <a href="ai/deep-learning/" class="md-nav__link">
+      <a href="../../../ai/deep-learning/" class="md-nav__link">
         
   
   
@@ -5763,7 +5519,7 @@
   
   
     <li class="md-nav__item">
-      <a href="ai/aigc/" class="md-nav__link">
+      <a href="../../../ai/aigc/" class="md-nav__link">
         
   
   
@@ -5822,7 +5578,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="linux/" class="md-nav__link ">
+            <a href="../../../linux/" class="md-nav__link ">
               
   
   
@@ -5866,7 +5622,7 @@
   
   
     <li class="md-nav__item">
-      <a href="linux/git/" class="md-nav__link">
+      <a href="../../../linux/git/" class="md-nav__link">
         
   
   
@@ -5894,7 +5650,7 @@
   
   
     <li class="md-nav__item">
-      <a href="linux/systemd/" class="md-nav__link">
+      <a href="../../../linux/systemd/" class="md-nav__link">
         
   
   
@@ -5922,7 +5678,7 @@
   
   
     <li class="md-nav__item">
-      <a href="linux/ubuntu2204/" class="md-nav__link">
+      <a href="../../../linux/ubuntu2204/" class="md-nav__link">
         
   
   
@@ -5981,7 +5737,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="windows/" class="md-nav__link ">
+            <a href="../../../windows/" class="md-nav__link ">
               
   
   
@@ -6025,7 +5781,7 @@
   
   
     <li class="md-nav__item">
-      <a href="windows/win11Efficient/" class="md-nav__link">
+      <a href="../../../windows/win11Efficient/" class="md-nav__link">
         
   
   
@@ -6053,7 +5809,7 @@
   
   
     <li class="md-nav__item">
-      <a href="windows/kms/" class="md-nav__link">
+      <a href="../../../windows/kms/" class="md-nav__link">
         
   
   
@@ -6081,7 +5837,7 @@
   
   
     <li class="md-nav__item">
-      <a href="windows/windows-clean/" class="md-nav__link">
+      <a href="../../../windows/windows-clean/" class="md-nav__link">
         
   
   
@@ -6116,7 +5872,7 @@
   
   
     <li class="md-nav__item">
-      <a href="macos/" class="md-nav__link">
+      <a href="../../../macos/" class="md-nav__link">
         
   
   
@@ -6143,7 +5899,7 @@
   
   
     <li class="md-nav__item">
-      <a href="parameter-naming/" class="md-nav__link">
+      <a href="../../../parameter-naming/" class="md-nav__link">
         
   
   
@@ -6190,10 +5946,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#basic-variables" class="md-nav__link">
+  <a href="#_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        basic variables
+        线性映射的矩阵表示
       
     </span>
   </a>
@@ -6201,82 +5957,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#functions" class="md-nav__link">
+  <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        functions
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="functions">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#log-func" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        log func
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#command_exists-func" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        command_exists func
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#detect-ssh-port" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        detect ssh port
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#detect-os" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        detect os
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#date-format" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        date format
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#build-gradles-project" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        build gradle's project
+        基变换
       
     </span>
   </a>
@@ -6284,191 +5968,13 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#build-mavens-project" class="md-nav__link">
+  <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
       
-        build maven's project
+        像与核
       
     </span>
   </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#build-golangs-project" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        build golang's project
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#build-nodes-project" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        build node's project
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="build node&#39;s project">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#nvm-on-linux" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        nvm on linux
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#build-writersides-project" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        build writerside's project
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#docker" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        docker
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="docker">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#build-dockers-image-and-push" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        build docker's image (and push)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#remove-dockers-image" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        remove docker's image
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#install-docker" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        install docker
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#develop" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        develop
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="develop">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#config-maven" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        config maven
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#verify-nginx-configuration" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        verify nginx configuration
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#proxy-config" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        proxy config
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="proxy config">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#bashrc-proxy-config" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        bashrc proxy config
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#docker-daemon-proxy-config" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        docker daemon proxy config
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -6489,307 +5995,455 @@
 
 
 
-<h1 id="build-project">build project</h1>
-<p><img alt="" src="https://counter.iproute.org/at/vscoding?theme=booru-lewd" /></p>
-<h2 id="basic-variables">basic variables</h2>
+<h1 id="linear-transformation">Linear Transformation</h1>
+<p>研究向量空间上结构不变的映射，这允许我们定义坐标的概念。之前我们说过向量相加并乘以标量得到的对象仍然是一个向量。这里我们希望在应用映射时保留此特性：</p>
+<p>考虑两个实数向量空间<span class="arithmatex">\(\mathrm{V}\)</span>,<span class="arithmatex">\(\mathrm{W}\)</span>。对于 <span class="arithmatex">\(\boldsymbol{x},\boldsymbol{y} \in V\)</span> 和 <span class="arithmatex">\(\lambda \in \mathbb{R}\)</span>,映射<span class="arithmatex">\(\Phi: \mathrm{V} \rightarrow \mathrm{W}\)</span> 保持向量空间结构不变需满足：</p>
+<div class="arithmatex">\[
+\Phi(\boldsymbol{x} + \boldsymbol{y}) = \Phi \boldsymbol{x} + \Phi \boldsymbol{y} \\ \Phi(\lambda \boldsymbol{x}) = \Phi \lambda (\boldsymbol{x})
+\]</div>
+<p>可以用定义来概括</p>
+<p><strong>定义</strong> 线性映射</p>
+<p>对于向量空间<span class="arithmatex">\(\mathrm{V}\)</span>，<span class="arithmatex">\(\mathrm{W}\)</span>，如果</p>
+<div class="arithmatex">\[
+\forall \boldsymbol{x},\boldsymbol{y} \in \mathrm{V},\forall \lambda,\psi \in \mathbb{R}:
+\Phi(\lambda \boldsymbol{x} + \psi \boldsymbol{y} ) = \Phi\lambda \boldsymbol{x} + \psi\Phi \boldsymbol{y}
+\]</div>
+<p>则称 <span class="arithmatex">\(\Phi: \mathrm{V} \rightarrow \mathrm{W}\)</span> 为 <strong>线性映射(Linear Mapping)</strong>，或 <strong>向量空间同态(vector space homomorphism)</strong> 或 <strong>线性变换(linear transformation)</strong></p>
+<p>这使得我们可以把线性映射用矩阵表示。之前的内容：将向量集合用矩阵的列表示。在处理矩阵的时候，我们必须判断矩阵所表示的内容：是线性映射还是向量集合。后面会看到关于更多的线性映射的内容，介绍一些特殊映射</p>
+<p><strong>定义</strong> 单射，满射，双射</p>
+<p>考虑一个映射  <span class="arithmatex">\(\Phi: \mathcal{V} \mapsto \mathcal{W}\)</span>，其中 <span class="arithmatex">\(\mathrm{V}\)</span>，<span class="arithmatex">\(\mathrm{W}\)</span>是任意集合。那么 <span class="arithmatex">\(\Phi\)</span> 可以是</p>
+<ul>
+<li><strong>单射的(Injective)</strong>: <span class="arithmatex">\(\forall \boldsymbol{x},\boldsymbol{y} \in \mathcal{V}: \Phi(\boldsymbol{x}) =\Phi(\boldsymbol{y}) \Rightarrow \boldsymbol{x} = \boldsymbol{y}\)</span></li>
+<li><strong>满射的(Surjective)</strong>: $\Phi(\mathcal{V}) = \Phi(\mathcal{W}) $</li>
+<li><strong>双射的(Bijective)</strong>: 既是单射的，也是满射的</li>
+</ul>
+<p>如果 <span class="arithmatex">\(\Phi\)</span> 是满射的，那么<span class="arithmatex">\(\mathcal{W}\)</span> 中的每个元素都可以通过 <span class="arithmatex">\(\Phi\)</span> 从 <span class="arithmatex">\(\mathcal{V}\)</span>
+“到达”。单射意味着映射结果相同的元素为同一元素。双射既是单射的也是满射的，所以一个双射映射<span class="arithmatex">\(\Phi\)</span>
+可以“撤销”（双射映射意味着两个空间的个体是一一对应的，所以可以撤销；而非双射这种多对一的情况，“撤销”后的对象是不唯一，不确定是哪一个，所以无法撤销。）即存在一个映射 <span class="arithmatex">\(\Psi: \mathcal{W} \mapsto \mathcal{V}\)</span>
+，使得<span class="arithmatex">\(\Psi \circ \Phi (\boldsymbol{x}) = \boldsymbol{x}\)</span>。映射 <span class="arithmatex">\(\Phi\)</span> 被称为 <span class="arithmatex">\(\Phi\)</span> 的逆，通常用 <span class="arithmatex">\(\Phi ^{\mathrm{-1}}\)</span> 表示。</p>
+<p>在这些定义下，介绍一些向量空间<span class="arithmatex">\(\mathrm{V}\)</span>和<span class="arithmatex">\(\mathrm{W}\)</span>之间线性映射的特殊情况</p>
+<ul>
+<li><strong>同态(Homomorphism)</strong>：<span class="arithmatex">\(\Phi: \mathrm{V} \mapsto \mathrm{W}\)</span> 线性</li>
+<li><strong>同构(Isomorphism)</strong>：<span class="arithmatex">\(\Phi: \mathrm{V} \mapsto \mathrm{W}\)</span> 双射</li>
+<li><strong>自同态(Endomorphism)</strong>：<span class="arithmatex">\(\Phi: \mathrm{V} \mapsto \mathrm{V}\)</span> 线性</li>
+<li><strong>自同构(Automorphism)</strong>：<span class="arithmatex">\(\Phi: \mathrm{V} \mapsto \mathrm{V}\)</span> 双射</li>
+<li>定义 <span class="arithmatex">\(\mathrm{id}_{\mathrm{V}}\)</span> ：<span class="arithmatex">\(\mathrm{V} \rightarrow \mathrm{V},\boldsymbol{x} \mapsto \boldsymbol{x}\)</span>
+  为<span class="arithmatex">\(\mathrm{V}\)</span> 中的恒等映射或 <strong>单位自同构(identity mapping or identity automorphism)</strong></li>
+</ul>
+<p><strong>例</strong> 同态</p>
+<p><span class="arithmatex">\(\Phi: \mathbb{R}^{2} \rightarrow \mathbb{C}，\Phi(\boldsymbol{x}) = x_1 + i x_2\)</span> 是同态映射。</p>
+<div class="arithmatex">\[
+\Phi(\begin{bmatrix}x_1\\x_2\end{bmatrix} + \begin{bmatrix}y_1\\y_2\end{bmatrix})
+=(x_1+y_1) + i(x_2+y_2) = x_1 + i x_2 + y_1 + iy_2 \\ = \Phi(\begin{bmatrix}x_1\\x_2\end{bmatrix}) + \Phi(\begin{bmatrix}y_1\\y_2\end{bmatrix})
+\\\\ \Phi(\lambda \begin{bmatrix}x_1\\x_2\end{bmatrix}) = \lambda x_1 + \lambda i x_2 = \lambda(x_1+ix_2) = \lambda \Phi(\begin{bmatrix}x_1\\x_2\end{bmatrix})
+\]</div>
+<p>这也证明了为什么复数可以在 <span class="arithmatex">\(\mathbb{R}^{2}\)</span> 中表示为元组：有一个双射线性映射，它将 <span class="arithmatex">\(\mathbb{R}^{2}\)</span>
+中的元组的元素加法转换为具有相应加法的复数集。注意，这里我们只展示了线性，而没有双射。</p>
+<p><strong>定理</strong> 2.17</p>
+<p>有限维向量空间 <span class="arithmatex">\(\mathrm{V}\)</span> 和 <span class="arithmatex">\(\mathrm{W}\)</span> 同构当且仅当 <span class="arithmatex">\(\mathrm{dim}(\mathrm{V})=\mathrm{dim}(\mathrm{W})\)</span></p>
+<p>定理2.17指出在两个相同维度的向量空间之前存在一个线性的双射映射。直觉上，意味着相同维度的向量空间是相同的，它们可以相互转化而不产生任何误差。</p>
+<p>定理2.17也给出了之前将 <span class="arithmatex">\(\mathbb{R}^{m \times n}\)</span>（<span class="arithmatex">\(m \times n\)</span>-矩阵 张成的向量空间）和 <span class="arithmatex">\(\mathbb{R}^{mn}\)</span> (<span class="arithmatex">\(mn\)</span>
+的向量张成的向量空间)视为相同的理由：因为它们的维数都是<span class="arithmatex">\(mn\)</span>
+，所以存在一个线性双射映射，将它们互相转换。（注意：向量空间的维数，由向量张成的向量空间的维数，以及由矩阵张成的向量空间的维数的区别）</p>
+<p><strong>备注</strong></p>
+<p>考虑向量空间 <span class="arithmatex">\(\mathrm{V},\mathrm{W},\mathrm{X}\)</span></p>
+<ul>
+<li>对于线性映射<span class="arithmatex">\(\Phi: \mathrm{V} \mapsto \mathrm{W}\)</span> 和 <span class="arithmatex">\(\Psi: \mathrm{W} \mapsto \mathrm{X}\)</span>
+  ，那么 <span class="arithmatex">\(\Psi \circ \Phi: \mathrm{V} \mapsto \mathrm{X}\)</span>  也是线性映射。</li>
+<li>如果 <span class="arithmatex">\(\Phi: \mathrm{V} \mapsto \mathrm{W}\)</span> 同构，那么 <span class="arithmatex">\(\Phi^{-1}: \mathrm{W} \mapsto \mathrm{V}\)</span>  也是同构的。</li>
+<li>如果 <span class="arithmatex">\(\Phi: \mathrm{V} \mapsto \mathrm{W}, \Psi:\mathrm{V} \mapsto \mathrm{W}\)</span> 都是线性的（同态的），那么 <span class="arithmatex">\(\Phi + \Psi\)</span>
+  和 <span class="arithmatex">\(\lambda\Phi,\lambda \in \mathbb{R}\)</span> 也是线性的（同态的）。</li>
+</ul>
+<h3 id="_1">线性映射的矩阵表示</h3>
+<p>任何<span class="arithmatex">\(n\)</span> 维向量空间同构于 <span class="arithmatex">\(\mathbb{R}^{n}\)</span> （定理2.17）。我们考虑 <span class="arithmatex">\(n\)</span> 维向量的空间  <span class="arithmatex">\(\mathrm{V}\)</span>
+的一个基<span class="arithmatex">\(\{\boldsymbol{b}_1,...,\boldsymbol{b}_n\}\)</span>。在下文中，基向量的顺序很重要。我们对集进行排序，得到</p>
+<div class="arithmatex">\[
+\mathrm{B} = (\boldsymbol{b}_1,...,\boldsymbol{b}_n)
+\]</div>
+<p>并称这个 <span class="arithmatex">\(n\)</span> 元组为 <span class="arithmatex">\(\mathrm{V}\)</span> 的 <strong>有序基(ordered basis)</strong></p>
+<p><strong>备注</strong>：基需要是有序的，所谓的“第一个坐标，第二个坐标，等”才是有意义的</p>
+<p><strong>备注</strong>：目前为止定义的符号有点多，在这里总结以下</p>
+<ul>
+<li><span class="arithmatex">\(\mathrm{B} = (\boldsymbol{b}_1,...,\boldsymbol{b}_n)\)</span>  为有序基</li>
+<li><span class="arithmatex">\(\mathcal{B} = \{\boldsymbol{b}_1,...,\boldsymbol{b}_n\}\)</span> 为（无序的）基</li>
+<li><span class="arithmatex">\(\boldsymbol{B} = [\boldsymbol{b}_1,...,\boldsymbol{b}_n]\)</span>  是列为 <span class="arithmatex">\(\boldsymbol{b}_1,...,\boldsymbol{b}_n\)</span> 的矩阵</li>
+</ul>
+<p><strong>定义</strong> 坐标</p>
+<p>考虑一个向量空间 <span class="arithmatex">\(\mathrm{V}\)</span> 以及 <span class="arithmatex">\(\mathrm{V}\)</span> 的一个有序基 <span class="arithmatex">\(\mathrm{B} = (\boldsymbol{b}_1,...,\boldsymbol{b}_n)\)</span>
+。对于任意的 <span class="arithmatex">\(\boldsymbol{x} \in \mathrm{V}\)</span>，有唯一一个关于 <span class="arithmatex">\(\mathrm{B}\)</span> 的线性组合</p>
+<div class="arithmatex">\[
+\boldsymbol{x} = \alpha_1 \boldsymbol{b}_1 + \cdots + \alpha_n \boldsymbol{b}_n
+\]</div>
+<p><span class="arithmatex">\(\alpha_1,...,\alpha_n\)</span> 称为:  <span class="arithmatex">\(\boldsymbol{x}\)</span> 关于 <span class="arithmatex">\(\mathrm{B}\)</span> 的 <strong>坐标(Coordinates)</strong></p>
+<div class="arithmatex">\[
+\boldsymbol{\alpha} = \begin{bmatrix} \alpha_1\\\vdots\\\alpha_n \end{bmatrix} \in \mathbb{R}^{n}
+\]</div>
+<p><span class="arithmatex">\(\boldsymbol{\alpha}\)</span> 为 <span class="arithmatex">\(\boldsymbol{x}\)</span> 相对于有序基 <span class="arithmatex">\(\mathrm{B}\)</span>  的 <strong>坐标向量/ 坐标表示(coordinate vector/ coordinate representation)</strong></p>
+<p>一个基有效定义了一个坐标系。我们熟悉的笛卡尔坐标系，它由标准基向量 <span class="arithmatex">\(\boldsymbol{e}_1,\boldsymbol{e}_2\)</span>
+构成。在这个坐标系中，向量 <span class="arithmatex">\(\boldsymbol{x} \in \mathbb{R}^{n}\)</span> 都可以表示为 <span class="arithmatex">\(\boldsymbol{e}_1,\boldsymbol{e}_2\)</span>
+的线性组合。然而，<span class="arithmatex">\(\mathbb{R}^{2}\)</span> 的任何基都定义了一个有效的坐标系，同一个向量<span class="arithmatex">\(\boldsymbol{x}\)</span>
+在 <span class="arithmatex">\((\boldsymbol{b}_1,\boldsymbol{b}_2)\)</span> 基中可能会与  <span class="arithmatex">\(\boldsymbol{e}_1,\boldsymbol{e}_2\)</span> 不同的坐标表示。</p>
 <blockquote>
-<p>get basic variables</p>
+<p>快速理解： 把坐标系斜拉以下，矩形变菱形</p>
 </blockquote>
-<div class="language-shell highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span>
-<span class="normal"><a href="#__codelineno-0-2">2</a></span>
-<span class="normal"><a href="#__codelineno-0-3">3</a></span>
-<span class="normal"><a href="#__codelineno-0-4">4</a></span>
-<span class="normal"><a href="#__codelineno-0-5">5</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="c1"># export ROOT_URI automatically</span>
-<a id="__codelineno-0-2" name="__codelineno-0-2"></a><span class="nb">source</span><span class="w"> </span>&lt;<span class="o">(</span>curl<span class="w"> </span>-sSL<span class="w"> </span>https://dev.kubectl.org/init<span class="o">)</span>
-<a id="__codelineno-0-3" name="__codelineno-0-3"></a>
-<a id="__codelineno-0-4" name="__codelineno-0-4"></a><span class="c1"># or set manually</span>
-<a id="__codelineno-0-5" name="__codelineno-0-5"></a><span class="c1"># export ROOT_URI=https://dev.kubectl.net</span>
-</code></pre></div></td></tr></table></div>
-<h2 id="functions">functions</h2>
-<h3 id="log-func">log func</h3>
-<div class="language-shell highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1">1</a></span>
-<span class="normal"><a href="#__codelineno-1-2">2</a></span>
-<span class="normal"><a href="#__codelineno-1-3">3</a></span>
-<span class="normal"><a href="#__codelineno-1-4">4</a></span>
-<span class="normal"><a href="#__codelineno-1-5">5</a></span>
-<span class="normal"><a href="#__codelineno-1-6">6</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="nb">source</span><span class="w"> </span>&lt;<span class="o">(</span>curl<span class="w"> </span>-sSL<span class="w"> </span><span class="nv">$ROOT_URI</span>/func/log.sh<span class="o">)</span>
-<a id="__codelineno-1-2" name="__codelineno-1-2"></a>
-<a id="__codelineno-1-3" name="__codelineno-1-3"></a>log<span class="w"> </span><span class="s2">&quot;hello&quot;</span><span class="w"> </span><span class="s2">&quot;world&quot;</span>
-<a id="__codelineno-1-4" name="__codelineno-1-4"></a>log_info<span class="w"> </span><span class="s2">&quot;hello&quot;</span><span class="w"> </span><span class="s2">&quot;world&quot;</span>
-<a id="__codelineno-1-5" name="__codelineno-1-5"></a>log_warn<span class="w"> </span><span class="s2">&quot;hello&quot;</span><span class="w"> </span><span class="s2">&quot;world&quot;</span>
-<a id="__codelineno-1-6" name="__codelineno-1-6"></a>log_error<span class="w"> </span><span class="s2">&quot;hello&quot;</span><span class="w"> </span><span class="s2">&quot;world&quot;</span>
-</code></pre></div></td></tr></table></div>
-<h3 id="command_exists-func">command_exists func</h3>
-<div class="language-shell highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1">1</a></span>
-<span class="normal"><a href="#__codelineno-2-2">2</a></span>
-<span class="normal"><a href="#__codelineno-2-3">3</a></span>
-<span class="normal"><a href="#__codelineno-2-4">4</a></span>
-<span class="normal"><a href="#__codelineno-2-5">5</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="nb">source</span><span class="w"> </span>&lt;<span class="o">(</span>curl<span class="w"> </span>-sSL<span class="w"> </span><span class="nv">$ROOT_URI</span>/func/command_exists.sh<span class="o">)</span>
-<a id="__codelineno-2-2" name="__codelineno-2-2"></a>
-<a id="__codelineno-2-3" name="__codelineno-2-3"></a><span class="k">if</span><span class="w"> </span>command_exists<span class="w"> </span>docker<span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
-<a id="__codelineno-2-4" name="__codelineno-2-4"></a><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;command docker exists&quot;</span>
-<a id="__codelineno-2-5" name="__codelineno-2-5"></a><span class="k">fi</span>
-</code></pre></div></td></tr></table></div>
-<h3 id="detect-ssh-port">detect ssh port</h3>
-<div class="language-shell highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1">1</a></span>
-<span class="normal"><a href="#__codelineno-3-2">2</a></span>
-<span class="normal"><a href="#__codelineno-3-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="nv">ssh_port</span><span class="o">=</span><span class="s2">&quot;</span><span class="k">$(</span>bash<span class="w"> </span>&lt;<span class="o">(</span>curl<span class="w"> </span>-sSL<span class="w"> </span><span class="nv">$ROOT_URI</span>/func/ssh_port.sh<span class="k">)</span><span class="s2">&quot;</span>
-<a id="__codelineno-3-2" name="__codelineno-3-2"></a>
-<a id="__codelineno-3-3" name="__codelineno-3-3"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;ssh port is </span><span class="nv">$ssh_port</span><span class="s2">&quot;</span>
-</code></pre></div></td></tr></table></div>
-<h3 id="detect-os">detect os</h3>
-<div class="language-shell highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-1">1</a></span>
-<span class="normal"><a href="#__codelineno-4-2">2</a></span>
-<span class="normal"><a href="#__codelineno-4-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1"></a><span class="nb">source</span><span class="w"> </span>&lt;<span class="o">(</span>curl<span class="w"> </span>-sSL<span class="w"> </span><span class="nv">$ROOT_URI</span>/func/detect_os.sh<span class="o">)</span>
-<a id="__codelineno-4-2" name="__codelineno-4-2"></a>
-<a id="__codelineno-4-3" name="__codelineno-4-3"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$os_name</span><span class="s2">&quot;</span>
-</code></pre></div></td></tr></table></div>
-<h3 id="date-format">date format</h3>
-<div class="language-shell highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-5-1">1</a></span>
-<span class="normal"><a href="#__codelineno-5-2">2</a></span>
-<span class="normal"><a href="#__codelineno-5-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1"></a><span class="nb">source</span><span class="w"> </span>&lt;<span class="o">(</span>curl<span class="w"> </span>-sSL<span class="w"> </span><span class="nv">$ROOT_URI</span>/func/date.sh<span class="o">)</span>
-<a id="__codelineno-5-2" name="__codelineno-5-2"></a>
-<a id="__codelineno-5-3" name="__codelineno-5-3"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$datetime_version</span><span class="s2">&quot;</span>
-</code></pre></div></td></tr></table></div>
-<h2 id="build-gradles-project">build gradle's project</h2>
-<p>build gradle's project by docker</p>
-<div class="language-shell highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-6-1">1</a></span>
-<span class="normal"><a href="#__codelineno-6-2">2</a></span>
-<span class="normal"><a href="#__codelineno-6-3">3</a></span>
-<span class="normal"><a href="#__codelineno-6-4">4</a></span>
-<span class="normal"><a href="#__codelineno-6-5">5</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1"></a>bash<span class="w"> </span>&lt;<span class="o">(</span>curl<span class="w"> </span>-sSL<span class="w"> </span><span class="nv">$ROOT_URI</span>/gradle/build.sh<span class="o">)</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-6-2" name="__codelineno-6-2"></a><span class="w">  </span>-d<span class="w"> </span><span class="o">[</span>build_dir<span class="o">]</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-6-3" name="__codelineno-6-3"></a><span class="w">  </span>-c<span class="w"> </span>&lt;cache_volume&gt;<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-6-4" name="__codelineno-6-4"></a><span class="w">  </span>-i<span class="w"> </span>&lt;gradle_image&gt;<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-6-5" name="__codelineno-6-5"></a><span class="w">  </span>-x<span class="w"> </span>&lt;gradle_command&gt;
-</code></pre></div></td></tr></table></div>
+<p><img alt="" src="../../../assets/images/mml/linear-algebra/la_2.8.png" /></p>
+<p>在图2.8中,<span class="arithmatex">\(\boldsymbol{x}\)</span> 相对于标准基<span class="arithmatex">\((\boldsymbol{e}_1,\boldsymbol{e}_2)\)</span> 的坐标为<span class="arithmatex">\([2,2]^{\mathrm{T}}\)</span>
+。然而，关于基<span class="arithmatex">\((\boldsymbol{b}_1,\boldsymbol{b}_2)\)</span>，相同的向量<span class="arithmatex">\(\boldsymbol{x}\)</span>被表示为<span class="arithmatex">\([1.09,0.27]^{\mathrm{T}}\)</span>
+，即 <span class="arithmatex">\(\boldsymbol{x} = 1.09\boldsymbol{b}_1 + 0.27\boldsymbol{b}_2\)</span>。在下文中了解如果获得这种表示。</p>
+<p><strong>例</strong></p>
+<p>几何向量<span class="arithmatex">\(\boldsymbol{x} \in \mathbb{R}^{2}\)</span>  相对于 <span class="arithmatex">\(\mathbb{R}^{2}\)</span> 的标准基 <span class="arithmatex">\((\boldsymbol{e}_1,\boldsymbol{e}_2)\)</span>
+的坐标为 <span class="arithmatex">\([2,3]^{\mathrm{T}}\)</span> 。可以将其表示为 <span class="arithmatex">\(\boldsymbol{x} = 2 \boldsymbol{e}_1 + 3 \boldsymbol{e}_2\)</span>
+。但是不一定选择标准基来表示这个向量。可以选择 $\boldsymbol{b}_1 = [1,-1]^{\mathrm{T}},\boldsymbol{b}_2=[1,1]^{\mathrm{T}} $
+为基向量，这样可以得到 <span class="arithmatex">\(\boldsymbol{x}\)</span> 相对它们的坐标：<span class="arithmatex">\(\frac{1}{2}[-1,5]^\mathrm{T}\)</span></p>
+<p><img alt="" src="../../../assets/images/mml/linear-algebra/la_2.9.png" /></p>
+<p>图中 <span class="arithmatex">\(\boldsymbol{x}\)</span> 的不同坐标表示取决于不同的基</p>
+<p><strong>备注</strong></p>
+<p>对于一个 <span class="arithmatex">\(n\)</span> 维向量空间 $ \mathrm{V}$  和 <span class="arithmatex">\(\mathrm{V}\)</span> 的一个有序基 <span class="arithmatex">\(\mathrm{B}\)</span>
+，映射<span class="arithmatex">\(\Phi: \mathbb{R}^{n} \mapsto \mathrm{V}，\Phi({\boldsymbol{e}_i})= \boldsymbol{b}_i, i=1,...,n\)</span> 是线性的(
+维度相同，所以进一步是同构的)，其中 <span class="arithmatex">\((\boldsymbol{e}_1,...,\boldsymbol{e}_n)\)</span> 是关于<span class="arithmatex">\(\mathbb{R}^{n}\)</span> 的标准基。</p>
+<p>现在我们准备在 矩阵 和 有限维向量空间 之间的 线性映射 建立一个显示联系</p>
+<p><strong>定义2.19</strong>  变换矩阵</p>
+<p>考虑向量空间 <span class="arithmatex">\(\mathrm{V}\)</span> 和 <span class="arithmatex">\(\mathrm{W}\)</span> 以及相应的有序基 <span class="arithmatex">\(\mathrm{B} = (\boldsymbol{b}_1,...,\boldsymbol{b}_n)\)</span>
+和 <span class="arithmatex">\(\mathrm{C} = (\boldsymbol{c}_1,...,\boldsymbol{c}_m)\)</span> 。再考虑线性映射 <span class="arithmatex">\(\Phi: \mathrm{V} \mapsto \mathrm{W}\)</span>：</p>
+<div class="arithmatex">\[
+\Phi(\boldsymbol{b}_1) = \alpha_{11} \boldsymbol{c}_1 + \textcolor{blue}{\alpha_{21}}\boldsymbol{c}_2 + \cdots + \alpha_{m1}\boldsymbol{c}_{m} = \sum_{i=1}^{m}\alpha_{i1} \boldsymbol{c}_i \\ \vdots \\ \Phi(\boldsymbol{b}_j) = \alpha_{1j} \boldsymbol{c}_1 + \textcolor{blue}{\alpha_{2j}}\boldsymbol{c}_2 + \cdots + \alpha_{mj}\boldsymbol{c}_{m} = \sum_{i=1}^{m}\alpha_{ij} \boldsymbol{c}_i \\ \vdots \\ \Phi(\boldsymbol{b}_n) = \alpha_{1n} \boldsymbol{c}_1 + \textcolor{blue}{\alpha_{2n}}\boldsymbol{c}_2 + \cdots + \alpha_{mn}\boldsymbol{c}_{m} = \sum_{i=1}^{m}\alpha_{in} \boldsymbol{c}_i
+\]</div>
+<p><span class="arithmatex">\(\Phi(\boldsymbol{b}_j)\)</span>  表示 <span class="arithmatex">\(\boldsymbol{b}_j\)</span> 经过变换后相对 <span class="arithmatex">\(\mathrm{C}\)</span> 的唯一坐标表示。然后我们得到</p>
+<div class="arithmatex">\[
+\boldsymbol{A}_{\Phi} = \begin{bmatrix} \alpha_{11} &amp; \alpha_{12} &amp; \cdots &amp; \alpha_{1n}\\ \alpha_{21} &amp; \alpha_{22} &amp; \cdots &amp; \alpha_{2n}\\ \vdots &amp; \vdots &amp; \vdots &amp; \vdots\\ \alpha_{m1} &amp; \alpha_{m2} &amp; \cdots &amp; \alpha_{mn}\\ \end{bmatrix} \in \mathbb{R}^{m \times n}
+\]</div>
+<p>我们称 <span class="arithmatex">\(m \times n\)</span> 矩阵  <span class="arithmatex">\(\boldsymbol{A}_{\Phi}\)</span> 为 <span class="arithmatex">\(\Phi\)</span>（关于 <span class="arithmatex">\(\mathrm{V}\)</span> 的有序基 和 <span class="arithmatex">\(\mathrm{W}\)</span>的有序基）的*
+<em>变换矩阵(transformation matrix)*</em></p>
+<p><span class="arithmatex">\(\Phi(\boldsymbol{b}_j)\)</span>  相对于 <span class="arithmatex">\(\mathrm{W}\)</span> 的有序基 <span class="arithmatex">\(\mathrm{C}\)</span> 的坐标是 矩阵 <span class="arithmatex">\(\boldsymbol{A}_{\Phi}\)</span> 的第 <span class="arithmatex">\(j\)</span> 列。</p>
+<p>考虑(有限维) 向量空间<span class="arithmatex">\(\mathrm{V}\)</span>、<span class="arithmatex">\(\mathrm{W}\)</span>及其对应的有序基<span class="arithmatex">\(\mathrm{B}\)</span>、<span class="arithmatex">\(\mathrm{C}\)</span>
+和变换矩阵<span class="arithmatex">\(\boldsymbol{A}_{\Phi}: \mathrm{V} \rightarrow \mathrm{W}\)</span>。</p>
+<p>如果 <span class="arithmatex">\(\hat{\boldsymbol{x}}\)</span> 是 <span class="arithmatex">\(\boldsymbol{x} \in \mathrm{V}\)</span>  相对于<span class="arithmatex">\(\mathrm{B}\)</span>的坐标向量。<span class="arithmatex">\(\hat{\boldsymbol{y}}\)</span>
+是 <span class="arithmatex">\(\boldsymbol{y} = \Phi(\boldsymbol{x}) \in \boldsymbol{W}\)</span> 相对于<span class="arithmatex">\(\mathrm{C}\)</span> 的坐标向量，则</p>
+<div class="arithmatex">\[
+\hat{\boldsymbol{y}} = \boldsymbol{A}_{\Phi} \hat{\boldsymbol{x}}
+\]</div>
+<p>这意味着可以使用变换矩阵将相对于 <span class="arithmatex">\(\mathrm{V}\)</span> 的有序基的坐标映射到相对于<span class="arithmatex">\(\mathrm{W}\)</span>中有序基的坐标。</p>
+<p><strong>例</strong> 变换矩阵</p>
+<p>考虑 同态映射 <span class="arithmatex">\(\Phi: \mathrm{V} \rightarrow \mathrm{W}\)</span> 以及 <span class="arithmatex">\(\mathrm{V}\)</span>
+的有序基 <span class="arithmatex">\(\mathrm{B}=(\boldsymbol{b}_1,...\boldsymbol{b}_n)\)</span> 和 <span class="arithmatex">\(\mathrm{W}\)</span>
+的有序基<span class="arithmatex">\(\mathrm{C}=(\boldsymbol{c}_1,...\boldsymbol{c}_n)\)</span> 并由:</p>
+<div class="arithmatex">\[
+\begin{aligned} &amp; \Phi(\boldsymbol{b}_1) = \boldsymbol{c}_1 - \boldsymbol{c}_2 + 3\boldsymbol{c}_3 - \boldsymbol{c}_4\\ &amp; \Phi(\boldsymbol{b}_2) = 2\boldsymbol{c}_1 + \boldsymbol{c}_2 + 7\boldsymbol{c}_3 + 2\boldsymbol{c}_4\\ &amp; \Phi(\boldsymbol{b}_3) = 3\boldsymbol{c}_2 + \boldsymbol{c}_3 + 4\boldsymbol{c}_4 \end{aligned}
+\]</div>
+<p>可得关于 <span class="arithmatex">\(\mathrm{B}\)</span> 和 <span class="arithmatex">\(\mathrm{C}\)</span>
+满足 $\Phi(\boldsymbol{b}<em i="1">k) = \sum</em>_i,k=1,...,3 $ 的变换矩阵 }^{4}\alpha_{ij} \boldsymbol{c<span class="arithmatex">\(\boldsymbol{A}_{\Phi}\)</span>
+为</p>
+<div class="arithmatex">\[
+\boldsymbol{A}_{\Phi} =[\boldsymbol{\alpha}_1,\boldsymbol{\alpha}_2,\boldsymbol{\alpha}_3] = \begin{bmatrix} 1 &amp; 2 &amp; 0\\ -1 &amp; 1 &amp; 3\\ 3 &amp; 7 &amp; 1\\ -1 &amp; 2 &amp; 4\\ \end{bmatrix}
+\]</div>
+<p>其中<span class="arithmatex">\(\boldsymbol{\alpha}_j,j=1,2,3\)</span> 为<span class="arithmatex">\(\Phi(\boldsymbol{b}_j)\)</span>相对于<span class="arithmatex">\(\mathrm{C}\)</span> 的坐标向量</p>
+<p><strong>例</strong> 向量的线性变换</p>
+<p><img alt="" src="../../../assets/images/mml/linear-algebra/la_2.10.png" /></p>
+<p>图2.10 向量线性变化的三个例子</p>
 <ul>
-<li><code>-d</code>: gradle构建的目录 可为空，默认执行脚本的目录</li>
-<li><code>-c</code>: gradle缓存: 使用<code>docker volume</code>挂载</li>
-<li><code>-i</code>: gradle的镜像</li>
-<li><code>-x</code>: gradle的命令</li>
-<li>e.g. : <code>gradle clean build -x test</code></li>
+<li>(a) 初始数据</li>
+<li>(b) 旋转45°</li>
+<li>(c) 水平坐标拉伸</li>
+<li>(d) 反射、旋转和拉升的组合</li>
 </ul>
-<h2 id="build-mavens-project">build maven's project</h2>
-<p>build maven's project by docker</p>
-<div class="language-shell highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-7-1">1</a></span>
-<span class="normal"><a href="#__codelineno-7-2">2</a></span>
-<span class="normal"><a href="#__codelineno-7-3">3</a></span>
-<span class="normal"><a href="#__codelineno-7-4">4</a></span>
-<span class="normal"><a href="#__codelineno-7-5">5</a></span>
-<span class="normal"><a href="#__codelineno-7-6">6</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1"></a>bash<span class="w"> </span>&lt;<span class="o">(</span>curl<span class="w"> </span>-sSL<span class="w"> </span><span class="nv">$ROOT_URI</span>/maven/build.sh<span class="o">)</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-7-2" name="__codelineno-7-2"></a><span class="w">  </span>-d<span class="w"> </span><span class="o">[</span>build_dir<span class="o">]</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-7-3" name="__codelineno-7-3"></a><span class="w">  </span>-c<span class="w"> </span>&lt;cache_volume&gt;<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-7-4" name="__codelineno-7-4"></a><span class="w">  </span>-i<span class="w"> </span>&lt;maven_image&gt;<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-7-5" name="__codelineno-7-5"></a><span class="w">  </span>-s<span class="w"> </span>&lt;path/to/settings.xml&gt;<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-7-6" name="__codelineno-7-6"></a><span class="w">  </span>-x<span class="w"> </span>&lt;maven_command&gt;
-</code></pre></div></td></tr></table></div>
+<p>考虑 <span class="arithmatex">\(\mathbb{R}^{2}\)</span> 中的一组向量的三个线性变换及其变换矩阵</p>
+<div class="arithmatex">\[
+\boldsymbol{A}_1 = \begin{bmatrix} \cos(\frac{\pi}{4}) &amp; -\sin(\frac{\pi}{4})\\ \sin(\frac{\pi}{4}) &amp; \cos(\frac{\pi}{4})\\ \end{bmatrix}, \boldsymbol{A}_2 = \begin{bmatrix}2 &amp; 0 \\ 0 &amp; 1\end{bmatrix}, \boldsymbol{A}_2 = \frac{1}{2}\begin{bmatrix} 3 &amp; -1 \\ 1 &amp; -1 \end{bmatrix}
+\]</div>
+<p>图2.10给出了一组向量线性变换的三个例子。图（a) 显示了 <span class="arithmatex">\(\mathbb{R}^{2}\)</span> 中的400个向量，每个向量对应 <span class="arithmatex">\((x_1,x_2)\)</span>-坐标 的一个点。向量排列成正方形。</p>
+<p>当我们矩阵使用<span class="arithmatex">\(\boldsymbol{A}_1\)</span> 对这些向量进行线性变换时，我们得到了（b）中被旋转的正方形。</p>
+<p>如果<span class="arithmatex">\(\boldsymbol{A}_2\)</span> 表示的线性映射，我们得到（c）中的矩形，其中每个 <span class="arithmatex">\(x_1\)</span>坐标 被拉伸2倍。</p>
+<p>（d）显示了对原始图形使用<span class="arithmatex">\(\boldsymbol{A}_3\)</span> 线性变换后的图形，<span class="arithmatex">\(\boldsymbol{A}_3\)</span> 是反射、旋转和拉伸的组合。</p>
+<h3 id="_2">基变换</h3>
+<p>接下来，我们观察下当改变 <span class="arithmatex">\(\mathrm{V}\)</span> 和 <span class="arithmatex">\(\mathrm{W}\)</span> 的基时，线性映射 $\Phi:\mathrm{V}\rightarrow\mathrm{W} $ 是怎样变化的。</p>
+<p>考虑 <span class="arithmatex">\(\mathrm{V}\)</span> 的两个 有序基(ordered basis)</p>
+<div class="arithmatex">\[
+\mathrm{B} = (\boldsymbol{b}_1,...,\boldsymbol{b}_n), \tilde{\mathrm{B}} = (\tilde{\boldsymbol{b}_1},...,\tilde{\boldsymbol{b}_n})
+\]</div>
+<p>和  <span class="arithmatex">\(\mathrm{W}\)</span> 的两个 有序基(ordered basis)</p>
+<div class="arithmatex">\[
+\mathrm{C} = (\boldsymbol{c}_1,...,\boldsymbol{c}_n), \tilde{\mathrm{C}} = (\tilde{\boldsymbol{c}_1},...,\tilde{\boldsymbol{c}_m})
+\]</div>
+<p><span class="arithmatex">\(\boldsymbol{A}_{\Phi} \in \mathbb{R}^{m \times n}\)</span> 是关于 基<span class="arithmatex">\(\mathrm{B}\)</span>和<span class="arithmatex">\(\mathrm{C}\)</span>
+的映射 <span class="arithmatex">\(\Phi: \mathrm{V} \rightarrow \mathrm{W}\)</span> 的变换矩阵。</p>
+<p><span class="arithmatex">\(\tilde{\boldsymbol{A}}_{\Phi} \in \mathbb{R}^{m \times n}\)</span> 是关于 基<span class="arithmatex">\(\tilde{\mathrm{B}}\)</span>和<span class="arithmatex">\(\tilde{\mathrm{C}}\)</span>
+的映射 <span class="arithmatex">\(\Phi: \mathrm{V} \rightarrow \mathrm{W}\)</span> 的另一个变换矩阵。</p>
+<p>下面我们研究需要研究 <span class="arithmatex">\(\boldsymbol{A}\)</span>和<span class="arithmatex">\(\tilde{\boldsymbol{A}}\)</span> 是什么关系，</p>
+<p>即：如果我们选择从基<span class="arithmatex">\(\mathrm{B},\mathrm{C}\)</span>到基<span class="arithmatex">\(\tilde{\mathrm{B}},\tilde{\mathrm{C}}\)</span> 进行基变换，我们是否可以或如何 将 <span class="arithmatex">\(\boldsymbol{A}_{\Phi}\)</span> 变换成<span class="arithmatex">\(\tilde{\boldsymbol{A}}_{\Phi}\)</span></p>
+<p><strong>备注</strong></p>
+<p>向量<span class="arithmatex">\(\boldsymbol{x}\)</span>的坐标表示，取决于基(basis)的选择。在图2.9中我们经过恒等映射<span class="arithmatex">\(\mathrm{id}_{\mathrm{V}}\)</span>
+得到向量不同的坐标表示。这意味着，在不改变向量<span class="arithmatex">\(\boldsymbol{x}\)</span>的情况下，将它相对于<span class="arithmatex">\((\boldsymbol{e}_1,\boldsymbol{e}_2)\)</span>
+的坐标映射到相对于<span class="arithmatex">\((\boldsymbol{b}_1),\boldsymbol{b}_2\)</span>的坐标上。通过改变基，从而改变向量的表示，这允许通过一个简单的变换矩阵直接计算实现。</p>
+<p><strong>例</strong> 基变换的必要性</p>
+<p>考虑一个关于<span class="arithmatex">\(\mathbb{R}^{2}\)</span>标准基的变换矩阵</p>
+<div class="arithmatex">\[
+\boldsymbol{A}=\begin{bmatrix} 2&amp;1\\1&amp;2 \end{bmatrix}
+\]</div>
+<p>如果我们定义一个新基：</p>
+<div class="arithmatex">\[
+\mathrm{B} = \left(
+\begin{bmatrix}1\\1\end{bmatrix}, \begin{bmatrix}1\\-1\end{bmatrix} \right)
+\]</div>
+<p>可以得到一个关于<span class="arithmatex">\(\mathrm{B}\)</span>的对角变换矩阵</p>
+<div class="arithmatex">\[
+\tilde{\boldsymbol{A}} = \begin{bmatrix} 3&amp;0\\0&amp;1 \end{bmatrix}
+\]</div>
+<p>它比<span class="arithmatex">\(\boldsymbol{A}\)</span>更容易处理。</p>
+<p>在下面，我们将研究将一个基的坐标向量转换成另一个基的坐标向量的映射。我们首先陈述主要结论，然后给出解释。</p>
+<p><strong>定理2.20</strong> 基变换</p>
+<p>对于线性映射 <span class="arithmatex">\(\Phi: \mathrm{V} \rightarrow \mathrm{W}\)</span>，<span class="arithmatex">\(\mathrm{V}\)</span>的有序基</p>
+<div class="arithmatex">\[
+\mathrm{B} = (\boldsymbol{b}_1,...,\boldsymbol{b}_n), \tilde{\mathrm{B}} = (\tilde{\boldsymbol{b}}_1,...,\tilde{\boldsymbol{b}}_n)
+\]</div>
+<p>和 <span class="arithmatex">\(\mathrm{W}\)</span> 的有序基</p>
+<div class="arithmatex">\[
+\mathrm{C} = (\boldsymbol{c}_1,...,\boldsymbol{c}_m), \tilde{\mathrm{C}} = (\tilde{\boldsymbol{c}}_1,...,\tilde{\boldsymbol{c}}_m)
+\]</div>
+<p>以及 <span class="arithmatex">\(\boldsymbol{A}_{\Phi} \in \mathbb{R}^{m \times n}\)</span> 是关于<span class="arithmatex">\(\mathrm{B}\)</span>和<span class="arithmatex">\(\mathrm{C}\)</span>
+的映射<span class="arithmatex">\(\Phi: \mathrm{V} \rightarrow \mathrm{W}\)</span>的变换矩阵。<span class="arithmatex">\(\tilde{\boldsymbol{A}}_{\Phi} \in \mathbb{R}^{m \times n}\)</span>
+是关于<span class="arithmatex">\(\tilde{\mathrm{B}}\)</span>和<span class="arithmatex">\(\tilde{\mathrm{C}}\)</span>相应的变换矩阵，它由以下公式给出：</p>
+<div class="arithmatex">\[
+\tilde{\boldsymbol{A}}_{\Phi} = \boldsymbol{T}^{-1}\boldsymbol{A}_{\Phi}\boldsymbol{S}
+\]</div>
+<p>其中，<span class="arithmatex">\(\boldsymbol{S} \in \mathbb{R}^{n \times n}\)</span> 为<span class="arithmatex">\(\mathrm{id}_{\mathrm{V}}\)</span>的变换矩阵，它将相对于<span class="arithmatex">\(\tilde{\mathrm{B}}\)</span>
+的坐标映射到<span class="arithmatex">\(\mathrm{B}\)</span>。而<span class="arithmatex">\(\boldsymbol{T} \in \mathbb{R}^{m \times m}\)</span>为<span class="arithmatex">\(\mathrm{id}_{\mathrm{W}}\)</span>
+的变换矩阵，它将相对于<span class="arithmatex">\(\tilde{\mathrm{C}}\)</span>的坐标映射到<span class="arithmatex">\(\mathrm{C}\)</span></p>
+<p><strong>证明</strong></p>
+<p>把 <span class="arithmatex">\(\mathrm{V}\)</span> 的新基 <span class="arithmatex">\(\tilde{\mathrm{B}}\)</span> 的向量写成<span class="arithmatex">\(\mathrm{B}\)</span>的基向量的线性组合：</p>
+<div class="arithmatex">\[
+\tilde{\boldsymbol{b}}_j = s_{1j}\boldsymbol{b}_{1} + \cdots + s_{nj} \boldsymbol{b}_n = \sum_{i=1}^{n}s_{ij}\boldsymbol{b}_i,\quad j=1,...,n \qquad (2.106)
+\]</div>
+<p>同理，把 <span class="arithmatex">\(\mathrm{W}\)</span> 的新基 <span class="arithmatex">\(\tilde{\mathrm{C}}\)</span> 的向量写成<span class="arithmatex">\(\mathrm{C}\)</span>的基向量的线性组合：</p>
+<div class="arithmatex">\[
+\tilde{\boldsymbol{c}}_k = t_{1k}\boldsymbol{c}_{1} + \cdots + t_{mk} \boldsymbol{c}_m = \sum_{l=1}^{m}t_{lk}\boldsymbol{c}_l,\quad k=1,...,m\qquad (2.107)
+\]</div>
+<p>我们定义</p>
 <ul>
-<li><code>-d</code>: maven构建的目录 可为空，默认执行脚本的目录</li>
-<li><code>-c</code>: maven缓存</li>
-<li><code>-i</code>: maven镜像</li>
-<li><code>-s</code>: maven <code>settings.xml</code> 在本地的路径</li>
-<li><code>-x</code>: maven执行的命令</li>
-<li>e.g. : <code>mvn clean install -Dmaven.test.skip=true</code></li>
+<li><span class="arithmatex">\(\boldsymbol{S} = ((s_{ij})) \in \mathbb{R}^{n \times n}\)</span> 为将相对于 <span class="arithmatex">\(\tilde{\mathrm{B}}\)</span> 的坐标 映射到<span class="arithmatex">\(\mathrm{B}\)</span>的
+  <em>变换矩阵</em></li>
+<li><span class="arithmatex">\(\boldsymbol{T} = ((t_{lk})) \in \mathbb{R}^{m \times m}\)</span> 是将相对于 <span class="arithmatex">\(\tilde{\mathrm{C}}\)</span> 的坐标 映射到<span class="arithmatex">\(\mathrm{C}\)</span>的
+  <em>变换矩阵</em></li>
 </ul>
-<h2 id="build-golangs-project">build golang's project</h2>
-<p>build golang's project by docker</p>
-<div class="language-shell highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-8-1">1</a></span>
-<span class="normal"><a href="#__codelineno-8-2">2</a></span>
-<span class="normal"><a href="#__codelineno-8-3">3</a></span>
-<span class="normal"><a href="#__codelineno-8-4">4</a></span>
-<span class="normal"><a href="#__codelineno-8-5">5</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1"></a>bash<span class="w"> </span>&lt;<span class="o">(</span>curl<span class="w"> </span>-sSL<span class="w"> </span><span class="nv">$ROOT_URI</span>/golang/build.sh<span class="o">)</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-8-2" name="__codelineno-8-2"></a><span class="w">  </span>-d<span class="w"> </span><span class="o">[</span>build_dir<span class="o">]</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-8-3" name="__codelineno-8-3"></a><span class="w">  </span>-c<span class="w"> </span>&lt;cache_volume&gt;<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-8-4" name="__codelineno-8-4"></a><span class="w">  </span>-i<span class="w"> </span>&lt;gradle_image&gt;<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-8-5" name="__codelineno-8-5"></a><span class="w">  </span>-x<span class="w"> </span>&lt;gradle_command&gt;
-</code></pre></div></td></tr></table></div>
+<p>特别地，<span class="arithmatex">\(\boldsymbol{S}\)</span> 的 第 <span class="arithmatex">\(j\)</span> 列是<span class="arithmatex">\(\tilde{\boldsymbol{b}}_j\)</span> 相对于<span class="arithmatex">\(\mathrm{B}\)</span>的坐标，而<span class="arithmatex">\(\boldsymbol{T}\)</span>的 第<span class="arithmatex">\(k\)</span>
+利<span class="arithmatex">\(\tilde{\boldsymbol{c}}_k\)</span> 是相对于 <span class="arithmatex">\(\mathrm{C}\)</span> 的坐标表示。注意 <span class="arithmatex">\(\boldsymbol{S}\)</span> 和 <span class="arithmatex">\(\boldsymbol{T}\)</span> 都是正则的（可逆的）</p>
+<p>我们将从两个角度来看 <span class="arithmatex">\(\Phi(\tilde{\boldsymbol{b}}_j)\)</span></p>
+<p>第一，通过映射<span class="arithmatex">\(\Phi\)</span>，对于<span class="arithmatex">\(j = 1,...n\)</span>，我们可以得到</p>
+<div class="arithmatex">\[
+\Phi\left(\tilde{b}_j\right)
+= \sum_{k=1}^{m} \underbrace{\tilde{a}_{kj} \tilde{\mathbf{c}}_k}_{\in W} \overset{(2.107)}{=} \sum_{k=1}^{m} \tilde{a}_{kj} {\color{blue} \sum_{l=1}^{m} t_{lk} \mathbf{c}_l} = \sum_{l=1}^{m} \left( \sum_{k=1}^{m} t_{lk} \tilde{a}_{kj} \right) \mathbf{c}_l \qquad\tag{2.108}
+\]</div>
+<p>我们首先将新的基向量<span class="arithmatex">\(\tilde{\boldsymbol{c}}_k \in \mathrm{W}\)</span>表示为基向量 <span class="arithmatex">\(\boldsymbol{c}_k \in \mathrm{W}\)</span>
+的线性组合，然后交换求和顺序。</p>
+<p>或者，利用<span class="arithmatex">\(\Phi\)</span>的线性，把<span class="arithmatex">\(\tilde{\boldsymbol{b}}_j \in \mathrm{V}\)</span>表示为<span class="arithmatex">\(\boldsymbol{b}_j \in \boldsymbol{V}\)</span> 的线性组合，可以得到</p>
+<div class="arithmatex">\[
+\Phi(\textcolor{blue}{\tilde{\boldsymbol{b}}_j})
+\overset{(2.106)}{=} \Phi\left(
+\textcolor{blue}{ \sum_{i=1}^{n}s_{ij}b_{i} }\right) = \sum_{i=1}^{n}s_{ij}\textcolor{red}{\Phi(\boldsymbol{b}_i)} = \sum_{i=1}^{n}{s_{ij}}\textcolor{red}{ \sum_{l=1}^{m}{a_{li} c_{l}} } \\ = \sum_{l=1}^{m}\left(
+\sum_{i=1}^{n}{a_{li}s_{ij}} \right)c_{l},\quad j=1,...n \qquad \tag{2.109b}
+\]</div>
+<p>比较<span class="arithmatex">\((2.108)\)</span>和<span class="arithmatex">\((2.109b)\)</span>的两个式子，得出对于所有 $j = 1,...n $  和 <span class="arithmatex">\(l = 1,...,m\)</span>,有:</p>
+<div class="arithmatex">\[
+\sum_{k=1}^{m}{t_{lk}\tilde{a}_{kj}} = \sum_{i=1}^{n}{a_{li}s_{ij}}
+\]</div>
+<p>所以</p>
+<div class="arithmatex">\[
+\boldsymbol{T}\tilde{\boldsymbol{A}}_{\Phi} = \boldsymbol{A}_{\Phi}\boldsymbol{S} \in \mathbb{R}^{m \times n}
+\]</div>
+<p>则：</p>
+<div class="arithmatex">\[
+\tilde{\boldsymbol{A}}_{\Phi} = \boldsymbol{T}^{-1}\boldsymbol{A}_{\Phi}\boldsymbol{S}
+\]</div>
+<p><strong>证毕。</strong></p>
+<p>定理2.20 告诉我们，对于<span class="arithmatex">\(\mathrm{V}\)</span> （<span class="arithmatex">\(\mathrm{B}\)</span>变换为<span class="arithmatex">\(\mathrm{\tilde{B}}\)</span>）和 <span class="arithmatex">\(\mathrm{W}\)</span>（<span class="arithmatex">\(\mathrm{C}\)</span>
+变换为<span class="arithmatex">\(\tilde{\mathrm{C}}\)</span>）的基变换，线性映射<span class="arithmatex">\(\Phi: \mathrm{V} \rightarrow \mathrm{W}\)</span>的变换矩阵<span class="arithmatex">\(\boldsymbol{A}_{\Phi}\)</span>
+与等价矩阵<span class="arithmatex">\(\tilde{\boldsymbol{A}}_{\Phi}\)</span>替换关系为：</p>
+<div class="arithmatex">\[
+\tilde{\boldsymbol{A}}_{\Phi} = \boldsymbol{T}^{-1} \boldsymbol{A}_{\Phi} \boldsymbol{S}
+\]</div>
+<p><img alt="" src="../../../assets/images/mml/linear-algebra/la_2.11.png" /></p>
+<p><strong>图2.11</strong> 对于一个同态映射<span class="arithmatex">\(\Phi: \mathrm{V} \rightarrow \mathrm{W}\)</span> 和
+<span class="arithmatex">\(\mathrm{V}\)</span>的有序基<span class="arithmatex">\(\mathrm{B},\tilde{\mathrm{B}}\)</span> 
+以及 <span class="arithmatex">\(\mathrm{W}\)</span> 的有序基<span class="arithmatex">\(\mathrm{C},\tilde{\mathrm{C}}\)</span> (用<font color="blue">蓝色</font>标记)，我们可以把相对于 <span class="arithmatex">\(\tilde{\mathrm{B}},\tilde{\mathrm{C}}\)</span> 的映射 <span class="arithmatex">\(\Phi_{\mathrm{\tilde{C}\tilde{B}}}\)</span>等价地表示为同态映射的组合 <span class="arithmatex">\(\Phi_{\mathrm{\tilde{C}\tilde{B}}}=\Xi_{\mathrm{\tilde{C}C}} \circ \Phi_{\mathrm{CB}} \circ \Psi_{\mathrm{B\tilde{B}}}\)</span>，其中各个符号的下标为该符号对应的基变换对象。
+相应的变换矩阵用<font color="red">红色</font>表示。</p>
+<p><strong>图2.11</strong> 说明了这种关系：考虑一个同态映射<span class="arithmatex">\(\Phi: \mathrm{V} \rightarrow \mathrm{W}\)</span> 和 <span class="arithmatex">\(\mathrm{V}\)</span>
+的有序基<span class="arithmatex">\(\mathrm{B},\tilde{\mathrm{B}}\)</span> 以及 <span class="arithmatex">\(\mathrm{W}\)</span> 的有序基<span class="arithmatex">\(\mathrm{C},\tilde{\mathrm{C}}\)</span>
+。映射 <span class="arithmatex">\(\Phi_{\mathrm{CB}}\)</span>  是 <span class="arithmatex">\(\Phi\)</span> 的一个实例，它将<span class="arithmatex">\(\mathrm{B}\)</span>的基向量映射为<span class="arithmatex">\(\mathrm{C}\)</span>的基向量的线性组合。</p>
+<p>假设我们已知关于有序基<span class="arithmatex">\(\mathrm{B}\)</span>,<span class="arithmatex">\(\mathrm{C}\)</span>的<span class="arithmatex">\(\Phi_{\mathrm{CB}}\)</span>的变换矩阵<span class="arithmatex">\(\boldsymbol{A}_{\Phi}\)</span>。
+当我们在<span class="arithmatex">\(\mathrm{V}\)</span>中<span class="arithmatex">\(\mathrm{B}\)</span>到<span class="arithmatex">\(\mathrm{\tilde{B}}\)</span> 和<span class="arithmatex">\(\mathrm{W}\)</span>中<span class="arithmatex">\(\mathrm{C}\)</span>到<span class="arithmatex">\(\mathrm{\tilde{C}}\)</span>间执行基变换时，
+我们可以通过以下步骤得到相应的变换矩阵<span class="arithmatex">\(\boldsymbol{\tilde{A}}_{\Phi}\)</span></p>
+<p>首先，我们找到了线性映射<span class="arithmatex">\(\Psi_{\mathrm{B\tilde{B}}} : \mathrm{V} \rightarrow \mathrm{V}\)</span>的矩阵表示，
+它将相对于新基<span class="arithmatex">\(\mathrm{\tilde{B}}\)</span> 的坐标映射到相对"旧"基<span class="arithmatex">\(\mathrm{B}\)</span>（在<span class="arithmatex">\(\mathrm{V}\)</span>中）的（唯一）坐标上。</p>
+<p>然后，我们使用<span class="arithmatex">\(\Phi_{\mathrm{CB}}:\mathrm{V} \rightarrow \mathrm{W}\)</span> 的变换矩阵<span class="arithmatex">\(\boldsymbol{A}_{\Phi}\)</span>将这些坐标映射到相对于<span class="arithmatex">\(\mathrm{W}\)</span>中的基<span class="arithmatex">\(\mathrm{C}\)</span>的坐标上。</p>
+<p>最后，我们使用线性映射<span class="arithmatex">\(\Xi_{\mathrm{\tilde{C}C}}: \mathrm{W} \rightarrow \mathrm{W}\)</span> 将相对于<span class="arithmatex">\(\mathrm{C}\)</span>的坐标
+映射到
+相对于<span class="arithmatex">\(\mathrm{\tilde{C}}\)</span>的坐标上。</p>
+<p>因此，我们可以把线性映射<span class="arithmatex">\(\Phi_{\mathrm{\tilde{C}\tilde{B}}}\)</span> 表示为包含"旧"基的线性映射的组合：</p>
+<div class="arithmatex">\[
+\Phi_{\mathrm{\tilde{C}\tilde{B}}} = \Xi_{\mathrm{\tilde{C}C}} \circ \Phi_{\mathrm{CB}} \circ \Psi_\mathrm{B\tilde{B}} = \Xi_{\mathrm{C\tilde{C}}}^{-1} \circ \Phi_{\mathrm{CB}} \circ \Psi_\mathrm{\tilde{B}B}
+\]</div>
+<p>具体的说，我们使用<span class="arithmatex">\(\Psi_{\mathrm{B\tilde{B}}} = \mathrm{id}_\mathrm{V}\)</span>
+和 <span class="arithmatex">\(\Xi_{\mathrm{C\tilde{C}}} = \mathrm{id}_\mathrm{W}\)</span>，即将向量恒等映射到自身所在的向量空间，单相对于不同的基。</p>
+<p><strong>定义2.21</strong> 等价</p>
+<p>如果存在正则矩阵 <span class="arithmatex">\(\boldsymbol{S} \in \mathbb{R}^{n \times n}\)</span> 和 <span class="arithmatex">\(\boldsymbol{T} \in \mathbb{R}^{m \times m}\)</span>，
+使得 <span class="arithmatex">\(\tilde{\boldsymbol{A}} = \boldsymbol{T}^{-1} \boldsymbol{A} \boldsymbol{S}\)</span>，
+则称两矩阵<span class="arithmatex">\(\boldsymbol{A},\boldsymbol{\tilde{A}} \in \mathbb{R}^{m \times n}\)</span> <strong>等价(Equivalence)</strong></p>
+<p><strong>定义2.22</strong> 相似</p>
+<p>如果存在正则矩阵 <span class="arithmatex">\(\boldsymbol{S} \in \mathbb{R}^{n \times n}\)</span>
+使得<span class="arithmatex">\(\boldsymbol{\tilde{A}} = \boldsymbol{S}^{-1}\boldsymbol{A}\boldsymbol{S}\)</span>
+，则称两矩阵<span class="arithmatex">\(\boldsymbol{A},\boldsymbol{\tilde{A}} \in \mathbb{R}^{m \times n}\)</span> <strong>相似(Similarity)</strong></p>
+<p><strong>备注</strong>：</p>
+<p>相似矩阵总是等价的。然而，等价矩阵不一定相似。</p>
+<p><strong>备注</strong>：</p>
+<p>考虑向量空间<span class="arithmatex">\(\mathrm{V}\)</span>,<span class="arithmatex">\(\mathrm{W}\)</span>,<span class="arithmatex">\(\mathrm{X}\)</span>。从 <strong>定理2.17</strong> 后面的备注中，
+我们已经知道，对于线性映射<span class="arithmatex">\(\Phi: \mathrm{V} \rightarrow \mathrm{W}\)</span>和 <span class="arithmatex">\(\Psi:\mathrm{W} \rightarrow \mathrm{X}\)</span> ,映射 <span class="arithmatex">\(\Phi \circ \Psi : \mathrm{V} \rightarrow \mathrm{X}\)</span>也是线性的。
+若这两个映射相应的变换矩阵为<span class="arithmatex">\(\boldsymbol{A}_{\Phi}\)</span> 和 <span class="arithmatex">\(\boldsymbol{A}_{\Psi}\)</span>，
+则整个变换矩阵是<span class="arithmatex">\(\boldsymbol{A}_{\Psi \circ \Phi} = \boldsymbol{A}_{\Psi} \boldsymbol{A}_{\Phi}\)</span>。</p>
+<p>鉴于此，我们可以从构建线性映射的角度来看待基的变化：</p>
+<p><img alt="" src="../../../assets/images/mml/linear-algebra/la_2.111.png" /></p>
 <ul>
-<li><code>-d</code>: golang构建的目录 可为空，默认执行脚本的目录</li>
-<li><code>-c</code>: golang缓存: 使用<code>docker volume</code>挂载</li>
-<li><code>-i</code>: golang的镜像</li>
-<li><code>-x</code>: golang的命令</li>
-<li>e.g. : <code>go build -v -o application</code></li>
+<li><span class="arithmatex">\(\boldsymbol{A}_\Phi\)</span> 为关于基 <span class="arithmatex">\(\mathrm{B}\)</span>，<span class="arithmatex">\(\mathrm{C}\)</span>的线性映射<span class="arithmatex">\(\Phi_{\mathrm{CB}}: \mathrm{V} \rightarrow \mathrm{W}\)</span> 的变换矩阵</li>
+<li><span class="arithmatex">\(\boldsymbol{\tilde{A}}_{\Phi}\)</span> 为关于基 <span class="arithmatex">\(\mathrm{\tilde{B}}\)</span>，<span class="arithmatex">\(\mathrm{\tilde{C}}\)</span>的线性映射<span class="arithmatex">\(\Phi_{\mathrm{ \tilde{C} \tilde{B} }}: \mathrm{V} \rightarrow \mathrm{W}\)</span> 的变换矩阵</li>
+<li><span class="arithmatex">\(\boldsymbol{S}\)</span>是线性映射 $\Psi_{\mathrm{ B \tilde{B} }}: \mathrm{V} \rightarrow \mathrm{V} <span class="arithmatex">\(（自同构）的变换矩阵，它用\)</span>\mathrm{B}<span class="arithmatex">\(表示\)</span>\mathrm{\tilde{B}}<span class="arithmatex">\(。通常，\)</span>\Psi = \mathrm{id}_{\mathrm{V}}$ 是<span class="arithmatex">\(\mathrm{V}\)</span>中的恒等映射。</li>
+<li><span class="arithmatex">\(\boldsymbol{T}\)</span>是线性映射 $\Xi_{\mathrm{ C \tilde{C} }}: \mathrm{W} \rightarrow \mathrm{W} <span class="arithmatex">\(（自同构）的变换矩阵，它用\)</span>\mathrm{C}<span class="arithmatex">\(表示\)</span>\mathrm{\tilde{C}}<span class="arithmatex">\(。通常，\)</span>\Xi = \mathrm{id}_{\mathrm{W}}$ 是<span class="arithmatex">\(\mathrm{W}\)</span>中的恒等映射。</li>
 </ul>
-<h2 id="build-nodes-project">build node's project</h2>
-<div class="language-shell highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-9-1">1</a></span>
-<span class="normal"><a href="#__codelineno-9-2">2</a></span>
-<span class="normal"><a href="#__codelineno-9-3">3</a></span>
-<span class="normal"><a href="#__codelineno-9-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1"></a>bash<span class="w"> </span>&lt;<span class="o">(</span>curl<span class="w"> </span>-sSL<span class="w"> </span><span class="nv">$ROOT_URI</span>/node/build.sh<span class="o">)</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-9-2" name="__codelineno-9-2"></a><span class="w">  </span>-d<span class="w"> </span><span class="o">[</span>build_dir<span class="o">]</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-9-3" name="__codelineno-9-3"></a><span class="w">  </span>-i<span class="w"> </span>&lt;gradle_image&gt;<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-9-4" name="__codelineno-9-4"></a><span class="w">  </span>-x<span class="w"> </span>&lt;gradle_command&gt;
-</code></pre></div></td></tr></table></div>
+<p>如果我们（非正式地）用基的形式表示变换，那么有:</p>
 <ul>
-<li><code>-d</code>: node 构建的目录 可为空，默认执行脚本的目录</li>
-<li><code>-i</code>: node 的镜像</li>
-<li><code>-x</code>: node 的命令</li>
-<li>e.g. : <code>npm install --registry=https://registry.npmmirror.com</code></li>
-<li>e.g. : <code>npm run build</code></li>
+<li><span class="arithmatex">\(\boldsymbol{A}_{\Phi}: \mathrm{B} \rightarrow \mathrm{C}\)</span></li>
+<li><span class="arithmatex">\(\boldsymbol{\tilde{A}}_{\Phi} : \mathrm{\tilde{B}} \rightarrow \mathrm{\tilde{C}}\)</span></li>
+<li><span class="arithmatex">\(\boldsymbol{S} : \mathrm{\tilde{B}} \rightarrow \mathrm{B}\)</span></li>
+<li><span class="arithmatex">\(\boldsymbol{T} : \mathrm{\tilde{C}} \rightarrow \mathrm{C}\)</span></li>
+<li><span class="arithmatex">\(\boldsymbol{T}^{-1}: \mathrm{C} \rightarrow \mathrm{\tilde{C}}\)</span></li>
+<li>以及</li>
 </ul>
-<h3 id="nvm-on-linux">nvm on linux</h3>
-<blockquote>
-<p>HOME is /root</p>
-</blockquote>
-<p>install</p>
-<div class="language-shell highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-10-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1"></a>bash<span class="w"> </span>&lt;<span class="o">(</span>curl<span class="w"> </span>-sSL<span class="w"> </span><span class="nv">$ROOT_URI</span>/node/nvm/install.sh<span class="o">)</span>
-</code></pre></div></td></tr></table></div>
-<p>uninstall</p>
-<div class="language-shell highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-11-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1"></a>bash<span class="w"> </span>&lt;<span class="o">(</span>curl<span class="w"> </span>-sSL<span class="w"> </span><span class="nv">$ROOT_URI</span>/node/nvm/uninstall.sh<span class="o">)</span>
-</code></pre></div></td></tr></table></div>
-<h2 id="build-writersides-project">build writerside's project</h2>
-<p>build writerside's project by docker</p>
-<div class="language-shell highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-12-1">1</a></span>
-<span class="normal"><a href="#__codelineno-12-2">2</a></span>
-<span class="normal"><a href="#__codelineno-12-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1"></a>bash<span class="w"> </span>&lt;<span class="o">(</span>curl<span class="w"> </span>-sSL<span class="w"> </span><span class="nv">$ROOT_URI</span>/writerside/build.sh<span class="o">)</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-12-2" name="__codelineno-12-2"></a><span class="w">  </span>-d<span class="w"> </span><span class="o">[</span>build_dir<span class="o">]</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-12-3" name="__codelineno-12-3"></a><span class="w">  </span>-i<span class="w"> </span>&lt;instance&gt;
-</code></pre></div></td></tr></table></div>
+<div class="arithmatex">\[
+  \mathrm{\tilde{B}} \rightarrow \mathrm{\tilde{C}} = \textcolor{blue}{\mathrm{\tilde{B}} \rightarrow \mathrm{B}} \rightarrow \textcolor{red}{\mathrm{C}} \rightarrow \mathrm{\tilde{C}}
+\]</div>
+<div class="arithmatex">\[
+  \boldsymbol{\tilde{A}}_{\Phi} = \boldsymbol{T}^{-1}\textcolor{red}{\boldsymbol{A}_{\Phi}} \textcolor{blue}{\boldsymbol{S}} \qquad \tag{2.116}
+\]</div>
+<p>注意，(2.116)中的执行顺序是从右向左的，因为向量是在右侧相乘，即</p>
+<div class="arithmatex">\[
+\boldsymbol{x} \mapsto \boldsymbol{S}\boldsymbol{x} \mapsto \boldsymbol{A}_{\Phi}(\boldsymbol{S}\boldsymbol{x})
+\mapsto \boldsymbol{T}^{-1}(\boldsymbol{A}_{\Phi}(\boldsymbol{S} \boldsymbol{x}))
+\mapsto \boldsymbol{\tilde{A}}_{\Phi} \boldsymbol{x}
+\]</div>
+<p><strong>例</strong> 基变换</p>
+<p>考虑一个线性映射<span class="arithmatex">\(\Phi: \mathbb{R}^{3} \rightarrow \mathbb{R}^{4}\)</span> 的变换矩阵为：</p>
+<div class="arithmatex">\[
+\boldsymbol{A}_{\Phi} = \begin{bmatrix} 1 &amp; 2 &amp; 0\\ -1 &amp; 1 &amp; 3\\ 3 &amp; 7 &amp; 1\\ -1 &amp; 2 &amp; 4 \end{bmatrix}
+\]</div>
+<p>变换相应的标准基为：</p>
+<div class="arithmatex">\[
+\mathrm{B} = \left(
+\begin{bmatrix}1\\0\\0\end{bmatrix}, \begin{bmatrix}0\\1\\0\end{bmatrix}, \begin{bmatrix}0\\0\\1\end{bmatrix} \right),\quad \mathrm{C} = \left(
+\begin{bmatrix}1\\0\\0\\0\end{bmatrix}, \begin{bmatrix}0\\1\\0\\0\end{bmatrix}, \begin{bmatrix}0\\0\\1\\0\end{bmatrix}, \begin{bmatrix}0\\0\\0\\1\end{bmatrix} \right)
+\]</div>
+<p>我们求<span class="arithmatex">\(\Phi\)</span> 关于新基</p>
+<div class="arithmatex">\[
+\mathrm{\tilde{B}} = \left(
+\begin{bmatrix}1\\1\\0\end{bmatrix}, \begin{bmatrix}0\\1\\1\end{bmatrix}, \begin{bmatrix}1\\0\\1\end{bmatrix} \right),\quad \mathrm{\tilde{C}} = \left(
+\begin{bmatrix}1\\1\\0\\0\end{bmatrix}, \begin{bmatrix}0\\1\\1\\0\end{bmatrix}, \begin{bmatrix}0\\0\\1\\1\end{bmatrix}, \begin{bmatrix}1\\0\\0\\1\end{bmatrix} \right)
+\]</div>
+<p>的变换矩阵<span class="arithmatex">\(\boldsymbol{A}_{\Phi}\)</span>，首先求出：</p>
+<div class="arithmatex">\[
+\boldsymbol{S} = \begin{bmatrix} 1 &amp; 0 &amp; 1\\ 1 &amp; 1 &amp; 0\\ 0 &amp; 0 &amp; 1 \end{bmatrix} ,\quad \boldsymbol{T} = \begin{bmatrix} 1 &amp; 1 &amp; 0 &amp; 1\\ 1 &amp; 0 &amp; 1 &amp; 0\\ 0 &amp; 1 &amp; 1 &amp; 0\\ 0 &amp; 0 &amp; 0 &amp; 1 \end{bmatrix}
+\]</div>
+<p>式中，<span class="arithmatex">\(\boldsymbol{S}\)</span> 的第 <span class="arithmatex">\(i\)</span> 列是 <span class="arithmatex">\(\mathrm{\tilde{b}}_i\)</span> 相对于<span class="arithmatex">\(\mathrm{B}\)</span>的基向量的坐标表示。对于一般的基<span class="arithmatex">\(\mathrm{B}\)</span>
+，我们需要解一个线性方程组来求<span class="arithmatex">\(\lambda_i\)</span>
+，使得<span class="arithmatex">\(\sum_{i=1}^{3}\lambda_i\boldsymbol{b}_i = \boldsymbol{\tilde{b}}_j,j=1,...,3\)</span>。类似地，<span class="arithmatex">\(\boldsymbol{T}\)</span> 的第<span class="arithmatex">\(j\)</span>
+列是<span class="arithmatex">\(\boldsymbol{\tilde{c}}_j\)</span>相对于<span class="arithmatex">\(\mathrm{C}\)</span>的基向量的坐标表示。</p>
+<p>因此，我们可以得到</p>
+<div class="arithmatex">\[
+\boldsymbol{\tilde{A}}_\Phi = \boldsymbol{T}^{-1}\boldsymbol{A}_\Phi\boldsymbol{S} = \frac{1}{2}\begin{bmatrix} 1 &amp; 1 &amp; -1 &amp; -1\\ 1 &amp; -1 &amp; 1 &amp; -1\\ -1 &amp; 1 &amp; 1 &amp; 1\\ 0 &amp; 0 &amp; 0 &amp; 2 \end{bmatrix} \begin{bmatrix} 3 &amp; 2 &amp; 1\\ 0 &amp; 4 &amp; 2\\ 10 &amp; 8 &amp; 4\\ 1 &amp; 6 &amp; 3 \end{bmatrix} \\ \\ = \begin{bmatrix} -4 &amp; -4 &amp; 2\\ 6 &amp; 0 &amp; 0\\ 4 &amp; 8 &amp; 4\\ 1 &amp; 6 &amp; 3\\ \end{bmatrix}
+\]</div>
+<p>在第四章中，我们将利用基变换的概念来寻找一个基，使得自同态的变换矩阵有一个特别简单的（对角）形式。</p>
+<p>在第十找章降维中，我们将利用基变换研究一个数据压缩问题，即找到一个基并在这个基上投影数据从而压缩数据，同时最小化压缩损失。</p>
+<h3 id="_3">像与核</h3>
+<p>线性映射的像和核是具有某些重要性质的向量子空间。在下面，我们将详细地描述它们。</p>
+<p><strong>定义23</strong> 像与核(Image and Kernal)</p>
+<p>对于<span class="arithmatex">\(\Phi: \mathrm{V} \rightarrow \mathrm{W}\)</span>，我们定义 <strong>核/零空间(e kernel / null space)</strong> 为:</p>
+<div class="arithmatex">\[
+\mathrm{ker}(\Phi) := \Phi^{-1}(\mathbf{0}_{\mathrm{W}}) = \left\{ \boldsymbol{v} \in \mathrm{V} : \Phi(\boldsymbol{v}) = \mathbf{0}_{\mathrm{W}} \right\}
+\]</div>
+<p>以及 <strong>像/值域(image / range)</strong> 为：</p>
+<div class="arithmatex">\[
+\mathrm{Im}(\Phi) := \Phi(\mathrm{V}) = \left\{ \boldsymbol{w} \in \mathrm{W} \mid \forall \boldsymbol{v} \in \mathrm{V} : \Phi(\boldsymbol{v}) = \boldsymbol{w} \right\}
+\]</div>
+<p>原书籍中 <span class="arithmatex">\(\forall\)</span> 是 <span class="arithmatex">\(\exists\)</span> 可能有误</p>
+<p>我们也分别称<span class="arithmatex">\(\mathrm{V}\)</span>和<span class="arithmatex">\(\mathrm{W}\)</span>为<span class="arithmatex">\(\Phi\)</span>的定义域(domain) 和陪域(codomain) 或称为上域、到达域</p>
+<p>直观的说，核是被<span class="arithmatex">\(\Phi\)</span>映射到单位元<span class="arithmatex">\(\mathbf{0}_{\mathrm{W}} \in \mathrm{W}\)</span>上的 一组向量 <span class="arithmatex">\(\boldsymbol{v} \in \mathrm{V}\)</span></p>
+<p>像是一组向量 <span class="arithmatex">\(\boldsymbol{w} \in \mathrm{W}\)</span>，<span class="arithmatex">\(\mathrm{V}\)</span>中任何向量都能被 <span class="arithmatex">\(\Phi\)</span> 映射"到达" 像。如图2.12所示</p>
+<p><img alt="" src="../../../assets/images/mml/linear-algebra/la_2.12.png" /></p>
+<p>图2.12 线性映射 <span class="arithmatex">\(\Phi : \mathrm{V} \rightarrow \mathrm{W}\)</span> 的核与像</p>
+<p><strong>备注</strong></p>
+<p>考虑线性映射<span class="arithmatex">\(\Phi : \mathrm{V} \rightarrow \mathrm{W}\)</span>，其中 <span class="arithmatex">\(\mathrm{V}\)</span> 和 <span class="arithmatex">\(\mathrm{W}\)</span> 为向量空间</p>
 <ul>
-<li><code>-d</code>: writerside 构建的目录 可为空，默认执行脚本的目录</li>
-<li><code>-i</code>: writerside 的 instance</li>
+<li>当<span class="arithmatex">\(\Phi(\boldsymbol{0}_\mathrm{V}) = \boldsymbol{0}_\mathrm{W}\)</span>
+  总是成立，因此<span class="arithmatex">\(\boldsymbol{0}_\mathrm{V} \in \mathrm{ker}(\Phi)\)</span>，特别地，零空间永远不会是空。</li>
+<li><span class="arithmatex">\(\mathrm{Im}(\Phi) \subseteq \mathrm{W}\)</span> 是 <span class="arithmatex">\(\mathrm{W}\)</span> 的子空间，而 $ = \mathrm{ker}(\Phi) \subseteq \mathrm{V}$
+  是 <span class="arithmatex">\(\mathrm{V}\)</span> 的子空间</li>
+<li>当且仅当 <span class="arithmatex">\(\mathrm{ker}(\Phi) = \{\boldsymbol{0}\}\)</span>，<span class="arithmatex">\(\Phi\)</span> 为单射的 （一对一）</li>
 </ul>
-<h2 id="docker">docker</h2>
-<h3 id="build-dockers-image-and-push">build docker's image (and push)</h3>
-<blockquote>
-<p>by Dockerfile</p>
-</blockquote>
-<div class="language-shell highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-13-1">1</a></span>
-<span class="normal"><a href="#__codelineno-13-2">2</a></span>
-<span class="normal"><a href="#__codelineno-13-3">3</a></span>
-<span class="normal"><a href="#__codelineno-13-4">4</a></span>
-<span class="normal"><a href="#__codelineno-13-5">5</a></span>
-<span class="normal"><a href="#__codelineno-13-6">6</a></span>
-<span class="normal"><a href="#__codelineno-13-7">7</a></span>
-<span class="normal"><a href="#__codelineno-13-8">8</a></span>
-<span class="normal"><a href="#__codelineno-13-9">9</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1"></a>bash<span class="w"> </span>&lt;<span class="o">(</span>curl<span class="w"> </span>-sSL<span class="w"> </span><span class="nv">$ROOT_URI</span>/docker/build.sh<span class="o">)</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-13-2" name="__codelineno-13-2"></a><span class="w">  </span>-m<span class="w"> </span><span class="o">[</span>multi_platform<span class="o">]</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-13-3" name="__codelineno-13-3"></a><span class="w">  </span>-d<span class="w"> </span><span class="o">[</span>build_dir<span class="o">]</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-13-4" name="__codelineno-13-4"></a><span class="w">  </span>-f<span class="w"> </span><span class="o">[</span>path/to/Dockerfile<span class="o">]</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-13-5" name="__codelineno-13-5"></a><span class="w">  </span>-i<span class="w"> </span>&lt;image_name&gt;<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-13-6" name="__codelineno-13-6"></a><span class="w">  </span>-v<span class="w"> </span>&lt;image_tag&gt;<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-13-7" name="__codelineno-13-7"></a><span class="w">  </span>-r<span class="w"> </span>&lt;re_tag_flag&gt;<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-13-8" name="__codelineno-13-8"></a><span class="w">  </span>-t<span class="w"> </span><span class="o">[</span>new_tag<span class="o">]</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-13-9" name="__codelineno-13-9"></a><span class="w">  </span>-p<span class="w"> </span>&lt;push_flag&gt;
-</code></pre></div></td></tr></table></div>
+<p><strong>备注</strong>：零空间与列空间</p>
+<p>考虑 <span class="arithmatex">\(\boldsymbol{A} \in \mathbb{R}^{m \times n}\)</span>
+以及线性映射 <span class="arithmatex">\(\Phi: \mathbb{R}^{n} -&gt; \mathbb{R}^{m}, \boldsymbol{x} \mapsto \boldsymbol{A}\boldsymbol{x}\)</span></p>
+<p>对于 <span class="arithmatex">\(\boldsymbol{A} = [\boldsymbol{a}_1,...,\boldsymbol{a}_n]\)</span>，<span class="arithmatex">\(\boldsymbol{a}_i\)</span> 为 <span class="arithmatex">\(\boldsymbol{A}\)</span> 的列，我们可以得到</p>
+<div class="arithmatex">\[
+\mathrm{Im}(\Phi) = \{\boldsymbol{A} \boldsymbol{x}: \boldsymbol{x} \in \mathbb{R}^{n}\} = \left\{ \sum_{i=1}^{n} \mathrm{x}_i \boldsymbol{a}_i : \mathrm{x}_1,...,\mathrm{x}_n \in \mathbb{R} \right\} \\ =\mathrm{span}[\boldsymbol{a}_1,...,\boldsymbol{a}_n] \subseteq \mathbb{R}^{m}
+\]</div>
+<p>即：像是<span class="arithmatex">\(\boldsymbol{A}\)</span> 的列的张成空间，也成为 <strong>列空间(column space)</strong>。因此，列空间（像）是<span class="arithmatex">\(\mathbb{R}^{m}\)</span>
+的子空间，其中<span class="arithmatex">\(\mathrm{m}\)</span>是矩阵的“高度”。</p>
 <ul>
-<li><code>-m</code>: 多平台构建(同时构建amd64和arm64的平台)的选择 <code>true</code> | <code>false</code> ,默认 <code>true</code></li>
-<li><code>-d</code>: <code>docker build</code> 最后指定的路径，如果为空，默认使用 Dockerfile所在的文件路径</li>
-<li><code>-f</code>: <code>Dockefile</code> 的路径, 默认的构建基础路径在Dockerfile的路径下</li>
-<li>可选的参数, 如果没有, 会寻找执行脚本路径下的 <code>DOCKERFILE</code> 或 <code>Dockerfile</code> 或 <code>dockerfile</code></li>
-<li><code>-i</code>: 构建的镜像名称</li>
-<li><code>-v</code>: 构建的镜像版本</li>
-<li><code>-r</code>: 对于存在的镜像是否重新tag <code>true | false</code></li>
-<li><code>-t</code>: 对于存在的镜像，重新tag的版本</li>
-<li><code>-p</code>: 是否push到仓库中</li>
+<li><span class="arithmatex">\(\mathrm{rk}(\boldsymbol{A}) = \mathrm{dim}(\mathrm{Im}(\Phi))\)</span></li>
+<li>核/零空间<span class="arithmatex">\(\mathrm{ker(\Phi)}\)</span>是齐次线性方程组 <span class="arithmatex">\(\boldsymbol{A}\boldsymbol{x}=\boldsymbol{0}\)</span>
+  的通解，即使得 <span class="arithmatex">\(\boldsymbol{A}\)</span>的列的线性组合为<span class="arithmatex">\(\boldsymbol{0} \in \mathbb{R}^{m}\)</span> 和 <span class="arithmatex">\(\mathbb{R}^{n}\)</span> 中的元素</li>
+<li>核是<span class="arithmatex">\(\mathbb{R}^{n}\)</span>的子空间，其中<span class="arithmatex">\(\mathrm{n}\)</span>是矩阵的“宽度”。</li>
+<li>核关注列之间的关系，我们可以使用它来确定是否/如何将列表示为其他列的线性组合</li>
 </ul>
-<p><a href="https://github.com/svcops/ifconfig/blob/main/build.sh">example (build goland' project and push)</a></p>
-<h3 id="remove-dockers-image">remove docker's image</h3>
-<div class="language-shell highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-14-1">1</a></span>
-<span class="normal"><a href="#__codelineno-14-2">2</a></span>
-<span class="normal"><a href="#__codelineno-14-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1"></a>bash<span class="w"> </span>&lt;<span class="o">(</span>curl<span class="w"> </span>-sSL<span class="w"> </span><span class="nv">$ROOT_URI</span>/docker/tools/rmi.sh<span class="o">)</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-14-2" name="__codelineno-14-2"></a><span class="w">  </span>-i<span class="w"> </span>image_name<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-14-3" name="__codelineno-14-3"></a><span class="w">  </span>-s<span class="w"> </span>strategy
-</code></pre></div></td></tr></table></div>
+<p><strong>例</strong> 线性映射的像和核</p>
+<p>映射:</p>
+<div class="arithmatex">\[
+\Phi: \mathbb{R}^{4} \mapsto \mathbb{R}^{2}, \begin{bmatrix} \mathrm{x_1}\\\mathrm{x_2}\\\mathrm{x_3}\\\mathrm{x_4} \end{bmatrix} \mapsto \begin{bmatrix} 1 &amp; 2 &amp; -1 &amp; 0\\ 1 &amp; 0 &amp; 0 &amp; 1 \end{bmatrix} \begin{bmatrix} \mathrm{x_1}\\\mathrm{x_2}\\\mathrm{x_3}\\\mathrm{x_4} \end{bmatrix} = \begin{bmatrix} \mathrm{x_1} + 2\mathrm{x_2} - \mathrm{x_3}\\ \mathrm{x_1} + \mathrm{x_4} \end{bmatrix}
+\]</div>
+<p>是线性的。为了确定<span class="arithmatex">\(\mathrm{Im}(\Phi)\)</span>，我们可以取变换矩阵列的生成空间(span)，得到</p>
+<div class="arithmatex">\[
+\mathrm{Im} = \mathrm{span}
+[
+\begin{bmatrix}1\\1\end{bmatrix}, \begin{bmatrix}2\\0\end{bmatrix}, \begin{bmatrix}-1\\0\end{bmatrix}, \begin{bmatrix}0\\1\end{bmatrix}
+]
+\]</div>
+<p>为了计算 <span class="arithmatex">\(\Phi\)</span> 的核（零空间），我们需要解 <span class="arithmatex">\(\boldsymbol{A}\boldsymbol{x} = \boldsymbol{0}\)</span>
+，也就是说，我们需要解一个齐次方程组。为此，使用高斯消元法将<span class="arithmatex">\(\boldsymbol{A}\)</span>转化为行最简阶梯型：</p>
+<div class="arithmatex">\[
+\begin{bmatrix} 1 &amp; 2 &amp; -1 &amp; 0\\ 1 &amp; 0 &amp; 0 &amp; 1 \end{bmatrix} \mapsto \cdots \mapsto \begin{bmatrix} 1 &amp; 0 &amp; 0 &amp; 1\\ 0 &amp; 1 &amp; -\frac{1}{2} &amp; -\frac{1}{2} \end{bmatrix}
+\]</div>
+<p>这个矩阵是行最简阶梯型，我们可以使用之前提到的 Minus-1 技巧来计算核的基本。或者，我们将非主元列 （第3列和第4列）表示为主元列（第1列和第2列）的线性组合。第三列<span class="arithmatex">\(\boldsymbol{a}_3\)</span> 相当于第二列<span class="arithmatex">\(\boldsymbol{a}_2\)</span>
+的<span class="arithmatex">\(-\frac{1}{2}\)</span>倍数。因此，<span class="arithmatex">\(0 = a_3 + -\frac{1}{2}\boldsymbol{a}_2\)</span>
+。以同样的方式，我们看到 <span class="arithmatex">\(\boldsymbol{a}_4 = \boldsymbol{a}_1 - \frac{1}{2}\boldsymbol{a}_2\)</span>
+，因此<span class="arithmatex">\(0 = \boldsymbol{a}_1 - \frac{1}{2}\boldsymbol{a}_2 - \boldsymbol{a}_4\)</span> 。总的来说，可以得到核（零空间）为</p>
+<div class="arithmatex">\[
+\mathrm{ker}(\Phi) = \mathrm{span}
+[
+\begin{bmatrix} 0\\ \frac{1}{2} \\ 1 \\0 \end{bmatrix}, \begin{bmatrix} -1 \\ \frac{1}{2} \\ 0 \\ 1 \end{bmatrix}
+]
+\]</div>
+<p><strong>定理2.24</strong> 秩-零化度定理</p>
+<p>对于向量空间<span class="arithmatex">\(\mathrm{V}\)</span> ，<span class="arithmatex">\(\mathrm{W}\)</span> 和线性映射 <span class="arithmatex">\(\Phi : \mathrm{V} \rightarrow \mathrm{W}\)</span>，总有</p>
+<div class="arithmatex">\[
+\mathrm{dim}(\mathrm{ker}(\Phi)) + \mathrm{dim}(\mathrm{Im}(\Phi)) = \mathrm{dim}(\mathrm{V})
+\]</div>
+<p><strong>秩-零化度定理(Rank-Nullity Theorem)</strong>
+也被称为 <strong>线性映射的基本理论（fundamental theorem of linear mappings</strong>，下面是通过该定理得到的结论：</p>
 <ul>
-<li><code>-i</code>: 镜像的名称</li>
-<li><code>-s</code>: 删除的策略：默认策略 <code>contain_latest</code></li>
-<li><code>contain_latest</code> 保留 <code>latest</code> 镜像，删除其他镜像</li>
-<li><code>remove_none</code> 删除 <code>none</code> 的镜像</li>
-<li><code>all</code>: 删除所有镜像</li>
-</ul>
-<h3 id="install-docker">install docker</h3>
-<p><strong>debian系 安装docker</strong></p>
-<div class="language-shell highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-15-1"> 1</a></span>
-<span class="normal"><a href="#__codelineno-15-2"> 2</a></span>
-<span class="normal"><a href="#__codelineno-15-3"> 3</a></span>
-<span class="normal"><a href="#__codelineno-15-4"> 4</a></span>
-<span class="normal"><a href="#__codelineno-15-5"> 5</a></span>
-<span class="normal"><a href="#__codelineno-15-6"> 6</a></span>
-<span class="normal"><a href="#__codelineno-15-7"> 7</a></span>
-<span class="normal"><a href="#__codelineno-15-8"> 8</a></span>
-<span class="normal"><a href="#__codelineno-15-9"> 9</a></span>
-<span class="normal"><a href="#__codelineno-15-10">10</a></span>
-<span class="normal"><a href="#__codelineno-15-11">11</a></span>
-<span class="normal"><a href="#__codelineno-15-12">12</a></span>
-<span class="normal"><a href="#__codelineno-15-13">13</a></span>
-<span class="normal"><a href="#__codelineno-15-14">14</a></span>
-<span class="normal"><a href="#__codelineno-15-15">15</a></span>
-<span class="normal"><a href="#__codelineno-15-16">16</a></span>
-<span class="normal"><a href="#__codelineno-15-17">17</a></span>
-<span class="normal"><a href="#__codelineno-15-18">18</a></span>
-<span class="normal"><a href="#__codelineno-15-19">19</a></span>
-<span class="normal"><a href="#__codelineno-15-20">20</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1"></a>bash<span class="w"> </span>&lt;<span class="o">(</span>curl<span class="w"> </span>-sSL<span class="w"> </span><span class="nv">$ROOT_URI</span>/docker/install/i.sh<span class="w"> </span><span class="o">)</span><span class="w"> </span>SRC
-<a id="__codelineno-15-2" name="__codelineno-15-2"></a><span class="sb">````</span>
-<a id="__codelineno-15-3" name="__codelineno-15-3"></a>
-<a id="__codelineno-15-4" name="__codelineno-15-4"></a>-<span class="w"> </span>SRC:<span class="w"> </span>源<span class="w"> </span><span class="o">(</span><span class="sb">`</span>docker<span class="sb">`</span><span class="w"> </span>官方源<span class="w"> </span>/<span class="w"> </span><span class="sb">`</span>tsinghua<span class="sb">`</span><span class="w"> </span>清华源<span class="w"> </span>/<span class="w"> </span><span class="sb">`</span>aliyun<span class="sb">`</span><span class="w"> </span>阿里云<span class="o">)</span>
-<a id="__codelineno-15-5" name="__codelineno-15-5"></a>
-<a id="__codelineno-15-6" name="__codelineno-15-6"></a>**手动安装docker**
-<a id="__codelineno-15-7" name="__codelineno-15-7"></a>
-<a id="__codelineno-15-8" name="__codelineno-15-8"></a><span class="sb">```</span>shell
-<a id="__codelineno-15-9" name="__codelineno-15-9"></a>bash<span class="w"> </span>&lt;<span class="o">(</span>curl<span class="w"> </span>-sSL<span class="w"> </span><span class="nv">$ROOT_URI</span>/docker/install-manually/install.sh<span class="o">)</span><span class="w"> </span><span class="nv">$arch</span><span class="w"> </span><span class="nv">$version</span>
-<a id="__codelineno-15-10" name="__codelineno-15-10"></a><span class="sb">````</span>
-<a id="__codelineno-15-11" name="__codelineno-15-11"></a>
-<a id="__codelineno-15-12" name="__codelineno-15-12"></a>-<span class="w"> </span><span class="sb">`</span>arch<span class="sb">`</span>:<span class="w"> </span>系统架构
-<a id="__codelineno-15-13" name="__codelineno-15-13"></a>-<span class="w"> </span><span class="sb">`</span>version<span class="sb">`</span>:<span class="w"> </span>docker版本
-<a id="__codelineno-15-14" name="__codelineno-15-14"></a>
-<a id="__codelineno-15-15" name="__codelineno-15-15"></a><span class="c1">### config docker</span>
-<a id="__codelineno-15-16" name="__codelineno-15-16"></a>
-<a id="__codelineno-15-17" name="__codelineno-15-17"></a>&gt;<span class="w"> </span>config<span class="w"> </span><span class="sb">`</span>/etc/docker/daemon.json<span class="sb">`</span>
-<a id="__codelineno-15-18" name="__codelineno-15-18"></a>
-<a id="__codelineno-15-19" name="__codelineno-15-19"></a><span class="sb">```</span>shell
-<a id="__codelineno-15-20" name="__codelineno-15-20"></a>bash<span class="w"> </span>&lt;<span class="o">(</span>curl<span class="w"> </span>-sSL<span class="w"> </span><span class="nv">$ROOT_URI</span>/docker/config.sh<span class="o">)</span>
-</code></pre></div></td></tr></table></div>
-<h2 id="develop">develop</h2>
-<h3 id="config-maven">config maven</h3>
-<p>config maven <code>settings.xml</code></p>
-<div class="language-shell highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-16-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1"></a>bash<span class="w"> </span>&lt;<span class="o">(</span>curl<span class="w"> </span>-sSL<span class="w"> </span><span class="nv">$ROOT_URI</span>/maven/config.sh<span class="o">)</span>
-</code></pre></div></td></tr></table></div>
-<h3 id="verify-nginx-configuration">verify nginx configuration</h3>
-<p>验证基于<code>docker-compose</code>启动的nginx的配置文件</p>
-<div class="language-shell highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-17-1">1</a></span>
-<span class="normal"><a href="#__codelineno-17-2">2</a></span>
-<span class="normal"><a href="#__codelineno-17-3">3</a></span>
-<span class="normal"><a href="#__codelineno-17-4">4</a></span>
-<span class="normal"><a href="#__codelineno-17-5">5</a></span>
-<span class="normal"><a href="#__codelineno-17-6">6</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1"></a><span class="nb">source</span><span class="w"> </span>&lt;<span class="o">(</span>curl<span class="w"> </span>-sSL<span class="w"> </span><span class="nv">$ROOT_URI</span>/nginx/verify_func.sh<span class="o">)</span>
-<a id="__codelineno-17-2" name="__codelineno-17-2"></a><span class="k">if</span><span class="w"> </span>verify_nginx_configuration<span class="w"> </span>nginx<span class="w"> </span>path/to/docker-compose.yml<span class="p">;</span><span class="w"> </span><span class="k">then</span>
-<a id="__codelineno-17-3" name="__codelineno-17-3"></a><span class="w">  </span>log<span class="w"> </span><span class="s2">&quot;verify&quot;</span><span class="w"> </span><span class="s2">&quot;verify success, then start&quot;</span>
-<a id="__codelineno-17-4" name="__codelineno-17-4"></a><span class="k">else</span>
-<a id="__codelineno-17-5" name="__codelineno-17-5"></a><span class="w">  </span>log<span class="w"> </span><span class="s2">&quot;verify&quot;</span><span class="w"> </span><span class="s2">&quot;verify failed, then edit again&quot;</span>
-<a id="__codelineno-17-6" name="__codelineno-17-6"></a><span class="k">fi</span>
-</code></pre></div></td></tr></table></div>
-<ul>
-<li>方法参数一: service_name</li>
-<li>方法参数二: compose文件位置，可传递，默认寻找执行脚本目录下的 <code>docker-compose.yml</code> 或者 <code>docker-comopose.yaml</code></li>
-</ul>
-<p>快速验证</p>
-<div class="language-shell highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-18-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1"></a>bash<span class="w"> </span>&lt;<span class="o">(</span>curl<span class="w"> </span>-sSL<span class="w"> </span><span class="nv">$ROOT_URI</span>/nginx/verify.sh<span class="o">)</span><span class="w"> </span>nginx<span class="w"> </span>path/to/docker-compose.yml
-</code></pre></div></td></tr></table></div>
-<ul>
-<li><code>nginx</code> 是 <code>docker-compose.yaml</code>中定义的<code>service</code></li>
-<li>第二个参数 <code>docker-comopse.yml</code>的路径，默认会在执行脚本的当前路径下寻找 <code>docker-compose.yml</code> 或者 <code>docker-compose.yaml</code></li>
-</ul>
-<h2 id="proxy-config">proxy config</h2>
-<h3 id="bashrc-proxy-config">bashrc proxy config</h3>
-<div class="language-shell highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-19-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1"></a>bash<span class="w"> </span>&lt;<span class="o">(</span>curl<span class="w"> </span>-sSL<span class="w"> </span><span class="nv">$ROOT_URI</span>/linux/system/bashrc/config_bashrc_proxy.sh<span class="o">)</span><span class="w"> </span><span class="nv">$PROXY_URL</span><span class="w"> </span><span class="nv">$NO_PROXY_CONTENT</span>
-</code></pre></div></td></tr></table></div>
-<ul>
-<li><code>PROXY_URL</code>: 代理的地址</li>
-<li>e.g. <code>http://127.0.0.1:8888</code></li>
-<li>e.g. <code>socks5h://127.0.0.1:1080</code></li>
-<li><code>NO_PROXY_CONTENT</code>: 不需要代理地址</li>
-<li>e.g. <code>.local,localhost,127.0.0.1,192.168.*.*,10.0.0.0/8</code></li>
-</ul>
-<h3 id="docker-daemon-proxy-config">docker daemon proxy config</h3>
-<div class="language-shell highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-20-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1"></a>bash<span class="w"> </span>&lt;<span class="o">(</span>curl<span class="w"> </span>-sSL<span class="w"> </span><span class="nv">$ROOT_URI</span>/docker/config_daemon_proxy.sh<span class="o">)</span><span class="w"> </span><span class="nv">$PROXY_URL</span><span class="w"> </span><span class="nv">$NO_PROXY_CONTENT</span>
-</code></pre></div></td></tr></table></div>
-<ul>
-<li><code>PROXY_URL</code>: 代理的地址</li>
-<li>e.g. <code>http://127.0.0.1:8888</code></li>
-<li>e.g. <code>socks5h://127.0.0.1:1080</code></li>
-<li><code>NO_PROXY_CONTENT</code>: 不需要代理地址</li>
-<li>e.g. <code>localhost,127.0.0.1,docker-registry.somecorporation.com</code></li>
+<li>如果 <span class="arithmatex">\(\mathrm{dim}(\mathrm{Im}(\Phi)) \lt \mathrm{dim}(\mathrm{V})\)</span>，
+  那么 <span class="arithmatex">\(\mathrm{ker}(\Phi)\)</span>是非平凡的，即核不仅包含 <span class="arithmatex">\(\boldsymbol{0}_\mathrm{V}\)</span>，且<span class="arithmatex">\(\mathrm{dim}(\mathrm{ker}(\Phi)) \ge 1\)</span></li>
+<li>如果 <span class="arithmatex">\(\boldsymbol{A}_{\Phi}\)</span>是<span class="arithmatex">\(\Phi\)</span>相对于有序基的变换矩阵，
+  且 <span class="arithmatex">\(\mathrm{dim}(\mathrm{Im}(\Phi)) &lt; \mathrm{dim}(\mathrm{V})\)</span>
+  ，则线性方程组 <span class="arithmatex">\(\boldsymbol{A} \boldsymbol{x} = \boldsymbol{0}\)</span> 有无穷多个解。</li>
+<li>如果 <span class="arithmatex">\(\mathrm{dim}(\mathrm{V}) = \mathrm{dim}(\mathrm{W})\)</span>，则以下三个说法等价</li>
+<li><span class="arithmatex">\(\Phi\)</span> 是单射的</li>
+<li><span class="arithmatex">\(\Phi\)</span> 是满射的</li>
+<li><span class="arithmatex">\(\Phi\)</span> 是双射的 因为 <span class="arithmatex">\(\mathrm{Im}(\Phi) \subseteq \mathrm{W}\)</span></li>
 </ul>
 
 
@@ -6827,15 +6481,31 @@
       
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
+          
+          <a href="../linearly-independent/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Linearly Independent">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Linearly Independent
+              </div>
+            </div>
+          </a>
+        
         
           
-          <a href="mml/" class="md-footer__link md-footer__link--next" aria-label="Next: Mathematics For Machine Learning">
+          <a href="../basis-rank/" class="md-footer__link md-footer__link--next" aria-label="Next: Basis and Rank">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Mathematics For Machine Learning
+                Basis and Rank
               </div>
             </div>
             <div class="md-footer__button md-icon">
@@ -6880,18 +6550,18 @@
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": ".", "features": ["content.code.copy", "content.code.annotate", "content.code.select", "content.tabs.link", "content.action.edit", "navigation.indexes", "navigation.tracking", "navigation.top", "search.highlight", "search.suggest", "navigation.footer"], "search": "assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["content.code.copy", "content.code.annotate", "content.code.select", "content.tabs.link", "content.action.edit", "navigation.indexes", "navigation.tracking", "navigation.top", "search.highlight", "search.suggest", "navigation.footer"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
       
         <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
       
         <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
       
-        <script src="assets/javascripts/katex.js"></script>
+        <script src="../../../assets/javascripts/katex.js"></script>
       
-        <script src="assets/javascripts/mermaid.js"></script>
+        <script src="../../../assets/javascripts/mermaid.js"></script>
       
     
   </body>

@@ -1,0 +1,167 @@
+:root {
+    --md-text-font: "IBM Plex Sans", "Source Sans 3", "Segoe UI", system-ui, sans-serif;
+    --md-code-font: Consolas, Monaco, Menlo, "SFMono-Regular", "Cascadia Mono", "Liberation Mono", "DejaVu Sans Mono", monospace;
+    --docs-typeset-size: 0.68rem;
+    --docs-nav-size: 0.66rem;
+    --docs-header-size: 0.68rem;
+    --docs-code-block-size: 0.61rem;
+    --docs-code-line-height: 0.92rem;
+}
+
+/* Typography weight tuning for docs readability */
+
+/* Base text */
+.md-typeset,
+.md-typeset p,
+.md-typeset li,
+.md-typeset td {
+    font-weight: 400;
+    font-synthesis-weight: none;
+}
+
+.md-typeset {
+    font-size: var(--docs-typeset-size);
+    line-height: 1.64;
+}
+
+.md-nav {
+    font-size: var(--docs-nav-size);
+}
+
+.md-header__topic,
+.md-tabs__link,
+.md-search__input {
+    font-size: var(--docs-header-size);
+}
+
+/* Headings: balanced hierarchy, closer to Material native feel */
+.md-typeset h1 {
+    font-weight: 560;
+    letter-spacing: 0;
+    line-height: 1.18;
+    color: var(--md-default-fg-color);
+}
+
+.md-typeset h2 {
+    font-weight: 620;
+    letter-spacing: 0;
+}
+
+.md-typeset h3,
+.md-typeset h4 {
+    font-weight: 600;
+    letter-spacing: 0;
+}
+
+/* Emphasis in prose and lists */
+.md-typeset strong,
+.md-typeset b {
+    font-weight: 600 !important;
+    font-variation-settings: "wght" 600;
+    color: inherit;
+}
+
+/* Keep bold inside table/code contexts from looking too heavy */
+.md-typeset td strong,
+.md-typeset li code strong,
+.md-typeset p code strong {
+    font-weight: 600 !important;
+    font-variation-settings: "wght" 600;
+}
+
+/* Table readability */
+.md-typeset table:not([class]) th {
+    font-weight: 620;
+}
+
+/* Keep code readable without looking heavy */
+.md-typeset code,
+.md-typeset pre code {
+    font-family: var(--md-code-font);
+    font-weight: 400;
+}
+
+.md-typeset code {
+    font-size: 0.82em;
+}
+
+.md-typeset pre code {
+    font-size: var(--docs-code-block-size);
+    line-height: var(--docs-code-line-height);
+}
+
+.md-typeset .highlight code,
+.md-typeset .highlighttable code {
+    font-size: var(--docs-code-block-size);
+}
+
+.md-typeset .highlight {
+    overflow-x: auto;
+    overflow-y: visible;
+}
+
+.md-typeset .highlighttable {
+    display: table !important;
+    width: max-content;
+    min-width: 100%;
+    border-collapse: separate;
+    overflow: visible;
+}
+
+.md-typeset .highlighttable > tbody {
+    display: table-row-group !important;
+}
+
+.md-typeset .highlighttable > tbody > tr {
+    display: table-row !important;
+}
+
+.md-typeset .highlighttable > tbody > tr > td {
+    display: table-cell !important;
+    vertical-align: top;
+}
+
+.md-typeset .highlight pre,
+.md-typeset .highlight code,
+.md-typeset .highlighttable pre,
+.md-typeset .highlighttable code {
+    line-height: var(--docs-code-line-height);
+    white-space: pre;
+    word-break: normal;
+    overflow-wrap: normal;
+}
+
+.md-typeset .highlighttable .linenos {
+    position: sticky;
+    left: 0;
+    z-index: 1;
+    width: 1%;
+    font-size: var(--docs-code-block-size);
+    line-height: var(--docs-code-line-height);
+    white-space: nowrap;
+}
+
+.md-typeset .highlighttable .linenodiv,
+.md-typeset .highlighttable .linenodiv pre {
+    font-size: var(--docs-code-block-size);
+    height: auto;
+    line-height: var(--docs-code-line-height);
+}
+
+.md-typeset .highlighttable .linenodiv span[class] {
+    line-height: var(--docs-code-line-height);
+}
+
+.md-typeset .highlighttable .code {
+    width: auto;
+}
+
+.md-typeset .highlighttable .code > div,
+.md-typeset .highlighttable .code pre,
+.md-typeset .highlighttable .code code {
+    min-width: max-content;
+}
+
+[data-md-color-scheme="slate"] .md-typeset h1 {
+    color: rgba(255, 255, 255, 0.88);
+}

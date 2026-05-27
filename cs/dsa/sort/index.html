@@ -8,29 +8,31 @@
       
       
       
-        <link rel="canonical" href="https://blog.kubectl.net/">
+        <link rel="canonical" href="https://blog.kubectl.net/cs/dsa/sort/">
       
       
+        <link rel="prev" href="../dynamic-programming/">
       
-        <link rel="next" href="mml/">
+      
+        <link rel="next" href="../data-structures/">
       
       
         
       
       
-      <link rel="icon" href="assets/images/favicon.png">
+      <link rel="icon" href="../../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
     
     
       
-        <title>Mind and Hand</title>
+        <title>Sort Algorithms - Mind and Hand</title>
       
     
     
-      <link rel="stylesheet" href="assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.484c7ddc.min.css">
       
         
-        <link rel="stylesheet" href="assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
       
       
 
@@ -45,13 +47,13 @@
     
       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
     
-      <link rel="stylesheet" href="assets/stylesheets/extra.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/extra.css">
     
-      <link rel="stylesheet" href="assets/stylesheets/table.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/table.css">
     
-      <link rel="stylesheet" href="assets/stylesheets/font.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/font.css">
     
-    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -76,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#build-project" class="md-skip">
+        <a href="#sort-algorithms" class="md-skip">
           Skip to content
         </a>
       
@@ -92,7 +94,7 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="." title="Mind and Hand" class="md-header__button md-logo" aria-label="Mind and Hand" data-md-component="logo">
+    <a href="../../.." title="Mind and Hand" class="md-header__button md-logo" aria-label="Mind and Hand" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -112,7 +114,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              build project
+              Sort Algorithms
             
           </span>
         </div>
@@ -218,7 +220,7 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="." title="Mind and Hand" class="md-nav__button md-logo" aria-label="Mind and Hand" data-md-component="logo">
+    <a href="../../.." title="Mind and Hand" class="md-nav__button md-logo" aria-label="Mind and Hand" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -233,37 +235,10 @@
       
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    build project
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="." class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
         
   
   
@@ -279,309 +254,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#basic-variables" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        basic variables
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#functions" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        functions
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="functions">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#log-func" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        log func
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#command_exists-func" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        command_exists func
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#detect-ssh-port" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        detect ssh port
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#detect-os" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        detect os
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#date-format" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        date format
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#build-gradles-project" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        build gradle's project
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#build-mavens-project" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        build maven's project
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#build-golangs-project" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        build golang's project
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#build-nodes-project" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        build node's project
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="build node&#39;s project">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#nvm-on-linux" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        nvm on linux
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#build-writersides-project" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        build writerside's project
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#docker" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        docker
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="docker">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#build-dockers-image-and-push" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        build docker's image (and push)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#remove-dockers-image" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        remove docker's image
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#install-docker" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        install docker
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#develop" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        develop
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="develop">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#config-maven" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        config maven
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#verify-nginx-configuration" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        verify nginx configuration
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#proxy-config" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        proxy config
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="proxy config">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#bashrc-proxy-config" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        bashrc proxy config
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#docker-daemon-proxy-config" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        docker daemon proxy config
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -627,7 +299,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="mml/" class="md-nav__link ">
+            <a href="../../../mml/" class="md-nav__link ">
               
   
   
@@ -701,7 +373,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="mml/linear-algebra/" class="md-nav__link ">
+            <a href="../../../mml/linear-algebra/" class="md-nav__link ">
               
   
   
@@ -745,7 +417,7 @@
   
   
     <li class="md-nav__item">
-      <a href="mml/linear-algebra/matrix/" class="md-nav__link">
+      <a href="../../../mml/linear-algebra/matrix/" class="md-nav__link">
         
   
   
@@ -773,7 +445,7 @@
   
   
     <li class="md-nav__item">
-      <a href="mml/linear-algebra/vector-space/" class="md-nav__link">
+      <a href="../../../mml/linear-algebra/vector-space/" class="md-nav__link">
         
   
   
@@ -801,7 +473,7 @@
   
   
     <li class="md-nav__item">
-      <a href="mml/linear-algebra/linearly-independent/" class="md-nav__link">
+      <a href="../../../mml/linear-algebra/linearly-independent/" class="md-nav__link">
         
   
   
@@ -829,7 +501,7 @@
   
   
     <li class="md-nav__item">
-      <a href="mml/linear-algebra/linear-transformation/" class="md-nav__link">
+      <a href="../../../mml/linear-algebra/linear-transformation/" class="md-nav__link">
         
   
   
@@ -857,7 +529,7 @@
   
   
     <li class="md-nav__item">
-      <a href="mml/linear-algebra/basis-rank/" class="md-nav__link">
+      <a href="../../../mml/linear-algebra/basis-rank/" class="md-nav__link">
         
   
   
@@ -885,7 +557,7 @@
   
   
     <li class="md-nav__item">
-      <a href="mml/linear-algebra/affine-space/" class="md-nav__link">
+      <a href="../../../mml/linear-algebra/affine-space/" class="md-nav__link">
         
   
   
@@ -943,7 +615,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="mml/analytic-geometry/" class="md-nav__link ">
+            <a href="../../../mml/analytic-geometry/" class="md-nav__link ">
               
   
   
@@ -987,7 +659,7 @@
   
   
     <li class="md-nav__item">
-      <a href="mml/analytic-geometry/norm/" class="md-nav__link">
+      <a href="../../../mml/analytic-geometry/norm/" class="md-nav__link">
         
   
   
@@ -1015,7 +687,7 @@
   
   
     <li class="md-nav__item">
-      <a href="mml/analytic-geometry/inner-product/" class="md-nav__link">
+      <a href="../../../mml/analytic-geometry/inner-product/" class="md-nav__link">
         
   
   
@@ -1051,7 +723,7 @@
   
   
     <li class="md-nav__item">
-      <a href="mml/matrix-decomposition/" class="md-nav__link">
+      <a href="../../../mml/matrix-decomposition/" class="md-nav__link">
         
   
   
@@ -1079,7 +751,7 @@
   
   
     <li class="md-nav__item">
-      <a href="mml/vector-calculus/" class="md-nav__link">
+      <a href="../../../mml/vector-calculus/" class="md-nav__link">
         
   
   
@@ -1107,7 +779,7 @@
   
   
     <li class="md-nav__item">
-      <a href="mml/probability-and-distributions/" class="md-nav__link">
+      <a href="../../../mml/probability-and-distributions/" class="md-nav__link">
         
   
   
@@ -1135,7 +807,7 @@
   
   
     <li class="md-nav__item">
-      <a href="mml/continuous-optimization/" class="md-nav__link">
+      <a href="../../../mml/continuous-optimization/" class="md-nav__link">
         
   
   
@@ -1163,7 +835,7 @@
   
   
     <li class="md-nav__item">
-      <a href="mml/information-theory/" class="md-nav__link">
+      <a href="../../../mml/information-theory/" class="md-nav__link">
         
   
   
@@ -1191,7 +863,7 @@
   
   
     <li class="md-nav__item">
-      <a href="mml/latex/" class="md-nav__link">
+      <a href="../../../mml/latex/" class="md-nav__link">
         
   
   
@@ -1248,7 +920,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="papers/" class="md-nav__link ">
+            <a href="../../../papers/" class="md-nav__link ">
               
   
   
@@ -1292,7 +964,7 @@
   
   
     <li class="md-nav__item">
-      <a href="papers/raft/" class="md-nav__link">
+      <a href="../../../papers/raft/" class="md-nav__link">
         
   
   
@@ -1320,7 +992,7 @@
   
   
     <li class="md-nav__item">
-      <a href="papers/sssp/" class="md-nav__link">
+      <a href="../../../papers/sssp/" class="md-nav__link">
         
   
   
@@ -1352,6 +1024,8 @@
       
   
   
+    
+  
   
   
     
@@ -1371,15 +1045,15 @@
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="cs/" class="md-nav__link ">
+            <a href="../../" class="md-nav__link ">
               
   
   
@@ -1403,7 +1077,7 @@
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_4">
             <span class="md-nav__icon md-icon"></span>
             
@@ -1420,6 +1094,8 @@
                 
   
   
+    
+  
   
   
     
@@ -1441,15 +1117,15 @@
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" checked>
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="cs/dsa/" class="md-nav__link ">
+            <a href="../" class="md-nav__link ">
               
   
   
@@ -1473,7 +1149,7 @@
             
           </div>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_4_2">
             <span class="md-nav__icon md-icon"></span>
             
@@ -1493,7 +1169,7 @@
   
   
     <li class="md-nav__item">
-      <a href="cs/dsa/dynamic-programming/" class="md-nav__link">
+      <a href="../dynamic-programming/" class="md-nav__link">
         
   
   
@@ -1518,10 +1194,37 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="cs/dsa/sort/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sort Algorithms
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -1537,6 +1240,104 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        定义通用接口
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#on2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        O(n^2)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="O(n^2)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        插入排序
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#onlogn" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        O(nlog(n))
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="O(nlog(n))">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        快速排序
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        归并排序
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1579,7 +1380,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="cs/dsa/data-structures/" class="md-nav__link ">
+            <a href="../data-structures/" class="md-nav__link ">
               
   
   
@@ -1623,7 +1424,7 @@
   
   
     <li class="md-nav__item">
-      <a href="cs/dsa/data-structures/union-find/" class="md-nav__link">
+      <a href="../data-structures/union-find/" class="md-nav__link">
         
   
   
@@ -1651,7 +1452,7 @@
   
   
     <li class="md-nav__item">
-      <a href="cs/dsa/data-structures/heap/" class="md-nav__link">
+      <a href="../data-structures/heap/" class="md-nav__link">
         
   
   
@@ -1705,7 +1506,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="cs/dsa/data-structures/search-tree/" class="md-nav__link ">
+            <a href="../data-structures/search-tree/" class="md-nav__link ">
               
   
   
@@ -1749,7 +1550,7 @@
   
   
     <li class="md-nav__item">
-      <a href="cs/dsa/data-structures/search-tree/bst/" class="md-nav__link">
+      <a href="../data-structures/search-tree/bst/" class="md-nav__link">
         
   
   
@@ -1777,7 +1578,7 @@
   
   
     <li class="md-nav__item">
-      <a href="cs/dsa/data-structures/search-tree/avl/" class="md-nav__link">
+      <a href="../data-structures/search-tree/avl/" class="md-nav__link">
         
   
   
@@ -1805,7 +1606,7 @@
   
   
     <li class="md-nav__item">
-      <a href="cs/dsa/data-structures/search-tree/tt-tree/" class="md-nav__link">
+      <a href="../data-structures/search-tree/tt-tree/" class="md-nav__link">
         
   
   
@@ -1833,7 +1634,7 @@
   
   
     <li class="md-nav__item">
-      <a href="cs/dsa/data-structures/search-tree/rbtree/" class="md-nav__link">
+      <a href="../data-structures/search-tree/rbtree/" class="md-nav__link">
         
   
   
@@ -1869,7 +1670,7 @@
   
   
     <li class="md-nav__item">
-      <a href="cs/dsa/data-structures/skip-list/" class="md-nav__link">
+      <a href="../data-structures/skip-list/" class="md-nav__link">
         
   
   
@@ -1897,7 +1698,7 @@
   
   
     <li class="md-nav__item">
-      <a href="cs/dsa/data-structures/huffman/" class="md-nav__link">
+      <a href="../data-structures/huffman/" class="md-nav__link">
         
   
   
@@ -1925,7 +1726,7 @@
   
   
     <li class="md-nav__item">
-      <a href="cs/dsa/data-structures/trie/" class="md-nav__link">
+      <a href="../data-structures/trie/" class="md-nav__link">
         
   
   
@@ -1995,7 +1796,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="cs/dsa/graph/" class="md-nav__link ">
+            <a href="../graph/" class="md-nav__link ">
               
   
   
@@ -2039,7 +1840,7 @@
   
   
     <li class="md-nav__item">
-      <a href="cs/dsa/graph/graph-definition/" class="md-nav__link">
+      <a href="../graph/graph-definition/" class="md-nav__link">
         
   
   
@@ -2067,7 +1868,7 @@
   
   
     <li class="md-nav__item">
-      <a href="cs/dsa/graph/graph-algorithms/" class="md-nav__link">
+      <a href="../graph/graph-algorithms/" class="md-nav__link">
         
   
   
@@ -2095,7 +1896,7 @@
   
   
     <li class="md-nav__item">
-      <a href="cs/dsa/graph/graph-traverse/" class="md-nav__link">
+      <a href="../graph/graph-traverse/" class="md-nav__link">
         
   
   
@@ -2123,7 +1924,7 @@
   
   
     <li class="md-nav__item">
-      <a href="cs/dsa/graph/graph-components/" class="md-nav__link">
+      <a href="../graph/graph-components/" class="md-nav__link">
         
   
   
@@ -2151,7 +1952,7 @@
   
   
     <li class="md-nav__item">
-      <a href="cs/dsa/graph/graph-toposort/" class="md-nav__link">
+      <a href="../graph/graph-toposort/" class="md-nav__link">
         
   
   
@@ -2179,7 +1980,7 @@
   
   
     <li class="md-nav__item">
-      <a href="cs/dsa/graph/graph-mst/" class="md-nav__link">
+      <a href="../graph/graph-mst/" class="md-nav__link">
         
   
   
@@ -2207,7 +2008,7 @@
   
   
     <li class="md-nav__item">
-      <a href="cs/dsa/graph/dijkstra/" class="md-nav__link">
+      <a href="../graph/dijkstra/" class="md-nav__link">
         
   
   
@@ -2235,7 +2036,7 @@
   
   
     <li class="md-nav__item">
-      <a href="cs/dsa/graph/cycle-analyzer/" class="md-nav__link">
+      <a href="../graph/cycle-analyzer/" class="md-nav__link">
         
   
   
@@ -2279,7 +2080,7 @@
   
   
     <li class="md-nav__item">
-      <a href="cs/computer-network/" class="md-nav__link">
+      <a href="../../computer-network/" class="md-nav__link">
         
   
   
@@ -2307,7 +2108,7 @@
   
   
     <li class="md-nav__item">
-      <a href="cs/computer-organization/" class="md-nav__link">
+      <a href="../../computer-organization/" class="md-nav__link">
         
   
   
@@ -2370,7 +2171,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="thinking/" class="md-nav__link ">
+            <a href="../../../thinking/" class="md-nav__link ">
               
   
   
@@ -2414,7 +2215,7 @@
   
   
     <li class="md-nav__item">
-      <a href="thinking/continuity/" class="md-nav__link">
+      <a href="../../../thinking/continuity/" class="md-nav__link">
         
   
   
@@ -2442,7 +2243,7 @@
   
   
     <li class="md-nav__item">
-      <a href="thinking/coding/" class="md-nav__link">
+      <a href="../../../thinking/coding/" class="md-nav__link">
         
   
   
@@ -2470,7 +2271,7 @@
   
   
     <li class="md-nav__item">
-      <a href="thinking/design-pattern/" class="md-nav__link">
+      <a href="../../../thinking/design-pattern/" class="md-nav__link">
         
   
   
@@ -2498,7 +2299,7 @@
   
   
     <li class="md-nav__item">
-      <a href="thinking/concurrency/" class="md-nav__link">
+      <a href="../../../thinking/concurrency/" class="md-nav__link">
         
   
   
@@ -2526,7 +2327,7 @@
   
   
     <li class="md-nav__item">
-      <a href="thinking/standard/" class="md-nav__link">
+      <a href="../../../thinking/standard/" class="md-nav__link">
         
   
   
@@ -2589,7 +2390,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="kubernetes/" class="md-nav__link ">
+            <a href="../../../kubernetes/" class="md-nav__link ">
               
   
   
@@ -2633,7 +2434,7 @@
   
   
     <li class="md-nav__item">
-      <a href="kubernetes/k8s-install/" class="md-nav__link">
+      <a href="../../../kubernetes/k8s-install/" class="md-nav__link">
         
   
   
@@ -2683,7 +2484,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="kubernetes/k8s-cluster-config/" class="md-nav__link ">
+            <a href="../../../kubernetes/k8s-cluster-config/" class="md-nav__link ">
               
   
   
@@ -2727,7 +2528,7 @@
   
   
     <li class="md-nav__item">
-      <a href="kubernetes/k8s-cluster-config/node-port-range/" class="md-nav__link">
+      <a href="../../../kubernetes/k8s-cluster-config/node-port-range/" class="md-nav__link">
         
   
   
@@ -2755,7 +2556,7 @@
   
   
     <li class="md-nav__item">
-      <a href="kubernetes/k8s-cluster-config/node-taint/" class="md-nav__link">
+      <a href="../../../kubernetes/k8s-cluster-config/node-taint/" class="md-nav__link">
         
   
   
@@ -2791,7 +2592,7 @@
   
   
     <li class="md-nav__item">
-      <a href="kubernetes/k8s-update/" class="md-nav__link">
+      <a href="../../../kubernetes/k8s-update/" class="md-nav__link">
         
   
   
@@ -2819,7 +2620,7 @@
   
   
     <li class="md-nav__item">
-      <a href="kubernetes/k8s-resources/" class="md-nav__link">
+      <a href="../../../kubernetes/k8s-resources/" class="md-nav__link">
         
   
   
@@ -2871,7 +2672,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="kubernetes/k8s-applications/" class="md-nav__link ">
+            <a href="../../../kubernetes/k8s-applications/" class="md-nav__link ">
               
   
   
@@ -2915,7 +2716,7 @@
   
   
     <li class="md-nav__item">
-      <a href="kubernetes/k8s-applications/busybox/" class="md-nav__link">
+      <a href="../../../kubernetes/k8s-applications/busybox/" class="md-nav__link">
         
   
   
@@ -2943,7 +2744,7 @@
   
   
     <li class="md-nav__item">
-      <a href="kubernetes/k8s-applications/metrics-server/" class="md-nav__link">
+      <a href="../../../kubernetes/k8s-applications/metrics-server/" class="md-nav__link">
         
   
   
@@ -2997,7 +2798,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="kubernetes/k8s-applications/ingress-nginx-controller/" class="md-nav__link ">
+            <a href="../../../kubernetes/k8s-applications/ingress-nginx-controller/" class="md-nav__link ">
               
   
   
@@ -3041,7 +2842,7 @@
   
   
     <li class="md-nav__item">
-      <a href="kubernetes/k8s-applications/ingress-nginx-controller/ingress/" class="md-nav__link">
+      <a href="../../../kubernetes/k8s-applications/ingress-nginx-controller/ingress/" class="md-nav__link">
         
   
   
@@ -3069,7 +2870,7 @@
   
   
     <li class="md-nav__item">
-      <a href="kubernetes/k8s-applications/ingress-nginx-controller/deploy_ingress_nginx_controller/" class="md-nav__link">
+      <a href="../../../kubernetes/k8s-applications/ingress-nginx-controller/deploy_ingress_nginx_controller/" class="md-nav__link">
         
   
   
@@ -3097,7 +2898,7 @@
   
   
     <li class="md-nav__item">
-      <a href="kubernetes/k8s-applications/ingress-nginx-controller/deployment/" class="md-nav__link">
+      <a href="../../../kubernetes/k8s-applications/ingress-nginx-controller/deployment/" class="md-nav__link">
         
   
   
@@ -3125,7 +2926,7 @@
   
   
     <li class="md-nav__item">
-      <a href="kubernetes/k8s-applications/ingress-nginx-controller/daemonset/" class="md-nav__link">
+      <a href="../../../kubernetes/k8s-applications/ingress-nginx-controller/daemonset/" class="md-nav__link">
         
   
   
@@ -3202,7 +3003,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="docker/" class="md-nav__link ">
+            <a href="../../../docker/" class="md-nav__link ">
               
   
   
@@ -3278,7 +3079,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="docker/docker-compose/" class="md-nav__link ">
+            <a href="../../../docker/docker-compose/" class="md-nav__link ">
               
   
   
@@ -3322,7 +3123,7 @@
   
   
     <li class="md-nav__item">
-      <a href="docker/docker-compose/dc-emqx/" class="md-nav__link">
+      <a href="../../../docker/docker-compose/dc-emqx/" class="md-nav__link">
         
   
   
@@ -3350,7 +3151,7 @@
   
   
     <li class="md-nav__item">
-      <a href="docker/docker-compose/dc-gitea/" class="md-nav__link">
+      <a href="../../../docker/docker-compose/dc-gitea/" class="md-nav__link">
         
   
   
@@ -3378,7 +3179,7 @@
   
   
     <li class="md-nav__item">
-      <a href="docker/docker-compose/dc-frp/" class="md-nav__link">
+      <a href="../../../docker/docker-compose/dc-frp/" class="md-nav__link">
         
   
   
@@ -3406,7 +3207,7 @@
   
   
     <li class="md-nav__item">
-      <a href="docker/docker-compose/dc-kuboard/" class="md-nav__link">
+      <a href="../../../docker/docker-compose/dc-kuboard/" class="md-nav__link">
         
   
   
@@ -3434,7 +3235,7 @@
   
   
     <li class="md-nav__item">
-      <a href="docker/docker-compose/dc-postgres/" class="md-nav__link">
+      <a href="../../../docker/docker-compose/dc-postgres/" class="md-nav__link">
         
   
   
@@ -3462,7 +3263,7 @@
   
   
     <li class="md-nav__item">
-      <a href="docker/docker-compose/dc-socks-server/" class="md-nav__link">
+      <a href="../../../docker/docker-compose/dc-socks-server/" class="md-nav__link">
         
   
   
@@ -3490,7 +3291,7 @@
   
   
     <li class="md-nav__item">
-      <a href="docker/docker-compose/dc-tinyprox/" class="md-nav__link">
+      <a href="../../../docker/docker-compose/dc-tinyprox/" class="md-nav__link">
         
   
   
@@ -3526,7 +3327,7 @@
   
   
     <li class="md-nav__item">
-      <a href="docker/docker-install/" class="md-nav__link">
+      <a href="../../../docker/docker-install/" class="md-nav__link">
         
   
   
@@ -3554,7 +3355,7 @@
   
   
     <li class="md-nav__item">
-      <a href="docker/docker-install-manually/" class="md-nav__link">
+      <a href="../../../docker/docker-install-manually/" class="md-nav__link">
         
   
   
@@ -3582,7 +3383,7 @@
   
   
     <li class="md-nav__item">
-      <a href="docker/docker-config/" class="md-nav__link">
+      <a href="../../../docker/docker-config/" class="md-nav__link">
         
   
   
@@ -3653,7 +3454,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="develop/" class="md-nav__link ">
+            <a href="../../../develop/" class="md-nav__link ">
               
   
   
@@ -3717,7 +3518,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="develop/distributed/" class="md-nav__link ">
+            <a href="../../../develop/distributed/" class="md-nav__link ">
               
   
   
@@ -3761,7 +3562,7 @@
   
   
     <li class="md-nav__item">
-      <a href="develop/distributed/routing-in-distributed-systems/" class="md-nav__link">
+      <a href="../../../develop/distributed/routing-in-distributed-systems/" class="md-nav__link">
         
   
   
@@ -3821,7 +3622,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="develop/develop-design/" class="md-nav__link ">
+            <a href="../../../develop/develop-design/" class="md-nav__link ">
               
   
   
@@ -3889,7 +3690,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="develop/develop-design/iot/" class="md-nav__link ">
+            <a href="../../../develop/develop-design/iot/" class="md-nav__link ">
               
   
   
@@ -3933,7 +3734,7 @@
   
   
     <li class="md-nav__item">
-      <a href="develop/develop-design/iot/iot-project-structure/" class="md-nav__link">
+      <a href="../../../develop/develop-design/iot/iot-project-structure/" class="md-nav__link">
         
   
   
@@ -3961,7 +3762,7 @@
   
   
     <li class="md-nav__item">
-      <a href="develop/develop-design/iot/iot-agent-client/" class="md-nav__link">
+      <a href="../../../develop/develop-design/iot/iot-agent-client/" class="md-nav__link">
         
   
   
@@ -3989,7 +3790,7 @@
   
   
     <li class="md-nav__item">
-      <a href="develop/develop-design/iot/iot-agent-server/" class="md-nav__link">
+      <a href="../../../develop/develop-design/iot/iot-agent-server/" class="md-nav__link">
         
   
   
@@ -4025,7 +3826,7 @@
   
   
     <li class="md-nav__item">
-      <a href="develop/develop-design/dev-frp/" class="md-nav__link">
+      <a href="../../../develop/develop-design/dev-frp/" class="md-nav__link">
         
   
   
@@ -4053,7 +3854,7 @@
   
   
     <li class="md-nav__item">
-      <a href="develop/develop-design/triangle-network/" class="md-nav__link">
+      <a href="../../../develop/develop-design/triangle-network/" class="md-nav__link">
         
   
   
@@ -4125,7 +3926,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="develop/lang-java/" class="md-nav__link ">
+            <a href="../../../develop/lang-java/" class="md-nav__link ">
               
   
   
@@ -4169,7 +3970,7 @@
   
   
     <li class="md-nav__item">
-      <a href="develop/lang-java/log-config/" class="md-nav__link">
+      <a href="../../../develop/lang-java/log-config/" class="md-nav__link">
         
   
   
@@ -4197,7 +3998,7 @@
   
   
     <li class="md-nav__item">
-      <a href="develop/lang-java/dsl/" class="md-nav__link">
+      <a href="../../../develop/lang-java/dsl/" class="md-nav__link">
         
   
   
@@ -4225,7 +4026,7 @@
   
   
     <li class="md-nav__item">
-      <a href="develop/lang-java/java-design/" class="md-nav__link">
+      <a href="../../../develop/lang-java/java-design/" class="md-nav__link">
         
   
   
@@ -4253,7 +4054,7 @@
   
   
     <li class="md-nav__item">
-      <a href="develop/lang-java/jdbc/" class="md-nav__link">
+      <a href="../../../develop/lang-java/jdbc/" class="md-nav__link">
         
   
   
@@ -4281,7 +4082,7 @@
   
   
     <li class="md-nav__item">
-      <a href="develop/lang-java/mybatis/" class="md-nav__link">
+      <a href="../../../develop/lang-java/mybatis/" class="md-nav__link">
         
   
   
@@ -4309,7 +4110,7 @@
   
   
     <li class="md-nav__item">
-      <a href="develop/lang-java/spring/" class="md-nav__link">
+      <a href="../../../develop/lang-java/spring/" class="md-nav__link">
         
   
   
@@ -4337,7 +4138,7 @@
   
   
     <li class="md-nav__item">
-      <a href="develop/lang-java/springboot/" class="md-nav__link">
+      <a href="../../../develop/lang-java/springboot/" class="md-nav__link">
         
   
   
@@ -4365,7 +4166,7 @@
   
   
     <li class="md-nav__item">
-      <a href="develop/lang-java/netty/" class="md-nav__link">
+      <a href="../../../develop/lang-java/netty/" class="md-nav__link">
         
   
   
@@ -4393,7 +4194,7 @@
   
   
     <li class="md-nav__item">
-      <a href="develop/lang-java/ziputils/" class="md-nav__link">
+      <a href="../../../develop/lang-java/ziputils/" class="md-nav__link">
         
   
   
@@ -4451,7 +4252,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="develop/kotlin/" class="md-nav__link ">
+            <a href="../../../develop/kotlin/" class="md-nav__link ">
               
   
   
@@ -4495,7 +4296,7 @@
   
   
     <li class="md-nav__item">
-      <a href="develop/kotlin/kotlin-syntactic-sugar/" class="md-nav__link">
+      <a href="../../../develop/kotlin/kotlin-syntactic-sugar/" class="md-nav__link">
         
   
   
@@ -4523,7 +4324,7 @@
   
   
     <li class="md-nav__item">
-      <a href="develop/kotlin/kotlin-coding-tips/" class="md-nav__link">
+      <a href="../../../develop/kotlin/kotlin-coding-tips/" class="md-nav__link">
         
   
   
@@ -4559,7 +4360,7 @@
   
   
     <li class="md-nav__item">
-      <a href="develop/lang-go/" class="md-nav__link">
+      <a href="../../../develop/lang-go/" class="md-nav__link">
         
   
   
@@ -4609,7 +4410,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="develop/lang-lua/" class="md-nav__link ">
+            <a href="../../../develop/lang-lua/" class="md-nav__link ">
               
   
   
@@ -4653,7 +4454,7 @@
   
   
     <li class="md-nav__item">
-      <a href="develop/lang-lua/lua-access-control/" class="md-nav__link">
+      <a href="../../../develop/lang-lua/lua-access-control/" class="md-nav__link">
         
   
   
@@ -4681,7 +4482,7 @@
   
   
     <li class="md-nav__item">
-      <a href="develop/lang-lua/lua-ac-redis-rules-operator/" class="md-nav__link">
+      <a href="../../../develop/lang-lua/lua-ac-redis-rules-operator/" class="md-nav__link">
         
   
   
@@ -4739,7 +4540,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="develop/sql/" class="md-nav__link ">
+            <a href="../../../develop/sql/" class="md-nav__link ">
               
   
   
@@ -4809,7 +4610,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="develop/sql/postgres/" class="md-nav__link ">
+            <a href="../../../develop/sql/postgres/" class="md-nav__link ">
               
   
   
@@ -4853,7 +4654,7 @@
   
   
     <li class="md-nav__item">
-      <a href="develop/sql/postgres/pg-tree-recursive/" class="md-nav__link">
+      <a href="../../../develop/sql/postgres/pg-tree-recursive/" class="md-nav__link">
         
   
   
@@ -4881,7 +4682,7 @@
   
   
     <li class="md-nav__item">
-      <a href="develop/sql/postgres/pg-graph-recursive/" class="md-nav__link">
+      <a href="../../../develop/sql/postgres/pg-graph-recursive/" class="md-nav__link">
         
   
   
@@ -4909,7 +4710,7 @@
   
   
     <li class="md-nav__item">
-      <a href="develop/sql/postgres/pg-attention/" class="md-nav__link">
+      <a href="../../../develop/sql/postgres/pg-attention/" class="md-nav__link">
         
   
   
@@ -4937,7 +4738,7 @@
   
   
     <li class="md-nav__item">
-      <a href="develop/sql/postgres/pg-psql-pgdump/" class="md-nav__link">
+      <a href="../../../develop/sql/postgres/pg-psql-pgdump/" class="md-nav__link">
         
   
   
@@ -4973,7 +4774,7 @@
   
   
     <li class="md-nav__item">
-      <a href="develop/sql/mysql/" class="md-nav__link">
+      <a href="../../../develop/sql/mysql/" class="md-nav__link">
         
   
   
@@ -5029,7 +4830,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="develop/shell/" class="md-nav__link ">
+            <a href="../../../develop/shell/" class="md-nav__link ">
               
   
   
@@ -5073,7 +4874,7 @@
   
   
     <li class="md-nav__item">
-      <a href="develop/shell/shell-cheat-sheet/" class="md-nav__link">
+      <a href="../../../develop/shell/shell-cheat-sheet/" class="md-nav__link">
         
   
   
@@ -5109,7 +4910,7 @@
   
   
     <li class="md-nav__item">
-      <a href="develop/env-variables/" class="md-nav__link">
+      <a href="../../../develop/env-variables/" class="md-nav__link">
         
   
   
@@ -5174,7 +4975,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="devops/" class="md-nav__link ">
+            <a href="../../../devops/" class="md-nav__link ">
               
   
   
@@ -5240,7 +5041,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="devops/nginx/" class="md-nav__link ">
+            <a href="../../../devops/nginx/" class="md-nav__link ">
               
   
   
@@ -5284,7 +5085,7 @@
   
   
     <li class="md-nav__item">
-      <a href="devops/nginx/nginx-proxy_pass/" class="md-nav__link">
+      <a href="../../../devops/nginx/nginx-proxy_pass/" class="md-nav__link">
         
   
   
@@ -5312,7 +5113,7 @@
   
   
     <li class="md-nav__item">
-      <a href="devops/nginx/nginx-lua-lifecycle/" class="md-nav__link">
+      <a href="../../../devops/nginx/nginx-lua-lifecycle/" class="md-nav__link">
         
   
   
@@ -5348,7 +5149,7 @@
   
   
     <li class="md-nav__item">
-      <a href="devops/ci/" class="md-nav__link">
+      <a href="../../../devops/ci/" class="md-nav__link">
         
   
   
@@ -5398,7 +5199,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="devops/vcs/" class="md-nav__link ">
+            <a href="../../../devops/vcs/" class="md-nav__link ">
               
   
   
@@ -5442,7 +5243,7 @@
   
   
     <li class="md-nav__item">
-      <a href="devops/vcs/gitea/" class="md-nav__link">
+      <a href="../../../devops/vcs/gitea/" class="md-nav__link">
         
   
   
@@ -5470,7 +5271,7 @@
   
   
     <li class="md-nav__item">
-      <a href="devops/vcs/gitlab/" class="md-nav__link">
+      <a href="../../../devops/vcs/gitlab/" class="md-nav__link">
         
   
   
@@ -5506,7 +5307,7 @@
   
   
     <li class="md-nav__item">
-      <a href="devops/writerside/" class="md-nav__link">
+      <a href="../../../devops/writerside/" class="md-nav__link">
         
   
   
@@ -5534,7 +5335,7 @@
   
   
     <li class="md-nav__item">
-      <a href="devops/mirrors/" class="md-nav__link">
+      <a href="../../../devops/mirrors/" class="md-nav__link">
         
   
   
@@ -5582,7 +5383,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="devops/mermaid/" class="md-nav__link ">
+            <a href="../../../devops/mermaid/" class="md-nav__link ">
               
   
   
@@ -5626,7 +5427,7 @@
   
   
     <li class="md-nav__item">
-      <a href="devops/mermaid/mermaid_example/" class="md-nav__link">
+      <a href="../../../devops/mermaid/mermaid_example/" class="md-nav__link">
         
   
   
@@ -5691,7 +5492,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="ai/" class="md-nav__link ">
+            <a href="../../../ai/" class="md-nav__link ">
               
   
   
@@ -5735,7 +5536,7 @@
   
   
     <li class="md-nav__item">
-      <a href="ai/deep-learning/" class="md-nav__link">
+      <a href="../../../ai/deep-learning/" class="md-nav__link">
         
   
   
@@ -5763,7 +5564,7 @@
   
   
     <li class="md-nav__item">
-      <a href="ai/aigc/" class="md-nav__link">
+      <a href="../../../ai/aigc/" class="md-nav__link">
         
   
   
@@ -5822,7 +5623,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="linux/" class="md-nav__link ">
+            <a href="../../../linux/" class="md-nav__link ">
               
   
   
@@ -5866,7 +5667,7 @@
   
   
     <li class="md-nav__item">
-      <a href="linux/git/" class="md-nav__link">
+      <a href="../../../linux/git/" class="md-nav__link">
         
   
   
@@ -5894,7 +5695,7 @@
   
   
     <li class="md-nav__item">
-      <a href="linux/systemd/" class="md-nav__link">
+      <a href="../../../linux/systemd/" class="md-nav__link">
         
   
   
@@ -5922,7 +5723,7 @@
   
   
     <li class="md-nav__item">
-      <a href="linux/ubuntu2204/" class="md-nav__link">
+      <a href="../../../linux/ubuntu2204/" class="md-nav__link">
         
   
   
@@ -5981,7 +5782,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="windows/" class="md-nav__link ">
+            <a href="../../../windows/" class="md-nav__link ">
               
   
   
@@ -6025,7 +5826,7 @@
   
   
     <li class="md-nav__item">
-      <a href="windows/win11Efficient/" class="md-nav__link">
+      <a href="../../../windows/win11Efficient/" class="md-nav__link">
         
   
   
@@ -6053,7 +5854,7 @@
   
   
     <li class="md-nav__item">
-      <a href="windows/kms/" class="md-nav__link">
+      <a href="../../../windows/kms/" class="md-nav__link">
         
   
   
@@ -6081,7 +5882,7 @@
   
   
     <li class="md-nav__item">
-      <a href="windows/windows-clean/" class="md-nav__link">
+      <a href="../../../windows/windows-clean/" class="md-nav__link">
         
   
   
@@ -6116,7 +5917,7 @@
   
   
     <li class="md-nav__item">
-      <a href="macos/" class="md-nav__link">
+      <a href="../../../macos/" class="md-nav__link">
         
   
   
@@ -6143,7 +5944,7 @@
   
   
     <li class="md-nav__item">
-      <a href="parameter-naming/" class="md-nav__link">
+      <a href="../../../parameter-naming/" class="md-nav__link">
         
   
   
@@ -6190,10 +5991,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#basic-variables" class="md-nav__link">
+  <a href="#_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        basic variables
+        定义通用接口
       
     </span>
   </a>
@@ -6201,66 +6002,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#functions" class="md-nav__link">
+  <a href="#on2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        functions
+        O(n^2)
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="functions">
+    <nav class="md-nav" aria-label="O(n^2)">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#log-func" class="md-nav__link">
+  <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        log func
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#command_exists-func" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        command_exists func
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#detect-ssh-port" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        detect ssh port
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#detect-os" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        detect os
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#date-format" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        date format
+        插入排序
       
     </span>
   </a>
@@ -6273,94 +6030,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#build-gradles-project" class="md-nav__link">
+  <a href="#onlogn" class="md-nav__link">
     <span class="md-ellipsis">
       
-        build gradle's project
+        O(nlog(n))
       
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#build-mavens-project" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        build maven's project
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#build-golangs-project" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        build golang's project
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#build-nodes-project" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        build node's project
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="build node&#39;s project">
+    <nav class="md-nav" aria-label="O(nlog(n))">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#nvm-on-linux" class="md-nav__link">
+  <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
       
-        nvm on linux
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#build-writersides-project" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        build writerside's project
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#docker" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        docker
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="docker">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#build-dockers-image-and-push" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        build docker's image (and push)
+        快速排序
       
     </span>
   </a>
@@ -6368,99 +6053,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#remove-dockers-image" class="md-nav__link">
+  <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       
-        remove docker's image
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#install-docker" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        install docker
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#develop" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        develop
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="develop">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#config-maven" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        config maven
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#verify-nginx-configuration" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        verify nginx configuration
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#proxy-config" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        proxy config
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="proxy config">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#bashrc-proxy-config" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        bashrc proxy config
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#docker-daemon-proxy-config" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        docker daemon proxy config
+        归并排序
       
     </span>
   </a>
@@ -6489,308 +6085,311 @@
 
 
 
-<h1 id="build-project">build project</h1>
-<p><img alt="" src="https://counter.iproute.org/at/vscoding?theme=booru-lewd" /></p>
-<h2 id="basic-variables">basic variables</h2>
-<blockquote>
-<p>get basic variables</p>
-</blockquote>
-<div class="language-shell highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span>
-<span class="normal"><a href="#__codelineno-0-2">2</a></span>
-<span class="normal"><a href="#__codelineno-0-3">3</a></span>
-<span class="normal"><a href="#__codelineno-0-4">4</a></span>
-<span class="normal"><a href="#__codelineno-0-5">5</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="c1"># export ROOT_URI automatically</span>
-<a id="__codelineno-0-2" name="__codelineno-0-2"></a><span class="nb">source</span><span class="w"> </span>&lt;<span class="o">(</span>curl<span class="w"> </span>-sSL<span class="w"> </span>https://dev.kubectl.org/init<span class="o">)</span>
-<a id="__codelineno-0-3" name="__codelineno-0-3"></a>
-<a id="__codelineno-0-4" name="__codelineno-0-4"></a><span class="c1"># or set manually</span>
-<a id="__codelineno-0-5" name="__codelineno-0-5"></a><span class="c1"># export ROOT_URI=https://dev.kubectl.net</span>
+<h1 id="sort-algorithms">Sort Algorithms</h1>
+<p>算法中的排序 based on kotlin</p>
+<h2 id="_1">定义通用接口</h2>
+<div class="language-Kotlin highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-0-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-0-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-0-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-0-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-0-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-0-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-0-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-0-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-0-10">10</a></span>
+<span class="normal"><a href="#__codelineno-0-11">11</a></span>
+<span class="normal"><a href="#__codelineno-0-12">12</a></span>
+<span class="normal"><a href="#__codelineno-0-13">13</a></span>
+<span class="normal"><a href="#__codelineno-0-14">14</a></span>
+<span class="normal"><a href="#__codelineno-0-15">15</a></span>
+<span class="normal"><a href="#__codelineno-0-16">16</a></span>
+<span class="normal"><a href="#__codelineno-0-17">17</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="kd">interface</span><span class="w"> </span><span class="nc">Sort</span><span class="o">&lt;</span><span class="n">T</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">Comparable</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2"></a>
+<a id="__codelineno-0-3" name="__codelineno-0-3"></a><span class="w">    </span><span class="cm">/**</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4"></a><span class="cm">     * Sorts the given array in ascending order.</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5"></a><span class="cm">     *</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6"></a><span class="cm">     * @param arr the array to be sorted</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7"></a><span class="cm">     */</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8"></a><span class="w">    </span><span class="kd">fun</span><span class="w"> </span><span class="nf">sort</span><span class="p">(</span><span class="n">arr</span><span class="p">:</span><span class="w"> </span><span class="n">Array</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="p">)</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9"></a>
+<a id="__codelineno-0-10" name="__codelineno-0-10"></a><span class="p">}</span>
+<a id="__codelineno-0-11" name="__codelineno-0-11"></a>
+<a id="__codelineno-0-12" name="__codelineno-0-12"></a><span class="kd">fun</span><span class="w"> </span><span class="o">&lt;</span><span class="n">T</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">Comparable</span><span class="err">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="err">&gt; </span><span class="nf">Array</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="p">.</span><span class="na">swap</span><span class="p">(</span><span class="n">i</span><span class="p">:</span><span class="w"> </span><span class="kt">Int</span><span class="p">,</span><span class="w"> </span><span class="n">j</span><span class="p">:</span><span class="w"> </span><span class="kt">Int</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-0-13" name="__codelineno-0-13"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">j</span><span class="p">)</span><span class="w"> </span><span class="k">return</span>
+<a id="__codelineno-0-14" name="__codelineno-0-14"></a><span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">temp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="o">[</span><span class="n">i</span><span class="o">]</span>
+<a id="__codelineno-0-15" name="__codelineno-0-15"></a><span class="w">    </span><span class="k">this</span><span class="o">[</span><span class="n">i</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="o">[</span><span class="n">j</span><span class="o">]</span>
+<a id="__codelineno-0-16" name="__codelineno-0-16"></a><span class="w">    </span><span class="k">this</span><span class="o">[</span><span class="n">j</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">temp</span>
+<a id="__codelineno-0-17" name="__codelineno-0-17"></a><span class="p">}</span>
 </code></pre></div></td></tr></table></div>
-<h2 id="functions">functions</h2>
-<h3 id="log-func">log func</h3>
-<div class="language-shell highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1">1</a></span>
-<span class="normal"><a href="#__codelineno-1-2">2</a></span>
-<span class="normal"><a href="#__codelineno-1-3">3</a></span>
-<span class="normal"><a href="#__codelineno-1-4">4</a></span>
-<span class="normal"><a href="#__codelineno-1-5">5</a></span>
-<span class="normal"><a href="#__codelineno-1-6">6</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="nb">source</span><span class="w"> </span>&lt;<span class="o">(</span>curl<span class="w"> </span>-sSL<span class="w"> </span><span class="nv">$ROOT_URI</span>/func/log.sh<span class="o">)</span>
+<h2 id="on2">O(n^2)</h2>
+<p>时间复杂度为 <span class="arithmatex">\(\mathrm{O}(N^2)\)</span> 的主要原因是没有进行分治，而是通过两层循环来实现排序。</p>
+<h3 id="_2">插入排序</h3>
+<p>在本身数组是有序的清空下，插入排序时间复杂度为 <span class="arithmatex">\(\mathrm{O}(N)\)</span></p>
+<div class="language-Kotlin highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-1-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-1-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-1-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-1-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-1-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-1-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-1-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-1-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-1-10">10</a></span>
+<span class="normal"><a href="#__codelineno-1-11">11</a></span>
+<span class="normal"><a href="#__codelineno-1-12">12</a></span>
+<span class="normal"><a href="#__codelineno-1-13">13</a></span>
+<span class="normal"><a href="#__codelineno-1-14">14</a></span>
+<span class="normal"><a href="#__codelineno-1-15">15</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="kd">class</span><span class="w"> </span><span class="nc">InsertSort</span><span class="o">&lt;</span><span class="n">T</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">Comparable</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">Sort</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
 <a id="__codelineno-1-2" name="__codelineno-1-2"></a>
-<a id="__codelineno-1-3" name="__codelineno-1-3"></a>log<span class="w"> </span><span class="s2">&quot;hello&quot;</span><span class="w"> </span><span class="s2">&quot;world&quot;</span>
-<a id="__codelineno-1-4" name="__codelineno-1-4"></a>log_info<span class="w"> </span><span class="s2">&quot;hello&quot;</span><span class="w"> </span><span class="s2">&quot;world&quot;</span>
-<a id="__codelineno-1-5" name="__codelineno-1-5"></a>log_warn<span class="w"> </span><span class="s2">&quot;hello&quot;</span><span class="w"> </span><span class="s2">&quot;world&quot;</span>
-<a id="__codelineno-1-6" name="__codelineno-1-6"></a>log_error<span class="w"> </span><span class="s2">&quot;hello&quot;</span><span class="w"> </span><span class="s2">&quot;world&quot;</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3"></a><span class="w">    </span><span class="kd">override</span><span class="w"> </span><span class="kd">fun</span><span class="w"> </span><span class="nf">sort</span><span class="p">(</span><span class="n">arr</span><span class="p">:</span><span class="w"> </span><span class="n">Array</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">arr</span><span class="p">.</span><span class="na">isEmpty</span><span class="p">()</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">arr</span><span class="p">.</span><span class="na">size</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="m">1</span><span class="p">)</span><span class="w"> </span><span class="k">return</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5"></a><span class="w">        </span><span class="kd">val</span><span class="w"> </span><span class="nv">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">arr</span><span class="p">.</span><span class="na">size</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6"></a><span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="n">until</span><span class="w"> </span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7"></a><span class="w">            </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">j</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="n">downTo</span><span class="w"> </span><span class="m">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8"></a><span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">arr</span><span class="o">[</span><span class="n">j</span><span class="o">]</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">arr</span><span class="o">[</span><span class="n">j</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="m">1</span><span class="o">]</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-9" name="__codelineno-1-9"></a><span class="w">                    </span><span class="n">arr</span><span class="p">.</span><span class="na">swap</span><span class="p">(</span><span class="n">j</span><span class="p">,</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="m">1</span><span class="p">)</span>
+<a id="__codelineno-1-10" name="__codelineno-1-10"></a><span class="w">                </span><span class="p">}</span>
+<a id="__codelineno-1-11" name="__codelineno-1-11"></a><span class="w">            </span><span class="p">}</span>
+<a id="__codelineno-1-12" name="__codelineno-1-12"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-1-13" name="__codelineno-1-13"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-1-14" name="__codelineno-1-14"></a>
+<a id="__codelineno-1-15" name="__codelineno-1-15"></a><span class="p">}</span>
 </code></pre></div></td></tr></table></div>
-<h3 id="command_exists-func">command_exists func</h3>
-<div class="language-shell highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1">1</a></span>
-<span class="normal"><a href="#__codelineno-2-2">2</a></span>
-<span class="normal"><a href="#__codelineno-2-3">3</a></span>
-<span class="normal"><a href="#__codelineno-2-4">4</a></span>
-<span class="normal"><a href="#__codelineno-2-5">5</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="nb">source</span><span class="w"> </span>&lt;<span class="o">(</span>curl<span class="w"> </span>-sSL<span class="w"> </span><span class="nv">$ROOT_URI</span>/func/command_exists.sh<span class="o">)</span>
+<h2 id="onlogn">O(nlog(n))</h2>
+<p>时间复杂度为 <span class="arithmatex">\(\mathrm{O}n(\log(n))\)</span> 的排序算法一般都是基于分治的思想来实现的。</p>
+<h3 id="_3">快速排序</h3>
+<p>快速排序的实现到可优化点，单路快排 -&gt; 双路快排 -&gt; 三路快排</p>
+<div class="language-Kotlin highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-2-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-2-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-2-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-2-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-2-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-2-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-2-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-2-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-2-10">10</a></span>
+<span class="normal"><a href="#__codelineno-2-11">11</a></span>
+<span class="normal"><a href="#__codelineno-2-12">12</a></span>
+<span class="normal"><a href="#__codelineno-2-13">13</a></span>
+<span class="normal"><a href="#__codelineno-2-14">14</a></span>
+<span class="normal"><a href="#__codelineno-2-15">15</a></span>
+<span class="normal"><a href="#__codelineno-2-16">16</a></span>
+<span class="normal"><a href="#__codelineno-2-17">17</a></span>
+<span class="normal"><a href="#__codelineno-2-18">18</a></span>
+<span class="normal"><a href="#__codelineno-2-19">19</a></span>
+<span class="normal"><a href="#__codelineno-2-20">20</a></span>
+<span class="normal"><a href="#__codelineno-2-21">21</a></span>
+<span class="normal"><a href="#__codelineno-2-22">22</a></span>
+<span class="normal"><a href="#__codelineno-2-23">23</a></span>
+<span class="normal"><a href="#__codelineno-2-24">24</a></span>
+<span class="normal"><a href="#__codelineno-2-25">25</a></span>
+<span class="normal"><a href="#__codelineno-2-26">26</a></span>
+<span class="normal"><a href="#__codelineno-2-27">27</a></span>
+<span class="normal"><a href="#__codelineno-2-28">28</a></span>
+<span class="normal"><a href="#__codelineno-2-29">29</a></span>
+<span class="normal"><a href="#__codelineno-2-30">30</a></span>
+<span class="normal"><a href="#__codelineno-2-31">31</a></span>
+<span class="normal"><a href="#__codelineno-2-32">32</a></span>
+<span class="normal"><a href="#__codelineno-2-33">33</a></span>
+<span class="normal"><a href="#__codelineno-2-34">34</a></span>
+<span class="normal"><a href="#__codelineno-2-35">35</a></span>
+<span class="normal"><a href="#__codelineno-2-36">36</a></span>
+<span class="normal"><a href="#__codelineno-2-37">37</a></span>
+<span class="normal"><a href="#__codelineno-2-38">38</a></span>
+<span class="normal"><a href="#__codelineno-2-39">39</a></span>
+<span class="normal"><a href="#__codelineno-2-40">40</a></span>
+<span class="normal"><a href="#__codelineno-2-41">41</a></span>
+<span class="normal"><a href="#__codelineno-2-42">42</a></span>
+<span class="normal"><a href="#__codelineno-2-43">43</a></span>
+<span class="normal"><a href="#__codelineno-2-44">44</a></span>
+<span class="normal"><a href="#__codelineno-2-45">45</a></span>
+<span class="normal"><a href="#__codelineno-2-46">46</a></span>
+<span class="normal"><a href="#__codelineno-2-47">47</a></span>
+<span class="normal"><a href="#__codelineno-2-48">48</a></span>
+<span class="normal"><a href="#__codelineno-2-49">49</a></span>
+<span class="normal"><a href="#__codelineno-2-50">50</a></span>
+<span class="normal"><a href="#__codelineno-2-51">51</a></span>
+<span class="normal"><a href="#__codelineno-2-52">52</a></span>
+<span class="normal"><a href="#__codelineno-2-53">53</a></span>
+<span class="normal"><a href="#__codelineno-2-54">54</a></span>
+<span class="normal"><a href="#__codelineno-2-55">55</a></span>
+<span class="normal"><a href="#__codelineno-2-56">56</a></span>
+<span class="normal"><a href="#__codelineno-2-57">57</a></span>
+<span class="normal"><a href="#__codelineno-2-58">58</a></span>
+<span class="normal"><a href="#__codelineno-2-59">59</a></span>
+<span class="normal"><a href="#__codelineno-2-60">60</a></span>
+<span class="normal"><a href="#__codelineno-2-61">61</a></span>
+<span class="normal"><a href="#__codelineno-2-62">62</a></span>
+<span class="normal"><a href="#__codelineno-2-63">63</a></span>
+<span class="normal"><a href="#__codelineno-2-64">64</a></span>
+<span class="normal"><a href="#__codelineno-2-65">65</a></span>
+<span class="normal"><a href="#__codelineno-2-66">66</a></span>
+<span class="normal"><a href="#__codelineno-2-67">67</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="kd">class</span><span class="w"> </span><span class="nc">QuickSort</span><span class="o">&lt;</span><span class="n">T</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">Comparable</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">Sort</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
 <a id="__codelineno-2-2" name="__codelineno-2-2"></a>
-<a id="__codelineno-2-3" name="__codelineno-2-3"></a><span class="k">if</span><span class="w"> </span>command_exists<span class="w"> </span>docker<span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
-<a id="__codelineno-2-4" name="__codelineno-2-4"></a><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;command docker exists&quot;</span>
-<a id="__codelineno-2-5" name="__codelineno-2-5"></a><span class="k">fi</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3"></a><span class="w">    </span><span class="kd">override</span><span class="w"> </span><span class="kd">fun</span><span class="w"> </span><span class="nf">sort</span><span class="p">(</span><span class="n">arr</span><span class="p">:</span><span class="w"> </span><span class="n">Array</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">arr</span><span class="p">.</span><span class="na">isEmpty</span><span class="p">()</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">arr</span><span class="p">.</span><span class="na">size</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="m">1</span><span class="p">)</span><span class="w"> </span><span class="k">return</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5"></a><span class="w">        </span><span class="n">quickSort</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span><span class="w"> </span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="n">arr</span><span class="p">.</span><span class="na">size</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="m">1</span><span class="p">)</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7"></a>
+<a id="__codelineno-2-8" name="__codelineno-2-8"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">fun</span><span class="w"> </span><span class="nf">quickSort</span><span class="p">(</span><span class="n">array</span><span class="p">:</span><span class="w"> </span><span class="n">Array</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="p">,</span><span class="w"> </span><span class="n">left</span><span class="p">:</span><span class="w"> </span><span class="kt">Int</span><span class="p">,</span><span class="w"> </span><span class="n">right</span><span class="p">:</span><span class="w"> </span><span class="kt">Int</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-9" name="__codelineno-2-9"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">left</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="n">right</span><span class="p">)</span><span class="w"> </span><span class="k">return</span>
+<a id="__codelineno-2-10" name="__codelineno-2-10"></a>
+<a id="__codelineno-2-11" name="__codelineno-2-11"></a><span class="w">        </span><span class="kd">val</span><span class="w"> </span><span class="nv">pivotIndex</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">oneWay</span><span class="p">(</span><span class="n">array</span><span class="p">,</span><span class="w"> </span><span class="n">left</span><span class="p">,</span><span class="w"> </span><span class="n">right</span><span class="p">)</span>
+<a id="__codelineno-2-12" name="__codelineno-2-12"></a>
+<a id="__codelineno-2-13" name="__codelineno-2-13"></a><span class="w">        </span><span class="n">quickSort</span><span class="p">(</span><span class="n">array</span><span class="p">,</span><span class="w"> </span><span class="n">left</span><span class="p">,</span><span class="w"> </span><span class="n">pivotIndex</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="m">1</span><span class="p">)</span>
+<a id="__codelineno-2-14" name="__codelineno-2-14"></a><span class="w">        </span><span class="n">quickSort</span><span class="p">(</span><span class="n">array</span><span class="p">,</span><span class="w"> </span><span class="n">pivotIndex</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="n">right</span><span class="p">)</span>
+<a id="__codelineno-2-15" name="__codelineno-2-15"></a>
+<a id="__codelineno-2-16" name="__codelineno-2-16"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-2-17" name="__codelineno-2-17"></a>
+<a id="__codelineno-2-18" name="__codelineno-2-18"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">fun</span><span class="w"> </span><span class="nf">oneWay</span><span class="p">(</span><span class="n">arr</span><span class="p">:</span><span class="w"> </span><span class="n">Array</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="p">,</span><span class="w"> </span><span class="n">left</span><span class="p">:</span><span class="w"> </span><span class="kt">Int</span><span class="p">,</span><span class="w"> </span><span class="n">right</span><span class="p">:</span><span class="w"> </span><span class="kt">Int</span><span class="p">):</span><span class="w"> </span><span class="kt">Int</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-19" name="__codelineno-2-19"></a><span class="w">        </span><span class="kd">val</span><span class="w"> </span><span class="nv">pivot</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">arr</span><span class="o">[</span><span class="n">left</span><span class="o">]</span>
+<a id="__codelineno-2-20" name="__codelineno-2-20"></a>
+<a id="__codelineno-2-21" name="__codelineno-2-21"></a><span class="w">        </span><span class="kd">var</span><span class="w"> </span><span class="nv">start</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">left</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="m">1</span>
+<a id="__codelineno-2-22" name="__codelineno-2-22"></a><span class="w">        </span><span class="kd">var</span><span class="w"> </span><span class="nv">end</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">right</span>
+<a id="__codelineno-2-23" name="__codelineno-2-23"></a>
+<a id="__codelineno-2-24" name="__codelineno-2-24"></a><span class="w">        </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="kc">true</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-25" name="__codelineno-2-25"></a><span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">arr</span><span class="o">[</span><span class="n">start</span><span class="o">]</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">pivot</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-26" name="__codelineno-2-26"></a><span class="w">                </span><span class="n">start</span><span class="o">++</span>
+<a id="__codelineno-2-27" name="__codelineno-2-27"></a><span class="w">            </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-28" name="__codelineno-2-28"></a><span class="w">                </span><span class="n">arr</span><span class="p">.</span><span class="na">swap</span><span class="p">(</span><span class="n">end</span><span class="p">,</span><span class="w"> </span><span class="n">start</span><span class="p">)</span>
+<a id="__codelineno-2-29" name="__codelineno-2-29"></a><span class="w">                </span><span class="n">end</span><span class="o">--</span>
+<a id="__codelineno-2-30" name="__codelineno-2-30"></a><span class="w">            </span><span class="p">}</span>
+<a id="__codelineno-2-31" name="__codelineno-2-31"></a><span class="w">            </span><span class="c1">// 极限情况</span>
+<a id="__codelineno-2-32" name="__codelineno-2-32"></a><span class="w">            </span><span class="c1">// case1: start=r+1 pivot 全小于 arr[l+1...r]</span>
+<a id="__codelineno-2-33" name="__codelineno-2-33"></a><span class="w">            </span><span class="c1">// case2: end=l     pivot 全大于等于 arr[l+1...r]</span>
+<a id="__codelineno-2-34" name="__codelineno-2-34"></a><span class="w">            </span><span class="c1">// 终止的本质是 start=end+1</span>
+<a id="__codelineno-2-35" name="__codelineno-2-35"></a><span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">start</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">end</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-36" name="__codelineno-2-36"></a><span class="w">                </span><span class="k">break</span>
+<a id="__codelineno-2-37" name="__codelineno-2-37"></a><span class="w">            </span><span class="p">}</span>
+<a id="__codelineno-2-38" name="__codelineno-2-38"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-2-39" name="__codelineno-2-39"></a>
+<a id="__codelineno-2-40" name="__codelineno-2-40"></a><span class="w">        </span><span class="n">arr</span><span class="p">.</span><span class="na">swap</span><span class="p">(</span><span class="n">left</span><span class="p">,</span><span class="w"> </span><span class="n">end</span><span class="p">)</span>
+<a id="__codelineno-2-41" name="__codelineno-2-41"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">end</span>
+<a id="__codelineno-2-42" name="__codelineno-2-42"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-2-43" name="__codelineno-2-43"></a>
+<a id="__codelineno-2-44" name="__codelineno-2-44"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">fun</span><span class="w"> </span><span class="nf">twoWay</span><span class="p">(</span><span class="n">arr</span><span class="p">:</span><span class="w"> </span><span class="n">Array</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="p">,</span><span class="w"> </span><span class="n">left</span><span class="p">:</span><span class="w"> </span><span class="kt">Int</span><span class="p">,</span><span class="w"> </span><span class="n">right</span><span class="p">:</span><span class="w"> </span><span class="kt">Int</span><span class="p">):</span><span class="w"> </span><span class="kt">Int</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-45" name="__codelineno-2-45"></a><span class="w">        </span><span class="kd">val</span><span class="w"> </span><span class="nv">pivot</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">arr</span><span class="o">[</span><span class="n">left</span><span class="o">]</span>
+<a id="__codelineno-2-46" name="__codelineno-2-46"></a><span class="w">        </span><span class="kd">var</span><span class="w"> </span><span class="nv">start</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">left</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="m">1</span>
+<a id="__codelineno-2-47" name="__codelineno-2-47"></a><span class="w">        </span><span class="kd">var</span><span class="w"> </span><span class="nv">end</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">right</span>
+<a id="__codelineno-2-48" name="__codelineno-2-48"></a>
+<a id="__codelineno-2-49" name="__codelineno-2-49"></a><span class="w">        </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="kc">true</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-50" name="__codelineno-2-50"></a><span class="w">            </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">start</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">end</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">arr</span><span class="o">[</span><span class="n">start</span><span class="o">]</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">pivot</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-51" name="__codelineno-2-51"></a><span class="w">                </span><span class="n">start</span><span class="o">++</span>
+<a id="__codelineno-2-52" name="__codelineno-2-52"></a><span class="w">            </span><span class="p">}</span>
+<a id="__codelineno-2-53" name="__codelineno-2-53"></a><span class="w">            </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">end</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="n">start</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">arr</span><span class="o">[</span><span class="n">end</span><span class="o">]</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="n">pivot</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-54" name="__codelineno-2-54"></a><span class="w">                </span><span class="n">end</span><span class="o">--</span>
+<a id="__codelineno-2-55" name="__codelineno-2-55"></a><span class="w">            </span><span class="p">}</span>
+<a id="__codelineno-2-56" name="__codelineno-2-56"></a>
+<a id="__codelineno-2-57" name="__codelineno-2-57"></a><span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">start</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">end</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-58" name="__codelineno-2-58"></a><span class="w">                </span><span class="k">break</span>
+<a id="__codelineno-2-59" name="__codelineno-2-59"></a><span class="w">            </span><span class="p">}</span>
+<a id="__codelineno-2-60" name="__codelineno-2-60"></a><span class="w">            </span><span class="n">arr</span><span class="p">.</span><span class="na">swap</span><span class="p">(</span><span class="n">start</span><span class="p">,</span><span class="w"> </span><span class="n">end</span><span class="p">)</span>
+<a id="__codelineno-2-61" name="__codelineno-2-61"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-2-62" name="__codelineno-2-62"></a>
+<a id="__codelineno-2-63" name="__codelineno-2-63"></a><span class="w">        </span><span class="n">arr</span><span class="p">.</span><span class="na">swap</span><span class="p">(</span><span class="n">left</span><span class="p">,</span><span class="w"> </span><span class="n">end</span><span class="p">)</span>
+<a id="__codelineno-2-64" name="__codelineno-2-64"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">end</span>
+<a id="__codelineno-2-65" name="__codelineno-2-65"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-2-66" name="__codelineno-2-66"></a>
+<a id="__codelineno-2-67" name="__codelineno-2-67"></a><span class="p">}</span>
 </code></pre></div></td></tr></table></div>
-<h3 id="detect-ssh-port">detect ssh port</h3>
-<div class="language-shell highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1">1</a></span>
-<span class="normal"><a href="#__codelineno-3-2">2</a></span>
-<span class="normal"><a href="#__codelineno-3-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="nv">ssh_port</span><span class="o">=</span><span class="s2">&quot;</span><span class="k">$(</span>bash<span class="w"> </span>&lt;<span class="o">(</span>curl<span class="w"> </span>-sSL<span class="w"> </span><span class="nv">$ROOT_URI</span>/func/ssh_port.sh<span class="k">)</span><span class="s2">&quot;</span>
+<h3 id="_4">归并排序</h3>
+<p>归并排序分为两种，自顶向下，自底向上。以下的简单实现为 <strong>自顶向下</strong> 的实现。</p>
+<div class="language-Kotlin highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-3-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-3-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-3-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-3-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-3-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-3-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-3-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-3-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-3-10">10</a></span>
+<span class="normal"><a href="#__codelineno-3-11">11</a></span>
+<span class="normal"><a href="#__codelineno-3-12">12</a></span>
+<span class="normal"><a href="#__codelineno-3-13">13</a></span>
+<span class="normal"><a href="#__codelineno-3-14">14</a></span>
+<span class="normal"><a href="#__codelineno-3-15">15</a></span>
+<span class="normal"><a href="#__codelineno-3-16">16</a></span>
+<span class="normal"><a href="#__codelineno-3-17">17</a></span>
+<span class="normal"><a href="#__codelineno-3-18">18</a></span>
+<span class="normal"><a href="#__codelineno-3-19">19</a></span>
+<span class="normal"><a href="#__codelineno-3-20">20</a></span>
+<span class="normal"><a href="#__codelineno-3-21">21</a></span>
+<span class="normal"><a href="#__codelineno-3-22">22</a></span>
+<span class="normal"><a href="#__codelineno-3-23">23</a></span>
+<span class="normal"><a href="#__codelineno-3-24">24</a></span>
+<span class="normal"><a href="#__codelineno-3-25">25</a></span>
+<span class="normal"><a href="#__codelineno-3-26">26</a></span>
+<span class="normal"><a href="#__codelineno-3-27">27</a></span>
+<span class="normal"><a href="#__codelineno-3-28">28</a></span>
+<span class="normal"><a href="#__codelineno-3-29">29</a></span>
+<span class="normal"><a href="#__codelineno-3-30">30</a></span>
+<span class="normal"><a href="#__codelineno-3-31">31</a></span>
+<span class="normal"><a href="#__codelineno-3-32">32</a></span>
+<span class="normal"><a href="#__codelineno-3-33">33</a></span>
+<span class="normal"><a href="#__codelineno-3-34">34</a></span>
+<span class="normal"><a href="#__codelineno-3-35">35</a></span>
+<span class="normal"><a href="#__codelineno-3-36">36</a></span>
+<span class="normal"><a href="#__codelineno-3-37">37</a></span>
+<span class="normal"><a href="#__codelineno-3-38">38</a></span>
+<span class="normal"><a href="#__codelineno-3-39">39</a></span>
+<span class="normal"><a href="#__codelineno-3-40">40</a></span>
+<span class="normal"><a href="#__codelineno-3-41">41</a></span>
+<span class="normal"><a href="#__codelineno-3-42">42</a></span>
+<span class="normal"><a href="#__codelineno-3-43">43</a></span>
+<span class="normal"><a href="#__codelineno-3-44">44</a></span>
+<span class="normal"><a href="#__codelineno-3-45">45</a></span>
+<span class="normal"><a href="#__codelineno-3-46">46</a></span>
+<span class="normal"><a href="#__codelineno-3-47">47</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="kd">class</span><span class="w"> </span><span class="nc">MergeSort</span><span class="o">&lt;</span><span class="n">T</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">Comparable</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">Sort</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
 <a id="__codelineno-3-2" name="__codelineno-3-2"></a>
-<a id="__codelineno-3-3" name="__codelineno-3-3"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;ssh port is </span><span class="nv">$ssh_port</span><span class="s2">&quot;</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3"></a><span class="w">    </span><span class="kd">override</span><span class="w"> </span><span class="kd">fun</span><span class="w"> </span><span class="nf">sort</span><span class="p">(</span><span class="n">arr</span><span class="p">:</span><span class="w"> </span><span class="n">Array</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">arr</span><span class="p">.</span><span class="na">isEmpty</span><span class="p">()</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">arr</span><span class="p">.</span><span class="na">size</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="m">1</span><span class="p">)</span><span class="w"> </span><span class="k">return</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5"></a><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">divide</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span><span class="w"> </span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="n">arr</span><span class="p">.</span><span class="na">size</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="m">1</span><span class="p">)</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-3-7" name="__codelineno-3-7"></a>
+<a id="__codelineno-3-8" name="__codelineno-3-8"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">fun</span><span class="w"> </span><span class="nf">divide</span><span class="p">(</span><span class="n">array</span><span class="p">:</span><span class="w"> </span><span class="n">Array</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="p">,</span><span class="w"> </span><span class="n">left</span><span class="p">:</span><span class="w"> </span><span class="kt">Int</span><span class="p">,</span><span class="w"> </span><span class="n">right</span><span class="p">:</span><span class="w"> </span><span class="kt">Int</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-9" name="__codelineno-3-9"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">left</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="n">right</span><span class="p">)</span><span class="w"> </span><span class="k">return</span>
+<a id="__codelineno-3-10" name="__codelineno-3-10"></a>
+<a id="__codelineno-3-11" name="__codelineno-3-11"></a><span class="w">        </span><span class="kd">val</span><span class="w"> </span><span class="nv">mid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">left</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">right</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="m">2</span>
+<a id="__codelineno-3-12" name="__codelineno-3-12"></a><span class="w">        </span><span class="n">divide</span><span class="p">(</span><span class="n">array</span><span class="p">,</span><span class="w"> </span><span class="n">left</span><span class="p">,</span><span class="w"> </span><span class="n">mid</span><span class="p">)</span>
+<a id="__codelineno-3-13" name="__codelineno-3-13"></a><span class="w">        </span><span class="n">divide</span><span class="p">(</span><span class="n">array</span><span class="p">,</span><span class="w"> </span><span class="n">mid</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="n">right</span><span class="p">)</span>
+<a id="__codelineno-3-14" name="__codelineno-3-14"></a><span class="w">        </span><span class="n">merge</span><span class="p">(</span><span class="n">array</span><span class="p">,</span><span class="w"> </span><span class="n">left</span><span class="p">,</span><span class="w"> </span><span class="n">mid</span><span class="p">,</span><span class="w"> </span><span class="n">right</span><span class="p">)</span>
+<a id="__codelineno-3-15" name="__codelineno-3-15"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-3-16" name="__codelineno-3-16"></a>
+<a id="__codelineno-3-17" name="__codelineno-3-17"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">fun</span><span class="w"> </span><span class="nf">merge</span><span class="p">(</span><span class="n">array</span><span class="p">:</span><span class="w"> </span><span class="n">Array</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="p">,</span><span class="w"> </span><span class="n">left</span><span class="p">:</span><span class="w"> </span><span class="kt">Int</span><span class="p">,</span><span class="w"> </span><span class="n">mid</span><span class="p">:</span><span class="w"> </span><span class="kt">Int</span><span class="p">,</span><span class="w"> </span><span class="n">right</span><span class="p">:</span><span class="w"> </span><span class="kt">Int</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-18" name="__codelineno-3-18"></a><span class="w">        </span><span class="kd">val</span><span class="w"> </span><span class="nv">size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">right</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">left</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="m">1</span>
+<a id="__codelineno-3-19" name="__codelineno-3-19"></a><span class="w">        </span><span class="kd">val</span><span class="w"> </span><span class="nv">tmp</span><span class="p">:</span><span class="w"> </span><span class="n">Array</span><span class="o">&lt;</span><span class="n">Comparable</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Array</span><span class="p">(</span><span class="n">size</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">array</span><span class="o">[</span><span class="n">left</span><span class="o">]</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-3-20" name="__codelineno-3-20"></a>
+<a id="__codelineno-3-21" name="__codelineno-3-21"></a><span class="w">        </span><span class="kd">var</span><span class="w"> </span><span class="nv">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">left</span>
+<a id="__codelineno-3-22" name="__codelineno-3-22"></a><span class="w">        </span><span class="kd">var</span><span class="w"> </span><span class="nv">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mid</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="m">1</span>
+<a id="__codelineno-3-23" name="__codelineno-3-23"></a><span class="w">        </span><span class="kd">var</span><span class="w"> </span><span class="nv">tmpIndex</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0</span>
+<a id="__codelineno-3-24" name="__codelineno-3-24"></a>
+<a id="__codelineno-3-25" name="__codelineno-3-25"></a><span class="w">        </span><span class="c1">// 处理左右两个子数组，直到其中一个处理完</span>
+<a id="__codelineno-3-26" name="__codelineno-3-26"></a><span class="w">        </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">mid</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">right</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-27" name="__codelineno-3-27"></a><span class="w">            </span><span class="n">tmp</span><span class="o">[</span><span class="n">tmpIndex</span><span class="o">++]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">array</span><span class="o">[</span><span class="n">x</span><span class="o">]</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">array</span><span class="o">[</span><span class="n">y</span><span class="o">]</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-28" name="__codelineno-3-28"></a><span class="w">                </span><span class="n">array</span><span class="o">[</span><span class="n">x</span><span class="o">++]</span>
+<a id="__codelineno-3-29" name="__codelineno-3-29"></a><span class="w">            </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-30" name="__codelineno-3-30"></a><span class="w">                </span><span class="n">array</span><span class="o">[</span><span class="n">y</span><span class="o">++]</span>
+<a id="__codelineno-3-31" name="__codelineno-3-31"></a><span class="w">            </span><span class="p">}</span>
+<a id="__codelineno-3-32" name="__codelineno-3-32"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-3-33" name="__codelineno-3-33"></a>
+<a id="__codelineno-3-34" name="__codelineno-3-34"></a><span class="w">        </span><span class="c1">// 处理左子数组剩余元素</span>
+<a id="__codelineno-3-35" name="__codelineno-3-35"></a><span class="w">        </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">mid</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-36" name="__codelineno-3-36"></a><span class="w">            </span><span class="n">tmp</span><span class="o">[</span><span class="n">tmpIndex</span><span class="o">++]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">array</span><span class="o">[</span><span class="n">x</span><span class="o">++]</span>
+<a id="__codelineno-3-37" name="__codelineno-3-37"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-3-38" name="__codelineno-3-38"></a>
+<a id="__codelineno-3-39" name="__codelineno-3-39"></a><span class="w">        </span><span class="c1">// 处理右子数组剩余元素</span>
+<a id="__codelineno-3-40" name="__codelineno-3-40"></a><span class="w">        </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">y</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">right</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-41" name="__codelineno-3-41"></a><span class="w">            </span><span class="n">tmp</span><span class="o">[</span><span class="n">tmpIndex</span><span class="o">++]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">array</span><span class="o">[</span><span class="n">y</span><span class="o">++]</span>
+<a id="__codelineno-3-42" name="__codelineno-3-42"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-3-43" name="__codelineno-3-43"></a><span class="w">        </span><span class="c1">// 将临时数组中的元素复制回原数组</span>
+<a id="__codelineno-3-44" name="__codelineno-3-44"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">arraycopy</span><span class="p">(</span><span class="n">tmp</span><span class="p">,</span><span class="w"> </span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="n">array</span><span class="p">,</span><span class="w"> </span><span class="n">left</span><span class="p">,</span><span class="w"> </span><span class="n">size</span><span class="p">)</span>
+<a id="__codelineno-3-45" name="__codelineno-3-45"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-3-46" name="__codelineno-3-46"></a>
+<a id="__codelineno-3-47" name="__codelineno-3-47"></a><span class="p">}</span>
 </code></pre></div></td></tr></table></div>
-<h3 id="detect-os">detect os</h3>
-<div class="language-shell highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-1">1</a></span>
-<span class="normal"><a href="#__codelineno-4-2">2</a></span>
-<span class="normal"><a href="#__codelineno-4-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1"></a><span class="nb">source</span><span class="w"> </span>&lt;<span class="o">(</span>curl<span class="w"> </span>-sSL<span class="w"> </span><span class="nv">$ROOT_URI</span>/func/detect_os.sh<span class="o">)</span>
-<a id="__codelineno-4-2" name="__codelineno-4-2"></a>
-<a id="__codelineno-4-3" name="__codelineno-4-3"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$os_name</span><span class="s2">&quot;</span>
-</code></pre></div></td></tr></table></div>
-<h3 id="date-format">date format</h3>
-<div class="language-shell highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-5-1">1</a></span>
-<span class="normal"><a href="#__codelineno-5-2">2</a></span>
-<span class="normal"><a href="#__codelineno-5-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1"></a><span class="nb">source</span><span class="w"> </span>&lt;<span class="o">(</span>curl<span class="w"> </span>-sSL<span class="w"> </span><span class="nv">$ROOT_URI</span>/func/date.sh<span class="o">)</span>
-<a id="__codelineno-5-2" name="__codelineno-5-2"></a>
-<a id="__codelineno-5-3" name="__codelineno-5-3"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$datetime_version</span><span class="s2">&quot;</span>
-</code></pre></div></td></tr></table></div>
-<h2 id="build-gradles-project">build gradle's project</h2>
-<p>build gradle's project by docker</p>
-<div class="language-shell highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-6-1">1</a></span>
-<span class="normal"><a href="#__codelineno-6-2">2</a></span>
-<span class="normal"><a href="#__codelineno-6-3">3</a></span>
-<span class="normal"><a href="#__codelineno-6-4">4</a></span>
-<span class="normal"><a href="#__codelineno-6-5">5</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1"></a>bash<span class="w"> </span>&lt;<span class="o">(</span>curl<span class="w"> </span>-sSL<span class="w"> </span><span class="nv">$ROOT_URI</span>/gradle/build.sh<span class="o">)</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-6-2" name="__codelineno-6-2"></a><span class="w">  </span>-d<span class="w"> </span><span class="o">[</span>build_dir<span class="o">]</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-6-3" name="__codelineno-6-3"></a><span class="w">  </span>-c<span class="w"> </span>&lt;cache_volume&gt;<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-6-4" name="__codelineno-6-4"></a><span class="w">  </span>-i<span class="w"> </span>&lt;gradle_image&gt;<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-6-5" name="__codelineno-6-5"></a><span class="w">  </span>-x<span class="w"> </span>&lt;gradle_command&gt;
-</code></pre></div></td></tr></table></div>
-<ul>
-<li><code>-d</code>: gradle构建的目录 可为空，默认执行脚本的目录</li>
-<li><code>-c</code>: gradle缓存: 使用<code>docker volume</code>挂载</li>
-<li><code>-i</code>: gradle的镜像</li>
-<li><code>-x</code>: gradle的命令</li>
-<li>e.g. : <code>gradle clean build -x test</code></li>
-</ul>
-<h2 id="build-mavens-project">build maven's project</h2>
-<p>build maven's project by docker</p>
-<div class="language-shell highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-7-1">1</a></span>
-<span class="normal"><a href="#__codelineno-7-2">2</a></span>
-<span class="normal"><a href="#__codelineno-7-3">3</a></span>
-<span class="normal"><a href="#__codelineno-7-4">4</a></span>
-<span class="normal"><a href="#__codelineno-7-5">5</a></span>
-<span class="normal"><a href="#__codelineno-7-6">6</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1"></a>bash<span class="w"> </span>&lt;<span class="o">(</span>curl<span class="w"> </span>-sSL<span class="w"> </span><span class="nv">$ROOT_URI</span>/maven/build.sh<span class="o">)</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-7-2" name="__codelineno-7-2"></a><span class="w">  </span>-d<span class="w"> </span><span class="o">[</span>build_dir<span class="o">]</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-7-3" name="__codelineno-7-3"></a><span class="w">  </span>-c<span class="w"> </span>&lt;cache_volume&gt;<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-7-4" name="__codelineno-7-4"></a><span class="w">  </span>-i<span class="w"> </span>&lt;maven_image&gt;<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-7-5" name="__codelineno-7-5"></a><span class="w">  </span>-s<span class="w"> </span>&lt;path/to/settings.xml&gt;<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-7-6" name="__codelineno-7-6"></a><span class="w">  </span>-x<span class="w"> </span>&lt;maven_command&gt;
-</code></pre></div></td></tr></table></div>
-<ul>
-<li><code>-d</code>: maven构建的目录 可为空，默认执行脚本的目录</li>
-<li><code>-c</code>: maven缓存</li>
-<li><code>-i</code>: maven镜像</li>
-<li><code>-s</code>: maven <code>settings.xml</code> 在本地的路径</li>
-<li><code>-x</code>: maven执行的命令</li>
-<li>e.g. : <code>mvn clean install -Dmaven.test.skip=true</code></li>
-</ul>
-<h2 id="build-golangs-project">build golang's project</h2>
-<p>build golang's project by docker</p>
-<div class="language-shell highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-8-1">1</a></span>
-<span class="normal"><a href="#__codelineno-8-2">2</a></span>
-<span class="normal"><a href="#__codelineno-8-3">3</a></span>
-<span class="normal"><a href="#__codelineno-8-4">4</a></span>
-<span class="normal"><a href="#__codelineno-8-5">5</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1"></a>bash<span class="w"> </span>&lt;<span class="o">(</span>curl<span class="w"> </span>-sSL<span class="w"> </span><span class="nv">$ROOT_URI</span>/golang/build.sh<span class="o">)</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-8-2" name="__codelineno-8-2"></a><span class="w">  </span>-d<span class="w"> </span><span class="o">[</span>build_dir<span class="o">]</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-8-3" name="__codelineno-8-3"></a><span class="w">  </span>-c<span class="w"> </span>&lt;cache_volume&gt;<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-8-4" name="__codelineno-8-4"></a><span class="w">  </span>-i<span class="w"> </span>&lt;gradle_image&gt;<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-8-5" name="__codelineno-8-5"></a><span class="w">  </span>-x<span class="w"> </span>&lt;gradle_command&gt;
-</code></pre></div></td></tr></table></div>
-<ul>
-<li><code>-d</code>: golang构建的目录 可为空，默认执行脚本的目录</li>
-<li><code>-c</code>: golang缓存: 使用<code>docker volume</code>挂载</li>
-<li><code>-i</code>: golang的镜像</li>
-<li><code>-x</code>: golang的命令</li>
-<li>e.g. : <code>go build -v -o application</code></li>
-</ul>
-<h2 id="build-nodes-project">build node's project</h2>
-<div class="language-shell highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-9-1">1</a></span>
-<span class="normal"><a href="#__codelineno-9-2">2</a></span>
-<span class="normal"><a href="#__codelineno-9-3">3</a></span>
-<span class="normal"><a href="#__codelineno-9-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1"></a>bash<span class="w"> </span>&lt;<span class="o">(</span>curl<span class="w"> </span>-sSL<span class="w"> </span><span class="nv">$ROOT_URI</span>/node/build.sh<span class="o">)</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-9-2" name="__codelineno-9-2"></a><span class="w">  </span>-d<span class="w"> </span><span class="o">[</span>build_dir<span class="o">]</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-9-3" name="__codelineno-9-3"></a><span class="w">  </span>-i<span class="w"> </span>&lt;gradle_image&gt;<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-9-4" name="__codelineno-9-4"></a><span class="w">  </span>-x<span class="w"> </span>&lt;gradle_command&gt;
-</code></pre></div></td></tr></table></div>
-<ul>
-<li><code>-d</code>: node 构建的目录 可为空，默认执行脚本的目录</li>
-<li><code>-i</code>: node 的镜像</li>
-<li><code>-x</code>: node 的命令</li>
-<li>e.g. : <code>npm install --registry=https://registry.npmmirror.com</code></li>
-<li>e.g. : <code>npm run build</code></li>
-</ul>
-<h3 id="nvm-on-linux">nvm on linux</h3>
-<blockquote>
-<p>HOME is /root</p>
-</blockquote>
-<p>install</p>
-<div class="language-shell highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-10-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1"></a>bash<span class="w"> </span>&lt;<span class="o">(</span>curl<span class="w"> </span>-sSL<span class="w"> </span><span class="nv">$ROOT_URI</span>/node/nvm/install.sh<span class="o">)</span>
-</code></pre></div></td></tr></table></div>
-<p>uninstall</p>
-<div class="language-shell highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-11-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1"></a>bash<span class="w"> </span>&lt;<span class="o">(</span>curl<span class="w"> </span>-sSL<span class="w"> </span><span class="nv">$ROOT_URI</span>/node/nvm/uninstall.sh<span class="o">)</span>
-</code></pre></div></td></tr></table></div>
-<h2 id="build-writersides-project">build writerside's project</h2>
-<p>build writerside's project by docker</p>
-<div class="language-shell highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-12-1">1</a></span>
-<span class="normal"><a href="#__codelineno-12-2">2</a></span>
-<span class="normal"><a href="#__codelineno-12-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1"></a>bash<span class="w"> </span>&lt;<span class="o">(</span>curl<span class="w"> </span>-sSL<span class="w"> </span><span class="nv">$ROOT_URI</span>/writerside/build.sh<span class="o">)</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-12-2" name="__codelineno-12-2"></a><span class="w">  </span>-d<span class="w"> </span><span class="o">[</span>build_dir<span class="o">]</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-12-3" name="__codelineno-12-3"></a><span class="w">  </span>-i<span class="w"> </span>&lt;instance&gt;
-</code></pre></div></td></tr></table></div>
-<ul>
-<li><code>-d</code>: writerside 构建的目录 可为空，默认执行脚本的目录</li>
-<li><code>-i</code>: writerside 的 instance</li>
-</ul>
-<h2 id="docker">docker</h2>
-<h3 id="build-dockers-image-and-push">build docker's image (and push)</h3>
-<blockquote>
-<p>by Dockerfile</p>
-</blockquote>
-<div class="language-shell highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-13-1">1</a></span>
-<span class="normal"><a href="#__codelineno-13-2">2</a></span>
-<span class="normal"><a href="#__codelineno-13-3">3</a></span>
-<span class="normal"><a href="#__codelineno-13-4">4</a></span>
-<span class="normal"><a href="#__codelineno-13-5">5</a></span>
-<span class="normal"><a href="#__codelineno-13-6">6</a></span>
-<span class="normal"><a href="#__codelineno-13-7">7</a></span>
-<span class="normal"><a href="#__codelineno-13-8">8</a></span>
-<span class="normal"><a href="#__codelineno-13-9">9</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1"></a>bash<span class="w"> </span>&lt;<span class="o">(</span>curl<span class="w"> </span>-sSL<span class="w"> </span><span class="nv">$ROOT_URI</span>/docker/build.sh<span class="o">)</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-13-2" name="__codelineno-13-2"></a><span class="w">  </span>-m<span class="w"> </span><span class="o">[</span>multi_platform<span class="o">]</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-13-3" name="__codelineno-13-3"></a><span class="w">  </span>-d<span class="w"> </span><span class="o">[</span>build_dir<span class="o">]</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-13-4" name="__codelineno-13-4"></a><span class="w">  </span>-f<span class="w"> </span><span class="o">[</span>path/to/Dockerfile<span class="o">]</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-13-5" name="__codelineno-13-5"></a><span class="w">  </span>-i<span class="w"> </span>&lt;image_name&gt;<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-13-6" name="__codelineno-13-6"></a><span class="w">  </span>-v<span class="w"> </span>&lt;image_tag&gt;<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-13-7" name="__codelineno-13-7"></a><span class="w">  </span>-r<span class="w"> </span>&lt;re_tag_flag&gt;<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-13-8" name="__codelineno-13-8"></a><span class="w">  </span>-t<span class="w"> </span><span class="o">[</span>new_tag<span class="o">]</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-13-9" name="__codelineno-13-9"></a><span class="w">  </span>-p<span class="w"> </span>&lt;push_flag&gt;
-</code></pre></div></td></tr></table></div>
-<ul>
-<li><code>-m</code>: 多平台构建(同时构建amd64和arm64的平台)的选择 <code>true</code> | <code>false</code> ,默认 <code>true</code></li>
-<li><code>-d</code>: <code>docker build</code> 最后指定的路径，如果为空，默认使用 Dockerfile所在的文件路径</li>
-<li><code>-f</code>: <code>Dockefile</code> 的路径, 默认的构建基础路径在Dockerfile的路径下</li>
-<li>可选的参数, 如果没有, 会寻找执行脚本路径下的 <code>DOCKERFILE</code> 或 <code>Dockerfile</code> 或 <code>dockerfile</code></li>
-<li><code>-i</code>: 构建的镜像名称</li>
-<li><code>-v</code>: 构建的镜像版本</li>
-<li><code>-r</code>: 对于存在的镜像是否重新tag <code>true | false</code></li>
-<li><code>-t</code>: 对于存在的镜像，重新tag的版本</li>
-<li><code>-p</code>: 是否push到仓库中</li>
-</ul>
-<p><a href="https://github.com/svcops/ifconfig/blob/main/build.sh">example (build goland' project and push)</a></p>
-<h3 id="remove-dockers-image">remove docker's image</h3>
-<div class="language-shell highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-14-1">1</a></span>
-<span class="normal"><a href="#__codelineno-14-2">2</a></span>
-<span class="normal"><a href="#__codelineno-14-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1"></a>bash<span class="w"> </span>&lt;<span class="o">(</span>curl<span class="w"> </span>-sSL<span class="w"> </span><span class="nv">$ROOT_URI</span>/docker/tools/rmi.sh<span class="o">)</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-14-2" name="__codelineno-14-2"></a><span class="w">  </span>-i<span class="w"> </span>image_name<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-14-3" name="__codelineno-14-3"></a><span class="w">  </span>-s<span class="w"> </span>strategy
-</code></pre></div></td></tr></table></div>
-<ul>
-<li><code>-i</code>: 镜像的名称</li>
-<li><code>-s</code>: 删除的策略：默认策略 <code>contain_latest</code></li>
-<li><code>contain_latest</code> 保留 <code>latest</code> 镜像，删除其他镜像</li>
-<li><code>remove_none</code> 删除 <code>none</code> 的镜像</li>
-<li><code>all</code>: 删除所有镜像</li>
-</ul>
-<h3 id="install-docker">install docker</h3>
-<p><strong>debian系 安装docker</strong></p>
-<div class="language-shell highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-15-1"> 1</a></span>
-<span class="normal"><a href="#__codelineno-15-2"> 2</a></span>
-<span class="normal"><a href="#__codelineno-15-3"> 3</a></span>
-<span class="normal"><a href="#__codelineno-15-4"> 4</a></span>
-<span class="normal"><a href="#__codelineno-15-5"> 5</a></span>
-<span class="normal"><a href="#__codelineno-15-6"> 6</a></span>
-<span class="normal"><a href="#__codelineno-15-7"> 7</a></span>
-<span class="normal"><a href="#__codelineno-15-8"> 8</a></span>
-<span class="normal"><a href="#__codelineno-15-9"> 9</a></span>
-<span class="normal"><a href="#__codelineno-15-10">10</a></span>
-<span class="normal"><a href="#__codelineno-15-11">11</a></span>
-<span class="normal"><a href="#__codelineno-15-12">12</a></span>
-<span class="normal"><a href="#__codelineno-15-13">13</a></span>
-<span class="normal"><a href="#__codelineno-15-14">14</a></span>
-<span class="normal"><a href="#__codelineno-15-15">15</a></span>
-<span class="normal"><a href="#__codelineno-15-16">16</a></span>
-<span class="normal"><a href="#__codelineno-15-17">17</a></span>
-<span class="normal"><a href="#__codelineno-15-18">18</a></span>
-<span class="normal"><a href="#__codelineno-15-19">19</a></span>
-<span class="normal"><a href="#__codelineno-15-20">20</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1"></a>bash<span class="w"> </span>&lt;<span class="o">(</span>curl<span class="w"> </span>-sSL<span class="w"> </span><span class="nv">$ROOT_URI</span>/docker/install/i.sh<span class="w"> </span><span class="o">)</span><span class="w"> </span>SRC
-<a id="__codelineno-15-2" name="__codelineno-15-2"></a><span class="sb">````</span>
-<a id="__codelineno-15-3" name="__codelineno-15-3"></a>
-<a id="__codelineno-15-4" name="__codelineno-15-4"></a>-<span class="w"> </span>SRC:<span class="w"> </span>源<span class="w"> </span><span class="o">(</span><span class="sb">`</span>docker<span class="sb">`</span><span class="w"> </span>官方源<span class="w"> </span>/<span class="w"> </span><span class="sb">`</span>tsinghua<span class="sb">`</span><span class="w"> </span>清华源<span class="w"> </span>/<span class="w"> </span><span class="sb">`</span>aliyun<span class="sb">`</span><span class="w"> </span>阿里云<span class="o">)</span>
-<a id="__codelineno-15-5" name="__codelineno-15-5"></a>
-<a id="__codelineno-15-6" name="__codelineno-15-6"></a>**手动安装docker**
-<a id="__codelineno-15-7" name="__codelineno-15-7"></a>
-<a id="__codelineno-15-8" name="__codelineno-15-8"></a><span class="sb">```</span>shell
-<a id="__codelineno-15-9" name="__codelineno-15-9"></a>bash<span class="w"> </span>&lt;<span class="o">(</span>curl<span class="w"> </span>-sSL<span class="w"> </span><span class="nv">$ROOT_URI</span>/docker/install-manually/install.sh<span class="o">)</span><span class="w"> </span><span class="nv">$arch</span><span class="w"> </span><span class="nv">$version</span>
-<a id="__codelineno-15-10" name="__codelineno-15-10"></a><span class="sb">````</span>
-<a id="__codelineno-15-11" name="__codelineno-15-11"></a>
-<a id="__codelineno-15-12" name="__codelineno-15-12"></a>-<span class="w"> </span><span class="sb">`</span>arch<span class="sb">`</span>:<span class="w"> </span>系统架构
-<a id="__codelineno-15-13" name="__codelineno-15-13"></a>-<span class="w"> </span><span class="sb">`</span>version<span class="sb">`</span>:<span class="w"> </span>docker版本
-<a id="__codelineno-15-14" name="__codelineno-15-14"></a>
-<a id="__codelineno-15-15" name="__codelineno-15-15"></a><span class="c1">### config docker</span>
-<a id="__codelineno-15-16" name="__codelineno-15-16"></a>
-<a id="__codelineno-15-17" name="__codelineno-15-17"></a>&gt;<span class="w"> </span>config<span class="w"> </span><span class="sb">`</span>/etc/docker/daemon.json<span class="sb">`</span>
-<a id="__codelineno-15-18" name="__codelineno-15-18"></a>
-<a id="__codelineno-15-19" name="__codelineno-15-19"></a><span class="sb">```</span>shell
-<a id="__codelineno-15-20" name="__codelineno-15-20"></a>bash<span class="w"> </span>&lt;<span class="o">(</span>curl<span class="w"> </span>-sSL<span class="w"> </span><span class="nv">$ROOT_URI</span>/docker/config.sh<span class="o">)</span>
-</code></pre></div></td></tr></table></div>
-<h2 id="develop">develop</h2>
-<h3 id="config-maven">config maven</h3>
-<p>config maven <code>settings.xml</code></p>
-<div class="language-shell highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-16-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1"></a>bash<span class="w"> </span>&lt;<span class="o">(</span>curl<span class="w"> </span>-sSL<span class="w"> </span><span class="nv">$ROOT_URI</span>/maven/config.sh<span class="o">)</span>
-</code></pre></div></td></tr></table></div>
-<h3 id="verify-nginx-configuration">verify nginx configuration</h3>
-<p>验证基于<code>docker-compose</code>启动的nginx的配置文件</p>
-<div class="language-shell highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-17-1">1</a></span>
-<span class="normal"><a href="#__codelineno-17-2">2</a></span>
-<span class="normal"><a href="#__codelineno-17-3">3</a></span>
-<span class="normal"><a href="#__codelineno-17-4">4</a></span>
-<span class="normal"><a href="#__codelineno-17-5">5</a></span>
-<span class="normal"><a href="#__codelineno-17-6">6</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1"></a><span class="nb">source</span><span class="w"> </span>&lt;<span class="o">(</span>curl<span class="w"> </span>-sSL<span class="w"> </span><span class="nv">$ROOT_URI</span>/nginx/verify_func.sh<span class="o">)</span>
-<a id="__codelineno-17-2" name="__codelineno-17-2"></a><span class="k">if</span><span class="w"> </span>verify_nginx_configuration<span class="w"> </span>nginx<span class="w"> </span>path/to/docker-compose.yml<span class="p">;</span><span class="w"> </span><span class="k">then</span>
-<a id="__codelineno-17-3" name="__codelineno-17-3"></a><span class="w">  </span>log<span class="w"> </span><span class="s2">&quot;verify&quot;</span><span class="w"> </span><span class="s2">&quot;verify success, then start&quot;</span>
-<a id="__codelineno-17-4" name="__codelineno-17-4"></a><span class="k">else</span>
-<a id="__codelineno-17-5" name="__codelineno-17-5"></a><span class="w">  </span>log<span class="w"> </span><span class="s2">&quot;verify&quot;</span><span class="w"> </span><span class="s2">&quot;verify failed, then edit again&quot;</span>
-<a id="__codelineno-17-6" name="__codelineno-17-6"></a><span class="k">fi</span>
-</code></pre></div></td></tr></table></div>
-<ul>
-<li>方法参数一: service_name</li>
-<li>方法参数二: compose文件位置，可传递，默认寻找执行脚本目录下的 <code>docker-compose.yml</code> 或者 <code>docker-comopose.yaml</code></li>
-</ul>
-<p>快速验证</p>
-<div class="language-shell highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-18-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1"></a>bash<span class="w"> </span>&lt;<span class="o">(</span>curl<span class="w"> </span>-sSL<span class="w"> </span><span class="nv">$ROOT_URI</span>/nginx/verify.sh<span class="o">)</span><span class="w"> </span>nginx<span class="w"> </span>path/to/docker-compose.yml
-</code></pre></div></td></tr></table></div>
-<ul>
-<li><code>nginx</code> 是 <code>docker-compose.yaml</code>中定义的<code>service</code></li>
-<li>第二个参数 <code>docker-comopse.yml</code>的路径，默认会在执行脚本的当前路径下寻找 <code>docker-compose.yml</code> 或者 <code>docker-compose.yaml</code></li>
-</ul>
-<h2 id="proxy-config">proxy config</h2>
-<h3 id="bashrc-proxy-config">bashrc proxy config</h3>
-<div class="language-shell highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-19-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1"></a>bash<span class="w"> </span>&lt;<span class="o">(</span>curl<span class="w"> </span>-sSL<span class="w"> </span><span class="nv">$ROOT_URI</span>/linux/system/bashrc/config_bashrc_proxy.sh<span class="o">)</span><span class="w"> </span><span class="nv">$PROXY_URL</span><span class="w"> </span><span class="nv">$NO_PROXY_CONTENT</span>
-</code></pre></div></td></tr></table></div>
-<ul>
-<li><code>PROXY_URL</code>: 代理的地址</li>
-<li>e.g. <code>http://127.0.0.1:8888</code></li>
-<li>e.g. <code>socks5h://127.0.0.1:1080</code></li>
-<li><code>NO_PROXY_CONTENT</code>: 不需要代理地址</li>
-<li>e.g. <code>.local,localhost,127.0.0.1,192.168.*.*,10.0.0.0/8</code></li>
-</ul>
-<h3 id="docker-daemon-proxy-config">docker daemon proxy config</h3>
-<div class="language-shell highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-20-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1"></a>bash<span class="w"> </span>&lt;<span class="o">(</span>curl<span class="w"> </span>-sSL<span class="w"> </span><span class="nv">$ROOT_URI</span>/docker/config_daemon_proxy.sh<span class="o">)</span><span class="w"> </span><span class="nv">$PROXY_URL</span><span class="w"> </span><span class="nv">$NO_PROXY_CONTENT</span>
-</code></pre></div></td></tr></table></div>
-<ul>
-<li><code>PROXY_URL</code>: 代理的地址</li>
-<li>e.g. <code>http://127.0.0.1:8888</code></li>
-<li>e.g. <code>socks5h://127.0.0.1:1080</code></li>
-<li><code>NO_PROXY_CONTENT</code>: 不需要代理地址</li>
-<li>e.g. <code>localhost,127.0.0.1,docker-registry.somecorporation.com</code></li>
-</ul>
 
 
 
@@ -6827,15 +6426,31 @@
       
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
+          
+          <a href="../dynamic-programming/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Dynamic Programming">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Dynamic Programming
+              </div>
+            </div>
+          </a>
+        
         
           
-          <a href="mml/" class="md-footer__link md-footer__link--next" aria-label="Next: Mathematics For Machine Learning">
+          <a href="../data-structures/" class="md-footer__link md-footer__link--next" aria-label="Next: Data structures">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Mathematics For Machine Learning
+                Data structures
               </div>
             </div>
             <div class="md-footer__button md-icon">
@@ -6880,18 +6495,18 @@
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": ".", "features": ["content.code.copy", "content.code.annotate", "content.code.select", "content.tabs.link", "content.action.edit", "navigation.indexes", "navigation.tracking", "navigation.top", "search.highlight", "search.suggest", "navigation.footer"], "search": "assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["content.code.copy", "content.code.annotate", "content.code.select", "content.tabs.link", "content.action.edit", "navigation.indexes", "navigation.tracking", "navigation.top", "search.highlight", "search.suggest", "navigation.footer"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
       
         <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
       
         <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
       
-        <script src="assets/javascripts/katex.js"></script>
+        <script src="../../../assets/javascripts/katex.js"></script>
       
-        <script src="assets/javascripts/mermaid.js"></script>
+        <script src="../../../assets/javascripts/mermaid.js"></script>
       
     
   </body>

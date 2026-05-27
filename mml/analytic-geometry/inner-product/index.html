@@ -8,29 +8,31 @@
       
       
       
-        <link rel="canonical" href="https://blog.kubectl.net/">
+        <link rel="canonical" href="https://blog.kubectl.net/mml/analytic-geometry/inner-product/">
       
       
+        <link rel="prev" href="../norm/">
       
-        <link rel="next" href="mml/">
+      
+        <link rel="next" href="../../matrix-decomposition/">
       
       
         
       
       
-      <link rel="icon" href="assets/images/favicon.png">
+      <link rel="icon" href="../../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
     
     
       
-        <title>Mind and Hand</title>
+        <title>Inner Product - Mind and Hand</title>
       
     
     
-      <link rel="stylesheet" href="assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.484c7ddc.min.css">
       
         
-        <link rel="stylesheet" href="assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
       
       
 
@@ -45,13 +47,13 @@
     
       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
     
-      <link rel="stylesheet" href="assets/stylesheets/extra.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/extra.css">
     
-      <link rel="stylesheet" href="assets/stylesheets/table.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/table.css">
     
-      <link rel="stylesheet" href="assets/stylesheets/font.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/font.css">
     
-    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -76,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#build-project" class="md-skip">
+        <a href="#inner-product" class="md-skip">
           Skip to content
         </a>
       
@@ -92,7 +94,7 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="." title="Mind and Hand" class="md-header__button md-logo" aria-label="Mind and Hand" data-md-component="logo">
+    <a href="../../.." title="Mind and Hand" class="md-header__button md-logo" aria-label="Mind and Hand" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -112,7 +114,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              build project
+              Inner Product
             
           </span>
         </div>
@@ -218,7 +220,7 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="." title="Mind and Hand" class="md-nav__button md-logo" aria-label="Mind and Hand" data-md-component="logo">
+    <a href="../../.." title="Mind and Hand" class="md-nav__button md-logo" aria-label="Mind and Hand" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -233,37 +235,10 @@
       
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    build project
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="." class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
         
   
   
@@ -279,309 +254,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#basic-variables" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        basic variables
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#functions" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        functions
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="functions">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#log-func" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        log func
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#command_exists-func" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        command_exists func
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#detect-ssh-port" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        detect ssh port
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#detect-os" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        detect os
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#date-format" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        date format
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#build-gradles-project" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        build gradle's project
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#build-mavens-project" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        build maven's project
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#build-golangs-project" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        build golang's project
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#build-nodes-project" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        build node's project
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="build node&#39;s project">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#nvm-on-linux" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        nvm on linux
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#build-writersides-project" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        build writerside's project
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#docker" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        docker
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="docker">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#build-dockers-image-and-push" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        build docker's image (and push)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#remove-dockers-image" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        remove docker's image
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#install-docker" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        install docker
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#develop" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        develop
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="develop">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#config-maven" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        config maven
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#verify-nginx-configuration" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        verify nginx configuration
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#proxy-config" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        proxy config
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="proxy config">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#bashrc-proxy-config" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        bashrc proxy config
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#docker-daemon-proxy-config" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        docker daemon proxy config
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -590,6 +262,8 @@
       
   
   
+    
+  
   
   
     
@@ -619,15 +293,15 @@
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="mml/" class="md-nav__link ">
+            <a href="../../" class="md-nav__link ">
               
   
   
@@ -651,7 +325,7 @@
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
             
@@ -701,7 +375,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="mml/linear-algebra/" class="md-nav__link ">
+            <a href="../../linear-algebra/" class="md-nav__link ">
               
   
   
@@ -745,7 +419,7 @@
   
   
     <li class="md-nav__item">
-      <a href="mml/linear-algebra/matrix/" class="md-nav__link">
+      <a href="../../linear-algebra/matrix/" class="md-nav__link">
         
   
   
@@ -773,7 +447,7 @@
   
   
     <li class="md-nav__item">
-      <a href="mml/linear-algebra/vector-space/" class="md-nav__link">
+      <a href="../../linear-algebra/vector-space/" class="md-nav__link">
         
   
   
@@ -801,7 +475,7 @@
   
   
     <li class="md-nav__item">
-      <a href="mml/linear-algebra/linearly-independent/" class="md-nav__link">
+      <a href="../../linear-algebra/linearly-independent/" class="md-nav__link">
         
   
   
@@ -829,7 +503,7 @@
   
   
     <li class="md-nav__item">
-      <a href="mml/linear-algebra/linear-transformation/" class="md-nav__link">
+      <a href="../../linear-algebra/linear-transformation/" class="md-nav__link">
         
   
   
@@ -857,7 +531,7 @@
   
   
     <li class="md-nav__item">
-      <a href="mml/linear-algebra/basis-rank/" class="md-nav__link">
+      <a href="../../linear-algebra/basis-rank/" class="md-nav__link">
         
   
   
@@ -885,7 +559,7 @@
   
   
     <li class="md-nav__item">
-      <a href="mml/linear-algebra/affine-space/" class="md-nav__link">
+      <a href="../../linear-algebra/affine-space/" class="md-nav__link">
         
   
   
@@ -918,6 +592,8 @@
                 
   
   
+    
+  
   
   
     
@@ -935,15 +611,15 @@
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" checked>
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="mml/analytic-geometry/" class="md-nav__link ">
+            <a href="../" class="md-nav__link ">
               
   
   
@@ -967,7 +643,7 @@
             
           </div>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2_3">
             <span class="md-nav__icon md-icon"></span>
             
@@ -987,7 +663,7 @@
   
   
     <li class="md-nav__item">
-      <a href="mml/analytic-geometry/norm/" class="md-nav__link">
+      <a href="../norm/" class="md-nav__link">
         
   
   
@@ -1012,10 +688,19 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="mml/analytic-geometry/inner-product/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -1031,6 +716,7 @@
   
 
       </a>
+      
     </li>
   
 
@@ -1051,7 +737,7 @@
   
   
     <li class="md-nav__item">
-      <a href="mml/matrix-decomposition/" class="md-nav__link">
+      <a href="../../matrix-decomposition/" class="md-nav__link">
         
   
   
@@ -1079,7 +765,7 @@
   
   
     <li class="md-nav__item">
-      <a href="mml/vector-calculus/" class="md-nav__link">
+      <a href="../../vector-calculus/" class="md-nav__link">
         
   
   
@@ -1107,7 +793,7 @@
   
   
     <li class="md-nav__item">
-      <a href="mml/probability-and-distributions/" class="md-nav__link">
+      <a href="../../probability-and-distributions/" class="md-nav__link">
         
   
   
@@ -1135,7 +821,7 @@
   
   
     <li class="md-nav__item">
-      <a href="mml/continuous-optimization/" class="md-nav__link">
+      <a href="../../continuous-optimization/" class="md-nav__link">
         
   
   
@@ -1163,7 +849,7 @@
   
   
     <li class="md-nav__item">
-      <a href="mml/information-theory/" class="md-nav__link">
+      <a href="../../information-theory/" class="md-nav__link">
         
   
   
@@ -1191,7 +877,7 @@
   
   
     <li class="md-nav__item">
-      <a href="mml/latex/" class="md-nav__link">
+      <a href="../../latex/" class="md-nav__link">
         
   
   
@@ -1248,7 +934,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="papers/" class="md-nav__link ">
+            <a href="../../../papers/" class="md-nav__link ">
               
   
   
@@ -1292,7 +978,7 @@
   
   
     <li class="md-nav__item">
-      <a href="papers/raft/" class="md-nav__link">
+      <a href="../../../papers/raft/" class="md-nav__link">
         
   
   
@@ -1320,7 +1006,7 @@
   
   
     <li class="md-nav__item">
-      <a href="papers/sssp/" class="md-nav__link">
+      <a href="../../../papers/sssp/" class="md-nav__link">
         
   
   
@@ -1379,7 +1065,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="cs/" class="md-nav__link ">
+            <a href="../../../cs/" class="md-nav__link ">
               
   
   
@@ -1449,7 +1135,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="cs/dsa/" class="md-nav__link ">
+            <a href="../../../cs/dsa/" class="md-nav__link ">
               
   
   
@@ -1493,7 +1179,7 @@
   
   
     <li class="md-nav__item">
-      <a href="cs/dsa/dynamic-programming/" class="md-nav__link">
+      <a href="../../../cs/dsa/dynamic-programming/" class="md-nav__link">
         
   
   
@@ -1521,7 +1207,7 @@
   
   
     <li class="md-nav__item">
-      <a href="cs/dsa/sort/" class="md-nav__link">
+      <a href="../../../cs/dsa/sort/" class="md-nav__link">
         
   
   
@@ -1579,7 +1265,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="cs/dsa/data-structures/" class="md-nav__link ">
+            <a href="../../../cs/dsa/data-structures/" class="md-nav__link ">
               
   
   
@@ -1623,7 +1309,7 @@
   
   
     <li class="md-nav__item">
-      <a href="cs/dsa/data-structures/union-find/" class="md-nav__link">
+      <a href="../../../cs/dsa/data-structures/union-find/" class="md-nav__link">
         
   
   
@@ -1651,7 +1337,7 @@
   
   
     <li class="md-nav__item">
-      <a href="cs/dsa/data-structures/heap/" class="md-nav__link">
+      <a href="../../../cs/dsa/data-structures/heap/" class="md-nav__link">
         
   
   
@@ -1705,7 +1391,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="cs/dsa/data-structures/search-tree/" class="md-nav__link ">
+            <a href="../../../cs/dsa/data-structures/search-tree/" class="md-nav__link ">
               
   
   
@@ -1749,7 +1435,7 @@
   
   
     <li class="md-nav__item">
-      <a href="cs/dsa/data-structures/search-tree/bst/" class="md-nav__link">
+      <a href="../../../cs/dsa/data-structures/search-tree/bst/" class="md-nav__link">
         
   
   
@@ -1777,7 +1463,7 @@
   
   
     <li class="md-nav__item">
-      <a href="cs/dsa/data-structures/search-tree/avl/" class="md-nav__link">
+      <a href="../../../cs/dsa/data-structures/search-tree/avl/" class="md-nav__link">
         
   
   
@@ -1805,7 +1491,7 @@
   
   
     <li class="md-nav__item">
-      <a href="cs/dsa/data-structures/search-tree/tt-tree/" class="md-nav__link">
+      <a href="../../../cs/dsa/data-structures/search-tree/tt-tree/" class="md-nav__link">
         
   
   
@@ -1833,7 +1519,7 @@
   
   
     <li class="md-nav__item">
-      <a href="cs/dsa/data-structures/search-tree/rbtree/" class="md-nav__link">
+      <a href="../../../cs/dsa/data-structures/search-tree/rbtree/" class="md-nav__link">
         
   
   
@@ -1869,7 +1555,7 @@
   
   
     <li class="md-nav__item">
-      <a href="cs/dsa/data-structures/skip-list/" class="md-nav__link">
+      <a href="../../../cs/dsa/data-structures/skip-list/" class="md-nav__link">
         
   
   
@@ -1897,7 +1583,7 @@
   
   
     <li class="md-nav__item">
-      <a href="cs/dsa/data-structures/huffman/" class="md-nav__link">
+      <a href="../../../cs/dsa/data-structures/huffman/" class="md-nav__link">
         
   
   
@@ -1925,7 +1611,7 @@
   
   
     <li class="md-nav__item">
-      <a href="cs/dsa/data-structures/trie/" class="md-nav__link">
+      <a href="../../../cs/dsa/data-structures/trie/" class="md-nav__link">
         
   
   
@@ -1995,7 +1681,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="cs/dsa/graph/" class="md-nav__link ">
+            <a href="../../../cs/dsa/graph/" class="md-nav__link ">
               
   
   
@@ -2039,7 +1725,7 @@
   
   
     <li class="md-nav__item">
-      <a href="cs/dsa/graph/graph-definition/" class="md-nav__link">
+      <a href="../../../cs/dsa/graph/graph-definition/" class="md-nav__link">
         
   
   
@@ -2067,7 +1753,7 @@
   
   
     <li class="md-nav__item">
-      <a href="cs/dsa/graph/graph-algorithms/" class="md-nav__link">
+      <a href="../../../cs/dsa/graph/graph-algorithms/" class="md-nav__link">
         
   
   
@@ -2095,7 +1781,7 @@
   
   
     <li class="md-nav__item">
-      <a href="cs/dsa/graph/graph-traverse/" class="md-nav__link">
+      <a href="../../../cs/dsa/graph/graph-traverse/" class="md-nav__link">
         
   
   
@@ -2123,7 +1809,7 @@
   
   
     <li class="md-nav__item">
-      <a href="cs/dsa/graph/graph-components/" class="md-nav__link">
+      <a href="../../../cs/dsa/graph/graph-components/" class="md-nav__link">
         
   
   
@@ -2151,7 +1837,7 @@
   
   
     <li class="md-nav__item">
-      <a href="cs/dsa/graph/graph-toposort/" class="md-nav__link">
+      <a href="../../../cs/dsa/graph/graph-toposort/" class="md-nav__link">
         
   
   
@@ -2179,7 +1865,7 @@
   
   
     <li class="md-nav__item">
-      <a href="cs/dsa/graph/graph-mst/" class="md-nav__link">
+      <a href="../../../cs/dsa/graph/graph-mst/" class="md-nav__link">
         
   
   
@@ -2207,7 +1893,7 @@
   
   
     <li class="md-nav__item">
-      <a href="cs/dsa/graph/dijkstra/" class="md-nav__link">
+      <a href="../../../cs/dsa/graph/dijkstra/" class="md-nav__link">
         
   
   
@@ -2235,7 +1921,7 @@
   
   
     <li class="md-nav__item">
-      <a href="cs/dsa/graph/cycle-analyzer/" class="md-nav__link">
+      <a href="../../../cs/dsa/graph/cycle-analyzer/" class="md-nav__link">
         
   
   
@@ -2279,7 +1965,7 @@
   
   
     <li class="md-nav__item">
-      <a href="cs/computer-network/" class="md-nav__link">
+      <a href="../../../cs/computer-network/" class="md-nav__link">
         
   
   
@@ -2307,7 +1993,7 @@
   
   
     <li class="md-nav__item">
-      <a href="cs/computer-organization/" class="md-nav__link">
+      <a href="../../../cs/computer-organization/" class="md-nav__link">
         
   
   
@@ -2370,7 +2056,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="thinking/" class="md-nav__link ">
+            <a href="../../../thinking/" class="md-nav__link ">
               
   
   
@@ -2414,7 +2100,7 @@
   
   
     <li class="md-nav__item">
-      <a href="thinking/continuity/" class="md-nav__link">
+      <a href="../../../thinking/continuity/" class="md-nav__link">
         
   
   
@@ -2442,7 +2128,7 @@
   
   
     <li class="md-nav__item">
-      <a href="thinking/coding/" class="md-nav__link">
+      <a href="../../../thinking/coding/" class="md-nav__link">
         
   
   
@@ -2470,7 +2156,7 @@
   
   
     <li class="md-nav__item">
-      <a href="thinking/design-pattern/" class="md-nav__link">
+      <a href="../../../thinking/design-pattern/" class="md-nav__link">
         
   
   
@@ -2498,7 +2184,7 @@
   
   
     <li class="md-nav__item">
-      <a href="thinking/concurrency/" class="md-nav__link">
+      <a href="../../../thinking/concurrency/" class="md-nav__link">
         
   
   
@@ -2526,7 +2212,7 @@
   
   
     <li class="md-nav__item">
-      <a href="thinking/standard/" class="md-nav__link">
+      <a href="../../../thinking/standard/" class="md-nav__link">
         
   
   
@@ -2589,7 +2275,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="kubernetes/" class="md-nav__link ">
+            <a href="../../../kubernetes/" class="md-nav__link ">
               
   
   
@@ -2633,7 +2319,7 @@
   
   
     <li class="md-nav__item">
-      <a href="kubernetes/k8s-install/" class="md-nav__link">
+      <a href="../../../kubernetes/k8s-install/" class="md-nav__link">
         
   
   
@@ -2683,7 +2369,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="kubernetes/k8s-cluster-config/" class="md-nav__link ">
+            <a href="../../../kubernetes/k8s-cluster-config/" class="md-nav__link ">
               
   
   
@@ -2727,7 +2413,7 @@
   
   
     <li class="md-nav__item">
-      <a href="kubernetes/k8s-cluster-config/node-port-range/" class="md-nav__link">
+      <a href="../../../kubernetes/k8s-cluster-config/node-port-range/" class="md-nav__link">
         
   
   
@@ -2755,7 +2441,7 @@
   
   
     <li class="md-nav__item">
-      <a href="kubernetes/k8s-cluster-config/node-taint/" class="md-nav__link">
+      <a href="../../../kubernetes/k8s-cluster-config/node-taint/" class="md-nav__link">
         
   
   
@@ -2791,7 +2477,7 @@
   
   
     <li class="md-nav__item">
-      <a href="kubernetes/k8s-update/" class="md-nav__link">
+      <a href="../../../kubernetes/k8s-update/" class="md-nav__link">
         
   
   
@@ -2819,7 +2505,7 @@
   
   
     <li class="md-nav__item">
-      <a href="kubernetes/k8s-resources/" class="md-nav__link">
+      <a href="../../../kubernetes/k8s-resources/" class="md-nav__link">
         
   
   
@@ -2871,7 +2557,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="kubernetes/k8s-applications/" class="md-nav__link ">
+            <a href="../../../kubernetes/k8s-applications/" class="md-nav__link ">
               
   
   
@@ -2915,7 +2601,7 @@
   
   
     <li class="md-nav__item">
-      <a href="kubernetes/k8s-applications/busybox/" class="md-nav__link">
+      <a href="../../../kubernetes/k8s-applications/busybox/" class="md-nav__link">
         
   
   
@@ -2943,7 +2629,7 @@
   
   
     <li class="md-nav__item">
-      <a href="kubernetes/k8s-applications/metrics-server/" class="md-nav__link">
+      <a href="../../../kubernetes/k8s-applications/metrics-server/" class="md-nav__link">
         
   
   
@@ -2997,7 +2683,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="kubernetes/k8s-applications/ingress-nginx-controller/" class="md-nav__link ">
+            <a href="../../../kubernetes/k8s-applications/ingress-nginx-controller/" class="md-nav__link ">
               
   
   
@@ -3041,7 +2727,7 @@
   
   
     <li class="md-nav__item">
-      <a href="kubernetes/k8s-applications/ingress-nginx-controller/ingress/" class="md-nav__link">
+      <a href="../../../kubernetes/k8s-applications/ingress-nginx-controller/ingress/" class="md-nav__link">
         
   
   
@@ -3069,7 +2755,7 @@
   
   
     <li class="md-nav__item">
-      <a href="kubernetes/k8s-applications/ingress-nginx-controller/deploy_ingress_nginx_controller/" class="md-nav__link">
+      <a href="../../../kubernetes/k8s-applications/ingress-nginx-controller/deploy_ingress_nginx_controller/" class="md-nav__link">
         
   
   
@@ -3097,7 +2783,7 @@
   
   
     <li class="md-nav__item">
-      <a href="kubernetes/k8s-applications/ingress-nginx-controller/deployment/" class="md-nav__link">
+      <a href="../../../kubernetes/k8s-applications/ingress-nginx-controller/deployment/" class="md-nav__link">
         
   
   
@@ -3125,7 +2811,7 @@
   
   
     <li class="md-nav__item">
-      <a href="kubernetes/k8s-applications/ingress-nginx-controller/daemonset/" class="md-nav__link">
+      <a href="../../../kubernetes/k8s-applications/ingress-nginx-controller/daemonset/" class="md-nav__link">
         
   
   
@@ -3202,7 +2888,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="docker/" class="md-nav__link ">
+            <a href="../../../docker/" class="md-nav__link ">
               
   
   
@@ -3278,7 +2964,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="docker/docker-compose/" class="md-nav__link ">
+            <a href="../../../docker/docker-compose/" class="md-nav__link ">
               
   
   
@@ -3322,7 +3008,7 @@
   
   
     <li class="md-nav__item">
-      <a href="docker/docker-compose/dc-emqx/" class="md-nav__link">
+      <a href="../../../docker/docker-compose/dc-emqx/" class="md-nav__link">
         
   
   
@@ -3350,7 +3036,7 @@
   
   
     <li class="md-nav__item">
-      <a href="docker/docker-compose/dc-gitea/" class="md-nav__link">
+      <a href="../../../docker/docker-compose/dc-gitea/" class="md-nav__link">
         
   
   
@@ -3378,7 +3064,7 @@
   
   
     <li class="md-nav__item">
-      <a href="docker/docker-compose/dc-frp/" class="md-nav__link">
+      <a href="../../../docker/docker-compose/dc-frp/" class="md-nav__link">
         
   
   
@@ -3406,7 +3092,7 @@
   
   
     <li class="md-nav__item">
-      <a href="docker/docker-compose/dc-kuboard/" class="md-nav__link">
+      <a href="../../../docker/docker-compose/dc-kuboard/" class="md-nav__link">
         
   
   
@@ -3434,7 +3120,7 @@
   
   
     <li class="md-nav__item">
-      <a href="docker/docker-compose/dc-postgres/" class="md-nav__link">
+      <a href="../../../docker/docker-compose/dc-postgres/" class="md-nav__link">
         
   
   
@@ -3462,7 +3148,7 @@
   
   
     <li class="md-nav__item">
-      <a href="docker/docker-compose/dc-socks-server/" class="md-nav__link">
+      <a href="../../../docker/docker-compose/dc-socks-server/" class="md-nav__link">
         
   
   
@@ -3490,7 +3176,7 @@
   
   
     <li class="md-nav__item">
-      <a href="docker/docker-compose/dc-tinyprox/" class="md-nav__link">
+      <a href="../../../docker/docker-compose/dc-tinyprox/" class="md-nav__link">
         
   
   
@@ -3526,7 +3212,7 @@
   
   
     <li class="md-nav__item">
-      <a href="docker/docker-install/" class="md-nav__link">
+      <a href="../../../docker/docker-install/" class="md-nav__link">
         
   
   
@@ -3554,7 +3240,7 @@
   
   
     <li class="md-nav__item">
-      <a href="docker/docker-install-manually/" class="md-nav__link">
+      <a href="../../../docker/docker-install-manually/" class="md-nav__link">
         
   
   
@@ -3582,7 +3268,7 @@
   
   
     <li class="md-nav__item">
-      <a href="docker/docker-config/" class="md-nav__link">
+      <a href="../../../docker/docker-config/" class="md-nav__link">
         
   
   
@@ -3653,7 +3339,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="develop/" class="md-nav__link ">
+            <a href="../../../develop/" class="md-nav__link ">
               
   
   
@@ -3717,7 +3403,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="develop/distributed/" class="md-nav__link ">
+            <a href="../../../develop/distributed/" class="md-nav__link ">
               
   
   
@@ -3761,7 +3447,7 @@
   
   
     <li class="md-nav__item">
-      <a href="develop/distributed/routing-in-distributed-systems/" class="md-nav__link">
+      <a href="../../../develop/distributed/routing-in-distributed-systems/" class="md-nav__link">
         
   
   
@@ -3821,7 +3507,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="develop/develop-design/" class="md-nav__link ">
+            <a href="../../../develop/develop-design/" class="md-nav__link ">
               
   
   
@@ -3889,7 +3575,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="develop/develop-design/iot/" class="md-nav__link ">
+            <a href="../../../develop/develop-design/iot/" class="md-nav__link ">
               
   
   
@@ -3933,7 +3619,7 @@
   
   
     <li class="md-nav__item">
-      <a href="develop/develop-design/iot/iot-project-structure/" class="md-nav__link">
+      <a href="../../../develop/develop-design/iot/iot-project-structure/" class="md-nav__link">
         
   
   
@@ -3961,7 +3647,7 @@
   
   
     <li class="md-nav__item">
-      <a href="develop/develop-design/iot/iot-agent-client/" class="md-nav__link">
+      <a href="../../../develop/develop-design/iot/iot-agent-client/" class="md-nav__link">
         
   
   
@@ -3989,7 +3675,7 @@
   
   
     <li class="md-nav__item">
-      <a href="develop/develop-design/iot/iot-agent-server/" class="md-nav__link">
+      <a href="../../../develop/develop-design/iot/iot-agent-server/" class="md-nav__link">
         
   
   
@@ -4025,7 +3711,7 @@
   
   
     <li class="md-nav__item">
-      <a href="develop/develop-design/dev-frp/" class="md-nav__link">
+      <a href="../../../develop/develop-design/dev-frp/" class="md-nav__link">
         
   
   
@@ -4053,7 +3739,7 @@
   
   
     <li class="md-nav__item">
-      <a href="develop/develop-design/triangle-network/" class="md-nav__link">
+      <a href="../../../develop/develop-design/triangle-network/" class="md-nav__link">
         
   
   
@@ -4125,7 +3811,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="develop/lang-java/" class="md-nav__link ">
+            <a href="../../../develop/lang-java/" class="md-nav__link ">
               
   
   
@@ -4169,7 +3855,7 @@
   
   
     <li class="md-nav__item">
-      <a href="develop/lang-java/log-config/" class="md-nav__link">
+      <a href="../../../develop/lang-java/log-config/" class="md-nav__link">
         
   
   
@@ -4197,7 +3883,7 @@
   
   
     <li class="md-nav__item">
-      <a href="develop/lang-java/dsl/" class="md-nav__link">
+      <a href="../../../develop/lang-java/dsl/" class="md-nav__link">
         
   
   
@@ -4225,7 +3911,7 @@
   
   
     <li class="md-nav__item">
-      <a href="develop/lang-java/java-design/" class="md-nav__link">
+      <a href="../../../develop/lang-java/java-design/" class="md-nav__link">
         
   
   
@@ -4253,7 +3939,7 @@
   
   
     <li class="md-nav__item">
-      <a href="develop/lang-java/jdbc/" class="md-nav__link">
+      <a href="../../../develop/lang-java/jdbc/" class="md-nav__link">
         
   
   
@@ -4281,7 +3967,7 @@
   
   
     <li class="md-nav__item">
-      <a href="develop/lang-java/mybatis/" class="md-nav__link">
+      <a href="../../../develop/lang-java/mybatis/" class="md-nav__link">
         
   
   
@@ -4309,7 +3995,7 @@
   
   
     <li class="md-nav__item">
-      <a href="develop/lang-java/spring/" class="md-nav__link">
+      <a href="../../../develop/lang-java/spring/" class="md-nav__link">
         
   
   
@@ -4337,7 +4023,7 @@
   
   
     <li class="md-nav__item">
-      <a href="develop/lang-java/springboot/" class="md-nav__link">
+      <a href="../../../develop/lang-java/springboot/" class="md-nav__link">
         
   
   
@@ -4365,7 +4051,7 @@
   
   
     <li class="md-nav__item">
-      <a href="develop/lang-java/netty/" class="md-nav__link">
+      <a href="../../../develop/lang-java/netty/" class="md-nav__link">
         
   
   
@@ -4393,7 +4079,7 @@
   
   
     <li class="md-nav__item">
-      <a href="develop/lang-java/ziputils/" class="md-nav__link">
+      <a href="../../../develop/lang-java/ziputils/" class="md-nav__link">
         
   
   
@@ -4451,7 +4137,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="develop/kotlin/" class="md-nav__link ">
+            <a href="../../../develop/kotlin/" class="md-nav__link ">
               
   
   
@@ -4495,7 +4181,7 @@
   
   
     <li class="md-nav__item">
-      <a href="develop/kotlin/kotlin-syntactic-sugar/" class="md-nav__link">
+      <a href="../../../develop/kotlin/kotlin-syntactic-sugar/" class="md-nav__link">
         
   
   
@@ -4523,7 +4209,7 @@
   
   
     <li class="md-nav__item">
-      <a href="develop/kotlin/kotlin-coding-tips/" class="md-nav__link">
+      <a href="../../../develop/kotlin/kotlin-coding-tips/" class="md-nav__link">
         
   
   
@@ -4559,7 +4245,7 @@
   
   
     <li class="md-nav__item">
-      <a href="develop/lang-go/" class="md-nav__link">
+      <a href="../../../develop/lang-go/" class="md-nav__link">
         
   
   
@@ -4609,7 +4295,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="develop/lang-lua/" class="md-nav__link ">
+            <a href="../../../develop/lang-lua/" class="md-nav__link ">
               
   
   
@@ -4653,7 +4339,7 @@
   
   
     <li class="md-nav__item">
-      <a href="develop/lang-lua/lua-access-control/" class="md-nav__link">
+      <a href="../../../develop/lang-lua/lua-access-control/" class="md-nav__link">
         
   
   
@@ -4681,7 +4367,7 @@
   
   
     <li class="md-nav__item">
-      <a href="develop/lang-lua/lua-ac-redis-rules-operator/" class="md-nav__link">
+      <a href="../../../develop/lang-lua/lua-ac-redis-rules-operator/" class="md-nav__link">
         
   
   
@@ -4739,7 +4425,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="develop/sql/" class="md-nav__link ">
+            <a href="../../../develop/sql/" class="md-nav__link ">
               
   
   
@@ -4809,7 +4495,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="develop/sql/postgres/" class="md-nav__link ">
+            <a href="../../../develop/sql/postgres/" class="md-nav__link ">
               
   
   
@@ -4853,7 +4539,7 @@
   
   
     <li class="md-nav__item">
-      <a href="develop/sql/postgres/pg-tree-recursive/" class="md-nav__link">
+      <a href="../../../develop/sql/postgres/pg-tree-recursive/" class="md-nav__link">
         
   
   
@@ -4881,7 +4567,7 @@
   
   
     <li class="md-nav__item">
-      <a href="develop/sql/postgres/pg-graph-recursive/" class="md-nav__link">
+      <a href="../../../develop/sql/postgres/pg-graph-recursive/" class="md-nav__link">
         
   
   
@@ -4909,7 +4595,7 @@
   
   
     <li class="md-nav__item">
-      <a href="develop/sql/postgres/pg-attention/" class="md-nav__link">
+      <a href="../../../develop/sql/postgres/pg-attention/" class="md-nav__link">
         
   
   
@@ -4937,7 +4623,7 @@
   
   
     <li class="md-nav__item">
-      <a href="develop/sql/postgres/pg-psql-pgdump/" class="md-nav__link">
+      <a href="../../../develop/sql/postgres/pg-psql-pgdump/" class="md-nav__link">
         
   
   
@@ -4973,7 +4659,7 @@
   
   
     <li class="md-nav__item">
-      <a href="develop/sql/mysql/" class="md-nav__link">
+      <a href="../../../develop/sql/mysql/" class="md-nav__link">
         
   
   
@@ -5029,7 +4715,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="develop/shell/" class="md-nav__link ">
+            <a href="../../../develop/shell/" class="md-nav__link ">
               
   
   
@@ -5073,7 +4759,7 @@
   
   
     <li class="md-nav__item">
-      <a href="develop/shell/shell-cheat-sheet/" class="md-nav__link">
+      <a href="../../../develop/shell/shell-cheat-sheet/" class="md-nav__link">
         
   
   
@@ -5109,7 +4795,7 @@
   
   
     <li class="md-nav__item">
-      <a href="develop/env-variables/" class="md-nav__link">
+      <a href="../../../develop/env-variables/" class="md-nav__link">
         
   
   
@@ -5174,7 +4860,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="devops/" class="md-nav__link ">
+            <a href="../../../devops/" class="md-nav__link ">
               
   
   
@@ -5240,7 +4926,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="devops/nginx/" class="md-nav__link ">
+            <a href="../../../devops/nginx/" class="md-nav__link ">
               
   
   
@@ -5284,7 +4970,7 @@
   
   
     <li class="md-nav__item">
-      <a href="devops/nginx/nginx-proxy_pass/" class="md-nav__link">
+      <a href="../../../devops/nginx/nginx-proxy_pass/" class="md-nav__link">
         
   
   
@@ -5312,7 +4998,7 @@
   
   
     <li class="md-nav__item">
-      <a href="devops/nginx/nginx-lua-lifecycle/" class="md-nav__link">
+      <a href="../../../devops/nginx/nginx-lua-lifecycle/" class="md-nav__link">
         
   
   
@@ -5348,7 +5034,7 @@
   
   
     <li class="md-nav__item">
-      <a href="devops/ci/" class="md-nav__link">
+      <a href="../../../devops/ci/" class="md-nav__link">
         
   
   
@@ -5398,7 +5084,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="devops/vcs/" class="md-nav__link ">
+            <a href="../../../devops/vcs/" class="md-nav__link ">
               
   
   
@@ -5442,7 +5128,7 @@
   
   
     <li class="md-nav__item">
-      <a href="devops/vcs/gitea/" class="md-nav__link">
+      <a href="../../../devops/vcs/gitea/" class="md-nav__link">
         
   
   
@@ -5470,7 +5156,7 @@
   
   
     <li class="md-nav__item">
-      <a href="devops/vcs/gitlab/" class="md-nav__link">
+      <a href="../../../devops/vcs/gitlab/" class="md-nav__link">
         
   
   
@@ -5506,7 +5192,7 @@
   
   
     <li class="md-nav__item">
-      <a href="devops/writerside/" class="md-nav__link">
+      <a href="../../../devops/writerside/" class="md-nav__link">
         
   
   
@@ -5534,7 +5220,7 @@
   
   
     <li class="md-nav__item">
-      <a href="devops/mirrors/" class="md-nav__link">
+      <a href="../../../devops/mirrors/" class="md-nav__link">
         
   
   
@@ -5582,7 +5268,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="devops/mermaid/" class="md-nav__link ">
+            <a href="../../../devops/mermaid/" class="md-nav__link ">
               
   
   
@@ -5626,7 +5312,7 @@
   
   
     <li class="md-nav__item">
-      <a href="devops/mermaid/mermaid_example/" class="md-nav__link">
+      <a href="../../../devops/mermaid/mermaid_example/" class="md-nav__link">
         
   
   
@@ -5691,7 +5377,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="ai/" class="md-nav__link ">
+            <a href="../../../ai/" class="md-nav__link ">
               
   
   
@@ -5735,7 +5421,7 @@
   
   
     <li class="md-nav__item">
-      <a href="ai/deep-learning/" class="md-nav__link">
+      <a href="../../../ai/deep-learning/" class="md-nav__link">
         
   
   
@@ -5763,7 +5449,7 @@
   
   
     <li class="md-nav__item">
-      <a href="ai/aigc/" class="md-nav__link">
+      <a href="../../../ai/aigc/" class="md-nav__link">
         
   
   
@@ -5822,7 +5508,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="linux/" class="md-nav__link ">
+            <a href="../../../linux/" class="md-nav__link ">
               
   
   
@@ -5866,7 +5552,7 @@
   
   
     <li class="md-nav__item">
-      <a href="linux/git/" class="md-nav__link">
+      <a href="../../../linux/git/" class="md-nav__link">
         
   
   
@@ -5894,7 +5580,7 @@
   
   
     <li class="md-nav__item">
-      <a href="linux/systemd/" class="md-nav__link">
+      <a href="../../../linux/systemd/" class="md-nav__link">
         
   
   
@@ -5922,7 +5608,7 @@
   
   
     <li class="md-nav__item">
-      <a href="linux/ubuntu2204/" class="md-nav__link">
+      <a href="../../../linux/ubuntu2204/" class="md-nav__link">
         
   
   
@@ -5981,7 +5667,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="windows/" class="md-nav__link ">
+            <a href="../../../windows/" class="md-nav__link ">
               
   
   
@@ -6025,7 +5711,7 @@
   
   
     <li class="md-nav__item">
-      <a href="windows/win11Efficient/" class="md-nav__link">
+      <a href="../../../windows/win11Efficient/" class="md-nav__link">
         
   
   
@@ -6053,7 +5739,7 @@
   
   
     <li class="md-nav__item">
-      <a href="windows/kms/" class="md-nav__link">
+      <a href="../../../windows/kms/" class="md-nav__link">
         
   
   
@@ -6081,7 +5767,7 @@
   
   
     <li class="md-nav__item">
-      <a href="windows/windows-clean/" class="md-nav__link">
+      <a href="../../../windows/windows-clean/" class="md-nav__link">
         
   
   
@@ -6116,7 +5802,7 @@
   
   
     <li class="md-nav__item">
-      <a href="macos/" class="md-nav__link">
+      <a href="../../../macos/" class="md-nav__link">
         
   
   
@@ -6143,7 +5829,7 @@
   
   
     <li class="md-nav__item">
-      <a href="parameter-naming/" class="md-nav__link">
+      <a href="../../../parameter-naming/" class="md-nav__link">
         
   
   
@@ -6183,297 +5869,6 @@
     
   
   
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#basic-variables" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        basic variables
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#functions" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        functions
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="functions">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#log-func" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        log func
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#command_exists-func" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        command_exists func
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#detect-ssh-port" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        detect ssh port
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#detect-os" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        detect os
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#date-format" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        date format
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#build-gradles-project" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        build gradle's project
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#build-mavens-project" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        build maven's project
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#build-golangs-project" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        build golang's project
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#build-nodes-project" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        build node's project
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="build node&#39;s project">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#nvm-on-linux" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        nvm on linux
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#build-writersides-project" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        build writerside's project
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#docker" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        docker
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="docker">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#build-dockers-image-and-push" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        build docker's image (and push)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#remove-dockers-image" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        remove docker's image
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#install-docker" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        install docker
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#develop" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        develop
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="develop">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#config-maven" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        config maven
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#verify-nginx-configuration" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        verify nginx configuration
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#proxy-config" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        proxy config
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="proxy config">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#bashrc-proxy-config" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        bashrc proxy config
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#docker-daemon-proxy-config" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        docker daemon proxy config
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
 </nav>
                   </div>
                 </div>
@@ -6489,307 +5884,187 @@
 
 
 
-<h1 id="build-project">build project</h1>
-<p><img alt="" src="https://counter.iproute.org/at/vscoding?theme=booru-lewd" /></p>
-<h2 id="basic-variables">basic variables</h2>
-<blockquote>
-<p>get basic variables</p>
-</blockquote>
-<div class="language-shell highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span>
-<span class="normal"><a href="#__codelineno-0-2">2</a></span>
-<span class="normal"><a href="#__codelineno-0-3">3</a></span>
-<span class="normal"><a href="#__codelineno-0-4">4</a></span>
-<span class="normal"><a href="#__codelineno-0-5">5</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="c1"># export ROOT_URI automatically</span>
-<a id="__codelineno-0-2" name="__codelineno-0-2"></a><span class="nb">source</span><span class="w"> </span>&lt;<span class="o">(</span>curl<span class="w"> </span>-sSL<span class="w"> </span>https://dev.kubectl.org/init<span class="o">)</span>
-<a id="__codelineno-0-3" name="__codelineno-0-3"></a>
-<a id="__codelineno-0-4" name="__codelineno-0-4"></a><span class="c1"># or set manually</span>
-<a id="__codelineno-0-5" name="__codelineno-0-5"></a><span class="c1"># export ROOT_URI=https://dev.kubectl.net</span>
-</code></pre></div></td></tr></table></div>
-<h2 id="functions">functions</h2>
-<h3 id="log-func">log func</h3>
-<div class="language-shell highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1">1</a></span>
-<span class="normal"><a href="#__codelineno-1-2">2</a></span>
-<span class="normal"><a href="#__codelineno-1-3">3</a></span>
-<span class="normal"><a href="#__codelineno-1-4">4</a></span>
-<span class="normal"><a href="#__codelineno-1-5">5</a></span>
-<span class="normal"><a href="#__codelineno-1-6">6</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="nb">source</span><span class="w"> </span>&lt;<span class="o">(</span>curl<span class="w"> </span>-sSL<span class="w"> </span><span class="nv">$ROOT_URI</span>/func/log.sh<span class="o">)</span>
-<a id="__codelineno-1-2" name="__codelineno-1-2"></a>
-<a id="__codelineno-1-3" name="__codelineno-1-3"></a>log<span class="w"> </span><span class="s2">&quot;hello&quot;</span><span class="w"> </span><span class="s2">&quot;world&quot;</span>
-<a id="__codelineno-1-4" name="__codelineno-1-4"></a>log_info<span class="w"> </span><span class="s2">&quot;hello&quot;</span><span class="w"> </span><span class="s2">&quot;world&quot;</span>
-<a id="__codelineno-1-5" name="__codelineno-1-5"></a>log_warn<span class="w"> </span><span class="s2">&quot;hello&quot;</span><span class="w"> </span><span class="s2">&quot;world&quot;</span>
-<a id="__codelineno-1-6" name="__codelineno-1-6"></a>log_error<span class="w"> </span><span class="s2">&quot;hello&quot;</span><span class="w"> </span><span class="s2">&quot;world&quot;</span>
-</code></pre></div></td></tr></table></div>
-<h3 id="command_exists-func">command_exists func</h3>
-<div class="language-shell highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1">1</a></span>
-<span class="normal"><a href="#__codelineno-2-2">2</a></span>
-<span class="normal"><a href="#__codelineno-2-3">3</a></span>
-<span class="normal"><a href="#__codelineno-2-4">4</a></span>
-<span class="normal"><a href="#__codelineno-2-5">5</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="nb">source</span><span class="w"> </span>&lt;<span class="o">(</span>curl<span class="w"> </span>-sSL<span class="w"> </span><span class="nv">$ROOT_URI</span>/func/command_exists.sh<span class="o">)</span>
-<a id="__codelineno-2-2" name="__codelineno-2-2"></a>
-<a id="__codelineno-2-3" name="__codelineno-2-3"></a><span class="k">if</span><span class="w"> </span>command_exists<span class="w"> </span>docker<span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
-<a id="__codelineno-2-4" name="__codelineno-2-4"></a><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;command docker exists&quot;</span>
-<a id="__codelineno-2-5" name="__codelineno-2-5"></a><span class="k">fi</span>
-</code></pre></div></td></tr></table></div>
-<h3 id="detect-ssh-port">detect ssh port</h3>
-<div class="language-shell highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1">1</a></span>
-<span class="normal"><a href="#__codelineno-3-2">2</a></span>
-<span class="normal"><a href="#__codelineno-3-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="nv">ssh_port</span><span class="o">=</span><span class="s2">&quot;</span><span class="k">$(</span>bash<span class="w"> </span>&lt;<span class="o">(</span>curl<span class="w"> </span>-sSL<span class="w"> </span><span class="nv">$ROOT_URI</span>/func/ssh_port.sh<span class="k">)</span><span class="s2">&quot;</span>
-<a id="__codelineno-3-2" name="__codelineno-3-2"></a>
-<a id="__codelineno-3-3" name="__codelineno-3-3"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;ssh port is </span><span class="nv">$ssh_port</span><span class="s2">&quot;</span>
-</code></pre></div></td></tr></table></div>
-<h3 id="detect-os">detect os</h3>
-<div class="language-shell highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-1">1</a></span>
-<span class="normal"><a href="#__codelineno-4-2">2</a></span>
-<span class="normal"><a href="#__codelineno-4-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1"></a><span class="nb">source</span><span class="w"> </span>&lt;<span class="o">(</span>curl<span class="w"> </span>-sSL<span class="w"> </span><span class="nv">$ROOT_URI</span>/func/detect_os.sh<span class="o">)</span>
-<a id="__codelineno-4-2" name="__codelineno-4-2"></a>
-<a id="__codelineno-4-3" name="__codelineno-4-3"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$os_name</span><span class="s2">&quot;</span>
-</code></pre></div></td></tr></table></div>
-<h3 id="date-format">date format</h3>
-<div class="language-shell highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-5-1">1</a></span>
-<span class="normal"><a href="#__codelineno-5-2">2</a></span>
-<span class="normal"><a href="#__codelineno-5-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1"></a><span class="nb">source</span><span class="w"> </span>&lt;<span class="o">(</span>curl<span class="w"> </span>-sSL<span class="w"> </span><span class="nv">$ROOT_URI</span>/func/date.sh<span class="o">)</span>
-<a id="__codelineno-5-2" name="__codelineno-5-2"></a>
-<a id="__codelineno-5-3" name="__codelineno-5-3"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$datetime_version</span><span class="s2">&quot;</span>
-</code></pre></div></td></tr></table></div>
-<h2 id="build-gradles-project">build gradle's project</h2>
-<p>build gradle's project by docker</p>
-<div class="language-shell highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-6-1">1</a></span>
-<span class="normal"><a href="#__codelineno-6-2">2</a></span>
-<span class="normal"><a href="#__codelineno-6-3">3</a></span>
-<span class="normal"><a href="#__codelineno-6-4">4</a></span>
-<span class="normal"><a href="#__codelineno-6-5">5</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1"></a>bash<span class="w"> </span>&lt;<span class="o">(</span>curl<span class="w"> </span>-sSL<span class="w"> </span><span class="nv">$ROOT_URI</span>/gradle/build.sh<span class="o">)</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-6-2" name="__codelineno-6-2"></a><span class="w">  </span>-d<span class="w"> </span><span class="o">[</span>build_dir<span class="o">]</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-6-3" name="__codelineno-6-3"></a><span class="w">  </span>-c<span class="w"> </span>&lt;cache_volume&gt;<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-6-4" name="__codelineno-6-4"></a><span class="w">  </span>-i<span class="w"> </span>&lt;gradle_image&gt;<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-6-5" name="__codelineno-6-5"></a><span class="w">  </span>-x<span class="w"> </span>&lt;gradle_command&gt;
-</code></pre></div></td></tr></table></div>
+<h1 id="inner-product">Inner Product</h1>
+<p>内积可以引入一些直观的几何概念，例如向量的长度和两个向量之间的角度或距离。内积的一个主要目的是确定向量之间是否正交。</p>
+<p><strong>3.2.1 点积</strong></p>
+<p>我们可能已经熟悉了一种特殊类型的内积，<span class="arithmatex">\(\mathbb{R}^{n}\)</span> 中的标量积/点积(scalar product/dot product)</p>
+<div class="arithmatex">\[
+\boldsymbol{x}^\mathrm{T} \cdot \boldsymbol{y} := \sum_{i=1}^{n} x_i y_i
+\]</div>
+<p>在这本书中，我们将把这种特殊的内积称为点积。但是，内积是具有特定性质的更一般的概念，我们现在将介绍这些概念。</p>
+<p><strong>3.2.2 一般内积</strong></p>
+<p>回想一下2.7节中的线性映射，我们可以重新排列与标量的相加和乘相相关的映射。而双线性映射(<em>bilinear mapping</em>)<span class="arithmatex">\(\Omega\)</span> 是有两个参数的的映射，
+且对于每个参数它都是线性的，即对于 <span class="arithmatex">\(\boldsymbol{x},\boldsymbol{y},\boldsymbol{z} \in \mathrm{V}\)</span> 以及 <span class="arithmatex">\(\lambda, \psi \in \mathbb{R}\)</span>，以下成立：</p>
+<div class="arithmatex">\[
+\begin{aligned}
+\Omega(\lambda \boldsymbol{x} + \psi \boldsymbol{y}, \boldsymbol{z}) = \lambda \Omega(\boldsymbol{x}, \boldsymbol{z}) + \psi \Omega(\boldsymbol{y}, \boldsymbol{z})
+\\\\
+\Omega(\boldsymbol{x}, \lambda \boldsymbol{y} + \psi \boldsymbol{z}) = \lambda \Omega(\boldsymbol{x}, \boldsymbol{y}) + \psi \Omega(\boldsymbol{x}, \boldsymbol{z})
+\end{aligned}
+\]</div>
+<p>这里，第一个式子表明 <span class="arithmatex">\(\Omega\)</span> 关于第一个参数中是线性的，第二个式子表明 <span class="arithmatex">\(\Omega\)</span> 关于第二个参数中是线性的。</p>
+<p><strong>定义 3.2</strong></p>
+<p>令 <span class="arithmatex">\(V\)</span> 为向量空间，<span class="arithmatex">\(\Omega : \mathrm{V} \times \mathrm{V} \to \mathbb{R}\)</span> 为双线性映射，
+它取 <span class="arithmatex">\(\mathrm{V}\)</span> 中的两个向量并将它们映射到一个实数，那么：</p>
 <ul>
-<li><code>-d</code>: gradle构建的目录 可为空，默认执行脚本的目录</li>
-<li><code>-c</code>: gradle缓存: 使用<code>docker volume</code>挂载</li>
-<li><code>-i</code>: gradle的镜像</li>
-<li><code>-x</code>: gradle的命令</li>
-<li>e.g. : <code>gradle clean build -x test</code></li>
+<li>
+<p>对于所有 <span class="arithmatex">\(\boldsymbol{x}, \boldsymbol{y} \in \mathrm{V}\)</span>，如果 <span class="arithmatex">\(\Omega(\boldsymbol{x}, \boldsymbol{y}) = \Omega(\boldsymbol{y}, \boldsymbol{x})\)</span>，
+  则称 <span class="arithmatex">\(\Omega\)</span> 为对称的（<em>symmetric</em>），即参数的顺序没有影响。</p>
+</li>
+<li>
+<p>如果对任意 <span class="arithmatex">\(\boldsymbol{x} \in \mathrm{V} \setminus \{0\}\)</span>，有 <span class="arithmatex">\(\Omega(\boldsymbol{x}, \boldsymbol{x}) &gt; 0\)</span>，
+  且 <span class="arithmatex">\(\Omega(0, 0) = 0\)</span>，
+  则称 <span class="arithmatex">\(\Omega\)</span> 为正定的（<em>positive definite</em>）。</p>
+</li>
 </ul>
-<h2 id="build-mavens-project">build maven's project</h2>
-<p>build maven's project by docker</p>
-<div class="language-shell highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-7-1">1</a></span>
-<span class="normal"><a href="#__codelineno-7-2">2</a></span>
-<span class="normal"><a href="#__codelineno-7-3">3</a></span>
-<span class="normal"><a href="#__codelineno-7-4">4</a></span>
-<span class="normal"><a href="#__codelineno-7-5">5</a></span>
-<span class="normal"><a href="#__codelineno-7-6">6</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1"></a>bash<span class="w"> </span>&lt;<span class="o">(</span>curl<span class="w"> </span>-sSL<span class="w"> </span><span class="nv">$ROOT_URI</span>/maven/build.sh<span class="o">)</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-7-2" name="__codelineno-7-2"></a><span class="w">  </span>-d<span class="w"> </span><span class="o">[</span>build_dir<span class="o">]</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-7-3" name="__codelineno-7-3"></a><span class="w">  </span>-c<span class="w"> </span>&lt;cache_volume&gt;<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-7-4" name="__codelineno-7-4"></a><span class="w">  </span>-i<span class="w"> </span>&lt;maven_image&gt;<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-7-5" name="__codelineno-7-5"></a><span class="w">  </span>-s<span class="w"> </span>&lt;path/to/settings.xml&gt;<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-7-6" name="__codelineno-7-6"></a><span class="w">  </span>-x<span class="w"> </span>&lt;maven_command&gt;
-</code></pre></div></td></tr></table></div>
+<p><strong>定义 3.3</strong></p>
+<p>设 <span class="arithmatex">\(\mathrm{V}\)</span> 为向量空间，<span class="arithmatex">\(\Omega : \mathrm{V} \times \mathrm{V} \to \mathbb{R}\)</span> 为双线性映射，
+它取 <span class="arithmatex">\(V\)</span> 中的两个向量并将它们映射到一个实数，那么：</p>
 <ul>
-<li><code>-d</code>: maven构建的目录 可为空，默认执行脚本的目录</li>
-<li><code>-c</code>: maven缓存</li>
-<li><code>-i</code>: maven镜像</li>
-<li><code>-s</code>: maven <code>settings.xml</code> 在本地的路径</li>
-<li><code>-x</code>: maven执行的命令</li>
-<li>e.g. : <code>mvn clean install -Dmaven.test.skip=true</code></li>
+<li>
+<p>一个正定且对称的双线性映射
+  <span class="arithmatex">\(\Omega : \mathrm{V} \times \mathrm{V} \to \mathbb{R}\)</span>
+  称为 <span class="arithmatex">\(V\)</span> 上的内积（<em>inner product</em>），
+  我们通常写成 <span class="arithmatex">\(\langle \boldsymbol{x}, \boldsymbol{y} \rangle\)</span> 而不是 <span class="arithmatex">\(\Omega(\boldsymbol{x}, \boldsymbol{y})\)</span>。</p>
+</li>
+<li>
+<p><span class="arithmatex">\((\mathrm{V}, \langle \cdot, \cdot \rangle)\)</span> 称为内积空间或带内积的（实）向量空间。
+  如果我们以点积为内积，则称 <span class="arithmatex">\((\mathrm{V}, \langle \cdot, \cdot \rangle)\)</span>
+  为欧氏向量空间（<em>Euclidean vector space</em>）。</p>
+</li>
 </ul>
-<h2 id="build-golangs-project">build golang's project</h2>
-<p>build golang's project by docker</p>
-<div class="language-shell highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-8-1">1</a></span>
-<span class="normal"><a href="#__codelineno-8-2">2</a></span>
-<span class="normal"><a href="#__codelineno-8-3">3</a></span>
-<span class="normal"><a href="#__codelineno-8-4">4</a></span>
-<span class="normal"><a href="#__codelineno-8-5">5</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1"></a>bash<span class="w"> </span>&lt;<span class="o">(</span>curl<span class="w"> </span>-sSL<span class="w"> </span><span class="nv">$ROOT_URI</span>/golang/build.sh<span class="o">)</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-8-2" name="__codelineno-8-2"></a><span class="w">  </span>-d<span class="w"> </span><span class="o">[</span>build_dir<span class="o">]</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-8-3" name="__codelineno-8-3"></a><span class="w">  </span>-c<span class="w"> </span>&lt;cache_volume&gt;<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-8-4" name="__codelineno-8-4"></a><span class="w">  </span>-i<span class="w"> </span>&lt;gradle_image&gt;<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-8-5" name="__codelineno-8-5"></a><span class="w">  </span>-x<span class="w"> </span>&lt;gradle_command&gt;
-</code></pre></div></td></tr></table></div>
+<p>在本书中，我们将这些空间统称为内积空间。</p>
+<p><strong>例 3.3</strong> 非点积的内积</p>
+<p>考虑 <span class="arithmatex">\(\mathrm{V} = \mathbb{R}^2\)</span>，我们定义</p>
+<div class="arithmatex">\[
+\langle \boldsymbol{x}, \boldsymbol{y} \rangle
+:= \mathrm{x_1 y_1 - (x_1 y_2 + x_2 y_1) + 2 x_2 y_2}
+\]</div>
+<p>其中 <span class="arithmatex">\(\langle \cdot, \cdot \rangle\)</span> 为非点积的内积。</p>
+<p><strong>3.2.3 对称正定矩阵</strong></p>
+<p>对称正定矩阵在机器学习中起着重要的作用，它们是通过内积定义的。
+在 4.3 节矩阵分解中将涉及到对称正定矩阵。
+对称半正定矩阵的思想也是机器学习中核技巧的关键（12.4 节）。</p>
+<p>考虑一个 <span class="arithmatex">\(n\)</span> 维向量空间 <span class="arithmatex">\(\mathrm{V}\)</span> 及其内积<span class="arithmatex">\(\langle \cdot, \cdot \rangle : V \times V \to \mathbb{R}\)</span>（见定义 3.3），
+以及 <span class="arithmatex">\(\mathrm{V}\)</span> 的有序基
+<span class="arithmatex">\(\mathrm{B} = (\boldsymbol{b}_1, \ldots, \boldsymbol{b}_n)\)</span>。
+对于合适的 <span class="arithmatex">\(\psi_i, \lambda_j \in \mathbb{R}\)</span>，
+任意向量 <span class="arithmatex">\(\boldsymbol{x}, \boldsymbol{y} \in \mathrm{V}\)</span> 都可以写成基向量的线性组合：
+<span class="arithmatex">\(\boldsymbol{x} = \sum_{i=1}^n \psi_i b_i \in \mathrm{V}\)</span>，
+<span class="arithmatex">\(\boldsymbol{y} = \sum_{j=1}^n \lambda_j b_j \in \mathrm{V}\)</span>。
+由于内积的双线性，对于所有 <span class="arithmatex">\(\boldsymbol{x}, \boldsymbol{y} \in \mathrm{V}\)</span>，有：</p>
+<div class="arithmatex">\[
+\begin{aligned}
+\langle \boldsymbol{x}, \boldsymbol{y} \rangle
+&amp;= \left\langle \sum_{i=1}^n \psi_i \boldsymbol{b}_i,\; \sum_{j=1}^n \lambda_j \boldsymbol{b}_j \right\rangle
+\\
+\\
+&amp;= \sum_{i=1}^n \sum_{j=1}^n \psi_i \langle \boldsymbol{b}_i, \boldsymbol{b}_j \rangle \lambda_j
+\\
+\\
+&amp;= \hat{\boldsymbol{x}}^{\mathsf{T}} \boldsymbol{A} \hat{\boldsymbol{y}}.
+\end{aligned}
+\]</div>
+<p>以 <span class="arithmatex">\(n = 2\)</span> 为例，</p>
+<div class="arithmatex">\[
+\begin{aligned}
+\left\langle \sum_{i=1}^2 \psi_i \boldsymbol{b}_i , \sum_{j=1}^2 \lambda_j \boldsymbol{b}_j
+\right\rangle
+&amp;= \langle \psi_1 \boldsymbol{b}_1 + \psi_2 \boldsymbol{b}_2 , \lambda_1 \boldsymbol{b}_1 + \lambda_1 \boldsymbol{b}_2 \rangle
+= \psi_1 \langle \boldsymbol{b}_1,\; \lambda_1 \boldsymbol{b}_1 + \lambda_2 \boldsymbol{b}_2 \rangle + \psi_2 \langle \boldsymbol{b}_2,\; \lambda_1 \boldsymbol{b}_1 + \lambda_2 \boldsymbol{b}_2 \rangle
+\\
+\\
+&amp;= \psi_1 \bigl[\lambda_1 \langle \boldsymbol{b}_1, \boldsymbol{b}_1 \rangle+ \lambda_2 \langle \boldsymbol{b}_1, \boldsymbol{b}_2 \rangle \bigr] + \psi_2 \bigl[\lambda_1 \langle \boldsymbol{b}_2, \boldsymbol{b}_1 \rangle + \lambda_2 \langle \boldsymbol{b}_2, \boldsymbol{b}_2 \rangle \bigr]
+\\
+\\
+&amp;= \begin{bmatrix}\psi_1,\psi_2\end{bmatrix}
+\begin{bmatrix}
+\lambda_1 \langle \boldsymbol{b}_1,\boldsymbol{b}_1 \rangle + \lambda_2 \langle \boldsymbol{b}_1,\boldsymbol{b}_2 \rangle \\
+\lambda_1 \langle \boldsymbol{b}_2,\boldsymbol{b}_1 \rangle + \lambda_2 \langle \boldsymbol{b}_2,\boldsymbol{b}_2 \rangle
+\end{bmatrix}
+\\
+\\
+&amp;= \begin{bmatrix}
+\psi_1 &amp; \psi_2
+\end{bmatrix}
+\begin{bmatrix}
+\langle \boldsymbol{b}_1, \boldsymbol{b}_1 \rangle &amp; \langle \boldsymbol{b}_1, \boldsymbol{b}_2 \rangle \\
+\langle \boldsymbol{b}_2, \boldsymbol{b}_1 \rangle &amp; \langle \boldsymbol{b}_2, \boldsymbol{b}_2 \rangle
+\end{bmatrix}
+\begin{bmatrix}
+\lambda_1 \\
+\lambda_2
+\end{bmatrix}
+\end{aligned}
+\]</div>
+<p>其中 <span class="arithmatex">\(A_{ij} := \langle b_i, b_j \rangle\)</span>，
+<span class="arithmatex">\(\hat{\boldsymbol{x}}, \hat{\boldsymbol{y}}\)</span> 为 <span class="arithmatex">\(\boldsymbol{x}\)</span> 和 <span class="arithmatex">\(\boldsymbol{y}\)</span> 相对于基 <span class="arithmatex">\(\boldsymbol{B}\)</span> 的坐标。
+这意味着 <span class="arithmatex">\(\langle \cdot, \cdot \rangle\)</span> 是由 <span class="arithmatex">\(\boldsymbol{A}\)</span> 唯一确定的。
+由于内积是对称的，所以 <span class="arithmatex">\(A\)</span> 是对称的。
+此外，内积的正定性意味着</p>
+<div class="arithmatex">\[
+\forall \boldsymbol{x} \in \mathrm{V} \setminus \{0\}:\quad \boldsymbol{x}^{\mathsf T} \boldsymbol{A} \boldsymbol{x} &gt; 0 .
+\]</div>
+<p><strong>定义 3.4</strong> 对称正定矩阵</p>
+<p>考虑矩阵</p>
+<div class="arithmatex">\[
+\boldsymbol{A}_1 = \begin{bmatrix}
+9 &amp; 6 \\
+6 &amp; 5
+\end{bmatrix},\quad
+\boldsymbol{A}_2 = \begin{bmatrix}
+9 &amp; 6 \\
+6 &amp; 3
+\end{bmatrix}
+\]</div>
+<p><span class="arithmatex">\(\boldsymbol{A}_1\)</span> 为正定的，因为对于任意 <span class="arithmatex">\(x \in V \setminus \{0\}\)</span>，它是对称的且</p>
+<div class="arithmatex">\[
+\begin{aligned}
+\boldsymbol{x}^{\mathsf T} A_1 \boldsymbol{x}
+&amp;=
+\begin{bmatrix}
+x_1 &amp; x_2
+\end{bmatrix}
+\begin{bmatrix}
+9 &amp; 6 \\
+6 &amp; 5
+\end{bmatrix}
+\begin{bmatrix}
+x_1 \\
+x_2
+\end{bmatrix}
+\\
+\\
+&amp;= 9 x_1^2 + 12 x_1 x_2 + 5 x_2^2
+\\
+\\
+&amp;= (3 x_1 + 2 x_2)^2 + x_2^2 &gt; 0
+\end{aligned}
+\]</div>
+<p>而 <span class="arithmatex">\(\boldsymbol{A}_2\)</span> 仅仅是对称的，它不是正定的，因为
+<span class="arithmatex">\(\boldsymbol{x}^{\mathsf T} A_2 \boldsymbol{x} = 9 x_1^2 + 12 x_1 x_2 + 3 x_2^2
+= (3 x_1 + 2 x_2)^2 - x_2^2\)</span>
+可能小于 <span class="arithmatex">\(0\)</span>，例如当 <span class="arithmatex">\(\boldsymbol{x} = [\,2,\,-3\,]^{\mathsf T}\)</span> 时。</p>
+<p>如果 <span class="arithmatex">\(\boldsymbol{A} \in \mathbb{R}^{n \times n}\)</span> 是对称且正定的，
+那么</p>
+<div class="arithmatex">\[
+\langle \boldsymbol{x}, \boldsymbol{y} \rangle = \hat{\boldsymbol{x}}^{\mathsf T} \boldsymbol{A} \hat{\boldsymbol{y}}.
+\]</div>
+<p>定义 <span class="arithmatex">\(\mathrm{V}\)</span> 关于有序基 <span class="arithmatex">\(\mathrm{B}\)</span> 的内积，
+其中 <span class="arithmatex">\(\hat{\boldsymbol{x}}\)</span>、<span class="arithmatex">\(\hat{\boldsymbol{y}}\)</span> 为 <span class="arithmatex">\(\boldsymbol{x}\)</span>、<span class="arithmatex">\(\boldsymbol{y}\)</span> 相对于基 <span class="arithmatex">\(\mathrm{B}\)</span> 的坐标。</p>
+<p><strong>定理 3.5</strong> 对于一个实值，有限维向量空间<span class="arithmatex">\(\mathrm{V}\)</span>和<span class="arithmatex">\(\mathrm{V}\)</span>的一个有序基<span class="arithmatex">\(\mathrm{B}\)</span>，<span class="arithmatex">\(\langle \cdot, \cdot \rangle : \mathrm{V} \cdot \mathrm{V} \rightarrow \mathbb{R}\)</span> 为一个内积
+当且仅当存在一个对称的，正定矩阵 <span class="arithmatex">\(\boldsymbol{A} \in \mathbb{R}^{n \times n}\)</span> 使得</p>
+<div class="arithmatex">\[
+\begin{aligned}
+\langle \boldsymbol{x},\boldsymbol{y} \rangle = \hat{\boldsymbol{x}}^{\mathrm{T}} \boldsymbol{A} \hat{\boldsymbol{y}}
+\end{aligned}
+\]</div>
+<p>如果 <span class="arithmatex">\(\boldsymbol{A} \in \mathbb{R}^{n \times n}\)</span> 是对称且正定的，那么它有以下属性：</p>
 <ul>
-<li><code>-d</code>: golang构建的目录 可为空，默认执行脚本的目录</li>
-<li><code>-c</code>: golang缓存: 使用<code>docker volume</code>挂载</li>
-<li><code>-i</code>: golang的镜像</li>
-<li><code>-x</code>: golang的命令</li>
-<li>e.g. : <code>go build -v -o application</code></li>
-</ul>
-<h2 id="build-nodes-project">build node's project</h2>
-<div class="language-shell highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-9-1">1</a></span>
-<span class="normal"><a href="#__codelineno-9-2">2</a></span>
-<span class="normal"><a href="#__codelineno-9-3">3</a></span>
-<span class="normal"><a href="#__codelineno-9-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1"></a>bash<span class="w"> </span>&lt;<span class="o">(</span>curl<span class="w"> </span>-sSL<span class="w"> </span><span class="nv">$ROOT_URI</span>/node/build.sh<span class="o">)</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-9-2" name="__codelineno-9-2"></a><span class="w">  </span>-d<span class="w"> </span><span class="o">[</span>build_dir<span class="o">]</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-9-3" name="__codelineno-9-3"></a><span class="w">  </span>-i<span class="w"> </span>&lt;gradle_image&gt;<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-9-4" name="__codelineno-9-4"></a><span class="w">  </span>-x<span class="w"> </span>&lt;gradle_command&gt;
-</code></pre></div></td></tr></table></div>
-<ul>
-<li><code>-d</code>: node 构建的目录 可为空，默认执行脚本的目录</li>
-<li><code>-i</code>: node 的镜像</li>
-<li><code>-x</code>: node 的命令</li>
-<li>e.g. : <code>npm install --registry=https://registry.npmmirror.com</code></li>
-<li>e.g. : <code>npm run build</code></li>
-</ul>
-<h3 id="nvm-on-linux">nvm on linux</h3>
-<blockquote>
-<p>HOME is /root</p>
-</blockquote>
-<p>install</p>
-<div class="language-shell highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-10-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1"></a>bash<span class="w"> </span>&lt;<span class="o">(</span>curl<span class="w"> </span>-sSL<span class="w"> </span><span class="nv">$ROOT_URI</span>/node/nvm/install.sh<span class="o">)</span>
-</code></pre></div></td></tr></table></div>
-<p>uninstall</p>
-<div class="language-shell highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-11-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1"></a>bash<span class="w"> </span>&lt;<span class="o">(</span>curl<span class="w"> </span>-sSL<span class="w"> </span><span class="nv">$ROOT_URI</span>/node/nvm/uninstall.sh<span class="o">)</span>
-</code></pre></div></td></tr></table></div>
-<h2 id="build-writersides-project">build writerside's project</h2>
-<p>build writerside's project by docker</p>
-<div class="language-shell highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-12-1">1</a></span>
-<span class="normal"><a href="#__codelineno-12-2">2</a></span>
-<span class="normal"><a href="#__codelineno-12-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1"></a>bash<span class="w"> </span>&lt;<span class="o">(</span>curl<span class="w"> </span>-sSL<span class="w"> </span><span class="nv">$ROOT_URI</span>/writerside/build.sh<span class="o">)</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-12-2" name="__codelineno-12-2"></a><span class="w">  </span>-d<span class="w"> </span><span class="o">[</span>build_dir<span class="o">]</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-12-3" name="__codelineno-12-3"></a><span class="w">  </span>-i<span class="w"> </span>&lt;instance&gt;
-</code></pre></div></td></tr></table></div>
-<ul>
-<li><code>-d</code>: writerside 构建的目录 可为空，默认执行脚本的目录</li>
-<li><code>-i</code>: writerside 的 instance</li>
-</ul>
-<h2 id="docker">docker</h2>
-<h3 id="build-dockers-image-and-push">build docker's image (and push)</h3>
-<blockquote>
-<p>by Dockerfile</p>
-</blockquote>
-<div class="language-shell highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-13-1">1</a></span>
-<span class="normal"><a href="#__codelineno-13-2">2</a></span>
-<span class="normal"><a href="#__codelineno-13-3">3</a></span>
-<span class="normal"><a href="#__codelineno-13-4">4</a></span>
-<span class="normal"><a href="#__codelineno-13-5">5</a></span>
-<span class="normal"><a href="#__codelineno-13-6">6</a></span>
-<span class="normal"><a href="#__codelineno-13-7">7</a></span>
-<span class="normal"><a href="#__codelineno-13-8">8</a></span>
-<span class="normal"><a href="#__codelineno-13-9">9</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1"></a>bash<span class="w"> </span>&lt;<span class="o">(</span>curl<span class="w"> </span>-sSL<span class="w"> </span><span class="nv">$ROOT_URI</span>/docker/build.sh<span class="o">)</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-13-2" name="__codelineno-13-2"></a><span class="w">  </span>-m<span class="w"> </span><span class="o">[</span>multi_platform<span class="o">]</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-13-3" name="__codelineno-13-3"></a><span class="w">  </span>-d<span class="w"> </span><span class="o">[</span>build_dir<span class="o">]</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-13-4" name="__codelineno-13-4"></a><span class="w">  </span>-f<span class="w"> </span><span class="o">[</span>path/to/Dockerfile<span class="o">]</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-13-5" name="__codelineno-13-5"></a><span class="w">  </span>-i<span class="w"> </span>&lt;image_name&gt;<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-13-6" name="__codelineno-13-6"></a><span class="w">  </span>-v<span class="w"> </span>&lt;image_tag&gt;<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-13-7" name="__codelineno-13-7"></a><span class="w">  </span>-r<span class="w"> </span>&lt;re_tag_flag&gt;<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-13-8" name="__codelineno-13-8"></a><span class="w">  </span>-t<span class="w"> </span><span class="o">[</span>new_tag<span class="o">]</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-13-9" name="__codelineno-13-9"></a><span class="w">  </span>-p<span class="w"> </span>&lt;push_flag&gt;
-</code></pre></div></td></tr></table></div>
-<ul>
-<li><code>-m</code>: 多平台构建(同时构建amd64和arm64的平台)的选择 <code>true</code> | <code>false</code> ,默认 <code>true</code></li>
-<li><code>-d</code>: <code>docker build</code> 最后指定的路径，如果为空，默认使用 Dockerfile所在的文件路径</li>
-<li><code>-f</code>: <code>Dockefile</code> 的路径, 默认的构建基础路径在Dockerfile的路径下</li>
-<li>可选的参数, 如果没有, 会寻找执行脚本路径下的 <code>DOCKERFILE</code> 或 <code>Dockerfile</code> 或 <code>dockerfile</code></li>
-<li><code>-i</code>: 构建的镜像名称</li>
-<li><code>-v</code>: 构建的镜像版本</li>
-<li><code>-r</code>: 对于存在的镜像是否重新tag <code>true | false</code></li>
-<li><code>-t</code>: 对于存在的镜像，重新tag的版本</li>
-<li><code>-p</code>: 是否push到仓库中</li>
-</ul>
-<p><a href="https://github.com/svcops/ifconfig/blob/main/build.sh">example (build goland' project and push)</a></p>
-<h3 id="remove-dockers-image">remove docker's image</h3>
-<div class="language-shell highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-14-1">1</a></span>
-<span class="normal"><a href="#__codelineno-14-2">2</a></span>
-<span class="normal"><a href="#__codelineno-14-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1"></a>bash<span class="w"> </span>&lt;<span class="o">(</span>curl<span class="w"> </span>-sSL<span class="w"> </span><span class="nv">$ROOT_URI</span>/docker/tools/rmi.sh<span class="o">)</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-14-2" name="__codelineno-14-2"></a><span class="w">  </span>-i<span class="w"> </span>image_name<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-14-3" name="__codelineno-14-3"></a><span class="w">  </span>-s<span class="w"> </span>strategy
-</code></pre></div></td></tr></table></div>
-<ul>
-<li><code>-i</code>: 镜像的名称</li>
-<li><code>-s</code>: 删除的策略：默认策略 <code>contain_latest</code></li>
-<li><code>contain_latest</code> 保留 <code>latest</code> 镜像，删除其他镜像</li>
-<li><code>remove_none</code> 删除 <code>none</code> 的镜像</li>
-<li><code>all</code>: 删除所有镜像</li>
-</ul>
-<h3 id="install-docker">install docker</h3>
-<p><strong>debian系 安装docker</strong></p>
-<div class="language-shell highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-15-1"> 1</a></span>
-<span class="normal"><a href="#__codelineno-15-2"> 2</a></span>
-<span class="normal"><a href="#__codelineno-15-3"> 3</a></span>
-<span class="normal"><a href="#__codelineno-15-4"> 4</a></span>
-<span class="normal"><a href="#__codelineno-15-5"> 5</a></span>
-<span class="normal"><a href="#__codelineno-15-6"> 6</a></span>
-<span class="normal"><a href="#__codelineno-15-7"> 7</a></span>
-<span class="normal"><a href="#__codelineno-15-8"> 8</a></span>
-<span class="normal"><a href="#__codelineno-15-9"> 9</a></span>
-<span class="normal"><a href="#__codelineno-15-10">10</a></span>
-<span class="normal"><a href="#__codelineno-15-11">11</a></span>
-<span class="normal"><a href="#__codelineno-15-12">12</a></span>
-<span class="normal"><a href="#__codelineno-15-13">13</a></span>
-<span class="normal"><a href="#__codelineno-15-14">14</a></span>
-<span class="normal"><a href="#__codelineno-15-15">15</a></span>
-<span class="normal"><a href="#__codelineno-15-16">16</a></span>
-<span class="normal"><a href="#__codelineno-15-17">17</a></span>
-<span class="normal"><a href="#__codelineno-15-18">18</a></span>
-<span class="normal"><a href="#__codelineno-15-19">19</a></span>
-<span class="normal"><a href="#__codelineno-15-20">20</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1"></a>bash<span class="w"> </span>&lt;<span class="o">(</span>curl<span class="w"> </span>-sSL<span class="w"> </span><span class="nv">$ROOT_URI</span>/docker/install/i.sh<span class="w"> </span><span class="o">)</span><span class="w"> </span>SRC
-<a id="__codelineno-15-2" name="__codelineno-15-2"></a><span class="sb">````</span>
-<a id="__codelineno-15-3" name="__codelineno-15-3"></a>
-<a id="__codelineno-15-4" name="__codelineno-15-4"></a>-<span class="w"> </span>SRC:<span class="w"> </span>源<span class="w"> </span><span class="o">(</span><span class="sb">`</span>docker<span class="sb">`</span><span class="w"> </span>官方源<span class="w"> </span>/<span class="w"> </span><span class="sb">`</span>tsinghua<span class="sb">`</span><span class="w"> </span>清华源<span class="w"> </span>/<span class="w"> </span><span class="sb">`</span>aliyun<span class="sb">`</span><span class="w"> </span>阿里云<span class="o">)</span>
-<a id="__codelineno-15-5" name="__codelineno-15-5"></a>
-<a id="__codelineno-15-6" name="__codelineno-15-6"></a>**手动安装docker**
-<a id="__codelineno-15-7" name="__codelineno-15-7"></a>
-<a id="__codelineno-15-8" name="__codelineno-15-8"></a><span class="sb">```</span>shell
-<a id="__codelineno-15-9" name="__codelineno-15-9"></a>bash<span class="w"> </span>&lt;<span class="o">(</span>curl<span class="w"> </span>-sSL<span class="w"> </span><span class="nv">$ROOT_URI</span>/docker/install-manually/install.sh<span class="o">)</span><span class="w"> </span><span class="nv">$arch</span><span class="w"> </span><span class="nv">$version</span>
-<a id="__codelineno-15-10" name="__codelineno-15-10"></a><span class="sb">````</span>
-<a id="__codelineno-15-11" name="__codelineno-15-11"></a>
-<a id="__codelineno-15-12" name="__codelineno-15-12"></a>-<span class="w"> </span><span class="sb">`</span>arch<span class="sb">`</span>:<span class="w"> </span>系统架构
-<a id="__codelineno-15-13" name="__codelineno-15-13"></a>-<span class="w"> </span><span class="sb">`</span>version<span class="sb">`</span>:<span class="w"> </span>docker版本
-<a id="__codelineno-15-14" name="__codelineno-15-14"></a>
-<a id="__codelineno-15-15" name="__codelineno-15-15"></a><span class="c1">### config docker</span>
-<a id="__codelineno-15-16" name="__codelineno-15-16"></a>
-<a id="__codelineno-15-17" name="__codelineno-15-17"></a>&gt;<span class="w"> </span>config<span class="w"> </span><span class="sb">`</span>/etc/docker/daemon.json<span class="sb">`</span>
-<a id="__codelineno-15-18" name="__codelineno-15-18"></a>
-<a id="__codelineno-15-19" name="__codelineno-15-19"></a><span class="sb">```</span>shell
-<a id="__codelineno-15-20" name="__codelineno-15-20"></a>bash<span class="w"> </span>&lt;<span class="o">(</span>curl<span class="w"> </span>-sSL<span class="w"> </span><span class="nv">$ROOT_URI</span>/docker/config.sh<span class="o">)</span>
-</code></pre></div></td></tr></table></div>
-<h2 id="develop">develop</h2>
-<h3 id="config-maven">config maven</h3>
-<p>config maven <code>settings.xml</code></p>
-<div class="language-shell highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-16-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1"></a>bash<span class="w"> </span>&lt;<span class="o">(</span>curl<span class="w"> </span>-sSL<span class="w"> </span><span class="nv">$ROOT_URI</span>/maven/config.sh<span class="o">)</span>
-</code></pre></div></td></tr></table></div>
-<h3 id="verify-nginx-configuration">verify nginx configuration</h3>
-<p>验证基于<code>docker-compose</code>启动的nginx的配置文件</p>
-<div class="language-shell highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-17-1">1</a></span>
-<span class="normal"><a href="#__codelineno-17-2">2</a></span>
-<span class="normal"><a href="#__codelineno-17-3">3</a></span>
-<span class="normal"><a href="#__codelineno-17-4">4</a></span>
-<span class="normal"><a href="#__codelineno-17-5">5</a></span>
-<span class="normal"><a href="#__codelineno-17-6">6</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1"></a><span class="nb">source</span><span class="w"> </span>&lt;<span class="o">(</span>curl<span class="w"> </span>-sSL<span class="w"> </span><span class="nv">$ROOT_URI</span>/nginx/verify_func.sh<span class="o">)</span>
-<a id="__codelineno-17-2" name="__codelineno-17-2"></a><span class="k">if</span><span class="w"> </span>verify_nginx_configuration<span class="w"> </span>nginx<span class="w"> </span>path/to/docker-compose.yml<span class="p">;</span><span class="w"> </span><span class="k">then</span>
-<a id="__codelineno-17-3" name="__codelineno-17-3"></a><span class="w">  </span>log<span class="w"> </span><span class="s2">&quot;verify&quot;</span><span class="w"> </span><span class="s2">&quot;verify success, then start&quot;</span>
-<a id="__codelineno-17-4" name="__codelineno-17-4"></a><span class="k">else</span>
-<a id="__codelineno-17-5" name="__codelineno-17-5"></a><span class="w">  </span>log<span class="w"> </span><span class="s2">&quot;verify&quot;</span><span class="w"> </span><span class="s2">&quot;verify failed, then edit again&quot;</span>
-<a id="__codelineno-17-6" name="__codelineno-17-6"></a><span class="k">fi</span>
-</code></pre></div></td></tr></table></div>
-<ul>
-<li>方法参数一: service_name</li>
-<li>方法参数二: compose文件位置，可传递，默认寻找执行脚本目录下的 <code>docker-compose.yml</code> 或者 <code>docker-comopose.yaml</code></li>
-</ul>
-<p>快速验证</p>
-<div class="language-shell highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-18-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1"></a>bash<span class="w"> </span>&lt;<span class="o">(</span>curl<span class="w"> </span>-sSL<span class="w"> </span><span class="nv">$ROOT_URI</span>/nginx/verify.sh<span class="o">)</span><span class="w"> </span>nginx<span class="w"> </span>path/to/docker-compose.yml
-</code></pre></div></td></tr></table></div>
-<ul>
-<li><code>nginx</code> 是 <code>docker-compose.yaml</code>中定义的<code>service</code></li>
-<li>第二个参数 <code>docker-comopse.yml</code>的路径，默认会在执行脚本的当前路径下寻找 <code>docker-compose.yml</code> 或者 <code>docker-compose.yaml</code></li>
-</ul>
-<h2 id="proxy-config">proxy config</h2>
-<h3 id="bashrc-proxy-config">bashrc proxy config</h3>
-<div class="language-shell highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-19-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1"></a>bash<span class="w"> </span>&lt;<span class="o">(</span>curl<span class="w"> </span>-sSL<span class="w"> </span><span class="nv">$ROOT_URI</span>/linux/system/bashrc/config_bashrc_proxy.sh<span class="o">)</span><span class="w"> </span><span class="nv">$PROXY_URL</span><span class="w"> </span><span class="nv">$NO_PROXY_CONTENT</span>
-</code></pre></div></td></tr></table></div>
-<ul>
-<li><code>PROXY_URL</code>: 代理的地址</li>
-<li>e.g. <code>http://127.0.0.1:8888</code></li>
-<li>e.g. <code>socks5h://127.0.0.1:1080</code></li>
-<li><code>NO_PROXY_CONTENT</code>: 不需要代理地址</li>
-<li>e.g. <code>.local,localhost,127.0.0.1,192.168.*.*,10.0.0.0/8</code></li>
-</ul>
-<h3 id="docker-daemon-proxy-config">docker daemon proxy config</h3>
-<div class="language-shell highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-20-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1"></a>bash<span class="w"> </span>&lt;<span class="o">(</span>curl<span class="w"> </span>-sSL<span class="w"> </span><span class="nv">$ROOT_URI</span>/docker/config_daemon_proxy.sh<span class="o">)</span><span class="w"> </span><span class="nv">$PROXY_URL</span><span class="w"> </span><span class="nv">$NO_PROXY_CONTENT</span>
-</code></pre></div></td></tr></table></div>
-<ul>
-<li><code>PROXY_URL</code>: 代理的地址</li>
-<li>e.g. <code>http://127.0.0.1:8888</code></li>
-<li>e.g. <code>socks5h://127.0.0.1:1080</code></li>
-<li><code>NO_PROXY_CONTENT</code>: 不需要代理地址</li>
-<li>e.g. <code>localhost,127.0.0.1,docker-registry.somecorporation.com</code></li>
+<li><span class="arithmatex">\(\boldsymbol{A}\)</span> 的零空间（核）只能由 <span class="arithmatex">\(\boldsymbol{0}\)</span> 组成，因为对于所有 <span class="arithmatex">\(\boldsymbol{x} \neq \boldsymbol{0}, \boldsymbol{x}^{\mathrm{T}} \boldsymbol{A} \boldsymbol{x} \gt \boldsymbol{0}\)</span>,
+  这意味着如果 <span class="arithmatex">\(\boldsymbol{x} \neq \boldsymbol{0}\)</span> 那么 <span class="arithmatex">\(\boldsymbol{A}\boldsymbol{x} \neq \boldsymbol{0}\)</span></li>
+<li><span class="arithmatex">\(\boldsymbol{A}\)</span> 的对角元素 <span class="arithmatex">\(\mathrm{a}_\mathrm{ii}\)</span> 是正的, 因为<span class="arithmatex">\(\mathrm{a}_\mathrm{ii} = \boldsymbol{e}_i^{\mathrm{T}} \boldsymbol{A} \boldsymbol{e}_i\)</span>
+  其中 <span class="arithmatex">\(\boldsymbol{e}_i\)</span>为<span class="arithmatex">\(\mathbb{R}^{n}\)</span>标准基的第<span class="arithmatex">\(i\)</span>个向量</li>
 </ul>
 
 
@@ -6827,15 +6102,31 @@
       
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
+          
+          <a href="../norm/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Norm">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Norm
+              </div>
+            </div>
+          </a>
+        
         
           
-          <a href="mml/" class="md-footer__link md-footer__link--next" aria-label="Next: Mathematics For Machine Learning">
+          <a href="../../matrix-decomposition/" class="md-footer__link md-footer__link--next" aria-label="Next: Matrix Decomposition">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Mathematics For Machine Learning
+                Matrix Decomposition
               </div>
             </div>
             <div class="md-footer__button md-icon">
@@ -6880,18 +6171,18 @@
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": ".", "features": ["content.code.copy", "content.code.annotate", "content.code.select", "content.tabs.link", "content.action.edit", "navigation.indexes", "navigation.tracking", "navigation.top", "search.highlight", "search.suggest", "navigation.footer"], "search": "assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["content.code.copy", "content.code.annotate", "content.code.select", "content.tabs.link", "content.action.edit", "navigation.indexes", "navigation.tracking", "navigation.top", "search.highlight", "search.suggest", "navigation.footer"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
       
         <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
       
         <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
       
-        <script src="assets/javascripts/katex.js"></script>
+        <script src="../../../assets/javascripts/katex.js"></script>
       
-        <script src="assets/javascripts/mermaid.js"></script>
+        <script src="../../../assets/javascripts/mermaid.js"></script>
       
     
   </body>
