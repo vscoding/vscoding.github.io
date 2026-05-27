@@ -233,12 +233,14 @@
 
     [dir="ltr"] .md-sidebar--primary .md-sidebar__scrollwrap {
         width: min(var(--docs-primary-nav-scroll-width), 100%);
+        border-right: 1px solid var(--docs-border-color);
         margin-left: 0;
         margin-right: auto;
     }
 
     [dir="rtl"] .md-sidebar--primary .md-sidebar__scrollwrap {
         width: min(var(--docs-primary-nav-scroll-width), 100%);
+        border-left: 1px solid var(--docs-border-color);
         margin-left: auto;
         margin-right: 0;
     }

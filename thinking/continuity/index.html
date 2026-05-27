@@ -6195,17 +6195,14 @@
 <p><strong>等价表达：</strong> <span class="arithmatex">\(\mathrm{y_n} = g(f_n, \mathrm{x_n})\)</span></p>
 <p><strong>合并</strong> <span class="arithmatex">\(\mathrm{x}\)</span> 和 <span class="arithmatex">\(\mathrm{y}\)</span> 的标准要素 <strong>集</strong> 为 <span class="arithmatex">\(\mathrm{s_1,...,s_n} \subseteq 标准要素集\)</span></p>
 <p><strong>连续性表达式：</strong></p>
-<p>$$
-\begin{flalign*}</p>
-<p>&amp; \mathrm{s_n} = f_n(f_{n-1}(\mathrm{s_{n-1}}))
-\\
-&amp; g(f_n,\mathrm{s_n}) = f_n(f_{n-1}(\mathrm{s_{n-1}}))
-\\
-&amp; g(f_n,f_n(f_{n-1}(\mathrm{s_{n-1}})) = f_n(f_{n-1}(\mathrm{s_{n-1}}))
-\\
-&amp; g(f_n,f_n(f_{n-1}(\mathrm{s_{n-1}})) = f_n(g(f_{\mathrm{n-1}},s_{\mathrm{n-1}}))
-\end{flalign*}
-$$</p>
+<div class="arithmatex">\[
+\begin{aligned}
+\mathrm{s_n} &amp;= f_n(f_{n-1}(\mathrm{s_{n-1}})) \\
+g(f_n,\mathrm{s_n}) &amp;= f_n(f_{n-1}(\mathrm{s_{n-1}})) \\
+g(f_n,f_n(f_{n-1}(\mathrm{s_{n-1}}))) &amp;= f_n(f_{n-1}(\mathrm{s_{n-1}})) \\
+g(f_n,f_n(f_{n-1}(\mathrm{s_{n-1}}))) &amp;= f_n(g(f_{\mathrm{n-1}},s_{\mathrm{n-1}}))
+\end{aligned}
+\]</div>
 <p><strong>在连续性定义下</strong>，使用 <span class="arithmatex">\(g\)</span> 合成 <span class="arithmatex">\(f_n\)</span> 和上一层的输出，与 <span class="arithmatex">\(f_n\)</span> 直接作用于由 <span class="arithmatex">\(g(f_{n-1}, s_{n-1})\)</span> 生成的中间值是等价的。</p>
 <h3 id="_3">推广定义</h3>
 <p>给定：</p>
@@ -6255,12 +6252,9 @@ S = B(S)
 <h3 id="_7">连续性与自举的关系</h3>
 <p><strong>自举是连续性的一个不动点特例</strong></p>
 <ul>
-<li>自举可以视为一个连续过程的终点或不动点：</li>
+<li>自举可以视为一个连续过程的终点或不动点：<span class="arithmatex">\(S = f(S) \Rightarrow S = f(f(f(\cdots)))\)</span></li>
+<li>将连续性看作 <span class="arithmatex">\(G_n = f_n(G_{n-1})\)</span>，那么自举是使 <span class="arithmatex">\(G_n = G_{n-1}\)</span>，即系统在某一点“稳定下来”，成为自己的生成者。</li>
 </ul>
-<p>$$
-  S = f(S) \Rightarrow S = f(f(f(\cdots)))
-  $$
-- 将连续性看作 <span class="arithmatex">\(G_n = f_n(G_{n-1})\)</span>，那么自举是使 <span class="arithmatex">\(G_n = G_{n-1}\)</span>，即系统在某一点“稳定下来”，成为自己的生成者。</p>
 <p>连续性提供了生成自举状态的过程，自举是连续系统中的“闭环”。</p>
 <p><strong>自举依赖连续性</strong></p>
 <ul>
