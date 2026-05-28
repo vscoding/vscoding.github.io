@@ -3181,6 +3181,18 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#included-packages" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Included Packages
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Included Packages">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#optimize" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -3188,6 +3200,11 @@
       
     </span>
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -5946,6 +5963,18 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#included-packages" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Included Packages
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Included Packages">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#optimize" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -5953,6 +5982,11 @@
       
     </span>
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -5974,9 +6008,6 @@
 
 
 <h1 id="postgres">postgres</h1>
-<blockquote>
-<p>以 postgres15.4 为例子</p>
-</blockquote>
 <h3 id="docker-composeyml">docker-compose.yml</h3>
 <div class="language-yaml highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-0-2"> 2</a></span>
@@ -5989,25 +6020,64 @@
 <span class="normal"><a href="#__codelineno-0-9"> 9</a></span>
 <span class="normal"><a href="#__codelineno-0-10">10</a></span>
 <span class="normal"><a href="#__codelineno-0-11">11</a></span>
-<span class="normal"><a href="#__codelineno-0-12">12</a></span>
-<span class="normal"><a href="#__codelineno-0-13">13</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="nt">services</span><span class="p">:</span>
+<span class="normal"><a href="#__codelineno-0-12">12</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="nt">services</span><span class="p">:</span>
 <a id="__codelineno-0-2" name="__codelineno-0-2"></a><span class="w">  </span><span class="nt">postgresql</span><span class="p">:</span>
-<a id="__codelineno-0-3" name="__codelineno-0-3"></a><span class="w">    </span><span class="c1"># image: postgres:15.4</span>
-<a id="__codelineno-0-4" name="__codelineno-0-4"></a><span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">registry.cn-shanghai.aliyuncs.com/iproute/postgres:15.4-ext</span>
-<a id="__codelineno-0-5" name="__codelineno-0-5"></a><span class="w">    </span><span class="nt">container_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">postgres15</span>
-<a id="__codelineno-0-6" name="__codelineno-0-6"></a><span class="w">    </span><span class="nt">network_mode</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">host</span>
-<a id="__codelineno-0-7" name="__codelineno-0-7"></a><span class="w">    </span><span class="nt">restart</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">always</span>
-<a id="__codelineno-0-8" name="__codelineno-0-8"></a><span class="w">    </span><span class="nt">volumes</span><span class="p">:</span>
-<a id="__codelineno-0-9" name="__codelineno-0-9"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">./data:/var/lib/postgresql/data</span>
-<a id="__codelineno-0-10" name="__codelineno-0-10"></a><span class="w">    </span><span class="nt">environment</span><span class="p">:</span>
-<a id="__codelineno-0-11" name="__codelineno-0-11"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">POSTGRES_USER=postgres</span>
-<a id="__codelineno-0-12" name="__codelineno-0-12"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">POSTGRES_PASSWORD=postgres</span>
-<a id="__codelineno-0-13" name="__codelineno-0-13"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TZ=Asia/Shanghai</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3"></a><span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">registry.cn-shanghai.aliyuncs.com/iproute/postgres-ext:15</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4"></a><span class="w">    </span><span class="nt">container_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">postgres15</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5"></a><span class="w">    </span><span class="nt">network_mode</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">host</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6"></a><span class="w">    </span><span class="nt">restart</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">always</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7"></a><span class="w">    </span><span class="nt">volumes</span><span class="p">:</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">./data:/var/lib/postgresql/data</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9"></a><span class="w">    </span><span class="nt">environment</span><span class="p">:</span>
+<a id="__codelineno-0-10" name="__codelineno-0-10"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">POSTGRES_USER=postgres</span>
+<a id="__codelineno-0-11" name="__codelineno-0-11"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">POSTGRES_PASSWORD=postgres</span>
+<a id="__codelineno-0-12" name="__codelineno-0-12"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TZ=Asia/Shanghai</span>
 </code></pre></div></td></tr></table></div>
-<ul>
-<li>镜像包含 <code>postgis</code> <code>timescaleDB</code> 插件</li>
-<li>其他版本 <code>registry.cn-shanghai.aliyuncs.com/iproute/postgres:15.10-ext</code></li>
-</ul>
+<p>Supported tags:</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a>15 16 17 18
+</code></pre></div></td></tr></table></div>
+<h2 id="included-packages">Included Packages</h2>
+<p>Each PostgreSQL major tag includes:</p>
+<table>
+<thead>
+<tr>
+<th>Package</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>postgresql-&lt;major&gt;-postgis-3</code></td>
+<td>Spatial data support with PostGIS.</td>
+</tr>
+<tr>
+<td><code>postgresql-&lt;major&gt;-pgrouting</code></td>
+<td>Routing and graph algorithms for PostGIS data.</td>
+</tr>
+<tr>
+<td><code>postgresql-&lt;major&gt;-pg-stat-kcache</code></td>
+<td>Kernel-level CPU and I/O statistics for queries.</td>
+</tr>
+<tr>
+<td><code>postgresql-&lt;major&gt;-pgvector</code></td>
+<td>Vector type and similarity search support.</td>
+</tr>
+<tr>
+<td><code>postgresql-contrib-&lt;major&gt;</code></td>
+<td>PostgreSQL contrib extensions such as <code>pg_trgm</code>, <code>uuid-ossp</code>, and <code>pg_stat_statements</code>.</td>
+</tr>
+<tr>
+<td><code>osm2pgrouting</code></td>
+<td>Import OpenStreetMap data into pgRouting-ready tables.</td>
+</tr>
+<tr>
+<td><code>timescaledb-2-postgresql-&lt;major&gt;</code></td>
+<td>TimescaleDB time-series extension, enabled by default at build time.</td>
+</tr>
+</tbody>
+</table>
+<p>The image also includes basic operational tools: <code>ca-certificates</code>, <code>curl</code>,
+<code>wget</code>, <code>gnupg</code>, <code>lsb-release</code>, and <code>vim</code>.</p>
 <h3 id="optimize">optimize</h3>
 <p><a href="https://pgtune.leopard.in.ua/" title="pgtune">pgtune</a></p>
 
