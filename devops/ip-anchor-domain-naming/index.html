@@ -5593,10 +5593,21 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#dns_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        DNS 记录约束
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#_10" class="md-nav__link">
     <span class="md-ellipsis">
       
-        主机默认地址
+        业务域名引用示例
       
     </span>
   </a>
@@ -5607,7 +5618,7 @@
   <a href="#_11" class="md-nav__link">
     <span class="md-ellipsis">
       
-        主机地址作用域
+        主机默认地址
       
     </span>
   </a>
@@ -5618,7 +5629,7 @@
   <a href="#_12" class="md-nav__link">
     <span class="md-ellipsis">
       
-        公网出口地址
+        主机地址作用域
       
     </span>
   </a>
@@ -5627,6 +5638,17 @@
         
           <li class="md-nav__item">
   <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        公网出口地址
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
     <span class="md-ellipsis">
       
         网络入口地址
@@ -5648,7 +5670,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_14" class="md-nav__link">
+  <a href="#_15" class="md-nav__link">
     <span class="md-ellipsis">
       
         记录反例
@@ -6402,10 +6424,21 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#dns_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        DNS 记录约束
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#_10" class="md-nav__link">
     <span class="md-ellipsis">
       
-        主机默认地址
+        业务域名引用示例
       
     </span>
   </a>
@@ -6416,7 +6449,7 @@
   <a href="#_11" class="md-nav__link">
     <span class="md-ellipsis">
       
-        主机地址作用域
+        主机默认地址
       
     </span>
   </a>
@@ -6427,7 +6460,7 @@
   <a href="#_12" class="md-nav__link">
     <span class="md-ellipsis">
       
-        公网出口地址
+        主机地址作用域
       
     </span>
   </a>
@@ -6436,6 +6469,17 @@
         
           <li class="md-nav__item">
   <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        公网出口地址
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
     <span class="md-ellipsis">
       
         网络入口地址
@@ -6457,7 +6501,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_14" class="md-nav__link">
+  <a href="#_15" class="md-nav__link">
     <span class="md-ellipsis">
       
         记录反例
@@ -6527,6 +6571,7 @@
 </tbody>
 </table>
 <p>不使用 <code>svc.example.com</code> 或 <code>dyn.svc.example.com</code>。业务服务域名不纳入本规范；动态出口统一放在 <code>wan.example.com</code> 下。</p>
+<p>本规范不定义端口、协议、环境、业务服务、证书和访问控制。业务服务可以引用 IP 锚点域名，但业务服务名不进入 IP 锚点域名本身。</p>
 <h3 id="_3">命名格式</h3>
 <table>
 <thead>
@@ -6567,6 +6612,7 @@
 <h3 id="_4">命名约束</h3>
 <ul>
 <li>全部使用小写字母、数字和连字符 <code>-</code>。</li>
+<li>单个标签不以连字符开头或结尾，不使用连续连字符；单个标签长度不超过 63 个字符，完整域名长度不超过 253 个字符。</li>
 <li><code>identity</code> 表达稳定实例身份，不使用 IP、端口、环境名或临时状态。</li>
 <li>不把 <code>grafana</code>、<code>registry</code>、<code>api</code> 这类业务服务名放进 IP 锚点域名。</li>
 <li>不把 <code>prod</code>、<code>dev</code> 这类环境名放进 IP 锚点域名；环境信息放到标签、Inventory 或业务域名中。</li>
@@ -6609,6 +6655,13 @@
 </tr>
 </tbody>
 </table>
+<p><code>network</code> 取值按对象来源选择，避免在同一个字段中混合表达多个维度：</p>
+<ul>
+<li>家庭、办公、实验室、IDC 等物理出口，优先使用运营商、线路或本地网络，例如 <code>ct</code>、<code>cu</code>、<code>cmcc</code>、<code>cernet</code>、<code>lan</code>。</li>
+<li>云主机、云 NAT、云负载均衡、云上入口，优先使用云厂商或平台，例如 <code>aliyun</code>、<code>tencent</code>、<code>aws</code>、<code>oracle</code>、<code>gcp</code>。</li>
+<li>第三方网络平台或明确的全局网络入口，使用平台或线路能力，例如 <code>cf</code>、<code>bgp</code>。</li>
+<li>不在 <code>network</code> 中拼接多个来源。需要表达更细的实例差异时，放到 <code>identity</code>、标签、Inventory 或业务配置中。</li>
+</ul>
 <h3 id="host">host 命名字段</h3>
 <p>适用格式：</p>
 <table>
@@ -6713,7 +6766,7 @@
 <td><code>priv</code></td>
 <td><code>priv.host.example.com</code></td>
 <td>主机内网地址</td>
-<td>直接维护 <code>A</code> / <code>AAAA</code></td>
+<td>优先维护在私有 DNS 或分视图 DNS 中；确认允许暴露时才放公网 DNS</td>
 </tr>
 <tr>
 <td><code>pub</code></td>
@@ -6729,6 +6782,7 @@
 </tr>
 </tbody>
 </table>
+<p><code>priv.host.example.com</code> 可能暴露内网地址、资产命名和网络结构。公网 DNS 中发布 <code>priv</code> 记录前，应确认该暴露符合安全和运维要求；否则应使用私有 DNS、分视图 DNS 或内部解析区域。</p>
 <p><code>&lt;host-id&gt;.host.example.com</code> 可作为主机默认地址；需要同时管理内网、公网入站和公网出站地址时，优先使用显式作用域。</p>
 <p><code>egress</code> 用于标识主机访问外部网络时对端看到的公网 IP。它常用于第三方服务 IP 白名单、防火墙放行、审计排查和出口一致性检查。<code>egress</code> 可以与 <code>pub</code> 相同，也可以指向 NAT Gateway、共享 EIP、家庭出口或办公出口等
 <code>wan.example.com</code> 锚点。</p>
@@ -6760,8 +6814,8 @@
 <tbody>
 <tr>
 <td><code>site</code></td>
-<td>场地</td>
-<td>例如 <code>home</code>、<code>office</code>、<code>lab</code></td>
+<td>场地或出口来源</td>
+<td>例如 <code>home</code>、<code>office</code>、<code>lab</code>、<code>nat</code></td>
 </tr>
 <tr>
 <td><code>region</code></td>
@@ -6867,11 +6921,12 @@
 <tr>
 <td><code>identity</code></td>
 <td>稳定目标组身份</td>
-<td>用于区分同类目标组，例如 <code>main</code>、<code>redis-http</code>、<code>cache</code></td>
+<td>用于区分同类目标组，例如 <code>main</code>、<code>backup</code>、<code>blue</code>、<code>green</code></td>
 </tr>
 </tbody>
 </table>
 <p><code>function</code> 用来说明这组 IP 作为哪类基础设施目标被使用，例如边缘入口、统一入口、代理或网关。它不表达具体业务服务；<code>grafana</code>、<code>api</code>、<code>registry</code> 这类业务域名应 <code>CNAME</code> 到 <code>pool</code> 锚点，而不是写进 <code>function</code>。</p>
+<p><code>identity</code> 也不用于绕过业务服务名限制。需要区分多个目标组时，<code>identity</code> 表达稳定的基础设施目标组身份；业务服务名称保留在业务域名、配置、标签或 Inventory 中。</p>
 <p>常用 <code>pool-scope</code>：</p>
 <table>
 <thead>
@@ -6918,6 +6973,7 @@
 <tr>
 <th>地域</th>
 <th>缩写</th>
+<th></th>
 <th>地域</th>
 <th>缩写</th>
 </tr>
@@ -6926,42 +6982,49 @@
 <tr>
 <td>武汉</td>
 <td><code>wh</code></td>
+<td></td>
 <td>香港</td>
 <td><code>hk</code></td>
 </tr>
 <tr>
 <td>上海</td>
 <td><code>sh</code></td>
+<td></td>
 <td>新加坡</td>
 <td><code>sg</code></td>
 </tr>
 <tr>
 <td>北京</td>
 <td><code>bj</code></td>
+<td></td>
 <td>日本东京</td>
 <td><code>jp-tokyo</code></td>
 </tr>
 <tr>
 <td>广州</td>
 <td><code>gz</code></td>
+<td></td>
 <td>韩国首尔</td>
 <td><code>kr-seoul</code></td>
 </tr>
 <tr>
 <td>深圳</td>
 <td><code>sz</code></td>
+<td></td>
 <td>美国洛杉矶</td>
 <td><code>us-la</code></td>
 </tr>
 <tr>
 <td>杭州</td>
 <td><code>hz</code></td>
+<td></td>
 <td>美国圣何塞</td>
 <td><code>us-sjc</code></td>
 </tr>
 <tr>
 <td>南京</td>
 <td><code>nj</code></td>
+<td></td>
 <td>德国法兰克福</td>
 <td><code>de-fra</code></td>
 </tr>
@@ -6973,6 +7036,7 @@
 <tr>
 <th>网络 / 线路</th>
 <th>缩写</th>
+<th></th>
 <th>云厂商 / 平台</th>
 <th>缩写</th>
 </tr>
@@ -6981,36 +7045,42 @@
 <tr>
 <td>中国电信</td>
 <td><code>ct</code></td>
+<td></td>
 <td>阿里云</td>
 <td><code>aliyun</code></td>
 </tr>
 <tr>
 <td>中国联通</td>
 <td><code>cu</code></td>
+<td></td>
 <td>腾讯云</td>
 <td><code>tencent</code></td>
 </tr>
 <tr>
 <td>中国移动</td>
 <td><code>cmcc</code></td>
+<td></td>
 <td>Google Cloud Platform</td>
 <td><code>gcp</code></td>
 </tr>
 <tr>
 <td>教育网</td>
 <td><code>cernet</code></td>
+<td></td>
 <td>AWS</td>
 <td><code>aws</code></td>
 </tr>
 <tr>
 <td>BGP 多线</td>
 <td><code>bgp</code></td>
+<td></td>
 <td>Oracle Cloud</td>
 <td><code>oracle</code></td>
 </tr>
 <tr>
 <td>LAN 内网</td>
 <td><code>lan</code></td>
+<td></td>
 <td>Cloudflare</td>
 <td><code>cf</code></td>
 </tr>
@@ -7067,13 +7137,13 @@
 </table>
 <h3 id="identity">常用 identity</h3>
 <p><code>identity</code> 用于表达稳定对象身份，不限于数字编号或主备角色。</p>
-<p>对 <code>pool</code> 而言，多个同类目标组需要区分时，可以把稳定的目标组身份放在 <code>identity</code> 中，例如 <code>redis-http</code>、<code>vector-api</code>、<code>cache</code>。这类值只用于区分目标组，不改变
-<code>function</code> 的基础设施职责。</p>
+<p>对 <code>pool</code> 而言，多个同类目标组需要区分时，可以把稳定的目标组身份放在 <code>identity</code> 中。<code>identity</code> 只用于区分目标组，不改变 <code>function</code> 的基础设施职责，也不承载业务服务名。</p>
 <table>
 <thead>
 <tr>
 <th>取值</th>
 <th>含义</th>
+<th></th>
 <th>取值</th>
 <th>含义</th>
 </tr>
@@ -7082,30 +7152,35 @@
 <tr>
 <td><code>main</code></td>
 <td>主实例</td>
+<td></td>
 <td><code>lab</code></td>
 <td>实验节点</td>
 </tr>
 <tr>
 <td><code>backup</code></td>
 <td>备用实例</td>
+<td></td>
 <td><code>build</code></td>
 <td>构建节点</td>
 </tr>
 <tr>
 <td><code>edge</code></td>
 <td>边缘入口</td>
+<td></td>
 <td><code>storage</code></td>
 <td>存储节点</td>
 </tr>
 <tr>
 <td><code>relay</code></td>
 <td>中继节点</td>
+<td></td>
 <td><code>monitor</code></td>
 <td>监控节点</td>
 </tr>
 <tr>
 <td><code>proxy</code></td>
 <td>代理节点</td>
+<td></td>
 <td><code>01</code>, <code>02</code></td>
 <td>数字实例标识</td>
 </tr>
@@ -7113,6 +7188,46 @@
 </table>
 <h2 id="dns">DNS 记录示例</h2>
 <p>以下内容按命名格式展示常见 DNS 记录写法，不代表唯一实现。实际记录类型和目标应结合 DNS 服务商能力、自动化方式和网络拓扑调整。</p>
+<h3 id="dns_1">DNS 记录约束</h3>
+<ul>
+<li>同一记录名使用 <code>CNAME</code> 时，不应再同时维护 <code>A</code>、<code>AAAA</code> 或其他记录。</li>
+<li><code>pool</code> 使用多条 <code>A</code> / <code>AAAA</code>、DNS 服务商的权重记录、地理解析或健康检查能力实现目标组，不使用多条 <code>CNAME</code> 聚合多个主机锚点。</li>
+<li>DNS 轮询不等于健康检查。需要自动摘除故障地址时，应使用 DNS 服务商健康检查、负载均衡能力或外部自动化同步。</li>
+<li><code>CNAME</code> 链路应尽量短，避免业务域名、<code>net</code>、<code>wan</code>、<code>host</code> 之间形成难以排查的长链路。</li>
+<li>使用方需要指定地址族时，应查询同一锚点的 <code>A</code> 或 <code>AAAA</code> 记录自行选择，不额外定义 <code>v4</code> / <code>v6</code> 子命名空间。</li>
+</ul>
+<h3 id="_10">业务域名引用示例</h3>
+<p>业务服务域名可以引用 IP 锚点域名。业务名称保留在业务域名中，IP 锚点域名只表达基础设施对象。</p>
+<table>
+<thead>
+<tr>
+<th>业务用途</th>
+<th>业务域名</th>
+<th>类型</th>
+<th>值 / 目标</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Grafana</td>
+<td><code>grafana.example.com</code></td>
+<td><code>CNAME</code></td>
+<td><code>edge-global-main.pool.example.com</code></td>
+</tr>
+<tr>
+<td>API 入口</td>
+<td><code>api.example.com</code></td>
+<td><code>CNAME</code></td>
+<td><code>ingress-global-main.pool.example.com</code></td>
+</tr>
+<tr>
+<td>Registry</td>
+<td><code>registry.example.com</code></td>
+<td><code>CNAME</code></td>
+<td><code>edge-global-main.pool.example.com</code></td>
+</tr>
+</tbody>
+</table>
 <table>
 <thead>
 <tr>
@@ -7143,11 +7258,10 @@
 </tr>
 </tbody>
 </table>
-<h3 id="_10">主机默认地址</h3>
+<h3 id="_11">主机默认地址</h3>
 <table>
 <thead>
 <tr>
-<th>用途</th>
 <th>记录名</th>
 <th>类型</th>
 <th>值 / 目标</th>
@@ -7156,33 +7270,29 @@
 </thead>
 <tbody>
 <tr>
-<td>主机默认 IPv4 地址</td>
-<td><code>vps-hk-oracle-edge.host.example.com</code></td>
+<td><code>vps-hk-oracle-edge.host</code></td>
 <td><code>A</code></td>
 <td><code>&lt;static-ipv4&gt;</code></td>
-<td>单个主机的默认 IPv4 地址</td>
+<td>IPv4 默认解析，将主机默认地址解析到一个 IPv4 地址</td>
 </tr>
 <tr>
-<td>主机默认 IPv6 地址</td>
-<td><code>vps-hk-oracle-edge.host.example.com</code></td>
+<td><code>vps-hk-oracle-edge.host</code></td>
 <td><code>AAAA</code></td>
 <td><code>&lt;static-ipv6&gt;</code></td>
-<td>单个主机的默认 IPv6 地址</td>
+<td>IPv6 默认解析，将主机默认地址解析到一个 IPv6 地址</td>
 </tr>
 <tr>
-<td>主机默认地址指向公网地址</td>
-<td><code>vps-hz-aliyun-a.host.example.com</code></td>
+<td><code>vps-hz-aliyun-a.host</code></td>
 <td><code>CNAME</code></td>
 <td><code>vps-hz-aliyun-a.pub.host.example.com</code></td>
-<td>默认地址需要复用显式作用域时使用</td>
+<td>复用显式作用域地址，默认地址跟随 <code>pub</code> 作用域记录维护</td>
 </tr>
 </tbody>
 </table>
-<h3 id="_11">主机地址作用域</h3>
+<h3 id="_12">主机地址作用域</h3>
 <table>
 <thead>
 <tr>
-<th>用途</th>
 <th>记录名</th>
 <th>类型</th>
 <th>值 / 目标</th>
@@ -7191,54 +7301,47 @@
 </thead>
 <tbody>
 <tr>
-<td>主机内网地址</td>
-<td><code>vps-hz-aliyun-a.priv.host.example.com</code></td>
+<td><code>vps-hz-aliyun-a.priv.host</code></td>
 <td><code>A</code></td>
 <td><code>&lt;private-ipv4-a&gt;</code></td>
-<td>管理主机私网地址</td>
+<td>主机内网地址，管理主机私网地址</td>
 </tr>
 <tr>
-<td>主机入站公网地址</td>
-<td><code>vps-hz-aliyun-a.pub.host.example.com</code></td>
+<td><code>vps-hz-aliyun-a.pub.host</code></td>
 <td><code>A</code></td>
 <td><code>&lt;public-ipv4-a&gt;</code></td>
-<td>管理主机公网入站地址</td>
+<td>主机入站公网地址，管理主机公网入站地址</td>
 </tr>
 <tr>
-<td>出站地址复用入站公网地址</td>
-<td><code>vps-hz-aliyun-a.egress.host.example.com</code></td>
+<td><code>vps-hz-aliyun-a.egress.host</code></td>
 <td><code>CNAME</code></td>
 <td><code>vps-hz-aliyun-a.pub.host.example.com</code></td>
-<td>出站 IP 与入站公网 IP 相同时使用</td>
+<td>出站地址复用入站公网地址，出站 IP 与入站公网 IP 相同时使用</td>
 </tr>
 <tr>
-<td>共享出口内网地址</td>
-<td><code>vps-hz-aliyun-b.priv.host.example.com</code></td>
+<td><code>vps-hz-aliyun-b.priv.host</code></td>
 <td><code>A</code></td>
 <td><code>&lt;private-ipv4-b&gt;</code></td>
-<td>共用出口场景下仍单独维护每台主机内网地址</td>
+<td>共享出口场景下的内网地址，仍单独维护每台主机内网地址</td>
 </tr>
 <tr>
-<td>共享出口映射</td>
-<td><code>vps-hz-aliyun-a.egress.host.example.com</code></td>
+<td><code>vps-hz-aliyun-a.egress.host</code></td>
 <td><code>CNAME</code></td>
 <td><code>nat-hz-aliyun-main.wan.example.com</code></td>
-<td>主机出站地址指向共享出口锚点</td>
+<td>共享出口映射，主机出站地址指向共享出口锚点</td>
 </tr>
 <tr>
-<td>共享出口映射</td>
-<td><code>vps-hz-aliyun-b.egress.host.example.com</code></td>
+<td><code>vps-hz-aliyun-b.egress.host</code></td>
 <td><code>CNAME</code></td>
 <td><code>nat-hz-aliyun-main.wan.example.com</code></td>
-<td>主机出站地址指向共享出口锚点</td>
+<td>共享出口映射，主机出站地址指向共享出口锚点</td>
 </tr>
 </tbody>
 </table>
-<h3 id="_12">公网出口地址</h3>
+<h3 id="_13">公网出口地址</h3>
 <table>
 <thead>
 <tr>
-<th>用途</th>
 <th>记录名</th>
 <th>类型</th>
 <th>值 / 目标</th>
@@ -7247,47 +7350,29 @@
 </thead>
 <tbody>
 <tr>
-<td>公网动态出口 IPv4</td>
-<td><code>home-wh-ct-main.wan.example.com</code></td>
+<td><code>home-wh-ct-main.wan</code></td>
 <td><code>A</code></td>
 <td><code>&lt;dynamic-ipv4&gt;</code></td>
-<td>由 DDNS 或自动化任务更新</td>
+<td>公网动态出口 IPv4，由 DDNS 或自动化任务更新</td>
 </tr>
 <tr>
-<td>公网动态出口 IPv6</td>
-<td><code>home-wh-ct-main.wan.example.com</code></td>
+<td><code>home-wh-ct-main.wan</code></td>
 <td><code>AAAA</code></td>
 <td><code>&lt;dynamic-ipv6&gt;</code></td>
-<td>由 DDNS 或自动化任务更新</td>
+<td>公网动态出口 IPv6，由 DDNS 或自动化任务更新</td>
 </tr>
 <tr>
-<td>共享 NAT 出口</td>
-<td><code>nat-hz-aliyun-main.wan.example.com</code></td>
+<td><code>nat-hz-aliyun-main.wan</code></td>
 <td><code>A</code></td>
 <td><code>&lt;shared-egress-ipv4&gt;</code></td>
-<td>NAT Gateway、统一公网出口或共享 EIP</td>
-</tr>
-<tr>
-<td>地址族拆分 IPv4</td>
-<td><code>home-wh-ct-main.v4.wan.example.com</code></td>
-<td><code>A</code></td>
-<td><code>&lt;dynamic-ipv4&gt;</code></td>
-<td>需要显式区分 IPv4 时使用</td>
-</tr>
-<tr>
-<td>地址族拆分 IPv6</td>
-<td><code>home-wh-ct-main.v6.wan.example.com</code></td>
-<td><code>AAAA</code></td>
-<td><code>&lt;dynamic-ipv6&gt;</code></td>
-<td>需要显式区分 IPv6 时使用</td>
+<td>共享 NAT 出口，例如 NAT Gateway、统一公网出口或共享 EIP</td>
 </tr>
 </tbody>
 </table>
-<h3 id="_13">网络入口地址</h3>
+<h3 id="_14">网络入口地址</h3>
 <table>
 <thead>
 <tr>
-<th>用途</th>
 <th>记录名</th>
 <th>类型</th>
 <th>值 / 目标</th>
@@ -7296,39 +7381,34 @@
 </thead>
 <tbody>
 <tr>
-<td>VPN 入口</td>
-<td><code>vpn-wh-ct-main.net.example.com</code></td>
+<td><code>vpn-wh-ct-main.net</code></td>
 <td><code>CNAME</code></td>
 <td><code>home-wh-ct-main.wan.example.com</code></td>
-<td>网络入口指向公网出口</td>
+<td>VPN 入口，网络入口指向公网出口</td>
 </tr>
 <tr>
-<td>SOCKS 入口</td>
-<td><code>socks-wh-ct-main.net.example.com</code></td>
+<td><code>socks-wh-ct-main.net</code></td>
 <td><code>CNAME</code></td>
 <td><code>home-wh-ct-main.wan.example.com</code></td>
-<td>网络入口指向公网出口</td>
+<td>SOCKS 入口，网络入口指向公网出口</td>
 </tr>
 <tr>
-<td>SSH Gateway 入口</td>
-<td><code>sshgw-hk-bgp-edge.net.example.com</code></td>
+<td><code>sshgw-hk-bgp-edge.net</code></td>
 <td><code>CNAME</code></td>
 <td><code>vps-hk-oracle-edge.host.example.com</code></td>
-<td>网络入口指向主机锚点</td>
+<td>SSH Gateway 入口，网络入口指向主机锚点</td>
 </tr>
 <tr>
-<td>NAT 入站 EIP</td>
-<td><code>ingress-hz-aliyun-main.net.example.com</code></td>
+<td><code>ingress-hz-aliyun-main.net</code></td>
 <td><code>A</code></td>
 <td><code>&lt;ingress-eip&gt;</code></td>
-<td>NAT 网关上专门负责入站的 EIP</td>
+<td>NAT 入站 EIP，NAT 网关上专门负责入站的 EIP</td>
 </tr>
 <tr>
-<td>Tunnel 入口</td>
-<td><code>tunnel-wh-cf-main.net.example.com</code></td>
+<td><code>tunnel-wh-cf-main.net</code></td>
 <td><code>CNAME</code></td>
 <td><code>&lt;cloudflare-tunnel-target&gt;</code></td>
-<td>网络入口指向上游隧道目标</td>
+<td>Tunnel 入口，网络入口指向上游隧道目标</td>
 </tr>
 </tbody>
 </table>
@@ -7336,7 +7416,6 @@
 <table>
 <thead>
 <tr>
-<th>用途</th>
 <th>记录名</th>
 <th>类型</th>
 <th>值 / 目标</th>
@@ -7345,43 +7424,26 @@
 </thead>
 <tbody>
 <tr>
-<td>多 IP 目标组 IPv4</td>
-<td><code>edge-global-main.pool.example.com</code></td>
+<td><code>edge-global-main.pool</code></td>
 <td><code>A</code></td>
-<td><code>&lt;edge-ipv4-a&gt;</code></td>
-<td>DNS 轮询或 DNS 负载均衡</td>
+<td>多个 <code>&lt;edge-ipv4-*&gt;</code></td>
+<td>同一记录名维护多条 IPv4 地址，用于 DNS 轮询或 DNS 负载均衡</td>
 </tr>
 <tr>
-<td>多 IP 目标组 IPv4</td>
-<td><code>edge-global-main.pool.example.com</code></td>
-<td><code>A</code></td>
-<td><code>&lt;edge-ipv4-b&gt;</code></td>
-<td>DNS 轮询或 DNS 负载均衡</td>
-</tr>
-<tr>
-<td>多 IP 目标组 IPv6</td>
-<td><code>edge-global-main.pool.example.com</code></td>
+<td><code>edge-global-main.pool</code></td>
 <td><code>AAAA</code></td>
-<td><code>&lt;edge-ipv6-a&gt;</code></td>
-<td>DNS 轮询或 DNS 负载均衡</td>
+<td>多个 <code>&lt;edge-ipv6-*&gt;</code></td>
+<td>同一记录名维护多条 IPv6 地址，用于 DNS 轮询或 DNS 负载均衡</td>
 </tr>
 <tr>
-<td>多 IP 目标组 IPv6</td>
-<td><code>edge-global-main.pool.example.com</code></td>
-<td><code>AAAA</code></td>
-<td><code>&lt;edge-ipv6-b&gt;</code></td>
-<td>DNS 轮询或 DNS 负载均衡</td>
-</tr>
-<tr>
-<td>自动化同步目标组</td>
-<td><code>edge-global-main.pool.example.com</code></td>
+<td><code>edge-global-main.pool</code></td>
 <td><code>A</code> / <code>AAAA</code></td>
 <td>由 DNS API、Inventory 或自动化任务同步</td>
-<td><code>pool</code> 不使用多条 <code>CNAME</code> 聚合多个主机锚点</td>
+<td>自动化同步目标组，<code>pool</code> 不使用多条 <code>CNAME</code> 聚合多个主机锚点</td>
 </tr>
 </tbody>
 </table>
-<h3 id="_14">记录反例</h3>
+<h3 id="_15">记录反例</h3>
 <table>
 <thead>
 <tr>
