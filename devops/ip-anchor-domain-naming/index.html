@@ -5554,6 +5554,17 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#function" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        常用 function
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#identity" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -6352,6 +6363,17 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#function" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        常用 function
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#identity" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -6581,7 +6603,7 @@
 </tr>
 <tr>
 <td><code>identity</code></td>
-<td>稳定实例标识</td>
+<td>稳定对象身份</td>
 <td><code>host</code>、<code>wan</code>、<code>net</code>、<code>pool</code></td>
 <td>用于区分同类对象，例如 <code>main</code>、<code>backup</code>、<code>edge</code>、<code>relay</code>、<code>01</code></td>
 </tr>
@@ -6620,7 +6642,7 @@
 <tr>
 <td><code>host-id</code></td>
 <td>主机稳定身份</td>
-<td>格式为 <code>&lt;role&gt;-&lt;region&gt;-&lt;network&gt;-&lt;identity&gt;</code></td>
+<td>默认格式为 <code>&lt;role&gt;-&lt;region&gt;-&lt;network&gt;-&lt;identity&gt;</code></td>
 </tr>
 <tr>
 <td><code>role</code></td>
@@ -6639,13 +6661,40 @@
 </tr>
 <tr>
 <td><code>identity</code></td>
-<td>稳定实例标识</td>
-<td>公用字段</td>
+<td>稳定对象身份</td>
+<td>公用字段，用于区分同类主机</td>
 </tr>
 <tr>
 <td><code>host-scope</code></td>
 <td>主机地址作用域</td>
 <td>仅用于 <code>&lt;host-id&gt;.&lt;host-scope&gt;.host.example.com</code></td>
+</tr>
+</tbody>
+</table>
+<p>使用 <code>host-scope</code> 后，地址类型已经由 <code>priv</code>、<code>pub</code>、<code>egress</code> 表达，<code>host-id</code> 可以只保留识别主机所需的稳定字段。简化时以不冲突为前提，不要为了缩短名称牺牲唯一性。</p>
+<table>
+<thead>
+<tr>
+<th>场景</th>
+<th>建议 host-id 格式</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>需要完整自解释，或没有外部资产清单</td>
+<td><code>&lt;role&gt;-&lt;region&gt;-&lt;network&gt;-&lt;identity&gt;</code></td>
+<td><code>vps-hz-aliyun-a.priv.host.example.com</code></td>
+</tr>
+<tr>
+<td>已使用 <code>host-scope</code>，且主机身份不依赖 <code>network</code></td>
+<td><code>&lt;role&gt;-&lt;region&gt;-&lt;identity&gt;</code></td>
+<td><code>vps-hz-a.priv.host.example.com</code></td>
+</tr>
+<tr>
+<td>小规模固定资产，名称不会跨地域或厂商冲突</td>
+<td><code>&lt;role&gt;-&lt;identity&gt;</code> 或 <code>&lt;identity&gt;</code></td>
+<td><code>nas-main.priv.host.example.com</code>、<code>nas.priv.host.example.com</code></td>
 </tr>
 </tbody>
 </table>
@@ -6726,7 +6775,7 @@
 </tr>
 <tr>
 <td><code>identity</code></td>
-<td>稳定实例标识</td>
+<td>稳定对象身份</td>
 <td>公用字段</td>
 </tr>
 </tbody>
@@ -6774,7 +6823,7 @@
 </tr>
 <tr>
 <td><code>identity</code></td>
-<td>稳定实例标识</td>
+<td>稳定对象身份</td>
 <td>公用字段</td>
 </tr>
 </tbody>
@@ -6817,8 +6866,8 @@
 </tr>
 <tr>
 <td><code>identity</code></td>
-<td>稳定实例标识</td>
-<td>公用字段</td>
+<td>稳定目标组身份</td>
+<td>用于区分同类目标组，例如 <code>main</code>、<code>redis-http</code>、<code>cache</code></td>
 </tr>
 </tbody>
 </table>
@@ -6944,8 +6993,8 @@
 <tr>
 <td>中国移动</td>
 <td><code>cmcc</code></td>
-<td>华为云</td>
-<td><code>huawei</code></td>
+<td>Google Cloud Platform</td>
+<td><code>gcp</code></td>
 </tr>
 <tr>
 <td>教育网</td>
@@ -6968,7 +7017,58 @@
 </tbody>
 </table>
 <p>不要使用 <code>tc</code> 表示中国电信，避免与 Tencent Cloud 混淆。统一使用 <code>ct</code>。</p>
+<h3 id="function">常用 function</h3>
+<p><code>function</code> 用于表达 <code>pool</code> 的基础设施职责，不表达业务服务名。</p>
+<table>
+<thead>
+<tr>
+<th>取值</th>
+<th>含义</th>
+<th>适用场景</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>edge</code></td>
+<td>边缘入口</td>
+<td>对外入口、多地域入口、边缘节点集群</td>
+</tr>
+<tr>
+<td><code>ingress</code></td>
+<td>入站入口</td>
+<td>统一入站流量入口，后续再转发到服务</td>
+</tr>
+<tr>
+<td><code>gateway</code></td>
+<td>网关</td>
+<td>协议网关、API Gateway、HTTP Gateway</td>
+</tr>
+<tr>
+<td><code>proxy</code></td>
+<td>代理</td>
+<td>正向代理、反向代理、协议代理</td>
+</tr>
+<tr>
+<td><code>relay</code></td>
+<td>中继</td>
+<td>隧道中继、跨网络转发、中转节点</td>
+</tr>
+<tr>
+<td><code>lb</code></td>
+<td>负载均衡</td>
+<td>明确表示负载均衡器地址组</td>
+</tr>
+<tr>
+<td><code>egress</code></td>
+<td>出站出口组</td>
+<td>多个出口 IP 组成的出站池</td>
+</tr>
+</tbody>
+</table>
 <h3 id="identity">常用 identity</h3>
+<p><code>identity</code> 用于表达稳定对象身份，不限于数字编号或主备角色。</p>
+<p>对 <code>pool</code> 而言，多个同类目标组需要区分时，可以把稳定的目标组身份放在 <code>identity</code> 中，例如 <code>redis-http</code>、<code>vector-api</code>、<code>cache</code>。这类值只用于区分目标组，不改变
+<code>function</code> 的基础设施职责。</p>
 <table>
 <thead>
 <tr>
