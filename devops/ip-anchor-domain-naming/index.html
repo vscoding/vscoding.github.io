@@ -6537,8 +6537,8 @@
 </tr>
 <tr>
 <td>多 IP 目标组</td>
-<td><code>&lt;function&gt;-&lt;pool-scope&gt;-&lt;network&gt;-&lt;identity&gt;.pool.example.com</code></td>
-<td><code>edge-global-bgp-main.pool.example.com</code></td>
+<td><code>&lt;function&gt;-&lt;pool-scope&gt;-&lt;identity&gt;.pool.example.com</code></td>
+<td><code>edge-global-main.pool.example.com</code></td>
 </tr>
 </tbody>
 </table>
@@ -6551,10 +6551,11 @@
 <li><code>host</code>、<code>wan</code>、<code>net</code> 表达单个稳定对象；<code>pool</code> 表达多个地址组成的集合。</li>
 <li>主机存在多个地址时，使用 <code>host-scope</code> 的 <code>priv</code>、<code>pub</code>、<code>egress</code> 区分地址作用域。</li>
 <li><code>pool-scope</code> 表达目标组覆盖范围，不要求目标地址属于同一个地域。</li>
+<li><code>pool</code> 不固定 <code>network</code> 字段，成员 IP 可以来自不同线路、厂商或地域。</li>
 <li><code>pool</code> 使用基础设施功能命名，例如 <code>edge</code>、<code>ingress</code>、<code>proxy</code>，避免使用具体业务服务名。</li>
 </ul>
 <h2 id="_5">字段与取值</h2>
-<p>本节按命名格式说明字段。<code>region</code>、<code>network</code>、<code>identity</code> 是跨命名空间复用的公用字段；各命名空间只补充自身特有字段。</p>
+<p>本节按命名格式说明字段。<code>region</code>、<code>network</code>、<code>identity</code> 是跨多个命名空间复用的公用字段；<code>pool</code> 不使用 <code>network</code>，因为目标组成员的 IP 来源可能不同。</p>
 <h3 id="_6">公用命名字段</h3>
 <table>
 <thead>
@@ -6575,7 +6576,7 @@
 <tr>
 <td><code>network</code></td>
 <td>网络、线路、运营商或云厂商</td>
-<td><code>host</code>、<code>wan</code>、<code>net</code>、<code>pool</code></td>
+<td><code>host</code>、<code>wan</code>、<code>net</code></td>
 <td>例如 <code>ct</code>、<code>cu</code>、<code>cmcc</code>、<code>bgp</code>、<code>aliyun</code>、<code>oracle</code>、<code>cf</code>、<code>lan</code></td>
 </tr>
 <tr>
@@ -6789,7 +6790,7 @@
 </thead>
 <tbody>
 <tr>
-<td><code>&lt;function&gt;-&lt;pool-scope&gt;-&lt;network&gt;-&lt;identity&gt;.pool.example.com</code></td>
+<td><code>&lt;function&gt;-&lt;pool-scope&gt;-&lt;identity&gt;.pool.example.com</code></td>
 <td>多 IP 目标组</td>
 </tr>
 </tbody>
@@ -6807,17 +6808,12 @@
 <tr>
 <td><code>function</code></td>
 <td>多 IP 目标组功能</td>
-<td>例如 <code>edge</code>、<code>ingress</code>、<code>web</code>、<code>proxy</code>、<code>gateway</code></td>
+<td>例如 <code>edge</code>、<code>ingress</code>、<code>proxy</code>、<code>gateway</code></td>
 </tr>
 <tr>
 <td><code>pool-scope</code></td>
 <td>多 IP 目标组覆盖范围</td>
 <td>例如 <code>global</code>、<code>multi</code>、<code>cn</code>、<code>ap</code>、<code>hk</code>、<code>sg</code>、<code>wh</code></td>
-</tr>
-<tr>
-<td><code>network</code></td>
-<td>网络、线路、运营商或云厂商</td>
-<td>公用字段</td>
 </tr>
 <tr>
 <td><code>identity</code></td>
@@ -6826,6 +6822,7 @@
 </tr>
 </tbody>
 </table>
+<p><code>function</code> 用来说明这组 IP 作为哪类基础设施目标被使用，例如边缘入口、统一入口、代理或网关。它不表达具体业务服务；<code>grafana</code>、<code>api</code>、<code>registry</code> 这类业务域名应 <code>CNAME</code> 到 <code>pool</code> 锚点，而不是写进 <code>function</code>。</p>
 <p>常用 <code>pool-scope</code>：</p>
 <table>
 <thead>
@@ -7042,7 +7039,7 @@
 </tr>
 <tr>
 <td>多 IP 目标组</td>
-<td><code>&lt;function&gt;-&lt;pool-scope&gt;-&lt;network&gt;-&lt;identity&gt;.pool.example.com</code></td>
+<td><code>&lt;function&gt;-&lt;pool-scope&gt;-&lt;identity&gt;.pool.example.com</code></td>
 </tr>
 </tbody>
 </table>
@@ -7249,35 +7246,35 @@
 <tbody>
 <tr>
 <td>多 IP 目标组 IPv4</td>
-<td><code>edge-global-bgp-main.pool.example.com</code></td>
+<td><code>edge-global-main.pool.example.com</code></td>
 <td><code>A</code></td>
 <td><code>&lt;edge-ipv4-a&gt;</code></td>
 <td>DNS 轮询或 DNS 负载均衡</td>
 </tr>
 <tr>
 <td>多 IP 目标组 IPv4</td>
-<td><code>edge-global-bgp-main.pool.example.com</code></td>
+<td><code>edge-global-main.pool.example.com</code></td>
 <td><code>A</code></td>
 <td><code>&lt;edge-ipv4-b&gt;</code></td>
 <td>DNS 轮询或 DNS 负载均衡</td>
 </tr>
 <tr>
 <td>多 IP 目标组 IPv6</td>
-<td><code>edge-global-bgp-main.pool.example.com</code></td>
+<td><code>edge-global-main.pool.example.com</code></td>
 <td><code>AAAA</code></td>
 <td><code>&lt;edge-ipv6-a&gt;</code></td>
 <td>DNS 轮询或 DNS 负载均衡</td>
 </tr>
 <tr>
 <td>多 IP 目标组 IPv6</td>
-<td><code>edge-global-bgp-main.pool.example.com</code></td>
+<td><code>edge-global-main.pool.example.com</code></td>
 <td><code>AAAA</code></td>
 <td><code>&lt;edge-ipv6-b&gt;</code></td>
 <td>DNS 轮询或 DNS 负载均衡</td>
 </tr>
 <tr>
 <td>自动化同步目标组</td>
-<td><code>edge-global-bgp-main.pool.example.com</code></td>
+<td><code>edge-global-main.pool.example.com</code></td>
 <td><code>A</code> / <code>AAAA</code></td>
 <td>由 DNS API、Inventory 或自动化任务同步</td>
 <td><code>pool</code> 不使用多条 <code>CNAME</code> 聚合多个主机锚点</td>
@@ -7320,13 +7317,13 @@
 <td>环境应通过标签、Inventory 或业务域名表达</td>
 </tr>
 <tr>
-<td><code>grafana-global-bgp-main.pool.example.com</code></td>
-<td><code>edge-global-bgp-main.pool.example.com</code></td>
+<td><code>grafana-global-main.pool.example.com</code></td>
+<td><code>edge-global-main.pool.example.com</code></td>
 <td><code>pool</code> 应表达基础设施目标组，不表达具体业务服务</td>
 </tr>
 <tr>
-<td><code>edge-global-bgp-main.pool.example.com CNAME vps-a.host.example.com</code></td>
-<td><code>edge-global-bgp-main.pool.example.com A &lt;edge-ipv4-a&gt;</code></td>
+<td><code>edge-global-main.pool.example.com CNAME vps-a.host.example.com</code></td>
+<td><code>edge-global-main.pool.example.com A &lt;edge-ipv4-a&gt;</code></td>
 <td>同名多 <code>CNAME</code> 不适合作为 DNS 负载均衡模型</td>
 </tr>
 </tbody>
