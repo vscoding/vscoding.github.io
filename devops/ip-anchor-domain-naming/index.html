@@ -8,31 +8,31 @@
       
       
       
-        <link rel="canonical" href="https://blog.kubectl.net/mml/linear-algebra/vector-space/">
+        <link rel="canonical" href="https://blog.kubectl.net/devops/ip-anchor-domain-naming/">
       
       
-        <link rel="prev" href="../matrix/">
+        <link rel="prev" href="../mermaid/mermaid_example/">
       
       
-        <link rel="next" href="../linearly-independent/">
+        <link rel="next" href="../../ai/">
       
       
         
       
       
-      <link rel="icon" href="../../../assets/images/favicon.png">
+      <link rel="icon" href="../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
     
     
       
-        <title>Vector Space - Mind and Hand</title>
+        <title>Domain Naming - Mind and Hand</title>
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
       
         
-        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
       
       
 
@@ -47,13 +47,13 @@
     
       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/extra.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/extra.css">
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/table.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/table.css">
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/font.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/font.css">
     
-    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -78,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#vector-space" class="md-skip">
+        <a href="#ip" class="md-skip">
           Skip to content
         </a>
       
@@ -94,7 +94,7 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../../.." title="Mind and Hand" class="md-header__button md-logo" aria-label="Mind and Hand" data-md-component="logo">
+    <a href="../.." title="Mind and Hand" class="md-header__button md-logo" aria-label="Mind and Hand" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -114,7 +114,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Vector Space
+              Domain Naming
             
           </span>
         </div>
@@ -220,7 +220,7 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../../.." title="Mind and Hand" class="md-nav__button md-logo" aria-label="Mind and Hand" data-md-component="logo">
+    <a href="../.." title="Mind and Hand" class="md-nav__button md-logo" aria-label="Mind and Hand" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -238,7 +238,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../.." class="md-nav__link">
+      <a href="../.." class="md-nav__link">
         
   
   
@@ -262,8 +262,6 @@
       
   
   
-    
-  
   
   
     
@@ -293,15 +291,15 @@
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../" class="md-nav__link ">
+            <a href="../../mml/" class="md-nav__link ">
               
   
   
@@ -325,7 +323,7 @@
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
             
@@ -342,8 +340,6 @@
                 
   
   
-    
-  
   
   
     
@@ -369,15 +365,15 @@
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" >
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../" class="md-nav__link ">
+            <a href="../../mml/linear-algebra/" class="md-nav__link ">
               
   
   
@@ -401,7 +397,7 @@
             
           </div>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_2_2">
             <span class="md-nav__icon md-icon"></span>
             
@@ -421,7 +417,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../matrix/" class="md-nav__link">
+      <a href="../../mml/linear-algebra/matrix/" class="md-nav__link">
         
   
   
@@ -446,37 +442,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Vector Space
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../mml/linear-algebra/vector-space/" class="md-nav__link">
         
   
   
@@ -492,70 +461,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        前言
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        群
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        向量空间
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        向量子空间
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -568,7 +473,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../linearly-independent/" class="md-nav__link">
+      <a href="../../mml/linear-algebra/linearly-independent/" class="md-nav__link">
         
   
   
@@ -596,7 +501,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../linear-transformation/" class="md-nav__link">
+      <a href="../../mml/linear-algebra/linear-transformation/" class="md-nav__link">
         
   
   
@@ -624,7 +529,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../basis-rank/" class="md-nav__link">
+      <a href="../../mml/linear-algebra/basis-rank/" class="md-nav__link">
         
   
   
@@ -652,7 +557,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../affine-space/" class="md-nav__link">
+      <a href="../../mml/linear-algebra/affine-space/" class="md-nav__link">
         
   
   
@@ -710,7 +615,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../analytic-geometry/" class="md-nav__link ">
+            <a href="../../mml/analytic-geometry/" class="md-nav__link ">
               
   
   
@@ -754,7 +659,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../analytic-geometry/norm/" class="md-nav__link">
+      <a href="../../mml/analytic-geometry/norm/" class="md-nav__link">
         
   
   
@@ -782,7 +687,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../analytic-geometry/inner-product/" class="md-nav__link">
+      <a href="../../mml/analytic-geometry/inner-product/" class="md-nav__link">
         
   
   
@@ -818,7 +723,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../matrix-decomposition/" class="md-nav__link">
+      <a href="../../mml/matrix-decomposition/" class="md-nav__link">
         
   
   
@@ -846,7 +751,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../vector-calculus/" class="md-nav__link">
+      <a href="../../mml/vector-calculus/" class="md-nav__link">
         
   
   
@@ -874,7 +779,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../probability-and-distributions/" class="md-nav__link">
+      <a href="../../mml/probability-and-distributions/" class="md-nav__link">
         
   
   
@@ -902,7 +807,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../continuous-optimization/" class="md-nav__link">
+      <a href="../../mml/continuous-optimization/" class="md-nav__link">
         
   
   
@@ -930,7 +835,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../information-theory/" class="md-nav__link">
+      <a href="../../mml/information-theory/" class="md-nav__link">
         
   
   
@@ -958,7 +863,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../latex/" class="md-nav__link">
+      <a href="../../mml/latex/" class="md-nav__link">
         
   
   
@@ -1015,7 +920,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../papers/" class="md-nav__link ">
+            <a href="../../papers/" class="md-nav__link ">
               
   
   
@@ -1059,7 +964,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../papers/raft/" class="md-nav__link">
+      <a href="../../papers/raft/" class="md-nav__link">
         
   
   
@@ -1087,7 +992,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../papers/sssp/" class="md-nav__link">
+      <a href="../../papers/sssp/" class="md-nav__link">
         
   
   
@@ -1146,7 +1051,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../cs/" class="md-nav__link ">
+            <a href="../../cs/" class="md-nav__link ">
               
   
   
@@ -1216,7 +1121,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../cs/dsa/" class="md-nav__link ">
+            <a href="../../cs/dsa/" class="md-nav__link ">
               
   
   
@@ -1260,7 +1165,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../cs/dsa/dynamic-programming/" class="md-nav__link">
+      <a href="../../cs/dsa/dynamic-programming/" class="md-nav__link">
         
   
   
@@ -1288,7 +1193,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../cs/dsa/sort/" class="md-nav__link">
+      <a href="../../cs/dsa/sort/" class="md-nav__link">
         
   
   
@@ -1346,7 +1251,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../cs/dsa/data-structures/" class="md-nav__link ">
+            <a href="../../cs/dsa/data-structures/" class="md-nav__link ">
               
   
   
@@ -1390,7 +1295,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../cs/dsa/data-structures/union-find/" class="md-nav__link">
+      <a href="../../cs/dsa/data-structures/union-find/" class="md-nav__link">
         
   
   
@@ -1418,7 +1323,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../cs/dsa/data-structures/heap/" class="md-nav__link">
+      <a href="../../cs/dsa/data-structures/heap/" class="md-nav__link">
         
   
   
@@ -1472,7 +1377,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../cs/dsa/data-structures/search-tree/" class="md-nav__link ">
+            <a href="../../cs/dsa/data-structures/search-tree/" class="md-nav__link ">
               
   
   
@@ -1516,7 +1421,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../cs/dsa/data-structures/search-tree/bst/" class="md-nav__link">
+      <a href="../../cs/dsa/data-structures/search-tree/bst/" class="md-nav__link">
         
   
   
@@ -1544,7 +1449,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../cs/dsa/data-structures/search-tree/avl/" class="md-nav__link">
+      <a href="../../cs/dsa/data-structures/search-tree/avl/" class="md-nav__link">
         
   
   
@@ -1572,7 +1477,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../cs/dsa/data-structures/search-tree/tt-tree/" class="md-nav__link">
+      <a href="../../cs/dsa/data-structures/search-tree/tt-tree/" class="md-nav__link">
         
   
   
@@ -1600,7 +1505,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../cs/dsa/data-structures/search-tree/rbtree/" class="md-nav__link">
+      <a href="../../cs/dsa/data-structures/search-tree/rbtree/" class="md-nav__link">
         
   
   
@@ -1636,7 +1541,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../cs/dsa/data-structures/skip-list/" class="md-nav__link">
+      <a href="../../cs/dsa/data-structures/skip-list/" class="md-nav__link">
         
   
   
@@ -1664,7 +1569,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../cs/dsa/data-structures/huffman/" class="md-nav__link">
+      <a href="../../cs/dsa/data-structures/huffman/" class="md-nav__link">
         
   
   
@@ -1692,7 +1597,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../cs/dsa/data-structures/trie/" class="md-nav__link">
+      <a href="../../cs/dsa/data-structures/trie/" class="md-nav__link">
         
   
   
@@ -1762,7 +1667,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../cs/dsa/graph/" class="md-nav__link ">
+            <a href="../../cs/dsa/graph/" class="md-nav__link ">
               
   
   
@@ -1806,7 +1711,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../cs/dsa/graph/graph-definition/" class="md-nav__link">
+      <a href="../../cs/dsa/graph/graph-definition/" class="md-nav__link">
         
   
   
@@ -1834,7 +1739,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../cs/dsa/graph/graph-algorithms/" class="md-nav__link">
+      <a href="../../cs/dsa/graph/graph-algorithms/" class="md-nav__link">
         
   
   
@@ -1862,7 +1767,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../cs/dsa/graph/graph-traverse/" class="md-nav__link">
+      <a href="../../cs/dsa/graph/graph-traverse/" class="md-nav__link">
         
   
   
@@ -1890,7 +1795,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../cs/dsa/graph/graph-components/" class="md-nav__link">
+      <a href="../../cs/dsa/graph/graph-components/" class="md-nav__link">
         
   
   
@@ -1918,7 +1823,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../cs/dsa/graph/graph-toposort/" class="md-nav__link">
+      <a href="../../cs/dsa/graph/graph-toposort/" class="md-nav__link">
         
   
   
@@ -1946,7 +1851,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../cs/dsa/graph/graph-mst/" class="md-nav__link">
+      <a href="../../cs/dsa/graph/graph-mst/" class="md-nav__link">
         
   
   
@@ -1974,7 +1879,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../cs/dsa/graph/dijkstra/" class="md-nav__link">
+      <a href="../../cs/dsa/graph/dijkstra/" class="md-nav__link">
         
   
   
@@ -2002,7 +1907,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../cs/dsa/graph/cycle-analyzer/" class="md-nav__link">
+      <a href="../../cs/dsa/graph/cycle-analyzer/" class="md-nav__link">
         
   
   
@@ -2046,7 +1951,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../cs/computer-network/" class="md-nav__link">
+      <a href="../../cs/computer-network/" class="md-nav__link">
         
   
   
@@ -2074,7 +1979,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../cs/computer-organization/" class="md-nav__link">
+      <a href="../../cs/computer-organization/" class="md-nav__link">
         
   
   
@@ -2137,7 +2042,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../thinking/" class="md-nav__link ">
+            <a href="../../thinking/" class="md-nav__link ">
               
   
   
@@ -2181,7 +2086,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../thinking/continuity/" class="md-nav__link">
+      <a href="../../thinking/continuity/" class="md-nav__link">
         
   
   
@@ -2209,7 +2114,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../thinking/coding/" class="md-nav__link">
+      <a href="../../thinking/coding/" class="md-nav__link">
         
   
   
@@ -2237,7 +2142,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../thinking/design-pattern/" class="md-nav__link">
+      <a href="../../thinking/design-pattern/" class="md-nav__link">
         
   
   
@@ -2265,7 +2170,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../thinking/concurrency/" class="md-nav__link">
+      <a href="../../thinking/concurrency/" class="md-nav__link">
         
   
   
@@ -2293,7 +2198,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../thinking/standard/" class="md-nav__link">
+      <a href="../../thinking/standard/" class="md-nav__link">
         
   
   
@@ -2356,7 +2261,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../kubernetes/" class="md-nav__link ">
+            <a href="../../kubernetes/" class="md-nav__link ">
               
   
   
@@ -2400,7 +2305,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../kubernetes/k8s-install/" class="md-nav__link">
+      <a href="../../kubernetes/k8s-install/" class="md-nav__link">
         
   
   
@@ -2450,7 +2355,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../kubernetes/k8s-cluster-config/" class="md-nav__link ">
+            <a href="../../kubernetes/k8s-cluster-config/" class="md-nav__link ">
               
   
   
@@ -2494,7 +2399,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../kubernetes/k8s-cluster-config/node-port-range/" class="md-nav__link">
+      <a href="../../kubernetes/k8s-cluster-config/node-port-range/" class="md-nav__link">
         
   
   
@@ -2522,7 +2427,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../kubernetes/k8s-cluster-config/node-taint/" class="md-nav__link">
+      <a href="../../kubernetes/k8s-cluster-config/node-taint/" class="md-nav__link">
         
   
   
@@ -2558,7 +2463,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../kubernetes/k8s-update/" class="md-nav__link">
+      <a href="../../kubernetes/k8s-update/" class="md-nav__link">
         
   
   
@@ -2586,7 +2491,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../kubernetes/k8s-resources/" class="md-nav__link">
+      <a href="../../kubernetes/k8s-resources/" class="md-nav__link">
         
   
   
@@ -2638,7 +2543,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../kubernetes/k8s-applications/" class="md-nav__link ">
+            <a href="../../kubernetes/k8s-applications/" class="md-nav__link ">
               
   
   
@@ -2682,7 +2587,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../kubernetes/k8s-applications/busybox/" class="md-nav__link">
+      <a href="../../kubernetes/k8s-applications/busybox/" class="md-nav__link">
         
   
   
@@ -2710,7 +2615,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../kubernetes/k8s-applications/metrics-server/" class="md-nav__link">
+      <a href="../../kubernetes/k8s-applications/metrics-server/" class="md-nav__link">
         
   
   
@@ -2764,7 +2669,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../kubernetes/k8s-applications/ingress-nginx-controller/" class="md-nav__link ">
+            <a href="../../kubernetes/k8s-applications/ingress-nginx-controller/" class="md-nav__link ">
               
   
   
@@ -2808,7 +2713,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../kubernetes/k8s-applications/ingress-nginx-controller/ingress/" class="md-nav__link">
+      <a href="../../kubernetes/k8s-applications/ingress-nginx-controller/ingress/" class="md-nav__link">
         
   
   
@@ -2836,7 +2741,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../kubernetes/k8s-applications/ingress-nginx-controller/deploy_ingress_nginx_controller/" class="md-nav__link">
+      <a href="../../kubernetes/k8s-applications/ingress-nginx-controller/deploy_ingress_nginx_controller/" class="md-nav__link">
         
   
   
@@ -2864,7 +2769,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../kubernetes/k8s-applications/ingress-nginx-controller/deployment/" class="md-nav__link">
+      <a href="../../kubernetes/k8s-applications/ingress-nginx-controller/deployment/" class="md-nav__link">
         
   
   
@@ -2892,7 +2797,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../kubernetes/k8s-applications/ingress-nginx-controller/daemonset/" class="md-nav__link">
+      <a href="../../kubernetes/k8s-applications/ingress-nginx-controller/daemonset/" class="md-nav__link">
         
   
   
@@ -2969,7 +2874,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../docker/" class="md-nav__link ">
+            <a href="../../docker/" class="md-nav__link ">
               
   
   
@@ -3045,7 +2950,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../docker/docker-compose/" class="md-nav__link ">
+            <a href="../../docker/docker-compose/" class="md-nav__link ">
               
   
   
@@ -3089,7 +2994,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../docker/docker-compose/dc-emqx/" class="md-nav__link">
+      <a href="../../docker/docker-compose/dc-emqx/" class="md-nav__link">
         
   
   
@@ -3117,7 +3022,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../docker/docker-compose/dc-gitea/" class="md-nav__link">
+      <a href="../../docker/docker-compose/dc-gitea/" class="md-nav__link">
         
   
   
@@ -3145,7 +3050,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../docker/docker-compose/dc-frp/" class="md-nav__link">
+      <a href="../../docker/docker-compose/dc-frp/" class="md-nav__link">
         
   
   
@@ -3173,7 +3078,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../docker/docker-compose/dc-kuboard/" class="md-nav__link">
+      <a href="../../docker/docker-compose/dc-kuboard/" class="md-nav__link">
         
   
   
@@ -3201,7 +3106,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../docker/docker-compose/dc-postgres/" class="md-nav__link">
+      <a href="../../docker/docker-compose/dc-postgres/" class="md-nav__link">
         
   
   
@@ -3229,7 +3134,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../docker/docker-compose/dc-socks-server/" class="md-nav__link">
+      <a href="../../docker/docker-compose/dc-socks-server/" class="md-nav__link">
         
   
   
@@ -3257,7 +3162,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../docker/docker-compose/dc-tinyprox/" class="md-nav__link">
+      <a href="../../docker/docker-compose/dc-tinyprox/" class="md-nav__link">
         
   
   
@@ -3293,7 +3198,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../docker/docker-install/" class="md-nav__link">
+      <a href="../../docker/docker-install/" class="md-nav__link">
         
   
   
@@ -3321,7 +3226,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../docker/docker-install-manually/" class="md-nav__link">
+      <a href="../../docker/docker-install-manually/" class="md-nav__link">
         
   
   
@@ -3349,7 +3254,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../docker/docker-config/" class="md-nav__link">
+      <a href="../../docker/docker-config/" class="md-nav__link">
         
   
   
@@ -3420,7 +3325,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../develop/" class="md-nav__link ">
+            <a href="../../develop/" class="md-nav__link ">
               
   
   
@@ -3484,7 +3389,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../develop/distributed/" class="md-nav__link ">
+            <a href="../../develop/distributed/" class="md-nav__link ">
               
   
   
@@ -3528,7 +3433,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../develop/distributed/routing-in-distributed-systems/" class="md-nav__link">
+      <a href="../../develop/distributed/routing-in-distributed-systems/" class="md-nav__link">
         
   
   
@@ -3588,7 +3493,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../develop/develop-design/" class="md-nav__link ">
+            <a href="../../develop/develop-design/" class="md-nav__link ">
               
   
   
@@ -3656,7 +3561,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../develop/develop-design/iot/" class="md-nav__link ">
+            <a href="../../develop/develop-design/iot/" class="md-nav__link ">
               
   
   
@@ -3700,7 +3605,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../develop/develop-design/iot/iot-project-structure/" class="md-nav__link">
+      <a href="../../develop/develop-design/iot/iot-project-structure/" class="md-nav__link">
         
   
   
@@ -3728,7 +3633,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../develop/develop-design/iot/iot-agent-client/" class="md-nav__link">
+      <a href="../../develop/develop-design/iot/iot-agent-client/" class="md-nav__link">
         
   
   
@@ -3756,7 +3661,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../develop/develop-design/iot/iot-agent-server/" class="md-nav__link">
+      <a href="../../develop/develop-design/iot/iot-agent-server/" class="md-nav__link">
         
   
   
@@ -3792,7 +3697,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../develop/develop-design/dev-frp/" class="md-nav__link">
+      <a href="../../develop/develop-design/dev-frp/" class="md-nav__link">
         
   
   
@@ -3820,7 +3725,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../develop/develop-design/triangle-network/" class="md-nav__link">
+      <a href="../../develop/develop-design/triangle-network/" class="md-nav__link">
         
   
   
@@ -3892,7 +3797,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../develop/lang-java/" class="md-nav__link ">
+            <a href="../../develop/lang-java/" class="md-nav__link ">
               
   
   
@@ -3936,7 +3841,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../develop/lang-java/log-config/" class="md-nav__link">
+      <a href="../../develop/lang-java/log-config/" class="md-nav__link">
         
   
   
@@ -3964,7 +3869,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../develop/lang-java/dsl/" class="md-nav__link">
+      <a href="../../develop/lang-java/dsl/" class="md-nav__link">
         
   
   
@@ -3992,7 +3897,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../develop/lang-java/java-design/" class="md-nav__link">
+      <a href="../../develop/lang-java/java-design/" class="md-nav__link">
         
   
   
@@ -4020,7 +3925,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../develop/lang-java/jdbc/" class="md-nav__link">
+      <a href="../../develop/lang-java/jdbc/" class="md-nav__link">
         
   
   
@@ -4048,7 +3953,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../develop/lang-java/mybatis/" class="md-nav__link">
+      <a href="../../develop/lang-java/mybatis/" class="md-nav__link">
         
   
   
@@ -4076,7 +3981,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../develop/lang-java/spring/" class="md-nav__link">
+      <a href="../../develop/lang-java/spring/" class="md-nav__link">
         
   
   
@@ -4104,7 +4009,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../develop/lang-java/springboot/" class="md-nav__link">
+      <a href="../../develop/lang-java/springboot/" class="md-nav__link">
         
   
   
@@ -4132,7 +4037,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../develop/lang-java/netty/" class="md-nav__link">
+      <a href="../../develop/lang-java/netty/" class="md-nav__link">
         
   
   
@@ -4160,7 +4065,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../develop/lang-java/ziputils/" class="md-nav__link">
+      <a href="../../develop/lang-java/ziputils/" class="md-nav__link">
         
   
   
@@ -4218,7 +4123,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../develop/kotlin/" class="md-nav__link ">
+            <a href="../../develop/kotlin/" class="md-nav__link ">
               
   
   
@@ -4262,7 +4167,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../develop/kotlin/kotlin-syntactic-sugar/" class="md-nav__link">
+      <a href="../../develop/kotlin/kotlin-syntactic-sugar/" class="md-nav__link">
         
   
   
@@ -4290,7 +4195,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../develop/kotlin/kotlin-coding-tips/" class="md-nav__link">
+      <a href="../../develop/kotlin/kotlin-coding-tips/" class="md-nav__link">
         
   
   
@@ -4326,7 +4231,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../develop/lang-go/" class="md-nav__link">
+      <a href="../../develop/lang-go/" class="md-nav__link">
         
   
   
@@ -4376,7 +4281,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../develop/lang-lua/" class="md-nav__link ">
+            <a href="../../develop/lang-lua/" class="md-nav__link ">
               
   
   
@@ -4420,7 +4325,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../develop/lang-lua/lua-access-control/" class="md-nav__link">
+      <a href="../../develop/lang-lua/lua-access-control/" class="md-nav__link">
         
   
   
@@ -4448,7 +4353,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../develop/lang-lua/lua-ac-redis-rules-operator/" class="md-nav__link">
+      <a href="../../develop/lang-lua/lua-ac-redis-rules-operator/" class="md-nav__link">
         
   
   
@@ -4506,7 +4411,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../develop/sql/" class="md-nav__link ">
+            <a href="../../develop/sql/" class="md-nav__link ">
               
   
   
@@ -4576,7 +4481,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../develop/sql/postgres/" class="md-nav__link ">
+            <a href="../../develop/sql/postgres/" class="md-nav__link ">
               
   
   
@@ -4620,7 +4525,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../develop/sql/postgres/pg-tree-recursive/" class="md-nav__link">
+      <a href="../../develop/sql/postgres/pg-tree-recursive/" class="md-nav__link">
         
   
   
@@ -4648,7 +4553,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../develop/sql/postgres/pg-graph-recursive/" class="md-nav__link">
+      <a href="../../develop/sql/postgres/pg-graph-recursive/" class="md-nav__link">
         
   
   
@@ -4676,7 +4581,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../develop/sql/postgres/pg-attention/" class="md-nav__link">
+      <a href="../../develop/sql/postgres/pg-attention/" class="md-nav__link">
         
   
   
@@ -4704,7 +4609,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../develop/sql/postgres/pg-psql-pgdump/" class="md-nav__link">
+      <a href="../../develop/sql/postgres/pg-psql-pgdump/" class="md-nav__link">
         
   
   
@@ -4740,7 +4645,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../develop/sql/mysql/" class="md-nav__link">
+      <a href="../../develop/sql/mysql/" class="md-nav__link">
         
   
   
@@ -4796,7 +4701,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../develop/shell/" class="md-nav__link ">
+            <a href="../../develop/shell/" class="md-nav__link ">
               
   
   
@@ -4840,7 +4745,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../develop/shell/shell-cheat-sheet/" class="md-nav__link">
+      <a href="../../develop/shell/shell-cheat-sheet/" class="md-nav__link">
         
   
   
@@ -4876,7 +4781,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../develop/env-variables/" class="md-nav__link">
+      <a href="../../develop/env-variables/" class="md-nav__link">
         
   
   
@@ -4908,6 +4813,8 @@
       
   
   
+    
+  
   
   
     
@@ -4935,15 +4842,15 @@
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" checked>
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../devops/" class="md-nav__link ">
+            <a href="../" class="md-nav__link ">
               
   
   
@@ -4967,7 +4874,7 @@
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_9">
             <span class="md-nav__icon md-icon"></span>
             
@@ -5009,7 +4916,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../devops/nginx/" class="md-nav__link ">
+            <a href="../nginx/" class="md-nav__link ">
               
   
   
@@ -5053,7 +4960,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../devops/nginx/nginx-proxy_pass/" class="md-nav__link">
+      <a href="../nginx/nginx-proxy_pass/" class="md-nav__link">
         
   
   
@@ -5081,7 +4988,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../devops/nginx/nginx-lua-lifecycle/" class="md-nav__link">
+      <a href="../nginx/nginx-lua-lifecycle/" class="md-nav__link">
         
   
   
@@ -5117,7 +5024,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../devops/ci/" class="md-nav__link">
+      <a href="../ci/" class="md-nav__link">
         
   
   
@@ -5167,7 +5074,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../devops/vcs/" class="md-nav__link ">
+            <a href="../vcs/" class="md-nav__link ">
               
   
   
@@ -5211,7 +5118,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../devops/vcs/gitea/" class="md-nav__link">
+      <a href="../vcs/gitea/" class="md-nav__link">
         
   
   
@@ -5239,7 +5146,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../devops/vcs/gitlab/" class="md-nav__link">
+      <a href="../vcs/gitlab/" class="md-nav__link">
         
   
   
@@ -5275,7 +5182,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../devops/writerside/" class="md-nav__link">
+      <a href="../writerside/" class="md-nav__link">
         
   
   
@@ -5303,7 +5210,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../devops/mirrors/" class="md-nav__link">
+      <a href="../mirrors/" class="md-nav__link">
         
   
   
@@ -5351,7 +5258,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../devops/mermaid/" class="md-nav__link ">
+            <a href="../mermaid/" class="md-nav__link ">
               
   
   
@@ -5395,7 +5302,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../devops/mermaid/mermaid_example/" class="md-nav__link">
+      <a href="../mermaid/mermaid_example/" class="md-nav__link">
         
   
   
@@ -5428,10 +5335,37 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../../devops/ip-anchor-domain-naming/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Domain Naming
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -5447,6 +5381,281 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        基础规范
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="基础规范">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        命名空间
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        命名格式
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        命名约束
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        字段与取值
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="字段与取值">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        公用命名字段
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#host" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        host 命名字段
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#wan" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        wan 命名字段
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#net" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        net 命名字段
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pool" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        pool 命名字段
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        字段取值参考
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="字段取值参考">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        地域缩写
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        网络和厂商缩写
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#identity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        常用 identity
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dns" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        DNS 记录示例
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="DNS 记录示例">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        主机默认地址
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        主机地址作用域
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        公网出口地址
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        网络入口地址
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ip_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        多 IP 目标组
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        记录反例
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -5488,7 +5697,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../ai/" class="md-nav__link ">
+            <a href="../../ai/" class="md-nav__link ">
               
   
   
@@ -5532,7 +5741,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../ai/deep-learning/" class="md-nav__link">
+      <a href="../../ai/deep-learning/" class="md-nav__link">
         
   
   
@@ -5560,7 +5769,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../ai/aigc/" class="md-nav__link">
+      <a href="../../ai/aigc/" class="md-nav__link">
         
   
   
@@ -5619,7 +5828,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../linux/" class="md-nav__link ">
+            <a href="../../linux/" class="md-nav__link ">
               
   
   
@@ -5663,7 +5872,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../linux/git/" class="md-nav__link">
+      <a href="../../linux/git/" class="md-nav__link">
         
   
   
@@ -5691,7 +5900,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../linux/systemd/" class="md-nav__link">
+      <a href="../../linux/systemd/" class="md-nav__link">
         
   
   
@@ -5719,7 +5928,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../linux/ubuntu2204/" class="md-nav__link">
+      <a href="../../linux/ubuntu2204/" class="md-nav__link">
         
   
   
@@ -5778,7 +5987,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../windows/" class="md-nav__link ">
+            <a href="../../windows/" class="md-nav__link ">
               
   
   
@@ -5822,7 +6031,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../windows/win11Efficient/" class="md-nav__link">
+      <a href="../../windows/win11Efficient/" class="md-nav__link">
         
   
   
@@ -5850,7 +6059,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../windows/kms/" class="md-nav__link">
+      <a href="../../windows/kms/" class="md-nav__link">
         
   
   
@@ -5878,7 +6087,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../windows/windows-clean/" class="md-nav__link">
+      <a href="../../windows/windows-clean/" class="md-nav__link">
         
   
   
@@ -5913,7 +6122,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../macos/" class="md-nav__link">
+      <a href="../../macos/" class="md-nav__link">
         
   
   
@@ -5940,7 +6149,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../parameter-naming/" class="md-nav__link">
+      <a href="../../parameter-naming/" class="md-nav__link">
         
   
   
@@ -5990,43 +6199,254 @@
   <a href="#_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        前言
+        基础规范
       
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
+    <nav class="md-nav" aria-label="基础规范">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        群
+        命名空间
       
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
       
-        向量空间
+        命名格式
       
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       
-        向量子空间
+        命名约束
       
     </span>
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        字段与取值
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="字段与取值">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        公用命名字段
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#host" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        host 命名字段
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#wan" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        wan 命名字段
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#net" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        net 命名字段
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pool" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        pool 命名字段
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        字段取值参考
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="字段取值参考">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        地域缩写
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        网络和厂商缩写
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#identity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        常用 identity
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dns" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        DNS 记录示例
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="DNS 记录示例">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        主机默认地址
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        主机地址作用域
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        公网出口地址
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        网络入口地址
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ip_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        多 IP 目标组
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        记录反例
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -6047,198 +6467,870 @@
 
 
 
-<h1 id="vector-space">Vector Space</h1>
-<h3 id="_1">前言</h3>
-<p>线性方程组可以用矩阵-向量表示法来表示</p>
-<p>更深入地了解向量空间，即向量所在的结构化空间</p>
-<p>本章的开头，我们非正式地将向量描述为相加并乘以标量后，仍然是相同类型的对象。现在，我们准备将其形式化，我们将首先介绍群的概念，它包含一组元素和一个定义在这些元素上的操作，该操作可以保持集合的某些结构完整</p>
-<h3 id="_2">群</h3>
-<p>群在计算机科学中扮演着重要的角色。除了为集合上的运算提供一个基本框架外，它们还被大量应用于密码学、编码理论和图形学</p>
-<p><strong>定义 2.7</strong> 群</p>
-<p>考虑一个集合 <span class="arithmatex">\(\mathcal{G}\)</span> 和一个定义在 <span class="arithmatex">\(\mathcal{G}\)</span>
-上的运算 <span class="arithmatex">\(\otimes\)</span> ：<span class="arithmatex">\(\mathcal{G} \otimes \mathcal{G} \rightarrow \mathcal{G}\)</span>，则 <span class="arithmatex">\(G := (\mathcal{G},\otimes)\)</span>称之为群(
-group)：</p>
+<h1 id="ip">IP 锚点域名命名规范</h1>
+<p>本文约定标准 IP 锚点域名的命名空间、命名格式、字段和 DNS 记录写法。</p>
+<p>示例统一使用 <code>example.com</code>。实际落地时替换为自己的根域名。</p>
+<h2 id="_1">基础规范</h2>
+<h3 id="_2">命名空间</h3>
+<p>保留四类核心命名空间：</p>
+<table>
+<thead>
+<tr>
+<th>命名空间</th>
+<th>表达对象</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>host.example.com</code></td>
+<td>单个主机地址</td>
+<td>主机 IP 锚点，例如 VPS、PC、NAS、Router、Gateway</td>
+</tr>
+<tr>
+<td><code>wan.example.com</code></td>
+<td>单个公网出口地址</td>
+<td>公网出口 IP 锚点，例如家庭出口、办公出口、DDNS 出口</td>
+</tr>
+<tr>
+<td><code>net.example.com</code></td>
+<td>单个网络入口地址</td>
+<td>网络入口 IP 锚点，例如 VPN、Tunnel、Proxy、SSH Gateway</td>
+</tr>
+<tr>
+<td><code>pool.example.com</code></td>
+<td>多个地址组成的目标组</td>
+<td>多 IP 目标组，例如 DNS 轮询、入口集群、负载均衡目标组</td>
+</tr>
+</tbody>
+</table>
+<p>不使用 <code>svc.example.com</code> 或 <code>dyn.svc.example.com</code>。业务服务域名不纳入本规范；动态出口统一放在 <code>wan.example.com</code> 下。</p>
+<h3 id="_3">命名格式</h3>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>格式</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>主机 IP 锚点</td>
+<td><code>&lt;host-id&gt;.host.example.com</code></td>
+<td><code>vps-hk-oracle-edge.host.example.com</code></td>
+</tr>
+<tr>
+<td>主机地址作用域</td>
+<td><code>&lt;host-id&gt;.&lt;host-scope&gt;.host.example.com</code></td>
+<td><code>vps-hz-aliyun-a.priv.host.example.com</code></td>
+</tr>
+<tr>
+<td>公网出口 IP 锚点</td>
+<td><code>&lt;site&gt;-&lt;region&gt;-&lt;network&gt;-&lt;identity&gt;.wan.example.com</code></td>
+<td><code>home-wh-ct-main.wan.example.com</code></td>
+</tr>
+<tr>
+<td>网络入口 IP 锚点</td>
+<td><code>&lt;net-type&gt;-&lt;region&gt;-&lt;network&gt;-&lt;identity&gt;.net.example.com</code></td>
+<td><code>vpn-wh-ct-main.net.example.com</code></td>
+</tr>
+<tr>
+<td>多 IP 目标组</td>
+<td><code>&lt;function&gt;-&lt;pool-scope&gt;-&lt;network&gt;-&lt;identity&gt;.pool.example.com</code></td>
+<td><code>edge-global-bgp-main.pool.example.com</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="_4">命名约束</h3>
 <ul>
-<li><strong>1</strong> <span class="arithmatex">\(\mathcal{G}\)</span> 在 <span class="arithmatex">\(\otimes\)</span> 运算下的 <strong>封闭性(Closure)</strong>: <span class="arithmatex">\(\forall x,y \in \mathcal{G} : x \otimes y \in \mathcal{G}\)</span></li>
-<li><strong>2</strong> <strong>结合律(Associativity)</strong>：$\forall x,y,z \in \mathcal{G} : (x \otimes y)\otimes z = x \otimes (y \otimes z)  $</li>
-<li><strong>3</strong> <strong>单位元(Neutral element)</strong>：<span class="arithmatex">\(\exists e \in \mathcal{G},\forall x \in \mathcal{G}\)</span>：<span class="arithmatex">\(x \otimes e = x\)</span> and <span class="arithmatex">\(e \otimes x = x\)</span></li>
-<li><strong>4</strong> <strong>逆元(Inverse element)</strong>：<span class="arithmatex">\(\forall x \in \mathcal{G} ,\exists y \in \mathcal{G}\)</span> : <span class="arithmatex">\(x \otimes y = e\)</span>
-  and <span class="arithmatex">\(y \otimes x = e\)</span>，其中 e是单位元。我们经常写 <span class="arithmatex">\(x^{-1}\)</span> 来表示 <span class="arithmatex">\(x\)</span>的逆元</li>
+<li>全部使用小写字母、数字和连字符 <code>-</code>。</li>
+<li><code>identity</code> 表达稳定实例身份，不使用 IP、端口、环境名或临时状态。</li>
+<li>不把 <code>grafana</code>、<code>registry</code>、<code>api</code> 这类业务服务名放进 IP 锚点域名。</li>
+<li>不把 <code>prod</code>、<code>dev</code> 这类环境名放进 IP 锚点域名；环境信息放到标签、Inventory 或业务域名中。</li>
+<li><code>host</code>、<code>wan</code>、<code>net</code> 表达单个稳定对象；<code>pool</code> 表达多个地址组成的集合。</li>
+<li>主机存在多个地址时，使用 <code>host-scope</code> 的 <code>priv</code>、<code>pub</code>、<code>egress</code> 区分地址作用域。</li>
+<li><code>pool-scope</code> 表达目标组覆盖范围，不要求目标地址属于同一个地域。</li>
+<li><code>pool</code> 使用基础设施功能命名，例如 <code>edge</code>、<code>ingress</code>、<code>proxy</code>，避免使用具体业务服务名。</li>
 </ul>
-<p><strong>备注</strong> 逆元是针对运算 <span class="arithmatex">\(\otimes\)</span> 定义的，并不一定意味着逆元一定是 <span class="arithmatex">\(\frac{1}{x}\)</span></p>
-<p><strong>阿贝尔群：</strong> <span class="arithmatex">\(\forall x,y \in \mathcal{G},x \otimes y = y \otimes x\)</span>，那么 <span class="arithmatex">\(G = (\mathcal{G},\otimes)\)</span> 是阿贝尔群</p>
-<p>例如</p>
-<p><span class="arithmatex">\(\mathbb{Z}\)</span> : 整数，<span class="arithmatex">\(N_0\)</span>：自然数，<span class="arithmatex">\(\mathbb{R}\)</span>：实数，<span class="arithmatex">\(\mathbb{C}\)</span>：复数</p>
-<ul>
-<li>
-<p><span class="arithmatex">\((\mathbb{Z},+)\)</span> 是一个阿贝尔群</p>
-</li>
-<li>
-<p><span class="arithmatex">\((N_0,+)\)</span>不是一个群：虽然<span class="arithmatex">\((N_0,+)\)</span>有一个单位元，但是缺少逆元</p>
-</li>
-<li>
-<p><span class="arithmatex">\((\mathbb{Z},\cdot)\)</span> 不是一个群：虽然 <span class="arithmatex">\((\mathbb{Z},\cdot)\)</span>包含一个单位元<span class="arithmatex">\((1)\)</span>，但是任何 <span class="arithmatex">\(z \in \mathbb{Z}，z \neq \pm 1\)</span>
-  的逆元都不是整数</p>
-</li>
-<li>
-<p><span class="arithmatex">\((\mathbb{R},\cdot)\)</span>不是群：因为<span class="arithmatex">\(0\)</span>不具有逆元</p>
-</li>
-<li>
-<p><span class="arithmatex">\(\left(\mathbb{R} \setminus \{0\}, \cdot\right)\)</span>是阿贝尔群</p>
-</li>
-<li>
-<p><span class="arithmatex">\((\mathbb{R}^n,+)\)</span>，<span class="arithmatex">\((\mathbb{Z}^n,+)\)</span>，<span class="arithmatex">\(n \in \mathbb{Z}\)</span> 是阿贝尔群，前提是 <span class="arithmatex">\(+\)</span> 是按分量定义的，即</p>
-</li>
-</ul>
-<div class="arithmatex">\[
-  (x_1,\cdots,x_n) + (y_1,\cdots,y_n) = (x_1+y_1,\cdots,x_n+y_n)
-\]</div>
-<p><span class="arithmatex">\((x_1,\cdots,x_n)^{-1} := (-x_1,\cdots,-x_n)\)</span>为逆元；<span class="arithmatex">\(e = (0,\cdots,0)\)</span> 为单位元</p>
-<ul>
-<li>
-<p><span class="arithmatex">\((\mathbb{R}^{m \times n},+)\)</span>，<span class="arithmatex">\(m \times n\)</span>-矩阵集是阿贝尔集，前提是具有上面例子一样的分量加法</p>
-</li>
-<li>
-<p>仔细看 <span class="arithmatex">\((\mathbb{R}^{n \times n},\cdot)\)</span>，即之前定义的具有矩阵乘法的 <span class="arithmatex">\(n \times n\)</span>-矩阵集</p>
-</li>
-<li>
-<p>封闭性和结合性来自于矩阵乘法的定义</p>
-</li>
-<li>单位元：单位矩阵 <span class="arithmatex">\(\boldsymbol{\mathit{I}}_n\)</span></li>
-<li>逆元：如果矩阵 <span class="arithmatex">\(\boldsymbol{\mathit{A}}\)</span> 的逆存在（<span class="arithmatex">\(\boldsymbol{\mathit{A}}\)</span>
-    是正则的），那么 <span class="arithmatex">\(\boldsymbol{\mathit{A}}^{-1}\)</span>是 <span class="arithmatex">\(\boldsymbol{\mathit{A}} \in \mathbb{R}^{n \times n}\)</span>
-    的逆元，在这种情况下，<span class="arithmatex">\(（\mathbb{R}^{n \times n}，\cdot)\)</span> 就是一群，称为 <strong>一般线性群(general liner group)</strong></li>
-</ul>
-<p><strong>定义</strong> 一般线性群</p>
-<p>正则（可逆）矩阵集 <span class="arithmatex">\(\boldsymbol{\mathit{A}} \in \mathbb{R}^{n \times n}\)</span>
-关于矩阵乘法的群，称为一般线性群 <span class="arithmatex">\(\boldsymbol{GL}(n,\mathbb{R})\)</span>。然而，由于矩阵的乘法是不可逆的，所以改群不是阿贝尔群</p>
-<h3 id="_3">向量空间</h3>
-<p>当我们讨论群时，我们研究集合<span class="arithmatex">\(\mathcal{G}\)</span>的内部运算，即<span class="arithmatex">\(\mathcal{G}\)</span>内部元素的运算的映射 <span class="arithmatex">\(\mathcal{G} \otimes \mathcal{G} \rightarrow \mathcal{G}\)</span>。在下面，除了考虑 <strong>内部运算(inner operation)</strong> "<span class="arithmatex">\(+\)</span>"外的
-<strong>外部运算(outer operation)</strong> "<span class="arithmatex">\(\cdot\)</span>",向量<span class="arithmatex">\(x \in \mathcal{G}\)</span>乘以一个标量 <span class="arithmatex">\(\lambda \in \mathbb{R}\)</span>。
-我们可以把内部运算看作是加法的形式，外部运算看作是缩放的形式。请注意，内部/外部操作 与内积/外积 无关。</p>
-<p><strong>定义</strong> 向量空间</p>
-<p>实值 <strong>向量空间(Vector Space)</strong> <span class="arithmatex">\(\boldsymbol{V} = (\mathcal{V},+,\cdot)\)</span> 是一个具有两类运算的集合 <span class="arithmatex">\(\mathcal{V}\)</span></p>
-<p><span class="arithmatex">\(+: \mathcal{V} + \mathcal{V} \rightarrow \mathcal{V}\)</span></p>
-<p><span class="arithmatex">\(\cdot: \mathbb{R} \cdot \mathcal{V} -&gt; \mathcal{V}\)</span></p>
-<p><strong>其中</strong></p>
-<ol>
-<li><span class="arithmatex">\((\mathcal{V},+)\)</span>是阿贝尔群</li>
-<li>
-<p>分配律</p>
-</li>
-<li>
-<p><span class="arithmatex">\(\forall \lambda \in \mathbb{R},\boldsymbol{x}，\boldsymbol{y} \in \mathcal{V}\)</span>：<span class="arithmatex">\(\lambda \cdot (\boldsymbol{x} + \boldsymbol{y}) = \lambda \cdot \boldsymbol{x} + \lambda \cdot \boldsymbol{y}\)</span></p>
-</li>
-<li>
-<p><span class="arithmatex">\(\forall \lambda,\psi \in \mathbb{R},\boldsymbol{x} \in \mathcal{V}\)</span>: <span class="arithmatex">\((\lambda + \psi) \cdot \boldsymbol{x} = \lambda \cdot \boldsymbol{x} + \psi \cdot \boldsymbol{x}\)</span></p>
-</li>
-<li>
-<p>结合律（外部操作）<span class="arithmatex">\(\forall \lambda,\psi \in \mathbb{R}，\boldsymbol{x} \in \mathcal{V}\)</span> : <span class="arithmatex">\(\lambda \cdot (\psi \cdot x) = (\lambda \psi) \cdot x\)</span></p>
-</li>
-<li>关于外部操作的单位元：<span class="arithmatex">\(\forall x \in \mathcal{V}\)</span>：<span class="arithmatex">\(1 \cdot x = x\)</span></li>
-</ol>
-<p>元素 <span class="arithmatex">\(\boldsymbol{x} \in \mathcal{V}\)</span>  称为向量。<span class="arithmatex">\((\mathcal{V},+)\)</span>的单位元向量是 <span class="arithmatex">\(\boldsymbol{0} = [0,\cdots,0]^\mathrm{T}\)</span> ，内部运算 <span class="arithmatex">\(+\)</span> 称为 <strong>向量加法(vector addition)</strong>。
-元素 <span class="arithmatex">\(\lambda \in \mathbb{R}\)</span> 称为 <strong>标量(scalars)</strong>，外部运算 <span class="arithmatex">\(\cdot\)</span> 是 <strong>被标量乘(multiplication by scalars)</strong> 。注意 <strong>标量积(scalar product)</strong> 与这个是不同的。</p>
-<p><strong>备注</strong></p>
-<p>向量乘法(<strong>vector multiplication</strong>) <span class="arithmatex">\(\boldsymbol{ab}，a,b \in \mathbb{R}^{n}\)</span>
-是没有定义的。理论上，我们可以定义按元素的乘法 <span class="arithmatex">\(\boldsymbol{c = ab}\)</span>,其中 <span class="arithmatex">\(c_{j} = a_j b_j\)</span>。这种数组乘法(array
-multiplication)在许多编程语言中都很常见，但这使得使用矩阵乘法的标准规则在数学意义上有限：通过将向量视为 $n \times 1 $
-的矩阵，可以使用之前定义的矩阵乘法进行运算。可这样的话，向量与向量直接相乘的维度却不匹配。仅以下向量乘法有定义</p>
-<ul>
-<li><span class="arithmatex">\(\boldsymbol{a}\boldsymbol{b}^\mathrm{T} \in \mathbb{R}^{n \times n}\)</span>（<strong>外积 outer product</strong>）</li>
-<li><span class="arithmatex">\(\boldsymbol{a}^\mathrm{T}\boldsymbol{b} \in \mathbb{R}\)</span> (<strong>内积/标量积/点积 inner/scalar/dot product</strong>)</li>
-</ul>
-<p><strong>例</strong> 向量空间重要例子</p>
-<ul>
-<li>
-<p><span class="arithmatex">\(\mathcal{V} = \mathbb{R}^{n}, n \in \mathbb{N}\)</span> 是一个向量空间，其运算定义如下</p>
-</li>
-<li>
-<p>相加：对于 <span class="arithmatex">\(\forall x,y \in \mathbb{R}^{n}, x + y = (x_1,\cdots,x_n)+(y_1,\cdots,y_n)=(x_1+y_1,\cdots,x_n+y_n)\)</span></p>
-</li>
-<li>
-<p>与标量相乘：对于 <span class="arithmatex">\(\forall \lambda \in \mathbb{R},\boldsymbol{x} \in \mathbb{R}^{n},\lambda x = \lambda(x_1,\cdots,x_n)=(\lambda x_1,\cdots,\lambda_n x_n)\)</span></p>
-</li>
-<li>
-<p><span class="arithmatex">\(\mathcal{V} = \mathbb{R}^{m \times n},m,n \in \mathbb{N}\)</span>是一个向量空间</p>
-</li>
-<li>
-<p>相加：对于 <span class="arithmatex">\(A,B \in \mathcal{V}\)</span> 逐元素相加</p>
-</li>
-</ul>
-<div class="arithmatex">\[
-    A + B = \begin{bmatrix}
-    a_{11}+b_{11}, \cdots ,a_{1n}+b_{1n} \\
-    \vdots \qquad \qquad \qquad \vdots \\
-    a_{m1}+b_{m1}, \cdots, a_{mn}+b_{mn}
-    \end{bmatrix}
-\]</div>
-<ul>
-<li>与标量相乘，记住<span class="arithmatex">\(\mathbb{R}^{m \times n}\)</span>相当于<span class="arithmatex">\(\mathbb{R}^{mn}\)</span></li>
-</ul>
-<div class="arithmatex">\[
-    \lambda A = \begin{bmatrix}
-    \lambda a_{11},\cdots\lambda a_{1n} \\
-    \vdots \qquad \qquad \vdots \\
-    \lambda a_{m1},\cdots\lambda a_{mn}
-    \end{bmatrix}
-\]</div>
-<ul>
-<li><span class="arithmatex">\(\mathcal{V} = \mathbb{C}\)</span> 也是向量空间</li>
-</ul>
-<p><strong>备注</strong></p>
-<p>在下面，当<span class="arithmatex">\(+\)</span> 和 <span class="arithmatex">\(\cdot\)</span>  是标准向量加法和标量乘法时，我们将用 <span class="arithmatex">\(V\)</span> 表示向量空间 <span class="arithmatex">\((\mathcal{V},+,\cdot)\)</span>。
-此外，我们将使用符号 <span class="arithmatex">\(x \in V\)</span>表示 <span class="arithmatex">\(\mathcal{V}\)</span> 中的向量，以简化符号</p>
-<p><strong>备注</strong></p>
-<p>向量空间 <span class="arithmatex">\(\mathbb{R}^{n}\)</span> <span class="arithmatex">\(\mathbb{R}^{n \times1}\)</span> <span class="arithmatex">\(\mathbb{R}^{1 \times n}\)</span>
-只是我们写向量的方式不同。在下文中，我们将不区分 <span class="arithmatex">\(\mathbb{R}^{n}\)</span> 和 <span class="arithmatex">\(\mathbb{R}^{n \times 1}\)</span>，这允许我们用 <span class="arithmatex">\(n\)</span>
-元组用列向量(column vectors)表示</p>
-<div class="arithmatex">\[
-\boldsymbol{x}= \begin{bmatrix}x_1\\\vdots\\x_n\end{bmatrix}
-\]</div>
-<p>这样简化了向量运算的表示法。但是我们要区分 <span class="arithmatex">\(\mathbb{R}^{n \times 1}\)</span> 和 <span class="arithmatex">\(\mathbb{R}^{1 \times n}\)</span>(行向量row vectors)，
-以避免在矩阵乘法时混淆。默认情况下</p>
-<ul>
-<li><span class="arithmatex">\(\boldsymbol{x}\)</span> 来表示列向量</li>
-<li><span class="arithmatex">\(\boldsymbol{x}^\mathrm{T}\)</span> 来表示行向量，即列向量的转置</li>
-</ul>
-<h3 id="_4">向量子空间</h3>
-<p>向量子空间是原始向量空间中的集合，且具有这样的性质</p>
-<ul>
-<li>对子空间的元素进行向量空间运算，结果不会超出子空间。从这个意义上说，它是封闭的</li>
-</ul>
-<p><em>向量子空间是机器学习的一个重要概念，利用向量子空间进行降维</em></p>
-<p><strong>定义</strong> 向量子空间</p>
-<p>令  <span class="arithmatex">\(\mathrm{V}= (\mathcal{V},+,\cdot)\)</span> 为向量空间，且$\mathcal{U} \subseteq \mathcal{V}，\mathcal{U} \neq \varnothing $
-，如果 <span class="arithmatex">\(\mathrm{U}\)</span> 是一个向量空间，且它的向量空间运算 <span class="arithmatex">\(+\)</span> 和 <span class="arithmatex">\(\cdot\)</span> 限制为 <span class="arithmatex">\(\mathcal{U} \times \mathcal{U}\)</span>
-和 <span class="arithmatex">\(\mathbb{R} \times \mathcal{U}\)</span>，那么 <span class="arithmatex">\(\mathrm{U}=(\mathcal{U},+,\cdot)\)</span>称为 <span class="arithmatex">\(\mathrm{V}\)</span> 的 <strong>向量子空间(vector
-subspace 或 liner subspace)</strong>。用 <span class="arithmatex">\(\mathrm{U} \subseteq \mathrm{V}\)</span>表示 <span class="arithmatex">\(\mathrm{V}\)</span> 的子空间 <span class="arithmatex">\(\mathrm{U}\)</span></p>
-<p>如果 <span class="arithmatex">\(\mathrm{U} \subseteq \mathrm{V}\)</span> 且 <span class="arithmatex">\(\mathrm{V}\)</span> 是向量空间，那么<span class="arithmatex">\(\mathrm{U}\)</span>自然地直接从<span class="arithmatex">\(\mathrm{V}\)</span>
-继承了许多性质，因为这些性质适用于所有的 <span class="arithmatex">\(x \subseteq \mathcal{V}\)</span>，
-特别是所有 <span class="arithmatex">\(\boldsymbol{x} \subseteq \mathcal{U} \subseteq \mathcal{V}\)</span>。这包括阿贝尔群的性质，分配律、结合律和基元。</p>
-<p>为了确定 <span class="arithmatex">\((\mathcal{U},+,\cdot)\)</span>是否是 <span class="arithmatex">\(\mathrm{V}\)</span>的子空间，还需要确定</p>
-<ol>
-<li>
-<p><span class="arithmatex">\(\mathcal{U} \neq \varnothing\)</span>，特别地，单位元 <span class="arithmatex">\(\boldsymbol{0} \in \mathcal{U}\)</span></p>
-</li>
-<li>
-<p><span class="arithmatex">\(U\)</span>的封闭性：</p>
-</li>
-<li>
-<p>关于外部操作：<span class="arithmatex">\(\forall \lambda \in \mathbb{R},\forall \boldsymbol{x} \in \mathcal{U}: \lambda \boldsymbol{x} \in \mathcal{U}\)</span></p>
-</li>
-<li>关于内部操作：<span class="arithmatex">\(\forall \boldsymbol{x},\boldsymbol{y} \in \mathcal{U}: \boldsymbol{x} + \boldsymbol{y} \in \mathcal{U}\)</span></li>
-</ol>
-<p><strong>例</strong> 向量子空间</p>
-<p>对于每个向量空间<span class="arithmatex">\(\mathrm{V}\)</span>，其 <strong>平凡子空间(trivial subspaces)</strong> 是 <span class="arithmatex">\(\mathrm{V}\)</span>本身和 <span class="arithmatex">\(\boldsymbol{0}\)</span></p>
-<p>具有<span class="arithmatex">\(n\)</span>个未知量 <span class="arithmatex">\(\boldsymbol{x} = [x_1,\cdots,x_n]^\mathrm{T}\)</span>
-的齐次线性方程组 <span class="arithmatex">\(\boldsymbol{\mathit{A}}\boldsymbol{x} = \boldsymbol{0}\)</span>的解集是 <span class="arithmatex">\(\mathbb{R}^{n}\)</span> 的一个子空间</p>
-<p>非齐次线性方程组 <span class="arithmatex">\(\boldsymbol{\mathit{A}} \boldsymbol{z} = \boldsymbol{b},\boldsymbol{b} \neq \boldsymbol{0}\)</span>
-的解不是 <span class="arithmatex">\(\mathbb{R}^{n}\)</span>的子空间</p>
-<p>任意子空间的交集是它们本身的子空间</p>
-<p><strong>备注</strong></p>
-<p>对于 $ \boldsymbol{x} \in \mathbb{R}^{n}$，每个子空间 <span class="arithmatex">\(\mathrm{U} \in (\mathbb{R}^{n},+,\cdot)\)</span>
-是齐次方程组 <span class="arithmatex">\(\boldsymbol{\mathit{A}}\boldsymbol{x}=\boldsymbol{0}\)</span>的解空间</p>
+<h2 id="_5">字段与取值</h2>
+<p>本节按命名格式说明字段。<code>region</code>、<code>network</code>、<code>identity</code> 是跨命名空间复用的公用字段；各命名空间只补充自身特有字段。</p>
+<h3 id="_6">公用命名字段</h3>
+<table>
+<thead>
+<tr>
+<th>字段</th>
+<th>含义</th>
+<th>使用范围</th>
+<th>说明 / 示例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>region</code></td>
+<td>地域</td>
+<td><code>host</code>、<code>wan</code>、<code>net</code></td>
+<td>例如 <code>wh</code>、<code>sh</code>、<code>hk</code>、<code>sg</code>、<code>us-la</code></td>
+</tr>
+<tr>
+<td><code>network</code></td>
+<td>网络、线路、运营商或云厂商</td>
+<td><code>host</code>、<code>wan</code>、<code>net</code>、<code>pool</code></td>
+<td>例如 <code>ct</code>、<code>cu</code>、<code>cmcc</code>、<code>bgp</code>、<code>aliyun</code>、<code>oracle</code>、<code>cf</code>、<code>lan</code></td>
+</tr>
+<tr>
+<td><code>identity</code></td>
+<td>稳定实例标识</td>
+<td><code>host</code>、<code>wan</code>、<code>net</code>、<code>pool</code></td>
+<td>用于区分同类对象，例如 <code>main</code>、<code>backup</code>、<code>edge</code>、<code>relay</code>、<code>01</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="host">host 命名字段</h3>
+<p>适用格式：</p>
+<table>
+<thead>
+<tr>
+<th>格式</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>&lt;host-id&gt;.host.example.com</code></td>
+<td>主机默认 IP 锚点</td>
+</tr>
+<tr>
+<td><code>&lt;host-id&gt;.&lt;host-scope&gt;.host.example.com</code></td>
+<td>主机指定地址作用域</td>
+</tr>
+</tbody>
+</table>
+<p>字段说明：</p>
+<table>
+<thead>
+<tr>
+<th>字段</th>
+<th>含义</th>
+<th>说明 / 示例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>host-id</code></td>
+<td>主机稳定身份</td>
+<td>格式为 <code>&lt;role&gt;-&lt;region&gt;-&lt;network&gt;-&lt;identity&gt;</code></td>
+</tr>
+<tr>
+<td><code>role</code></td>
+<td>主机角色</td>
+<td>例如 <code>vps</code>、<code>pc</code>、<code>nas</code>、<code>router</code>、<code>gw</code></td>
+</tr>
+<tr>
+<td><code>region</code></td>
+<td>地域</td>
+<td>公用字段</td>
+</tr>
+<tr>
+<td><code>network</code></td>
+<td>网络、线路、运营商或云厂商</td>
+<td>公用字段</td>
+</tr>
+<tr>
+<td><code>identity</code></td>
+<td>稳定实例标识</td>
+<td>公用字段</td>
+</tr>
+<tr>
+<td><code>host-scope</code></td>
+<td>主机地址作用域</td>
+<td>仅用于 <code>&lt;host-id&gt;.&lt;host-scope&gt;.host.example.com</code></td>
+</tr>
+</tbody>
+</table>
+<p><code>&lt;host-scope&gt;.host.example.com</code> 是作用域子命名空间：</p>
+<table>
+<thead>
+<tr>
+<th>host-scope 取值</th>
+<th>作用域子命名空间</th>
+<th>含义</th>
+<th>记录建议</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>priv</code></td>
+<td><code>priv.host.example.com</code></td>
+<td>主机内网地址</td>
+<td>直接维护 <code>A</code> / <code>AAAA</code></td>
+</tr>
+<tr>
+<td><code>pub</code></td>
+<td><code>pub.host.example.com</code></td>
+<td>主机入站公网地址</td>
+<td>直接维护 <code>A</code> / <code>AAAA</code></td>
+</tr>
+<tr>
+<td><code>egress</code></td>
+<td><code>egress.host.example.com</code></td>
+<td>主机出站公网地址</td>
+<td>直接维护 <code>A</code> / <code>AAAA</code>，或 <code>CNAME</code> 到 <code>pub</code> / <code>wan</code> 锚点</td>
+</tr>
+</tbody>
+</table>
+<p><code>&lt;host-id&gt;.host.example.com</code> 可作为主机默认地址；需要同时管理内网、公网入站和公网出站地址时，优先使用显式作用域。</p>
+<p><code>egress</code> 用于标识主机访问外部网络时对端看到的公网 IP。它常用于第三方服务 IP 白名单、防火墙放行、审计排查和出口一致性检查。<code>egress</code> 可以与 <code>pub</code> 相同，也可以指向 NAT Gateway、共享 EIP、家庭出口或办公出口等
+<code>wan.example.com</code> 锚点。</p>
+<h3 id="wan">wan 命名字段</h3>
+<p>适用格式：</p>
+<table>
+<thead>
+<tr>
+<th>格式</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>&lt;site&gt;-&lt;region&gt;-&lt;network&gt;-&lt;identity&gt;.wan.example.com</code></td>
+<td>公网出口 IP 锚点</td>
+</tr>
+</tbody>
+</table>
+<p>字段说明：</p>
+<table>
+<thead>
+<tr>
+<th>字段</th>
+<th>含义</th>
+<th>说明 / 示例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>site</code></td>
+<td>场地</td>
+<td>例如 <code>home</code>、<code>office</code>、<code>lab</code></td>
+</tr>
+<tr>
+<td><code>region</code></td>
+<td>地域</td>
+<td>公用字段</td>
+</tr>
+<tr>
+<td><code>network</code></td>
+<td>网络、线路、运营商或云厂商</td>
+<td>公用字段</td>
+</tr>
+<tr>
+<td><code>identity</code></td>
+<td>稳定实例标识</td>
+<td>公用字段</td>
+</tr>
+</tbody>
+</table>
+<h3 id="net">net 命名字段</h3>
+<p>适用格式：</p>
+<table>
+<thead>
+<tr>
+<th>格式</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>&lt;net-type&gt;-&lt;region&gt;-&lt;network&gt;-&lt;identity&gt;.net.example.com</code></td>
+<td>网络入口 IP 锚点</td>
+</tr>
+</tbody>
+</table>
+<p>字段说明：</p>
+<table>
+<thead>
+<tr>
+<th>字段</th>
+<th>含义</th>
+<th>说明 / 示例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>net-type</code></td>
+<td>网络入口类型</td>
+<td>例如 <code>vpn</code>、<code>tunnel</code>、<code>socks</code>、<code>sshgw</code>、<code>proxy</code>、<code>ingress</code></td>
+</tr>
+<tr>
+<td><code>region</code></td>
+<td>地域</td>
+<td>公用字段</td>
+</tr>
+<tr>
+<td><code>network</code></td>
+<td>网络、线路、运营商或云厂商</td>
+<td>公用字段</td>
+</tr>
+<tr>
+<td><code>identity</code></td>
+<td>稳定实例标识</td>
+<td>公用字段</td>
+</tr>
+</tbody>
+</table>
+<h3 id="pool">pool 命名字段</h3>
+<p>适用格式：</p>
+<table>
+<thead>
+<tr>
+<th>格式</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>&lt;function&gt;-&lt;pool-scope&gt;-&lt;network&gt;-&lt;identity&gt;.pool.example.com</code></td>
+<td>多 IP 目标组</td>
+</tr>
+</tbody>
+</table>
+<p>字段说明：</p>
+<table>
+<thead>
+<tr>
+<th>字段</th>
+<th>含义</th>
+<th>说明 / 示例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>function</code></td>
+<td>多 IP 目标组功能</td>
+<td>例如 <code>edge</code>、<code>ingress</code>、<code>web</code>、<code>proxy</code>、<code>gateway</code></td>
+</tr>
+<tr>
+<td><code>pool-scope</code></td>
+<td>多 IP 目标组覆盖范围</td>
+<td>例如 <code>global</code>、<code>multi</code>、<code>cn</code>、<code>ap</code>、<code>hk</code>、<code>sg</code>、<code>wh</code></td>
+</tr>
+<tr>
+<td><code>network</code></td>
+<td>网络、线路、运营商或云厂商</td>
+<td>公用字段</td>
+</tr>
+<tr>
+<td><code>identity</code></td>
+<td>稳定实例标识</td>
+<td>公用字段</td>
+</tr>
+</tbody>
+</table>
+<p>常用 <code>pool-scope</code>：</p>
+<table>
+<thead>
+<tr>
+<th>取值</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>global</code></td>
+<td>跨地域或全球目标组</td>
+</tr>
+<tr>
+<td><code>multi</code></td>
+<td>多地域目标组，但不强调具体范围</td>
+</tr>
+<tr>
+<td><code>cn</code></td>
+<td>中国大陆目标组</td>
+</tr>
+<tr>
+<td><code>ap</code></td>
+<td>亚太目标组</td>
+</tr>
+<tr>
+<td><code>hk</code></td>
+<td>香港目标组</td>
+</tr>
+<tr>
+<td><code>sg</code></td>
+<td>新加坡目标组</td>
+</tr>
+<tr>
+<td><code>wh</code></td>
+<td>武汉目标组</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_7">字段取值参考</h2>
+<h3 id="_8">地域缩写</h3>
+<table>
+<thead>
+<tr>
+<th>地域</th>
+<th>缩写</th>
+<th>地域</th>
+<th>缩写</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>武汉</td>
+<td><code>wh</code></td>
+<td>香港</td>
+<td><code>hk</code></td>
+</tr>
+<tr>
+<td>上海</td>
+<td><code>sh</code></td>
+<td>新加坡</td>
+<td><code>sg</code></td>
+</tr>
+<tr>
+<td>北京</td>
+<td><code>bj</code></td>
+<td>日本东京</td>
+<td><code>jp-tokyo</code></td>
+</tr>
+<tr>
+<td>广州</td>
+<td><code>gz</code></td>
+<td>韩国首尔</td>
+<td><code>kr-seoul</code></td>
+</tr>
+<tr>
+<td>深圳</td>
+<td><code>sz</code></td>
+<td>美国洛杉矶</td>
+<td><code>us-la</code></td>
+</tr>
+<tr>
+<td>杭州</td>
+<td><code>hz</code></td>
+<td>美国圣何塞</td>
+<td><code>us-sjc</code></td>
+</tr>
+<tr>
+<td>南京</td>
+<td><code>nj</code></td>
+<td>德国法兰克福</td>
+<td><code>de-fra</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="_9">网络和厂商缩写</h3>
+<table>
+<thead>
+<tr>
+<th>网络 / 线路</th>
+<th>缩写</th>
+<th>云厂商 / 平台</th>
+<th>缩写</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>中国电信</td>
+<td><code>ct</code></td>
+<td>阿里云</td>
+<td><code>aliyun</code></td>
+</tr>
+<tr>
+<td>中国联通</td>
+<td><code>cu</code></td>
+<td>腾讯云</td>
+<td><code>tencent</code></td>
+</tr>
+<tr>
+<td>中国移动</td>
+<td><code>cmcc</code></td>
+<td>华为云</td>
+<td><code>huawei</code></td>
+</tr>
+<tr>
+<td>教育网</td>
+<td><code>cernet</code></td>
+<td>AWS</td>
+<td><code>aws</code></td>
+</tr>
+<tr>
+<td>BGP 多线</td>
+<td><code>bgp</code></td>
+<td>Oracle Cloud</td>
+<td><code>oracle</code></td>
+</tr>
+<tr>
+<td>LAN 内网</td>
+<td><code>lan</code></td>
+<td>Cloudflare</td>
+<td><code>cf</code></td>
+</tr>
+</tbody>
+</table>
+<p>不要使用 <code>tc</code> 表示中国电信，避免与 Tencent Cloud 混淆。统一使用 <code>ct</code>。</p>
+<h3 id="identity">常用 identity</h3>
+<table>
+<thead>
+<tr>
+<th>取值</th>
+<th>含义</th>
+<th>取值</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>main</code></td>
+<td>主实例</td>
+<td><code>lab</code></td>
+<td>实验节点</td>
+</tr>
+<tr>
+<td><code>backup</code></td>
+<td>备用实例</td>
+<td><code>build</code></td>
+<td>构建节点</td>
+</tr>
+<tr>
+<td><code>edge</code></td>
+<td>边缘入口</td>
+<td><code>storage</code></td>
+<td>存储节点</td>
+</tr>
+<tr>
+<td><code>relay</code></td>
+<td>中继节点</td>
+<td><code>monitor</code></td>
+<td>监控节点</td>
+</tr>
+<tr>
+<td><code>proxy</code></td>
+<td>代理节点</td>
+<td><code>01</code>, <code>02</code></td>
+<td>数字实例标识</td>
+</tr>
+</tbody>
+</table>
+<h2 id="dns">DNS 记录示例</h2>
+<p>以下内容按命名格式展示常见 DNS 记录写法，不代表唯一实现。实际记录类型和目标应结合 DNS 服务商能力、自动化方式和网络拓扑调整。</p>
+<table>
+<thead>
+<tr>
+<th>示例类型</th>
+<th>命名格式</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>主机默认地址</td>
+<td><code>&lt;host-id&gt;.host.example.com</code></td>
+</tr>
+<tr>
+<td>主机地址作用域</td>
+<td><code>&lt;host-id&gt;.&lt;host-scope&gt;.host.example.com</code></td>
+</tr>
+<tr>
+<td>公网出口地址</td>
+<td><code>&lt;site&gt;-&lt;region&gt;-&lt;network&gt;-&lt;identity&gt;.wan.example.com</code></td>
+</tr>
+<tr>
+<td>网络入口地址</td>
+<td><code>&lt;net-type&gt;-&lt;region&gt;-&lt;network&gt;-&lt;identity&gt;.net.example.com</code></td>
+</tr>
+<tr>
+<td>多 IP 目标组</td>
+<td><code>&lt;function&gt;-&lt;pool-scope&gt;-&lt;network&gt;-&lt;identity&gt;.pool.example.com</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="_10">主机默认地址</h3>
+<table>
+<thead>
+<tr>
+<th>用途</th>
+<th>记录名</th>
+<th>类型</th>
+<th>值 / 目标</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>主机默认 IPv4 地址</td>
+<td><code>vps-hk-oracle-edge.host.example.com</code></td>
+<td><code>A</code></td>
+<td><code>&lt;static-ipv4&gt;</code></td>
+<td>单个主机的默认 IPv4 地址</td>
+</tr>
+<tr>
+<td>主机默认 IPv6 地址</td>
+<td><code>vps-hk-oracle-edge.host.example.com</code></td>
+<td><code>AAAA</code></td>
+<td><code>&lt;static-ipv6&gt;</code></td>
+<td>单个主机的默认 IPv6 地址</td>
+</tr>
+<tr>
+<td>主机默认地址指向公网地址</td>
+<td><code>vps-hz-aliyun-a.host.example.com</code></td>
+<td><code>CNAME</code></td>
+<td><code>vps-hz-aliyun-a.pub.host.example.com</code></td>
+<td>默认地址需要复用显式作用域时使用</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_11">主机地址作用域</h3>
+<table>
+<thead>
+<tr>
+<th>用途</th>
+<th>记录名</th>
+<th>类型</th>
+<th>值 / 目标</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>主机内网地址</td>
+<td><code>vps-hz-aliyun-a.priv.host.example.com</code></td>
+<td><code>A</code></td>
+<td><code>&lt;private-ipv4-a&gt;</code></td>
+<td>管理主机私网地址</td>
+</tr>
+<tr>
+<td>主机入站公网地址</td>
+<td><code>vps-hz-aliyun-a.pub.host.example.com</code></td>
+<td><code>A</code></td>
+<td><code>&lt;public-ipv4-a&gt;</code></td>
+<td>管理主机公网入站地址</td>
+</tr>
+<tr>
+<td>出站地址复用入站公网地址</td>
+<td><code>vps-hz-aliyun-a.egress.host.example.com</code></td>
+<td><code>CNAME</code></td>
+<td><code>vps-hz-aliyun-a.pub.host.example.com</code></td>
+<td>出站 IP 与入站公网 IP 相同时使用</td>
+</tr>
+<tr>
+<td>共享出口内网地址</td>
+<td><code>vps-hz-aliyun-b.priv.host.example.com</code></td>
+<td><code>A</code></td>
+<td><code>&lt;private-ipv4-b&gt;</code></td>
+<td>共用出口场景下仍单独维护每台主机内网地址</td>
+</tr>
+<tr>
+<td>共享出口映射</td>
+<td><code>vps-hz-aliyun-a.egress.host.example.com</code></td>
+<td><code>CNAME</code></td>
+<td><code>nat-hz-aliyun-main.wan.example.com</code></td>
+<td>主机出站地址指向共享出口锚点</td>
+</tr>
+<tr>
+<td>共享出口映射</td>
+<td><code>vps-hz-aliyun-b.egress.host.example.com</code></td>
+<td><code>CNAME</code></td>
+<td><code>nat-hz-aliyun-main.wan.example.com</code></td>
+<td>主机出站地址指向共享出口锚点</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_12">公网出口地址</h3>
+<table>
+<thead>
+<tr>
+<th>用途</th>
+<th>记录名</th>
+<th>类型</th>
+<th>值 / 目标</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>公网动态出口 IPv4</td>
+<td><code>home-wh-ct-main.wan.example.com</code></td>
+<td><code>A</code></td>
+<td><code>&lt;dynamic-ipv4&gt;</code></td>
+<td>由 DDNS 或自动化任务更新</td>
+</tr>
+<tr>
+<td>公网动态出口 IPv6</td>
+<td><code>home-wh-ct-main.wan.example.com</code></td>
+<td><code>AAAA</code></td>
+<td><code>&lt;dynamic-ipv6&gt;</code></td>
+<td>由 DDNS 或自动化任务更新</td>
+</tr>
+<tr>
+<td>共享 NAT 出口</td>
+<td><code>nat-hz-aliyun-main.wan.example.com</code></td>
+<td><code>A</code></td>
+<td><code>&lt;shared-egress-ipv4&gt;</code></td>
+<td>NAT Gateway、统一公网出口或共享 EIP</td>
+</tr>
+<tr>
+<td>地址族拆分 IPv4</td>
+<td><code>home-wh-ct-main.v4.wan.example.com</code></td>
+<td><code>A</code></td>
+<td><code>&lt;dynamic-ipv4&gt;</code></td>
+<td>需要显式区分 IPv4 时使用</td>
+</tr>
+<tr>
+<td>地址族拆分 IPv6</td>
+<td><code>home-wh-ct-main.v6.wan.example.com</code></td>
+<td><code>AAAA</code></td>
+<td><code>&lt;dynamic-ipv6&gt;</code></td>
+<td>需要显式区分 IPv6 时使用</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_13">网络入口地址</h3>
+<table>
+<thead>
+<tr>
+<th>用途</th>
+<th>记录名</th>
+<th>类型</th>
+<th>值 / 目标</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>VPN 入口</td>
+<td><code>vpn-wh-ct-main.net.example.com</code></td>
+<td><code>CNAME</code></td>
+<td><code>home-wh-ct-main.wan.example.com</code></td>
+<td>网络入口指向公网出口</td>
+</tr>
+<tr>
+<td>SOCKS 入口</td>
+<td><code>socks-wh-ct-main.net.example.com</code></td>
+<td><code>CNAME</code></td>
+<td><code>home-wh-ct-main.wan.example.com</code></td>
+<td>网络入口指向公网出口</td>
+</tr>
+<tr>
+<td>SSH Gateway 入口</td>
+<td><code>sshgw-hk-bgp-edge.net.example.com</code></td>
+<td><code>CNAME</code></td>
+<td><code>vps-hk-oracle-edge.host.example.com</code></td>
+<td>网络入口指向主机锚点</td>
+</tr>
+<tr>
+<td>NAT 入站 EIP</td>
+<td><code>ingress-hz-aliyun-main.net.example.com</code></td>
+<td><code>A</code></td>
+<td><code>&lt;ingress-eip&gt;</code></td>
+<td>NAT 网关上专门负责入站的 EIP</td>
+</tr>
+<tr>
+<td>Tunnel 入口</td>
+<td><code>tunnel-wh-cf-main.net.example.com</code></td>
+<td><code>CNAME</code></td>
+<td><code>&lt;cloudflare-tunnel-target&gt;</code></td>
+<td>网络入口指向上游隧道目标</td>
+</tr>
+</tbody>
+</table>
+<h3 id="ip_1">多 IP 目标组</h3>
+<table>
+<thead>
+<tr>
+<th>用途</th>
+<th>记录名</th>
+<th>类型</th>
+<th>值 / 目标</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>多 IP 目标组 IPv4</td>
+<td><code>edge-global-bgp-main.pool.example.com</code></td>
+<td><code>A</code></td>
+<td><code>&lt;edge-ipv4-a&gt;</code></td>
+<td>DNS 轮询或 DNS 负载均衡</td>
+</tr>
+<tr>
+<td>多 IP 目标组 IPv4</td>
+<td><code>edge-global-bgp-main.pool.example.com</code></td>
+<td><code>A</code></td>
+<td><code>&lt;edge-ipv4-b&gt;</code></td>
+<td>DNS 轮询或 DNS 负载均衡</td>
+</tr>
+<tr>
+<td>多 IP 目标组 IPv6</td>
+<td><code>edge-global-bgp-main.pool.example.com</code></td>
+<td><code>AAAA</code></td>
+<td><code>&lt;edge-ipv6-a&gt;</code></td>
+<td>DNS 轮询或 DNS 负载均衡</td>
+</tr>
+<tr>
+<td>多 IP 目标组 IPv6</td>
+<td><code>edge-global-bgp-main.pool.example.com</code></td>
+<td><code>AAAA</code></td>
+<td><code>&lt;edge-ipv6-b&gt;</code></td>
+<td>DNS 轮询或 DNS 负载均衡</td>
+</tr>
+<tr>
+<td>自动化同步目标组</td>
+<td><code>edge-global-bgp-main.pool.example.com</code></td>
+<td><code>A</code> / <code>AAAA</code></td>
+<td>由 DNS API、Inventory 或自动化任务同步</td>
+<td><code>pool</code> 不使用多条 <code>CNAME</code> 聚合多个主机锚点</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_14">记录反例</h3>
+<table>
+<thead>
+<tr>
+<th>不推荐</th>
+<th>推荐</th>
+<th>原因</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ipv4.tc.wh.example.com</code></td>
+<td><code>home-wh-ct-main.wan.example.com</code></td>
+<td>地址族不应放在首位，且 <code>tc</code> 易混淆</td>
+</tr>
+<tr>
+<td><code>home-wh-ct-main.dyn.svc.example.com</code></td>
+<td><code>home-wh-ct-main.wan.example.com</code></td>
+<td>动态出口是公网出口锚点，不是服务域名</td>
+</tr>
+<tr>
+<td><code>vps-hk-bgp-nginx.host.example.com</code></td>
+<td><code>vps-hk-oracle-edge.host.example.com</code></td>
+<td>服务名不应作为主机身份</td>
+</tr>
+<tr>
+<td><code>pc-wh-ct-192168110.host.example.com</code></td>
+<td><code>pc-wh-lan-desktop.host.example.com</code></td>
+<td>IP 不应进入稳定域名</td>
+</tr>
+<tr>
+<td><code>vps-hk-bgp-prod.host.example.com</code></td>
+<td><code>vps-hk-oracle-edge.host.example.com</code></td>
+<td>环境应通过标签、Inventory 或业务域名表达</td>
+</tr>
+<tr>
+<td><code>grafana-global-bgp-main.pool.example.com</code></td>
+<td><code>edge-global-bgp-main.pool.example.com</code></td>
+<td><code>pool</code> 应表达基础设施目标组，不表达具体业务服务</td>
+</tr>
+<tr>
+<td><code>edge-global-bgp-main.pool.example.com CNAME vps-a.host.example.com</code></td>
+<td><code>edge-global-bgp-main.pool.example.com A &lt;edge-ipv4-a&gt;</code></td>
+<td>同名多 <code>CNAME</code> 不适合作为 DNS 负载均衡模型</td>
+</tr>
+</tbody>
+</table>
 
 
 
@@ -6276,7 +7368,7 @@ subspace 或 liner subspace)</strong>。用 <span class="arithmatex">\(\mathrm{U
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../matrix/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Matrix">
+          <a href="../mermaid/mermaid_example/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Example">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -6286,20 +7378,20 @@ subspace 或 liner subspace)</strong>。用 <span class="arithmatex">\(\mathrm{U
                 Previous
               </span>
               <div class="md-ellipsis">
-                Matrix
+                Example
               </div>
             </div>
           </a>
         
         
           
-          <a href="../linearly-independent/" class="md-footer__link md-footer__link--next" aria-label="Next: Linearly Independent">
+          <a href="../../ai/" class="md-footer__link md-footer__link--next" aria-label="Next: Artificial Intelligence">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Linearly Independent
+                Artificial Intelligence
               </div>
             </div>
             <div class="md-footer__button md-icon">
@@ -6344,18 +7436,18 @@ subspace 或 liner subspace)</strong>。用 <span class="arithmatex">\(\mathrm{U
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["content.code.copy", "content.code.annotate", "content.code.select", "content.tabs.link", "content.action.edit", "navigation.indexes", "navigation.tracking", "navigation.top", "search.highlight", "search.suggest", "navigation.footer"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["content.code.copy", "content.code.annotate", "content.code.select", "content.tabs.link", "content.action.edit", "navigation.indexes", "navigation.tracking", "navigation.top", "search.highlight", "search.suggest", "navigation.footer"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
       
         <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
       
         <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
       
-        <script src="../../../assets/javascripts/katex.js"></script>
+        <script src="../../assets/javascripts/katex.js"></script>
       
-        <script src="../../../assets/javascripts/mermaid.js"></script>
+        <script src="../../assets/javascripts/mermaid.js"></script>
       
     
   </body>
