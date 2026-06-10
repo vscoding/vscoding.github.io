@@ -1,0 +1,180 @@
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html lang="en-US" data-preset="contrast" data-primary-color="#307FFF" data-link-color="#307FFF" data-link-dark-color="#90C695" data-content-max-width="1350" data-resizable-sidebar="true" data-sidebar-width="300"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="UTF-8"><meta name="built-on" content="2026-06-10T03:50:39.852152231"><link rel="canonical" href="https://blog.kubectl.org/docker-config.html" data-react-helmet="true"><title>Docker Daemon Configuration | Mind and Hand</title><script type="application/json" id="virtual-toc-data">[{"id":"reference","level":0,"title":"reference","anchor":"#reference"},{"id":"daemon-json","level":0,"title":"daemon.json","anchor":"#daemon-json"},{"id":"on-linux","level":0,"title":"On Linux","anchor":"#on-linux"}]</script><script type="application/json" id="topic-shortcuts"></script><link href="https://resources.jetbrains.com/writerside/apidoc/6.27.0-b1031/app.css" rel="stylesheet"><link href="static/custom.css" rel="stylesheet"><meta name="msapplication-TileColor" content="#000000"><link rel="apple-touch-icon" sizes="180x180" href="https://jetbrains.com/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="https://jetbrains.com/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="https://jetbrains.com/favicon-16x16.png"><meta name="msapplication-TileImage" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-144x144.png"><meta name="msapplication-square70x70logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-70x70.png"><meta name="msapplication-square150x150logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-150x150.png"><meta name="msapplication-wide310x150logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-310x150.png"><meta name="msapplication-square310x310logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-310x310.png"><meta name="image" content=""><!-- Open Graph --><meta property="og:title" content="Docker Daemon Configuration | Mind and Hand"><meta property="og:description" content=""><meta property="og:image" content=""><meta property="og:site_name" content="Mind and Hand Help"><meta property="og:type" content="website"><meta property="og:locale" content="en_US"><meta property="og:url" content="https://blog.kubectl.org/docker-config.html"><!-- End Open Graph --><!-- Twitter Card --><meta name="twitter:card" content="summary_large_image"><meta name="twitter:site" content=""><meta name="twitter:title" content="Docker Daemon Configuration | Mind and Hand"><meta name="twitter:description" content=""><meta name="twitter:creator" content=""><meta name="twitter:image:src" content=""><!-- End Twitter Card --><!-- Schema.org WebPage --><script type="application/ld+json">{
+    "@context": "http://schema.org",
+    "@type": "WebPage",
+    "@id": "https://blog.kubectl.org/docker-config.html#webpage",
+    "url": "https://blog.kubectl.org/docker-config.html",
+    "name": "Docker Daemon Configuration | Mind and Hand",
+    "description": "",
+    "image": "",
+    "inLanguage":"en-US"
+}</script><!-- End Schema.org --><!-- Schema.org WebSite --><script type="application/ld+json">{
+    "@type": "WebSite",
+    "@id": "https://blog.kubectl.org/#website",
+    "url": "https://blog.kubectl.org/",
+    "name": "Mind and Hand Help"
+}</script><!-- End Schema.org --></head><body data-id="docker-config" data-main-title="Docker Daemon Configuration" data-article-props="{&quot;seeAlsoStyle&quot;:&quot;links&quot;}" data-template="article" data-breadcrumbs="docker.md|Docker"><div class="wrapper"><main class="panel _main"><header class="panel__header"><div class="container"><h3>Mind and Hand  Help</h3><div class="panel-trigger"></div></div></header><section class="panel__content"><div class="container"><article class="article" data-shortcut-switcher="inactive"><h1 data-toc="docker-config" id="docker-config.md">Docker Daemon Configuration</h1><section class="chapter"><h2 id="reference" data-toc="reference">reference</h2><p id="aer34j_6"><a href="https://docs.docker.com/reference/cli/dockerd/#daemon-configuration-file" id="aer34j_7" data-external="true" rel="noopener noreferrer" target="_blank">https://docs.docker.com/reference/cli/dockerd/#daemon-configuration-file</a></p></section><section class="chapter"><h2 id="daemon-json" data-toc="daemon-json">daemon.json</h2><div class="code-block" data-lang="json">
+{
+  &quot;insecure-registries&quot;: [],
+  &quot;registry-mirrors&quot;: [
+  ],
+  &quot;exec-opts&quot;: [
+    &quot;native.cgroupdriver=systemd&quot;
+  ],
+  &quot;bip&quot;: &quot;172.10.0.1/16&quot;,
+  &quot;default-address-pools&quot;: [
+    {
+      &quot;base&quot;: &quot;172.11.0.0/16&quot;,
+      &quot;size&quot;: 24
+    }
+  ],
+  &quot;data-root&quot;: &quot;/var/lib/docker&quot;,
+  &quot;log-opts&quot;: {
+    &quot;max-file&quot;: &quot;5&quot;,
+    &quot;max-size&quot;: &quot;20m&quot;
+  }
+}
+</div></section><section class="chapter"><h2 id="on-linux" data-toc="on-linux">On Linux</h2><p id="aer34j_9">The default location of the configuration file on Linux is <code class="code" id="aer34j_12">/etc/docker/daemon.json</code>. Use the <code class="code" id="aer34j_13">--config-file</code> flag to specify a non-default location.</p><p id="aer34j_10">The following is a full example of the allowed configuration options on Linux</p><div class="code-block" data-lang="json">
+{
+  &quot;allow-direct-routing&quot;: false,
+  &quot;authorization-plugins&quot;: [],
+  &quot;bip&quot;: &quot;&quot;,
+  &quot;bip6&quot;: &quot;&quot;,
+  &quot;bridge&quot;: &quot;&quot;,
+  &quot;builder&quot;: {
+    &quot;gc&quot;: {
+      &quot;enabled&quot;: true,
+      &quot;defaultKeepStorage&quot;: &quot;10GB&quot;,
+      &quot;policy&quot;: [
+        {
+          &quot;keepStorage&quot;: &quot;10GB&quot;,
+          &quot;filter&quot;: [
+            &quot;unused-for=2200h&quot;
+          ]
+        },
+        {
+          &quot;keepStorage&quot;: &quot;50GB&quot;,
+          &quot;filter&quot;: [
+            &quot;unused-for=3300h&quot;
+          ]
+        },
+        {
+          &quot;keepStorage&quot;: &quot;100GB&quot;,
+          &quot;all&quot;: true
+        }
+      ]
+    }
+  },
+  &quot;cgroup-parent&quot;: &quot;&quot;,
+  &quot;containerd&quot;: &quot;/run/containerd/containerd.sock&quot;,
+  &quot;containerd-namespace&quot;: &quot;docker&quot;,
+  &quot;containerd-plugins-namespace&quot;: &quot;docker-plugins&quot;,
+  &quot;data-root&quot;: &quot;&quot;,
+  &quot;debug&quot;: true,
+  &quot;default-address-pools&quot;: [
+    {
+      &quot;base&quot;: &quot;172.30.0.0/16&quot;,
+      &quot;size&quot;: 24
+    },
+    {
+      &quot;base&quot;: &quot;172.31.0.0/16&quot;,
+      &quot;size&quot;: 24
+    }
+  ],
+  &quot;default-cgroupns-mode&quot;: &quot;private&quot;,
+  &quot;default-gateway&quot;: &quot;&quot;,
+  &quot;default-gateway-v6&quot;: &quot;&quot;,
+  &quot;default-network-opts&quot;: {},
+  &quot;default-runtime&quot;: &quot;runc&quot;,
+  &quot;default-shm-size&quot;: &quot;64M&quot;,
+  &quot;default-ulimits&quot;: {
+    &quot;nofile&quot;: {
+      &quot;Hard&quot;: 64000,
+      &quot;Name&quot;: &quot;nofile&quot;,
+      &quot;Soft&quot;: 64000
+    }
+  },
+  &quot;dns&quot;: [],
+  &quot;dns-opts&quot;: [],
+  &quot;dns-search&quot;: [],
+  &quot;exec-opts&quot;: [],
+  &quot;exec-root&quot;: &quot;&quot;,
+  &quot;experimental&quot;: false,
+  &quot;features&quot;: {
+    &quot;cdi&quot;: true,
+    &quot;containerd-snapshotter&quot;: true
+  },
+  &quot;fixed-cidr&quot;: &quot;&quot;,
+  &quot;fixed-cidr-v6&quot;: &quot;&quot;,
+  &quot;group&quot;: &quot;&quot;,
+  &quot;host-gateway-ip&quot;: &quot;&quot;,
+  &quot;hosts&quot;: [],
+  &quot;proxies&quot;: {
+    &quot;http-proxy&quot;: &quot;http://proxy.example.com:80&quot;,
+    &quot;https-proxy&quot;: &quot;https://proxy.example.com:443&quot;,
+    &quot;no-proxy&quot;: &quot;*.test.example.com,.example.org&quot;
+  },
+  &quot;icc&quot;: false,
+  &quot;init&quot;: false,
+  &quot;init-path&quot;: &quot;/usr/libexec/docker-init&quot;,
+  &quot;insecure-registries&quot;: [],
+  &quot;ip&quot;: &quot;0.0.0.0&quot;,
+  &quot;ip-forward&quot;: false,
+  &quot;ip-masq&quot;: false,
+  &quot;iptables&quot;: false,
+  &quot;ip6tables&quot;: false,
+  &quot;ipv6&quot;: false,
+  &quot;labels&quot;: [],
+  &quot;live-restore&quot;: true,
+  &quot;log-driver&quot;: &quot;json-file&quot;,
+  &quot;log-format&quot;: &quot;text&quot;,
+  &quot;log-level&quot;: &quot;&quot;,
+  &quot;log-opts&quot;: {
+    &quot;cache-disabled&quot;: &quot;false&quot;,
+    &quot;cache-max-file&quot;: &quot;5&quot;,
+    &quot;cache-max-size&quot;: &quot;20m&quot;,
+    &quot;cache-compress&quot;: &quot;true&quot;,
+    &quot;env&quot;: &quot;os,customer&quot;,
+    &quot;labels&quot;: &quot;somelabel&quot;,
+    &quot;max-file&quot;: &quot;5&quot;,
+    &quot;max-size&quot;: &quot;10m&quot;
+  },
+  &quot;max-concurrent-downloads&quot;: 3,
+  &quot;max-concurrent-uploads&quot;: 5,
+  &quot;max-download-attempts&quot;: 5,
+  &quot;mtu&quot;: 0,
+  &quot;no-new-privileges&quot;: false,
+  &quot;node-generic-resources&quot;: [
+    &quot;NVIDIA-GPU=UUID1&quot;,
+    &quot;NVIDIA-GPU=UUID2&quot;
+  ],
+  &quot;pidfile&quot;: &quot;&quot;,
+  &quot;raw-logs&quot;: false,
+  &quot;registry-mirrors&quot;: [],
+  &quot;runtimes&quot;: {
+    &quot;cc-runtime&quot;: {
+      &quot;path&quot;: &quot;/usr/bin/cc-runtime&quot;
+    },
+    &quot;custom&quot;: {
+      &quot;path&quot;: &quot;/usr/local/bin/my-runc-replacement&quot;,
+      &quot;runtimeArgs&quot;: [
+        &quot;--debug&quot;
+      ]
+    }
+  },
+  &quot;seccomp-profile&quot;: &quot;&quot;,
+  &quot;selinux-enabled&quot;: false,
+  &quot;shutdown-timeout&quot;: 15,
+  &quot;storage-driver&quot;: &quot;&quot;,
+  &quot;storage-opts&quot;: [],
+  &quot;swarm-default-advertise-addr&quot;: &quot;&quot;,
+  &quot;tls&quot;: true,
+  &quot;tlscacert&quot;: &quot;&quot;,
+  &quot;tlscert&quot;: &quot;&quot;,
+  &quot;tlskey&quot;: &quot;&quot;,
+  &quot;tlsverify&quot;: true,
+  &quot;userland-proxy&quot;: false,
+  &quot;userland-proxy-path&quot;: &quot;/usr/libexec/docker-proxy&quot;,
+  &quot;userns-remap&quot;: &quot;&quot;
+}
+</div></section><div class="last-modified">10 June 2026</div><div data-feedback-placeholder="true"></div><div class="navigation-links _bottom"><a href="docker-install-manually.html" class="navigation-links__prev">Install Docker Manually</a><a href="develop.html" class="navigation-links__next">Develop</a></div></article><div id="disqus_thread"></div></div></section></main></div><script src="https://resources.jetbrains.com/writerside/apidoc/6.27.0-b1031/app.js"></script></body></html>

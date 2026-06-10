@@ -1,0 +1,83 @@
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html lang="en-US" data-preset="contrast" data-primary-color="#307FFF" data-link-color="#307FFF" data-link-dark-color="#90C695" data-content-max-width="1350" data-resizable-sidebar="true" data-sidebar-width="300"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="UTF-8"><meta name="built-on" content="2026-06-10T03:50:42.066187421"><link rel="canonical" href="https://blog.kubectl.org/pg-tree-recursive.html" data-react-helmet="true"><title>Tree Recursive | Mind and Hand</title><script type="application/json" id="virtual-toc-data">[{"id":"tmp-tree-node","level":0,"title":"初始化 tmp_tree_node","anchor":"#tmp-tree-node"},{"id":"bpzhft_5","level":0,"title":"查询子节点","anchor":"#bpzhft_5"},{"id":"bpzhft_6","level":0,"title":"查询父节点","anchor":"#bpzhft_6"}]</script><script type="application/json" id="topic-shortcuts"></script><link href="https://resources.jetbrains.com/writerside/apidoc/6.27.0-b1031/app.css" rel="stylesheet"><link href="static/custom.css" rel="stylesheet"><meta name="msapplication-TileColor" content="#000000"><link rel="apple-touch-icon" sizes="180x180" href="https://jetbrains.com/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="https://jetbrains.com/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="https://jetbrains.com/favicon-16x16.png"><meta name="msapplication-TileImage" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-144x144.png"><meta name="msapplication-square70x70logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-70x70.png"><meta name="msapplication-square150x150logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-150x150.png"><meta name="msapplication-wide310x150logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-310x150.png"><meta name="msapplication-square310x310logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-310x310.png"><meta name="image" content=""><!-- Open Graph --><meta property="og:title" content="Tree Recursive | Mind and Hand"><meta property="og:description" content=""><meta property="og:image" content=""><meta property="og:site_name" content="Mind and Hand Help"><meta property="og:type" content="website"><meta property="og:locale" content="en_US"><meta property="og:url" content="https://blog.kubectl.org/pg-tree-recursive.html"><!-- End Open Graph --><!-- Twitter Card --><meta name="twitter:card" content="summary_large_image"><meta name="twitter:site" content=""><meta name="twitter:title" content="Tree Recursive | Mind and Hand"><meta name="twitter:description" content=""><meta name="twitter:creator" content=""><meta name="twitter:image:src" content=""><!-- End Twitter Card --><!-- Schema.org WebPage --><script type="application/ld+json">{
+    "@context": "http://schema.org",
+    "@type": "WebPage",
+    "@id": "https://blog.kubectl.org/pg-tree-recursive.html#webpage",
+    "url": "https://blog.kubectl.org/pg-tree-recursive.html",
+    "name": "Tree Recursive | Mind and Hand",
+    "description": "",
+    "image": "",
+    "inLanguage":"en-US"
+}</script><!-- End Schema.org --><!-- Schema.org WebSite --><script type="application/ld+json">{
+    "@type": "WebSite",
+    "@id": "https://blog.kubectl.org/#website",
+    "url": "https://blog.kubectl.org/",
+    "name": "Mind and Hand Help"
+}</script><!-- End Schema.org --></head><body data-id="pg-tree-recursive" data-main-title="Tree Recursive" data-article-props="{&quot;seeAlsoStyle&quot;:&quot;links&quot;}" data-template="article" data-breadcrumbs="develop.md|Develop///sql.md|SQL///postgres.md|Postgres"><div class="wrapper"><main class="panel _main"><header class="panel__header"><div class="container"><h3>Mind and Hand  Help</h3><div class="panel-trigger"></div></div></header><section class="panel__content"><div class="container"><article class="article" data-shortcut-switcher="inactive"><h1 data-toc="pg-tree-recursive" id="pg-tree-recursive.md">Tree Recursive</h1><aside class="prompt" data-type="warning" data-title="" id="bpzhft_3"><p id="bpzhft_7">没有考虑环的问题</p></aside><section class="chapter"><h2 id="tmp-tree-node" data-toc="tmp-tree-node">初始化 <code class="code" id="bpzhft_10">tmp_tree_node</code></h2><div class="code-block" data-lang="sql">
+drop table if exists tmp_tree_node;
+create table tmp_tree_node
+(
+    id   int primary key,
+    pid  int,
+    name varchar(100)
+);
+
+insert into tmp_tree_node
+values
+    (1, -1, 'src'),
+    (10, 1, 'main'),
+    (101, 10, 'java'),
+    (1001, 101, 'HelloWorld.java'),
+    (102, 10, 'resources'),
+    (1002, 102, 'application.yml'),
+    (20, 1, 'test'),
+    (201, 20, 'java'),
+    (2001, 201, 'HelloWorldTest.java'),
+    (202, 20, 'resource'),
+    (2002, 201, 'application.properties');
+</div></section><section class="chapter"><h2 id="bpzhft_5" data-toc="bpzhft_5">查询子节点</h2><div class="code-block" data-lang="sql">
+-- query children
+with recursive cte (id, pid, level, name, name_list, path) as (
+    select id,
+           pid,
+           1                                       as level,
+           name,
+           array_append(array []::varchar[], name) as name_list,
+           name::text                              as path
+    from tmp_tree_node
+    where pid = -1
+    union all
+    select c.id,
+           c.pid,
+           p.level + 1,
+           c.name,
+           p.name_list || array_append(array []::varchar[], c.name) as name_list,
+           concat(p.path, '/', c.name) ::text                       as path
+    from tmp_tree_node c
+             inner join cte as p
+                        on c.pid = p.id)
+select *
+from cte;
+</div></section><section class="chapter"><h2 id="bpzhft_6" data-toc="bpzhft_6">查询父节点</h2><div class="code-block" data-lang="sql">
+-- query parent
+with recursive cte (id, pid, len, name, name_list) as (
+    select id,
+           pid,
+           1                                       as len,
+           name,
+           array_append(array []::varchar[], name) as name_list
+    from tmp_tree_node
+    where id = 2002
+
+    union all
+
+    select p.id,
+           p.pid,
+           c.len + 1                                                as len,
+           p.name,
+           c.name_list || array_append(array []::varchar[], p.name) as name_list
+    from tmp_tree_node p
+             inner join cte c on c.pid = p.id)
+select *
+from cte;
+</div></section><div class="last-modified">10 June 2026</div><div data-feedback-placeholder="true"></div><div class="navigation-links _bottom"><a href="postgres.html" class="navigation-links__prev">Postgres</a><a href="pg-graph-recursive.html" class="navigation-links__next">Graph Recursive</a></div></article><div id="disqus_thread"></div></div></section></main></div><script src="https://resources.jetbrains.com/writerside/apidoc/6.27.0-b1031/app.js"></script></body></html>

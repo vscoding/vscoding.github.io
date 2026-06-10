@@ -1,0 +1,383 @@
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html lang="en-US" data-preset="contrast" data-primary-color="#307FFF" data-link-color="#307FFF" data-link-dark-color="#90C695" data-content-max-width="1350" data-resizable-sidebar="true" data-sidebar-width="300"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="UTF-8"><meta name="built-on" content="2026-06-10T03:50:49.758088664"><link rel="canonical" href="https://blog.kubectl.org/graph-definition.html" data-react-helmet="true"><title>Graph Definition | Mind and Hand</title><script type="application/json" id="virtual-toc-data">[{"id":"graph-interface","level":0,"title":"通用接口","anchor":"#graph-interface"},{"id":"graph-implementation","level":0,"title":"图的实现","anchor":"#graph-implementation"},{"id":"sparse-graph","level":1,"title":"稀疏图","anchor":"#sparse-graph"},{"id":"dense-graph","level":1,"title":"稠密图","anchor":"#dense-graph"}]</script><script type="application/json" id="topic-shortcuts"></script><link href="https://resources.jetbrains.com/writerside/apidoc/6.27.0-b1031/app.css" rel="stylesheet"><link href="static/custom.css" rel="stylesheet"><meta name="msapplication-TileColor" content="#000000"><link rel="apple-touch-icon" sizes="180x180" href="https://jetbrains.com/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="https://jetbrains.com/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="https://jetbrains.com/favicon-16x16.png"><meta name="msapplication-TileImage" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-144x144.png"><meta name="msapplication-square70x70logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-70x70.png"><meta name="msapplication-square150x150logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-150x150.png"><meta name="msapplication-wide310x150logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-310x150.png"><meta name="msapplication-square310x310logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-310x310.png"><meta name="image" content=""><!-- Open Graph --><meta property="og:title" content="Graph Definition | Mind and Hand"><meta property="og:description" content=""><meta property="og:image" content=""><meta property="og:site_name" content="Mind and Hand Help"><meta property="og:type" content="website"><meta property="og:locale" content="en_US"><meta property="og:url" content="https://blog.kubectl.org/graph-definition.html"><!-- End Open Graph --><!-- Twitter Card --><meta name="twitter:card" content="summary_large_image"><meta name="twitter:site" content=""><meta name="twitter:title" content="Graph Definition | Mind and Hand"><meta name="twitter:description" content=""><meta name="twitter:creator" content=""><meta name="twitter:image:src" content=""><!-- End Twitter Card --><!-- Schema.org WebPage --><script type="application/ld+json">{
+    "@context": "http://schema.org",
+    "@type": "WebPage",
+    "@id": "https://blog.kubectl.org/graph-definition.html#webpage",
+    "url": "https://blog.kubectl.org/graph-definition.html",
+    "name": "Graph Definition | Mind and Hand",
+    "description": "",
+    "image": "",
+    "inLanguage":"en-US"
+}</script><!-- End Schema.org --><!-- Schema.org WebSite --><script type="application/ld+json">{
+    "@type": "WebSite",
+    "@id": "https://blog.kubectl.org/#website",
+    "url": "https://blog.kubectl.org/",
+    "name": "Mind and Hand Help"
+}</script><!-- End Schema.org --></head><body data-id="graph-definition" data-main-title="Graph Definition" data-article-props="{&quot;seeAlsoStyle&quot;:&quot;links&quot;}" data-template="article" data-breadcrumbs="cs.md|Compute Science &amp; Technology///dsa.md|Data Structures and Algorithms///graph.md|Graph Theory"><div class="wrapper"><main class="panel _main"><header class="panel__header"><div class="container"><h3>Mind and Hand  Help</h3><div class="panel-trigger"></div></div></header><section class="panel__content"><div class="container"><article class="article" data-shortcut-switcher="inactive"><h1 data-toc="graph-definition" id="graph-definition.md">Graph Definition</h1><section class="chapter"><h2 id="graph-interface" data-toc="graph-interface">通用接口</h2><aside class="prompt" data-type="tip" data-title="" id="-q0hfnu_6"><p id="-q0hfnu_8">规范定义，图中的算法会频繁使用图的定义</p></aside><div class="code-block" data-lang="kotlin">
+interface Graph {
+
+    fun isEmpty(): Boolean {
+        return getVertexesNum() == 0
+    }
+
+    fun isDirected(): Boolean
+
+    fun isWeighted(): Boolean
+
+    fun getVertexesNum(): Int = vertexIndex().size()
+
+    fun getEdgeNum(): Int
+
+    fun getVertexes(): List&lt;Vertex&gt; = vertexIndex().getVertexes()
+
+    fun getEdges(): List&lt;Edge&gt;
+
+    fun getEdge(from: String, to: String): Edge? {
+        val fromV = vertexIndex().getVertex(from)
+        val toV = vertexIndex().getVertex(to)
+        if (fromV == null || toV == null) {
+            return null
+        }
+        return getEdge(fromV.id, toV.id)
+    }
+
+    fun getEdge(from: Int, to: Int): Edge?
+
+    fun connect(from: String, to: String) = connect(from, to, DEFAULT_UNWEIGHTED_VALUE)
+
+    fun connect(from: String, to: String, weight: Double)
+
+    fun adjacentEdges(name: String): List&lt;Edge&gt; {
+        return vertexIndex().getVertex(name)?.let { vertex -&gt;
+            adjacentEdges(vertex.id)
+        } ?: emptyList()
+    }
+
+    fun adjacentEdges(id: Int): List&lt;Edge&gt;
+
+    fun clear()
+
+    fun showGraph()
+
+    fun vertexIndex(): VertexIndex
+
+    // 获取邻接矩阵
+    fun getAdjacencyMatrix(): Array&lt;Array&lt;Double?&gt;&gt;? = null
+
+    // 获取邻接表
+    fun getAdjacencyList(): Array&lt;TreeMap&lt;Int, Double&gt;&gt;? = null
+
+}
+
+</div></section><section class="chapter"><h2 id="graph-implementation" data-toc="graph-implementation">图的实现</h2><p id="-q0hfnu_9">稀疏图主要用邻接表实现，稠密图主要用邻接矩阵实现</p><section class="chapter"><h3 id="sparse-graph" data-toc="sparse-graph">稀疏图</h3><div class="code-block" data-lang="kotlin">
+class SparseGraph : Graph {
+
+    companion object {
+        val log = getLogger(DenseGraph::class.java)
+    }
+
+    private val directed: Boolean
+    private val weighted: Boolean
+
+    private val vertexIndex = VertexIndex()
+
+    private var adjacencyList: Array&lt;TreeMap&lt;Int, Double&gt;&gt; = Array(0) { TreeMap() }
+    private var edgesCount: Int = 0
+
+    constructor(directed: Boolean, weighted: Boolean) {
+        this.directed = directed
+        this.weighted = weighted
+    }
+
+    override fun isDirected(): Boolean = this.directed
+
+    override fun isWeighted(): Boolean = this.weighted
+
+    override fun getEdgeNum(): Int = this.edgesCount
+
+    override fun getEdges(): List&lt;Edge&gt; {
+        return adjacencyList.flatMapIndexed { from, edges -&gt;
+            if (edges.isEmpty()) {
+                emptyList() // 返回空列表而不是 null
+            } else {
+                val fromV = vertexIndex.getVertex(from)!!
+                edges.map { (toId, weight) -&gt;
+                    val toV = vertexIndex.getVertex(toId)!!
+                    Edge(from = fromV, to = toV, weight = weight)
+                }
+            }
+        }
+    }
+
+    override fun getEdge(from: Int, to: Int): Edge? {
+        if (from &lt; 0 || to &lt; 0 || from &gt;= vertexIndex.size() || to &gt;= vertexIndex.size()) {
+            return null
+        }
+        if (from == to) {
+            return null
+        }
+        return adjacencyList[from].let {
+            it[to]?.let { weight -&gt;
+                val fromVertex = vertexIndex.getVertex(from)!!
+                val toVertex = vertexIndex.getVertex(to)!!
+                Edge(from = fromVertex, to = toVertex, weight = weight)
+            }
+        }
+    }
+
+    override fun connect(from: String, to: String, weight: Double) {
+        if (from.isBlank() || to.isBlank()) {
+            throw IllegalArgumentException(&quot;Vertex names cannot be empty&quot;)
+        }
+
+        if (from == to) {
+            return
+        }
+        this.connect(
+            vertexIndex.createVertex(from).id,
+            vertexIndex.createVertex(to).id,
+            weight,
+            this.directed
+        )
+    }
+
+    private fun connect(from: Int, to: Int, weight: Double, directed: Boolean) {
+        this.expand(maxOf(from, to) + 1)
+
+        val edges = adjacencyList[from]
+        val isNewEdge = !edges.containsKey(to)
+
+        if (!isNewEdge) {
+            log.warn(&quot;Edge from $from to $to already exists, updating weight to $weight&quot;)
+            this.edgesCount--
+        }
+
+        edges[to] = weight
+        this.edgesCount++
+        if (!directed) {
+            this.connect(to, from, weight, true)
+        }
+
+    }
+
+    private fun expand(size: Int) {
+        if (size &gt; adjacencyList.size) {
+            val newAdjList = Array(size) { TreeMap&lt;Int, Double&gt;() }
+            System.arraycopy(adjacencyList, 0, newAdjList, 0, adjacencyList.size)
+            this.adjacencyList = newAdjList
+        }
+    }
+
+    override fun adjacentEdges(id: Int): List&lt;Edge&gt; {
+        if (id &lt; 0 || id &gt;= vertexIndex.size()) {
+            return emptyList()
+        }
+        val fromVertex = vertexIndex.getVertex(id)!!
+        val neighbors = adjacencyList[id]
+        return neighbors.map { (toId, weight) -&gt;
+            val toVertex = vertexIndex.getVertex(toId) ?: return@map null
+            Edge(from = fromVertex, to = toVertex, weight = weight)
+        }.filterNotNull()
+    }
+
+    override fun clear() {
+        vertexIndex.clear()
+        adjacencyList = Array(0) { TreeMap() }
+        edgesCount = 0
+    }
+
+    override fun showGraph() {
+        println(&quot;Graph: ${if (directed) &quot;Directed&quot; else &quot;Undirected&quot;}, ${if (weighted) &quot;Weighted&quot; else &quot;Unweighted&quot;}&quot;)
+        println(&quot;Vertices: ${vertexIndex.size()}&quot;)
+        println(&quot;Edges: $edgesCount&quot;)
+
+        // 打印邻接表
+        println(&quot;\nAdjacency List:&quot;)
+        val startFmt = &quot;%s(%d) : &quot;
+        val toFmt = &quot;%s(%d) -- %.2f -&gt; %s(%d)   &quot;
+
+        adjacencyList.forEachIndexed { from, map -&gt;
+            if (map.isEmpty()) {
+                return@forEachIndexed
+            }
+            val fromV = vertexIndex.getVertex(from)!!
+            print(startFmt.format(fromV.name, fromV.id))
+            map.forEach { (toId, weight) -&gt;
+                val toV = vertexIndex.getVertex(toId)!!
+                print(toFmt.format(fromV.name, fromV.id, weight, toV.name, toId))
+            }
+            println()
+        }
+
+    }
+
+    override fun vertexIndex(): VertexIndex = this.vertexIndex
+
+    override fun getAdjacencyList(): Array&lt;TreeMap&lt;Int, Double&gt;&gt; = this.adjacencyList
+
+}
+</div></section><section class="chapter"><h3 id="dense-graph" data-toc="dense-graph">稠密图</h3><div class="code-block" data-lang="kotlin">
+class DenseGraph : Graph {
+
+    companion object {
+        val log = getLogger(DenseGraph::class.java)
+    }
+
+    private val directed: Boolean
+    private val weighted: Boolean
+
+    private var adjacencyMatrix: Array&lt;Array&lt;Double?&gt;&gt;
+
+    private val vertexIndex = VertexIndex()
+    private var edgesCount: Int = 0
+
+    constructor(directed: Boolean, weighted: Boolean) {
+        this.directed = directed
+        this.weighted = weighted
+        adjacencyMatrix = Array(2) { Array(2) { null } }
+    }
+
+    override fun isDirected(): Boolean = this.directed
+
+    override fun isWeighted(): Boolean = this.weighted
+
+    override fun getEdgeNum(): Int = this.edgesCount
+
+    override fun getEdges(): List&lt;Edge&gt; {
+        return if (isEmpty()) {
+            emptyList()
+        } else {
+            val edges = mutableListOf&lt;Edge&gt;()
+            for (i in 0 until adjacencyMatrix.size) {
+                for (j in 0 until adjacencyMatrix.size) {
+                    adjacencyMatrix[i][j]?.let { weight -&gt;
+                        val fromV = vertexIndex.getVertex(i)!!
+                        val toV = vertexIndex.getVertex(j)!!
+                        edges.add(Edge(from = fromV, to = toV, weight = weight))
+                    }
+                }
+            }
+            edges
+        }
+    }
+
+    override fun getEdge(from: Int, to: Int): Edge? {
+        if (from &lt; 0 || to &lt; 0 || from &gt;= vertexIndex.size() || to &gt;= vertexIndex.size()) {
+            return null
+        }
+
+        if (from == to) {
+            return null // No self-loops in this implementation
+        }
+
+        val weight = adjacencyMatrix[from][to]
+        return if (weight == null) {
+            null
+        } else {
+            Edge(
+                from = vertexIndex.getVertex(from)!!,
+                to = vertexIndex.getVertex(to)!!,
+                weight = weight
+            )
+        }
+    }
+
+    override fun connect(from: String, to: String, weight: Double) {
+        if (from.isBlank() || to.isBlank()) {
+            throw IllegalArgumentException(&quot;Vertex names cannot be empty&quot;)
+        }
+        if (from == to) {
+            return
+        }
+        val fromV = vertexIndex.createVertex(from)
+        val toV = vertexIndex.createVertex(to)
+
+        this.expand(vertexIndex.size())
+        this.connect(fromV.id, toV.id, weight, directed = this.directed)
+    }
+
+    private fun expand(size: Int) {
+        if (size &gt; adjacencyMatrix.size) {
+            val newSize = size
+            val newMatrix = Array(newSize) { Array&lt;Double?&gt;(newSize) { null } }
+            adjacencyMatrix.forEachIndexed { i, row -&gt;
+                System.arraycopy(row, 0, newMatrix[i], 0, row.size)
+            }
+            adjacencyMatrix = newMatrix
+        }
+    }
+
+    private fun connect(from: Int, to: Int, weight: Double, directed: Boolean) {
+        adjacencyMatrix[from][to]?.let { existingWeight -&gt;
+            log.debug(&quot;Edge from $from to $to already exists with weight $existingWeight, updating to $weight&quot;)
+            edgesCount--
+        }
+        adjacencyMatrix[from][to] = weight
+        edgesCount++
+        if (!directed) {
+            this.connect(to, from, weight, true)
+        }
+    }
+
+    override fun adjacentEdges(id: Int): List&lt;Edge&gt; {
+        if (isEmpty() || id &lt; 0 || id &gt;= vertexIndex.size()) {
+            return emptyList()
+        }
+        val fromV = vertexIndex.getVertex(id)!!
+        return adjacencyMatrix[id].mapIndexedNotNull { toIndex, weight -&gt;
+            weight?.let {
+                val toV = vertexIndex.getVertex(toIndex)!!
+                Edge(from = fromV, to = toV, weight = it)
+            }
+        }
+    }
+
+    override fun clear() {
+        vertexIndex.clear()
+        edgesCount = 0
+        adjacencyMatrix = Array(2) { Array(2) { null } }
+    }
+
+    override fun showGraph() {
+        println(&quot;Graph: ${if (directed) &quot;Directed&quot; else &quot;Undirected&quot;}, ${if (weighted) &quot;Weighted&quot; else &quot;Unweighted&quot;}&quot;)
+        println(&quot;Vertices: ${vertexIndex.size()}&quot;)
+        println(&quot;Edges: $edgesCount&quot;) //
+
+        // 先打印顶点信息
+        println(&quot;Vertex Information:&quot;)
+        vertexIndex.getVertexes().forEach(::println)
+
+        // 打印 matrix 并在第一行和第一列显示顶点信息
+        println(&quot;\nAdjacency Matrix:&quot;)
+
+        // 打印顶点ID作为列标题
+        print(&quot;      &quot;) // 留出行标题的空间
+        for (i in 0 until vertexIndex.size()) {
+            val v = vertexIndex.getVertex(i)!!
+            print(beautify(&quot;${v.id}:${v.name}&quot;, 5))
+        }
+        println()
+
+        // 打印矩阵内容
+        for (i in 0 until vertexIndex.size()) {
+            val v = vertexIndex.getVertex(i)!!
+            print(beautify(&quot;${v.id}:${v.name}&quot;, 5))
+
+            for (j in 0 until vertexIndex.size()) {
+                val element = adjacencyMatrix[i][j]
+                if (element != null) {
+                    print(beautify(element.toString(), 5))
+                } else {
+                    print(beautify(&quot;nil&quot;, 5))
+                }
+            }
+            println()
+        }
+    }
+
+    override fun vertexIndex(): VertexIndex = this.vertexIndex
+
+    override fun getAdjacencyMatrix(): Array&lt;Array&lt;Double?&gt;&gt;? = this.adjacencyMatrix
+
+}
+</div></section></section><div class="last-modified">10 June 2026</div><div data-feedback-placeholder="true"></div><div class="navigation-links _bottom"><a href="graph.html" class="navigation-links__prev">Graph Theory</a><a href="graph-algorithms.html" class="navigation-links__next">Graph's Algorithms</a></div></article><div id="disqus_thread"></div></div></section></main></div><script src="https://resources.jetbrains.com/writerside/apidoc/6.27.0-b1031/app.js"></script></body></html>

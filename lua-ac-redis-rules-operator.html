@@ -1,0 +1,620 @@
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html lang="en-US" data-preset="contrast" data-primary-color="#307FFF" data-link-color="#307FFF" data-link-dark-color="#90C695" data-content-max-width="1350" data-resizable-sidebar="true" data-sidebar-width="300"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="UTF-8"><meta name="built-on" content="2026-06-10T03:50:41.96213663"><link rel="canonical" href="https://blog.kubectl.org/lua-ac-redis-rules-operator.html" data-react-helmet="true"><title>Redis Rules Operator | Mind and Hand</title><script type="application/json" id="virtual-toc-data">[]</script><script type="application/json" id="topic-shortcuts"></script><link href="https://resources.jetbrains.com/writerside/apidoc/6.27.0-b1031/app.css" rel="stylesheet"><link href="static/custom.css" rel="stylesheet"><meta name="msapplication-TileColor" content="#000000"><link rel="apple-touch-icon" sizes="180x180" href="https://jetbrains.com/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="https://jetbrains.com/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="https://jetbrains.com/favicon-16x16.png"><meta name="msapplication-TileImage" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-144x144.png"><meta name="msapplication-square70x70logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-70x70.png"><meta name="msapplication-square150x150logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-150x150.png"><meta name="msapplication-wide310x150logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-310x150.png"><meta name="msapplication-square310x310logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-310x310.png"><meta name="image" content=""><!-- Open Graph --><meta property="og:title" content="Redis Rules Operator | Mind and Hand"><meta property="og:description" content=""><meta property="og:image" content=""><meta property="og:site_name" content="Mind and Hand Help"><meta property="og:type" content="website"><meta property="og:locale" content="en_US"><meta property="og:url" content="https://blog.kubectl.org/lua-ac-redis-rules-operator.html"><!-- End Open Graph --><!-- Twitter Card --><meta name="twitter:card" content="summary_large_image"><meta name="twitter:site" content=""><meta name="twitter:title" content="Redis Rules Operator | Mind and Hand"><meta name="twitter:description" content=""><meta name="twitter:creator" content=""><meta name="twitter:image:src" content=""><!-- End Twitter Card --><!-- Schema.org WebPage --><script type="application/ld+json">{
+    "@context": "http://schema.org",
+    "@type": "WebPage",
+    "@id": "https://blog.kubectl.org/lua-ac-redis-rules-operator.html#webpage",
+    "url": "https://blog.kubectl.org/lua-ac-redis-rules-operator.html",
+    "name": "Redis Rules Operator | Mind and Hand",
+    "description": "",
+    "image": "",
+    "inLanguage":"en-US"
+}</script><!-- End Schema.org --><!-- Schema.org WebSite --><script type="application/ld+json">{
+    "@type": "WebSite",
+    "@id": "https://blog.kubectl.org/#website",
+    "url": "https://blog.kubectl.org/",
+    "name": "Mind and Hand Help"
+}</script><!-- End Schema.org --></head><body data-id="lua-ac-redis-rules-operator" data-main-title="Redis Rules Operator" data-article-props="{&quot;seeAlsoStyle&quot;:&quot;links&quot;}" data-template="article" data-breadcrumbs="develop.md|Develop///lang-lua.md|Lua"><div class="wrapper"><main class="panel _main"><header class="panel__header"><div class="container"><h3>Mind and Hand  Help</h3><div class="panel-trigger"></div></div></header><section class="panel__content"><div class="container"><article class="article" data-shortcut-switcher="inactive"><h1 data-toc="lua-ac-redis-rules-operator" id="lua-ac-redis-rules-operator.md">Redis Rules Operator</h1><aside class="prompt" data-type="tip" data-title="" id="-2s4jb4_3"><p id="-2s4jb4_5">基于 redis 存储访问规则的操作实现</p></aside><div class="code-block" data-lang="lua">
+-- Access Control Rules Operator
+-- 提供对规则组和规则的增删改查操作
+
+-- 规则组存储在 Redis 中的结构：
+-- access_control:
+--     rules_groups:
+--         group_id:
+--            md5: string 规则组的 MD5 摘要
+--            last_updated: string timestamp
+--            parents: set 包含的其他规则组
+--            children: set 被哪些规则组包含
+--            rules_map：hash 规则 ID 到规则 JSON 的映射
+
+local _M = {}
+
+local redis_utils = require(&quot;lua_modules.redis.redis_utils&quot;)
+
+local config = require(&quot;lua_modules.redis.access_control.key_config&quot;)
+local date_utils = require(&quot;lua_modules.commons.date_utils&quot;)
+local json_utils = require(&quot;lua_modules.commons.json_utils&quot;)
+local cjson = require(&quot;cjson.safe&quot;)
+
+-- 检查指定的规则组是否存在
+-- @param group_id 规则组 ID
+-- @param red 已连接的 Redis 实例
+-- @return: md5 摘要字符串 或 nil + 错误信息
+local function has_group(group_id, red)
+    local md5_key = config.get_md5_key(group_id)
+    local md5_value, err = red:get(md5_key)
+    if md5_value == nil then
+        ngx.log(ngx.ERR, &quot;Failed to get md5 for group_id &quot;, group_id, &quot;: &quot;, tostring(err))
+        return nil, &quot;LOST_CONNECTION&quot;
+    end
+    if md5_value == ngx.null or md5_value == &quot;&quot; then
+        return nil, &quot;Invalid md5 value&quot;
+    end
+    return md5_value
+end
+
+-- 计算并返回指定规则组的 MD5 摘要 计算的核心过程会删除不存在的 parents
+-- @param group_id 规则组 ID
+-- @param red 已连接的 Redis 实例
+-- @return 成功时返回 MD5 摘要字符串，失败时返回 nil 和错误信息
+local function calculate_group_md5(group_id, red)
+    -- 获取规则组的规则 ID 列表 参与 MD5 计算
+    local function get_rule_ids()
+        -- 获取 rule_ids 用于计算 MD5
+        local rules_map_key = config.get_rules_map_key(group_id)
+        -- 获取map中所有的规则ID
+        local rule_ids, err = red:hkeys(rules_map_key)
+        if not rule_ids then
+            ngx.log(ngx.ERR, &quot;Failed to get rule IDs for group_id &quot;, group_id, &quot;: &quot;, err)
+            rule_ids = {}
+        end
+        return rule_ids
+    end
+
+    -- 获取包含的其他规则组的 MD5 列表 参与 MD5 计算
+    local function get_parents_md5_list()
+        -- 获取依赖的其他规则组的 MD5 列表
+        local parents_md5_list = {}
+        local parents_set_key = config.get_parents_set_key(group_id)
+        local included_groups, err = red:smembers(parents_set_key)
+        if not included_groups then
+            ngx.log(ngx.ERR, &quot;Failed to get included groups for group_id &quot;, group_id, &quot;: &quot;, err)
+            included_groups = {}
+        else
+            -- 遍历map，获取每个包含的规则组的 MD5
+            for _, included_group_id in ipairs(included_groups) do
+                local included_md5, err = has_group(included_group_id, red)
+                if included_md5 then
+                    table.insert(parents_md5_list, included_md5)
+                else
+                    -- 这个包含的规则组不存在，删除它
+                    ngx.log(ngx.ERR, &quot;Included group_id &quot;, included_group_id, &quot; does not exist, removing from parents of group_id &quot;, group_id, &quot;: &quot;, err)
+                    -- 删除不存在的包含关系 !!!
+                    local ok, err = red:srem(parents_set_key, included_group_id)
+                    if not ok then
+                        ngx.log(
+                            ngx.ERR,
+                            &quot;Failed to remove non-existent included group_id &quot;,
+                            included_group_id,
+                            &quot; from includes of group_id &quot;,
+                            group_id,
+                            &quot;: &quot;,
+                            err
+                        )
+                    end
+                end
+            end
+        end
+        return parents_md5_list
+    end
+
+    -- 用于存储需要参与计算 MD5 的数据
+    -- 参与计算的数据包括：group_id、所有的规则id(如果有)、包含的其他规则组的(如果有) md5(排序)
+    local data = {}
+    table.insert(data, group_id)
+
+    local rule_ids = get_rule_ids()
+    if #rule_ids &gt; 0 then
+        table.sort(rule_ids) -- 确保顺序一致
+        for _, id in ipairs(rule_ids) do
+            table.insert(data, id)
+        end
+    end
+
+    local parents_md5_list = get_parents_md5_list()
+    if #parents_md5_list &gt; 0 then
+        table.sort(parents_md5_list) -- 确保顺序一致
+        for _, parent_md5 in ipairs(parents_md5_list) do
+            table.insert(data, parent_md5)
+        end
+    end
+
+    -- 计算 MD5 摘要
+    local concat_str = table.concat(data, &quot;|&quot;)
+    local md5 = ngx.md5(concat_str) -- ngx.md5 返回的是 32 位的十六进制字符串
+
+    return md5
+end
+
+-- 刷新规则组的MD5摘要 递归向下刷新所有受影响的规则组
+-- @param group_id 规则组 ID
+-- @param red 已连接的 Redis 实例
+local function refresh_md5(group_id, red, refreshed)
+    refreshed = refreshed or {}
+    local old_md5, err = has_group(group_id, red)
+    if old_md5 then
+        local new_md5 = calculate_group_md5(group_id, red) -- 计算的过程中会删除不存在的 parents
+        if new_md5 == old_md5 then
+            return old_md5 -- 没有变化
+        end
+
+        -- 一旦自身的 MD5 变化，所有依赖它的规则组都需要刷新
+        local md5_key = config.get_md5_key(group_id)
+        local last_updated_key = config.get_last_updated_key(group_id)
+        red:set(md5_key, new_md5)
+        red:set(last_updated_key, date_utils.now_str())
+
+        local children_set_key = config.get_children_set_key(group_id)
+        local children, err = red:smembers(children_set_key)
+        if not children then
+            ngx.log(ngx.ERR, &quot;Failed to get children groups for group_id &quot;, group_id, &quot;: &quot;, tostring(err))
+            children = {}
+        end
+
+        -- 标记已经刷新过，避免重复刷新
+        refreshed[group_id] = true
+
+        if #children &gt; 0 then
+            for _, child_group_id in ipairs(children) do
+                if not refreshed[child_group_id] then
+                    ngx.log(ngx.DEBUG, &quot;Refreshing MD5 for affected group_id: &quot;, child_group_id)
+                    refresh_md5(child_group_id, red, refreshed)
+                end
+            end
+        end
+
+        return new_md5
+    else
+        return nil, &quot;group does not exist&quot;
+    end
+end
+
+-- 创建一个空的规则组
+-- @param group_id 规则组 ID
+-- @param red 已连接的 Redis 实例
+-- @return 成功时返回 true，失败时返回 nil 和错误信息
+local function create_empty_group(group_id, red)
+    if not group_id or type(group_id) ~= &quot;string&quot; or group_id == &quot;&quot; then
+        return nil, &quot;Invalid group_id&quot;
+    end
+
+    -- 获取元数据的各个键 Redis 的哲学：存在的才占空间。
+    local last_updated_key = config.get_last_updated_key(group_id)
+    -- 初始化元数据
+    red:set(last_updated_key, date_utils.now_str())
+
+    -- 计算并设置 MD5 摘要
+    local md5_key = config.get_md5_key(group_id)
+    local md5_value = calculate_group_md5(group_id, red)
+    red:set(md5_key, md5_value)
+    return md5_value
+end
+
+-- 获取所有规则组 ID 列表
+-- @param red 已连接的 Redis 实例
+-- @return 成功时返回规则组 ID 到信息的映射表，失败时返回 nil 和错误信息
+function _M.get_all_groups(red)
+    local groups_info = {}
+
+    local pattern = config.get_prefix() .. &quot;:*:md5&quot;
+    local md5_keys, err = redis_utils.scan_keys(red, pattern, 100)
+    if not md5_keys then
+        return nil, &quot;failed to scan md5 keys: &quot; .. tostring(err)
+    end
+
+    for _, md5_key in ipairs(md5_keys) do
+        local group_id = md5_key:match(&quot;^&quot; .. config.get_prefix() .. &quot;:(.+):md5$&quot;)
+        local md5 = has_group(group_id, red)
+        if md5 then
+            local parents_set_key = config.get_parents_set_key(group_id)
+            local parents = red:smembers(parents_set_key) or {}
+
+            local children_set_key = config.get_children_set_key(group_id)
+            local children = red:smembers(children_set_key) or {}
+            groups_info[group_id] = {
+                [&quot;_group_id&quot;] = group_id,
+                [&quot;_parents&quot;] = parents,
+                [&quot;_children&quot;] = children,
+                [&quot;_md5&quot;] = md5,
+            }
+        end
+    end
+
+    return groups_info, nil
+end
+
+-- 模块方法：新建一个规则组
+-- @param group_id 规则组 ID
+-- @param red 已连接的 Redis 实例
+-- @return 成功时返回 true，失败时返回 nil 和错误信息
+function _M.add_group(group_id, red)
+    -- 如果规则组已经存在，直接返回成功
+    local md5_value, err = has_group(group_id, red)
+    if md5_value then
+        return nil, &quot;Group already exists|digest=&quot; .. md5_value
+    end
+    return create_empty_group(group_id, red)
+end
+
+-- 模块方法：删除指定的规则组及其所有相关数据
+-- @param group_id 规则组 ID
+-- @param red 已连接的 Redis 实例
+-- @return 成功时返回 true，失败时返回 nil 和错误信息
+function _M.remove_group(group_id, red)
+    -- 检查规则组是否存在
+    local md5_value, err = has_group(group_id, red)
+    if not md5_value then
+        return nil, &quot;Group does not exist: &quot; .. tostring(err)
+    end
+
+    -- 获取相关的 Redis 键
+    local keys = config.get_group_key_list(group_id)
+
+    -- 获取被哪些规则组包含
+    local children_set_key = config.get_children_set_key(group_id)
+    local children, err = red:smembers(children_set_key)
+    if not children then
+        children = {}
+    end
+
+    -- 获取包含的其他规则组
+    local parents_set_key = config.get_parents_set_key(group_id)
+    local parents, err = red:smembers(parents_set_key)
+    if not parents then
+        parents = {}
+    end
+
+    -- 删除规则组的所有相关键
+    for _, key in pairs(keys) do
+        red:del(key)
+    end
+
+    if #children &gt; 0 then
+        -- 刷新所有受影响的规则组的 MD5 摘要
+        for _, child_group_id in ipairs(children) do
+            refresh_md5(child_group_id, red) -- 计算的过程中会删除不存在的 parents
+        end
+    end
+
+    if #parents &gt; 0 then -- 删除包含自身的规则组中的包含关系
+        for _, parent_group_id in ipairs(parents) do
+            local parent_children_set_key = config.get_children_set_key(parent_group_id)
+            red:srem(parent_children_set_key, group_id)
+        end
+    end
+    return true, nil
+end
+
+-- 环路检测
+-- @param from string 起始规则组 ID
+-- @param target string 目标规则组 ID
+-- @param red 已连接的 Redis 实例
+local function loop_detection(from, target, red)
+    -- 使用深度优先搜索检测环路
+    local function dfs(curr_group_id, target_group_id, visited)
+        if curr_group_id == target_group_id then
+            return true -- 找到环路
+        end
+        if visited[curr_group_id] then
+            return false -- 已访问过，避免重复
+        end
+        visited[curr_group_id] = true
+
+        local parents_set_key = config.get_parents_set_key(curr_group_id)
+        local parents, err = red:smembers(parents_set_key) -- 获取所有的包含的规则组
+
+        if not parents then
+            return false -- 获取失败，假设没有环路
+        end
+
+        for _, parent_group_id in ipairs(parents) do
+            if dfs(parent_group_id, target_group_id, visited) then
+                return true
+            end
+        end
+
+        return false
+    end
+
+    -- 从 from 开始，检查是否能回到 target
+    return dfs(from, target, {})
+end
+
+-- 模块方法：添加包含关系
+-- @param group_id 规则组 ID
+-- @param parent_group_id 要包含的规则组 ID
+-- @param red 已连接的 Redis 实例
+function _M.add_parent(group_id, parent_group_id, red)
+    -- 检查规则组是否存在
+    local md5_value, err = has_group(group_id, red)
+    if not md5_value then
+        return nil, &quot;Group does not exist: &quot; .. tostring(err)
+    end
+
+    -- 检查要包含的规则组是否存在
+    local parent_md5_value, err = has_group(parent_group_id, red)
+    if not parent_md5_value then
+        return nil, &quot;Parent group does not exist: &quot; .. tostring(err)
+    end
+
+    -- 如果 parent_group_id 已经直接或间接包含了 group_id，则添加会导致环路
+    local loop = loop_detection(parent_group_id, group_id, red)
+    if loop then
+        return nil, &quot;Adding this include would create a loop&quot;
+    end
+
+    local parents_set_key = config.get_parents_set_key(group_id)
+    local children_set_key = config.get_children_set_key(parent_group_id)
+
+    -- 检查是否已经包含，避免重复添加
+    local exists, err = red:sismember(parents_set_key, parent_group_id)
+    if exists == nil then
+        return nil, &quot;failed to check membership: &quot; .. tostring(err)
+    end
+
+    if exists ~= 0 then
+        return true, nil
+    end
+
+    -- 添加包含关系 (双向)
+    red:sadd(parents_set_key, parent_group_id)
+    red:sadd(children_set_key, group_id)
+    -- 刷新规则组的 MD5 摘要
+    refresh_md5(group_id, red) -- 计算的过程中会删除不存在的 parents
+    return true, nil
+end
+
+-- 模块方法：删除包含关系
+-- @param group_id 规则组 ID
+-- @param parent_group_id 要删除包含的规则组 ID
+-- @param red 已连接的 Redis 实例
+function _M.remove_parent(group_id, parent_group_id, red)
+    -- 检查规则组是否存在
+    local md5_value, err = has_group(group_id, red)
+    if not md5_value then
+        return nil, &quot;Group does not exist: &quot; .. tostring(err)
+    end
+
+    -- 检查要包含的规则组是否存在,可能被手动删了
+    local parent_md5_value, err = has_group(parent_group_id, red)
+    if not parent_md5_value then
+        ngx.log(ngx.WARN, &quot;Include group does not exist: &quot;, tostring(err))
+    end
+
+    -- 获取相关的 Redis 键
+    local parents_set_key = config.get_parents_set_key(group_id)
+    local children_set_key = config.get_children_set_key(parent_group_id)
+    ngx.log(ngx.ERR, &quot;Deleting include: &quot;, group_id, &quot; -&gt; &quot;, parent_group_id)
+    -- 删除包含关系 (双向)
+    red:srem(parents_set_key, parent_group_id)
+    red:srem(children_set_key, group_id)
+
+    -- 刷新规则组的 MD5 摘要
+    refresh_md5(group_id, red) -- 计算的过程中会删除不存在的 parents
+    return true, nil
+end
+
+-- 模块方法：获取规则组的包含列表 (提供这个方法，由上层决定是否递归获取所有包含的规则组)
+-- @param group_id 规则组 ID
+-- @param red 已连接的 Redis 实例
+-- @return 成功时返回包含的规则组 ID 数组，失败时返回 nil 和错误信息
+function _M.get_parents(group_id, red)
+    if not group_id or type(group_id) ~= &quot;string&quot; or group_id == &quot;&quot; then
+        return nil, &quot;Invalid group_id&quot;
+    end
+    -- 检查规则组是否存在
+    local md5_value, err = has_group(group_id, red)
+    if not md5_value then
+        return nil, &quot;Group does not exist: &quot; .. tostring(err)
+    end
+
+    -- 获取规则组的包含列表 key
+    local parents_set_key = config.get_parents_set_key(group_id)
+    -- 获取所有包含的规则组 ID
+    local parents, err = red:smembers(parents_set_key)
+    if not parents then
+        return nil, &quot;failed to get included groups: &quot; .. tostring(err)
+    end
+    return parents, nil
+end
+
+-- 模块方法：获取规则组的所有规则（不递归获取所有包含的规则组）
+-- @param group_id 规则组 ID
+-- @param red 已连接的 Redis 实例
+-- @return 成功时返回规则数组，失败时返回 nil 和错误信息
+function _M.get_rules(group_id, red)
+    -- 检查规则组是否存在
+    local md5_value, err = has_group(group_id, red)
+    if not md5_value then
+        return nil, &quot;Group does not exist: &quot; .. tostring(err)
+    end
+
+    -- 获取规则组的规则 map key
+    local rules_map_key = config.get_rules_map_key(group_id)
+    -- 获取所有规则
+    local rules_map, err = red:hgetall(rules_map_key)
+    if not rules_map then
+        return nil, &quot;failed to get rules map: &quot; .. tostring(err)
+    end
+
+    local rules = {}
+    for i = 1, #rules_map, 2 do
+        local rule_id = rules_map[i]
+        local rule_json = rules_map[i + 1]
+        if rule_json and rule_json ~= ngx.null then
+            local rule, err = cjson.decode(rule_json)
+            if rule then
+                table.insert(rules, rule)
+            else
+                ngx.log(ngx.ERR, &quot;Failed to decode rule JSON for rule_id &quot;, rule_id, &quot;: &quot;, err)
+            end
+        end
+    end
+
+    -- 这里取消排序，由上层决定是否排序
+    -- if #rules &gt; 0 then
+    --     -- 按优先级排序，优先级高的在前面
+    --     table.sort(rules, function(a, b)
+    --         return (a.priority or 0) &gt; (b.priority or 0)
+    --     end)
+    -- end
+    return rules, nil
+end
+
+-- 模块方法：添加规则
+-- @param group_id 规则组 ID
+-- @param rule 规则对象（Lua 表）
+-- @param rule_id 规则 ID
+-- @param red
+-- @return 成功时返回规则的 JSON 字符串，失败时返回 nil 和错误信息
+function _M.add_rule(group_id, rule, rule_id, red)
+    rule._group_id = group_id -- 为规则添加元信息
+    rule._id = rule_id -- 为规则添加元信息
+    if rule.priority == nil or type(rule.priority) ~= &quot;number&quot; then
+        rule.priority = 1 -- 默认优先级为 1
+    end
+
+    -- 序列化规则,存储为 JSON 字符串
+    -- 这里不检查 rule 的内容，由调用方负责
+    local rule_json, err = cjson.encode(rule)
+    if not rule_json then
+        return nil, &quot;failed to encode rule to JSON: &quot; .. tostring(err)
+    end
+
+    -- 如果规则组不存在，先创建一个空的规则组
+    if not has_group(group_id, red) then
+        local ok, err = create_empty_group(group_id, red)
+        if not ok then
+            return nil, &quot;failed to create empty group: &quot; .. tostring(err)
+        end
+    end
+
+    -- 获取相关的 Redis 键
+    local rules_map_key = config.get_rules_map_key(group_id)
+    local last_updated_key = config.get_last_updated_key(group_id)
+
+    -- 检查规则 ID 是否已存在
+    local exists, err = red:hexists(rules_map_key, rule_id)
+    if exists == nil then
+        return nil, &quot;failed to check rule existence: &quot; .. tostring(err)
+    end
+
+    -- 规则 ID 已存在 检测内容是否相同
+    if exists ~= 0 then
+        -- 获取规则id对应的规则 json 对比rule_json
+        local existing_rule_json, err = red:hget(rules_map_key, rule_id)
+        if existing_rule_json then
+            if json_utils.deep_equal(existing_rule_json, rule_json) then -- 规则相同，不做任何操作
+                return rule_json, nil
+            end
+        else
+            ngx.log(ngx.ERR, &quot;Failed to get existing rule JSON for rule_id &quot;, rule_id, &quot;: &quot;, tostring(err))
+            -- 继续往下走，覆盖旧规则
+        end
+        -- 规则不同，继续往下走，覆盖旧规则
+    end
+
+    -- 添加规则到 Redis
+    red:hset(rules_map_key, rule_id, rule_json)
+    red:set(last_updated_key, date_utils.now_str())
+
+    -- 刷新规则组的 MD5 摘要
+    refresh_md5(group_id, red)
+    return rule_json, nil
+end
+
+-- 模块方法：获取指定规则组中的指定规则
+-- @param group_id 规则组 ID
+-- @param rule_id 规则 ID
+-- @param red 已连接的 Redis 实例
+-- @return 成功时返回规则对象（Lua 表），失败时返回 nil 和错误信息
+function _M.get_rule(group_id, rule_id, red)
+    -- 检查规则组是否存在
+    local md5_value, err = has_group(group_id, red)
+    if not md5_value then
+        return nil, &quot;Group does not exist: &quot; .. tostring(err)
+    end
+
+    -- 获取规则组的规则 map key
+    local rules_map_key = config.get_rules_map_key(group_id)
+    local rule_json, err = red:hget(rules_map_key, rule_id) -- 获取指定规则
+    if not rule_json then
+        return nil, &quot;failed to get rule: &quot; .. tostring(err)
+    end
+
+    if rule_json == ngx.null or rule_json == &quot;&quot; then
+        return nil, &quot;rule not found&quot;
+    end
+
+    local rule, err = cjson.decode(rule_json)
+    if not rule then
+        return nil, &quot;failed to decode rule JSON: &quot; .. tostring(err)
+    end
+
+    return rule, nil
+end
+
+-- 模块方法：删除指定规则组中的指定规则
+-- @param group_id 规则组 ID
+-- @param rule_id 规则 ID
+-- @param red 已连接的 Redis 实例
+-- @return 成功时返回 true，失败时返回 nil 和错误信息
+function _M.remove_rule(group_id, rule_id, red)
+    -- 检查规则组是否存在
+    local md5_value, err = has_group(group_id, red)
+    if not md5_value then
+        return nil, &quot;Group does not exist: &quot; .. tostring(err)
+    end
+
+    -- 获取相关的 Redis 键
+    local rules_map_key = config.get_rules_map_key(group_id)
+    local last_updated_key = config.get_last_updated_key(group_id)
+
+    -- 删除规则
+    red:hdel(rules_map_key, rule_id)
+    red:set(last_updated_key, date_utils.now_str())
+
+    -- 刷新规则组的 MD5 摘要
+    refresh_md5(group_id, red)
+    return true, nil
+end
+
+-- -------------------- 特殊的操作（上层应用模板不提供的操作） --------------------
+
+-- 模块方法：获取规则组的 MD5 摘要 目的：检测规则组是否变化
+-- @param group_id 规则组 ID
+-- @param red 已连接的 Redis 实例
+function _M.get_md5(group_id, red)
+    if not group_id or type(group_id) ~= &quot;string&quot; or group_id == &quot;&quot; then
+        return nil, &quot;Invalid group_id&quot;
+    end
+    -- 检查规则组是否存在
+    local md5_value, err = has_group(group_id, red)
+    if not md5_value then
+        return nil, &quot;Group does not exist: &quot; .. tostring(err)
+    end
+    return md5_value, nil
+end
+
+-- 模块方法：刷新规则组的 MD5 摘要 (关键：计算的时候会更新includes中不存在的规则组)
+-- @param group_id 规则组 ID
+function _M.refresh_md5(group_id, red)
+    local new_md5, err = refresh_md5(group_id, red)
+    if not new_md5 then
+        ngx.log(ngx.ERR, &quot;Failed to refresh md5 for group_id &quot;, group_id, &quot;: &quot;, tostring(err))
+    end
+    return new_md5, err
+end
+
+return _M
+</div><div class="last-modified">10 June 2026</div><div data-feedback-placeholder="true"></div><div class="navigation-links _bottom"><a href="lua-access-control.html" class="navigation-links__prev">Access Control</a><a href="sql.html" class="navigation-links__next">SQL</a></div></article><div id="disqus_thread"></div></div></section></main></div><script src="https://resources.jetbrains.com/writerside/apidoc/6.27.0-b1031/app.js"></script></body></html>

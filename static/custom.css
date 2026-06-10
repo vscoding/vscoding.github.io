@@ -1,0 +1,48 @@
+:root {
+    font-size: 13px;
+    /* 设置基础字体大小 */
+    /* --rs-font-family-mono: 'JetBrains Mono', Consolas, Monaco, 'Courier New', monospace; */
+    --wh-flow-unit: 16px;
+    --wh-flow-unit-m: 24px;
+}
+
+/* Writerside internal overrides: upgrade Writerside 后需要回归检查这些 class。 */
+
+/* 调整提示块内边距 */
+.prompt__wrapper {
+    padding: 13px;
+}
+
+pre[class*="language-"] code,
+.code {
+    font-size: 13px;
+    line-height: 1.55;
+}
+
+.article__h1 {
+    font-size: 35px;
+    margin-top: 10px;
+    padding: 5px 0;
+}
+
+.article__h2 {
+    font-size: 27px;
+}
+
+.article__h3 {
+    font-size: 22px;
+}
+
+.article__h4 {
+    font-size: 18px;
+}
+
+/* 不显示 Powered by */
+.footer__powered {
+    display: none;
+}
+
+/* 不显示 Last Modified */
+.sub-title__edit-info {
+    display: none;
+}

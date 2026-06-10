@@ -1,0 +1,297 @@
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html lang="en-US" data-preset="contrast" data-primary-color="#307FFF" data-link-color="#307FFF" data-link-dark-color="#90C695" data-content-max-width="1350" data-resizable-sidebar="true" data-sidebar-width="300"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="UTF-8"><meta name="built-on" content="2026-06-10T03:50:49.66213439"><link rel="canonical" href="https://blog.kubectl.org/tt-tree.html" data-react-helmet="true"><title>Two-Three Tree | Mind and Hand</title><script type="application/json" id="virtual-toc-data">[{"id":"vybedz_5","level":0,"title":"定义接口","anchor":"#vybedz_5"},{"id":"vybedz_8","level":1,"title":"树接口","anchor":"#vybedz_8"},{"id":"vybedz_9","level":1,"title":"节点定义","anchor":"#vybedz_9"},{"id":"vybedz_6","level":0,"title":"二三树的实现","anchor":"#vybedz_6"}]</script><script type="application/json" id="topic-shortcuts"></script><link href="https://resources.jetbrains.com/writerside/apidoc/6.27.0-b1031/app.css" rel="stylesheet"><link href="static/custom.css" rel="stylesheet"><meta name="msapplication-TileColor" content="#000000"><link rel="apple-touch-icon" sizes="180x180" href="https://jetbrains.com/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="https://jetbrains.com/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="https://jetbrains.com/favicon-16x16.png"><meta name="msapplication-TileImage" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-144x144.png"><meta name="msapplication-square70x70logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-70x70.png"><meta name="msapplication-square150x150logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-150x150.png"><meta name="msapplication-wide310x150logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-310x150.png"><meta name="msapplication-square310x310logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-310x310.png"><meta name="image" content=""><!-- Open Graph --><meta property="og:title" content="Two-Three Tree | Mind and Hand"><meta property="og:description" content=""><meta property="og:image" content=""><meta property="og:site_name" content="Mind and Hand Help"><meta property="og:type" content="website"><meta property="og:locale" content="en_US"><meta property="og:url" content="https://blog.kubectl.org/tt-tree.html"><!-- End Open Graph --><!-- Twitter Card --><meta name="twitter:card" content="summary_large_image"><meta name="twitter:site" content=""><meta name="twitter:title" content="Two-Three Tree | Mind and Hand"><meta name="twitter:description" content=""><meta name="twitter:creator" content=""><meta name="twitter:image:src" content=""><!-- End Twitter Card --><!-- Schema.org WebPage --><script type="application/ld+json">{
+    "@context": "http://schema.org",
+    "@type": "WebPage",
+    "@id": "https://blog.kubectl.org/tt-tree.html#webpage",
+    "url": "https://blog.kubectl.org/tt-tree.html",
+    "name": "Two-Three Tree | Mind and Hand",
+    "description": "",
+    "image": "",
+    "inLanguage":"en-US"
+}</script><!-- End Schema.org --><!-- Schema.org WebSite --><script type="application/ld+json">{
+    "@type": "WebSite",
+    "@id": "https://blog.kubectl.org/#website",
+    "url": "https://blog.kubectl.org/",
+    "name": "Mind and Hand Help"
+}</script><!-- End Schema.org --></head><body data-id="tt-tree" data-main-title="Two-Three Tree" data-article-props="{&quot;seeAlsoStyle&quot;:&quot;links&quot;}" data-template="article" data-breadcrumbs="cs.md|Compute Science &amp; Technology///dsa.md|Data Structures and Algorithms///data-structures.md|Data structures///search-tree.md|Search Tree"><div class="wrapper"><main class="panel _main"><header class="panel__header"><div class="container"><h3>Mind and Hand  Help</h3><div class="panel-trigger"></div></div></header><section class="panel__content"><div class="container"><article class="article" data-shortcut-switcher="inactive"><h1 data-toc="tt-tree" id="tt-tree.md">Two-Three Tree</h1><aside class="prompt" data-type="tip" data-title="" id="vybedz_4"><p id="vybedz_7">二三树平衡的本质是自底向上平衡的</p></aside><section class="chapter"><h2 id="vybedz_5" data-toc="vybedz_5">定义接口</h2><section class="chapter"><h3 id="vybedz_8" data-toc="vybedz_8">树接口</h3><div class="code-block" data-lang="kotlin">
+interface TTTree&lt;K : Comparable&lt;K&gt;, V&gt; : KVOperation&lt;K, V&gt;, DataStructurePrintable {
+
+    fun getRoot(): TTNode&lt;K, V&gt;?
+
+    /**
+     * 中序遍历
+     */
+    fun inorder(action: (K, V) -&gt; Unit)
+
+}
+</div></section><section class="chapter"><h3 id="vybedz_9" data-toc="vybedz_9">节点定义</h3><div class="code-block" data-lang="kotlin">
+class TTNode&lt;K : Comparable&lt;K&gt;, V&gt; {
+    var parent: TTNode&lt;K, V&gt;? = null
+
+    val keys = mutableListOf&lt;KVPair&lt;K, V&gt;&gt;()
+    val children = mutableListOf&lt;TTNode&lt;K, V&gt;&gt;()
+
+    fun isLeaf(): Boolean = children.isEmpty()
+
+    fun isTwoNode(): Boolean = keys.size == 1
+
+    fun isThreeNode(): Boolean = keys.size == 2
+
+}
+
+data class KVPair&lt;K, V&gt;(val key: K, val value: V) {
+    override fun toString(): String = &quot;($key, $value)&quot;
+}
+</div></section></section><section class="chapter"><h2 id="vybedz_6" data-toc="vybedz_6">二三树的实现</h2><aside class="prompt" data-type="tip" data-title="" id="vybedz_12"><p id="vybedz_14">目前只实现了插入的平衡操作</p></aside><div class="code-block" data-lang="kotlin">
+class TTTreeImpl&lt;K : Comparable&lt;K&gt;, V&gt; : TTTree&lt;K, V&gt; {
+
+    companion object {
+        val log = getLogger(TTTreeImpl::class.java)
+    }
+
+    private var root: TTNode&lt;K, V&gt;? = null
+    private var count = 0
+
+    override fun getRoot(): TTNode&lt;K, V&gt;? = this.root
+
+    override fun size(): Int = this.count
+
+    override fun contains(key: K): Boolean = get(key) != null
+
+    override fun get(key: K): V? {
+        return get(this.root, key)
+    }
+
+    private fun get(node: TTNode&lt;K, V&gt;?, key: K): V? {
+        if (node == null) return null
+
+        if (node.isTwoNode()) {
+            return when {
+                key &lt; node.keys[0].key -&gt; get(node.children[0], key)
+                key == node.keys[0].key -&gt; node.keys[0].value
+                else -&gt; get(node.children[1], key)
+            }
+        } else if (node.isThreeNode()) {
+            return when {
+                key &lt; node.keys[0].key -&gt; get(node.children[0], key)
+                key == node.keys[0].key -&gt; node.keys[0].value
+                key &lt; node.keys[1].key -&gt; get(node.children[1], key)
+                key == node.keys[1].key -&gt; node.keys[1].value
+                else -&gt; get(node.children[2], key)
+            }
+        } else {
+            throw IllegalStateException(&quot;Invalid Node&quot;)
+        }
+    }
+
+    override fun insert(key: K, value: V) {
+        if (this.root == null) {
+            this.root = TTNode&lt;K, V&gt;().apply { add(key, value) }
+            this.count++
+            return
+        }
+        findLeaf(this.root!!, key, value)?.apply {
+            // 不为空，说明没有替换值，添加新键值对
+            this.add(key, value)
+            count++
+            // 如果当前节点的键值对数量超过2，进行分裂
+            if (this.keys.size &gt; 2) {
+                splitAndRebalance(this)
+            }
+        }
+
+    }
+
+    private fun TTNode&lt;K, V&gt;.add(key: K, value: V) {
+        when {
+            keys.isEmpty() || key &lt; keys[0].key -&gt; keys.add(0, KVPair(key, value))
+            keys.size == 1 || key &lt; keys[1].key -&gt; keys.add(1, KVPair(key, value))
+            else -&gt; keys.add(2, KVPair(key, value))
+        }
+    }
+
+    // 如果在查找叶子节点的过程中发现值相同，替换值返回null
+    private fun findLeaf(node: TTNode&lt;K, V&gt;, key: K, value: V): TTNode&lt;K, V&gt;? {
+        var current = node
+        while (!current.isLeaf()) {
+            when {
+                current.isTwoNode() -&gt;
+                    when {
+                        key &lt; current.keys[0].key -&gt; current = current.children[0]
+                        key == current.keys[0].key -&gt; {
+                            current.keys[0] = KVPair(key, value)
+                            return null // 替换值返回null
+                        }
+
+                        else -&gt; current = current.children[1]
+                    }
+
+                current.isThreeNode() -&gt;
+                    when {
+                        key &lt; current.keys[0].key -&gt; current = current.children[0]
+                        key == current.keys[0].key -&gt; {
+                            current.keys[0] = KVPair(key, value)
+                            return null // 替换值返回null
+                        }
+
+                        key &lt; current.keys[1].key -&gt; current = current.children[1]
+                        key == current.keys[1].key -&gt; {
+                            current.keys[1] = KVPair(key, value)
+                            return null // 替换值返回null
+                        }
+
+                        else -&gt; current = current.children[2]
+                    }
+
+                else -&gt; throw IllegalStateException(&quot;Invalid Node&quot;)
+            }
+        }
+        return current
+    }
+
+    // 一定是3节点分裂
+    private fun splitAndRebalance(node: TTNode&lt;K, V&gt;) {
+        log.debug(&quot;split and rebalance node: [${node.keys.map { it -&gt; it.key }.joinToString(&quot; &quot;)}]&quot;)
+        /*
+        case1:
+
+            x y z     y
+                    /  \
+                   x    z
+
+        case2:
+              x  y  z             y
+            /   |  \  \         /   \
+          a    b   c   d       x      z
+                             /  \    /  \
+                            a    b  c    d
+         */
+
+        val midKV = node.keys[1]
+
+        // 创建两个新节点
+        val leftNode = TTNode&lt;K, V&gt;()
+        val rightNode = TTNode&lt;K, V&gt;()
+
+        leftNode.add(node.keys[0].key, node.keys[0].value)
+        rightNode.add(node.keys[2].key, node.keys[2].value)
+
+        // 向上递归会遇到叶子节点
+        if (!node.isLeaf()) {
+            // 子节点重新分配
+            // 左子节点包含原节点的前两个子节点
+            // 右子节点包含原节点的后两个子节点
+
+            leftNode.children.addAll(listOf(node.children[0], node.children[1]))
+            rightNode.children.addAll(listOf(node.children[2], node.children[3]))
+
+            // 设置子节点的父节点
+            leftNode.children.forEach { it.parent = leftNode }
+            rightNode.children.forEach { it.parent = rightNode }
+        }
+
+        val curParent = node.parent
+        if (curParent == null) {
+            this.root = TTNode&lt;K, V&gt;().apply {
+                this.add(midKV.key, midKV.value)
+                this.children.add(leftNode)
+                this.children.add(rightNode)
+            }
+            // parent指向的形成
+            leftNode.parent = this.root
+            rightNode.parent = this.root
+        } else {
+
+            val index = curParent.children.indexOf(node)
+            curParent.children.removeAt(index)
+
+            // 这里parent可能会形成4节点
+            curParent.children.add(index, rightNode)
+            curParent.children.add(index, leftNode)
+
+            leftNode.parent = curParent
+            rightNode.parent = curParent
+
+            curParent.add(midKV.key, midKV.value)
+            if (curParent.keys.size &gt; 2) {
+                splitAndRebalance(curParent)
+            }
+        }
+
+    }
+
+    override fun remove(key: K): V? {
+        TODO(&quot;Not yet implemented&quot;)
+    }
+
+    override fun inorder(action: (K, V) -&gt; Unit) {
+        inorder(this.root, action)
+    }
+
+    private fun inorder(node: TTNode&lt;K, V&gt;?, action: (K, V) -&gt; Unit) {
+        if (node == null) return
+
+        when {
+            node.isLeaf() -&gt; node.keys.forEach { action(it.key, it.value) }
+
+            node.isTwoNode() -&gt; {
+
+                val left = node.children[0]
+                val right = node.children[1]
+
+                inorder(left, action)
+                node.keys.forEach { action(it.key, it.value) }
+                inorder(right, action)
+
+            }
+
+            node.isThreeNode() -&gt; {
+
+                val left = node.children[0]
+                val middle = node.children[1]
+                val right = node.children[2]
+
+                inorder(left, action)
+                action(node.keys[0].key, node.keys[0].value)
+                inorder(middle, action)
+                action(node.keys[1].key, node.keys[1].value)
+                inorder(right, action)
+            }
+
+            else -&gt; throw IllegalStateException(&quot;Invalid Node&quot;)
+        }
+    }
+
+    override fun clear() {
+        this.root == null
+        this.count = 0
+    }
+
+    override fun print() {
+        if (this.root == null) return println(&quot;Empty Tree&quot;)
+
+        println(&quot;2-3 Tree Structure:&quot;)
+        printTreeHelper(root, &quot;&quot;, true)
+    }
+
+    private fun printTreeHelper(node: TTNode&lt;K, V&gt;?, prefix: String, isLast: Boolean) {
+        if (node == null) return
+
+        // 打印当前节点
+        val connector = if (isLast) &quot;└── &quot; else &quot;├── &quot;
+        val nodeContent = if (node.keys.isEmpty()) &quot;[]&quot; else node.keys.joinToString(&quot;, &quot;) { &quot;${it.key}&quot; }
+        println(&quot;$prefix$connector$nodeContent&quot;)
+
+        // 如果不是叶子节点，递归打印子节点
+        if (!node.isLeaf()) {
+            val childPrefix = prefix + if (isLast) &quot;    &quot; else &quot;│   &quot;
+
+            for (i in node.children.indices) {
+                val isLastChild = (i == node.children.size - 1)
+                printTreeHelper(node.children[i], childPrefix, isLastChild)
+            }
+        }
+    }
+
+}
+</div></section><div class="last-modified">10 June 2026</div><div data-feedback-placeholder="true"></div><div class="navigation-links _bottom"><a href="avl.html" class="navigation-links__prev">AVL Tree</a><a href="rbtree.html" class="navigation-links__next">Red-Black Tree</a></div></article><div id="disqus_thread"></div></div></section></main></div><script src="https://resources.jetbrains.com/writerside/apidoc/6.27.0-b1031/app.js"></script></body></html>
