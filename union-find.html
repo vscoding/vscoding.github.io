@@ -1,5 +1,5 @@
 <!DOCTYPE html SYSTEM "about:legacy-compat">
-<html lang="en-US" data-preset="contrast" data-primary-color="#307FFF" data-link-color="#307FFF" data-link-dark-color="#90C695" data-content-max-width="1250" data-resizable-sidebar="true" data-sidebar-width="300"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="UTF-8"><meta name="built-on" content="2026-08-19T01:49:31.794036857"><link rel="canonical" href="https://blog.kubectl.org/union-find.html" data-react-helmet="true"><title>Union Find | Mind and Hand</title><script type="application/json" id="virtual-toc-data">[{"id":"vf9rkm_5","level":0,"title":"定义通用接口","anchor":"#vf9rkm_5"},{"id":"vf9rkm_6","level":0,"title":"实现","anchor":"#vf9rkm_6"},{"id":"indexed-union-find","level":1,"title":"Indexed Union Find","anchor":"#indexed-union-find"},{"id":"tree-id-union-find","level":1,"title":"Tree Id Union Find","anchor":"#tree-id-union-find"},{"id":"tree-union-find","level":0,"title":"Tree Union Find","anchor":"#tree-union-find"}]</script><script type="application/json" id="topic-shortcuts"></script><link href="https://resources.jetbrains.com/writerside/apidoc/6.27.0-b1156/app.css" rel="stylesheet"><link href="static/custom.css" rel="stylesheet"><meta name="msapplication-TileColor" content="#000000"><link rel="apple-touch-icon" sizes="180x180" href="https://jetbrains.com/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="https://jetbrains.com/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="https://jetbrains.com/favicon-16x16.png"><meta name="msapplication-TileImage" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-144x144.png"><meta name="msapplication-square70x70logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-70x70.png"><meta name="msapplication-square150x150logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-150x150.png"><meta name="msapplication-wide310x150logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-310x150.png"><meta name="msapplication-square310x310logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-310x310.png"><meta name="image" content=""><!-- Open Graph --><meta property="og:title" content="Union Find | Mind and Hand"><meta property="og:description" content=""><meta property="og:image" content=""><meta property="og:site_name" content="Mind and Hand Help"><meta property="og:type" content="website"><meta property="og:locale" content="en_US"><meta property="og:url" content="https://blog.kubectl.org/union-find.html"><!-- End Open Graph --><!-- Twitter Card --><meta name="twitter:card" content="summary_large_image"><meta name="twitter:site" content=""><meta name="twitter:title" content="Union Find | Mind and Hand"><meta name="twitter:description" content=""><meta name="twitter:creator" content=""><meta name="twitter:image:src" content=""><!-- End Twitter Card --><!-- Schema.org WebPage --><script type="application/ld+json">{
+<html lang="en-US" data-preset="contrast" data-primary-color="#307FFF" data-link-color="#307FFF" data-link-dark-color="#90C695" data-content-max-width="1250" data-resizable-sidebar="true" data-sidebar-width="300"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="UTF-8"><meta name="built-on" content="2026-08-20T08:42:32.790043521"><link rel="canonical" href="https://blog.kubectl.org/union-find.html" data-react-helmet="true"><title>Union Find | Mind and Hand</title><script type="application/json" id="virtual-toc-data">[{"id":"core-operations","level":0,"title":"Core Operations","anchor":"#core-operations"},{"id":"current-implementation","level":0,"title":"Current Implementation","anchor":"#current-implementation"},{"id":"unionfind-kt","level":1,"title":"UnionFind.kt","anchor":"#unionfind-kt"},{"id":"indexedunionfind-kt","level":1,"title":"IndexedUnionFind.kt","anchor":"#indexedunionfind-kt"},{"id":"treeidunionfind-kt","level":1,"title":"TreeIdUnionFind.kt","anchor":"#treeidunionfind-kt"},{"id":"treeunionfind-kt","level":1,"title":"TreeUnionFind.kt","anchor":"#treeunionfind-kt"}]</script><script type="application/json" id="topic-shortcuts"></script><link href="https://resources.jetbrains.com/writerside/apidoc/6.27.0-b1156/app.css" rel="stylesheet"><link href="static/custom.css" rel="stylesheet"><meta name="msapplication-TileColor" content="#000000"><link rel="apple-touch-icon" sizes="180x180" href="https://jetbrains.com/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="https://jetbrains.com/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="https://jetbrains.com/favicon-16x16.png"><meta name="msapplication-TileImage" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-144x144.png"><meta name="msapplication-square70x70logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-70x70.png"><meta name="msapplication-square150x150logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-150x150.png"><meta name="msapplication-wide310x150logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-310x150.png"><meta name="msapplication-square310x310logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-310x310.png"><meta name="image" content=""><!-- Open Graph --><meta property="og:title" content="Union Find | Mind and Hand"><meta property="og:description" content=""><meta property="og:image" content=""><meta property="og:site_name" content="Mind and Hand Help"><meta property="og:type" content="website"><meta property="og:locale" content="en_US"><meta property="og:url" content="https://blog.kubectl.org/union-find.html"><!-- End Open Graph --><!-- Twitter Card --><meta name="twitter:card" content="summary_large_image"><meta name="twitter:site" content=""><meta name="twitter:title" content="Union Find | Mind and Hand"><meta name="twitter:description" content=""><meta name="twitter:creator" content=""><meta name="twitter:image:src" content=""><!-- End Twitter Card --><!-- Schema.org WebPage --><script type="application/ld+json">{
     "@context": "http://schema.org",
     "@type": "WebPage",
     "@id": "https://blog.kubectl.org/union-find.html#webpage",
@@ -13,388 +13,397 @@
     "@id": "https://blog.kubectl.org/#website",
     "url": "https://blog.kubectl.org/",
     "name": "Mind and Hand Help"
-}</script><!-- End Schema.org --></head><body data-id="union-find" data-main-title="Union Find" data-article-props="{&quot;seeAlsoStyle&quot;:&quot;links&quot;}" data-template="article" data-breadcrumbs="cs.md|Computer Science &amp; Technology///dsa.md|Data Structures and Algorithms///data-structures.md|Data structures"><div class="wrapper"><main class="panel _main"><header class="panel__header"><div class="container"><h3>Mind and Hand  Help</h3><div class="panel-trigger"></div></div></header><section class="panel__content"><div class="container"><article class="article" data-shortcut-switcher="inactive"><h1 data-toc="union-find" id="union-find.md">Union Find</h1><p id="vf9rkm_4">并查集，用于快速定位元素是否在同一个集合中</p><section class="chapter"><h2 id="vf9rkm_5" data-toc="vf9rkm_5">定义通用接口</h2><div class="code-block" data-lang="kotlin">
+}</script><!-- End Schema.org --></head><body data-id="union-find" data-main-title="Union Find" data-article-props="{&quot;seeAlsoStyle&quot;:&quot;links&quot;}" data-template="article" data-breadcrumbs="cs.md|Computer Science &amp; Technology///dsa.md|Data Structures and Algorithms///search.md|Search"><div class="wrapper"><main class="panel _main"><header class="panel__header"><div class="container"><h3>Mind and Hand  Help</h3><div class="panel-trigger"></div></div></header><section class="panel__content"><div class="container"><article class="article" data-shortcut-switcher="inactive"><h1 data-toc="union-find" id="union-find.md">Union Find</h1><p id="-bp3owz_4">并查集用于维护互不相交的集合，并快速判断两个元素是否属于同一集合。当前代码提供基于连续索引、外部唯一标识和元素自身的三种实现。</p><section class="chapter"><h2 id="core-operations" data-toc="core-operations">Core Operations</h2><ul class="list _bullet" id="-bp3owz_7"><li class="list__item" id="-bp3owz_8"><p id="-bp3owz_11"><code class="code" id="-bp3owz_12">union(a, b)</code> ：合并两个元素所在的集合。</p></li><li class="list__item" id="-bp3owz_9"><p id="-bp3owz_13"><code class="code" id="-bp3owz_14">isConnected(a, b)</code> ：判断两个元素是否连通。</p></li><li class="list__item" id="-bp3owz_10"><p id="-bp3owz_15"><code class="code" id="-bp3owz_16">getSize()</code> ：返回当前已登记的元素数量。</p></li></ul></section><section class="chapter"><h2 id="current-implementation" data-toc="current-implementation">Current Implementation</h2><section class="chapter"><h3 id="unionfind-kt" data-toc="unionfind-kt">UnionFind.kt</h3><p id="-bp3owz_21">源码： <code class="code" id="-bp3owz_23">uf/UnionFind.kt</code></p><div class="code-block" data-lang="kotlin">
+/**
+ * UnionFind
+ */
 interface UnionFind&lt;T&gt; {
 
-    fun isEmpty(): Boolean {
-        return size() == 0
-    }
+  fun isEmpty(): Boolean {
+    return size() == 0
+  }
 
-    fun size(): Int
+  fun size(): Int
 
-    // 是否包含指定元素
-    fun contains(value: T): Boolean
+  fun contains(value: T): Boolean
 
-    fun add(value: T): Boolean
+  fun add(value: T): Boolean
 
-    // union
-    fun union(value1: T, value2: T): Boolean
+  fun union(value1: T, value2: T): Boolean
 
-    // 交集判断
-    fun isConnected(value1: T, value2: T): Boolean
+  fun isConnected(value1: T, value2: T): Boolean
 
-    fun clear()
+  fun clear()
 
 }
-</div></section><section class="chapter"><h2 id="vf9rkm_6" data-toc="vf9rkm_6">实现</h2><aside class="prompt" data-type="tip" data-title="" id="vf9rkm_9"><p id="vf9rkm_15">设计两类实现、三种实现</p></aside><p id="vf9rkm_10">基于数组索引</p><p id="vf9rkm_11">基于Tree</p><ul class="list _bullet" id="vf9rkm_12"><li class="list__item" id="vf9rkm_16"><p id="vf9rkm_18">元素本身存在唯一ID</p></li><li class="list__item" id="vf9rkm_17"><p id="vf9rkm_19">元素本身能保证唯一性</p></li></ul><section class="chapter"><h3 id="indexed-union-find" data-toc="indexed-union-find">Indexed Union Find</h3><div class="code-block" data-lang="kotlin">
+</div></section><section class="chapter"><h3 id="indexedunionfind-kt" data-toc="indexedunionfind-kt">IndexedUnionFind.kt</h3><p id="-bp3owz_24">源码： <code class="code" id="-bp3owz_26">uf/IndexedUnionFind.kt</code></p><div class="code-block" data-lang="kotlin">
+/**
+ * IndexedUnionFind
+ */
 class IndexedUnionFind&lt;T&gt; : UnionFind&lt;T&gt; {
 
-    companion object {
-        val log = getLogger(IndexedUnionFind::class.java)
+  companion object {
+    val log = getLogger(IndexedUnionFind::class.java)
+  }
+
+  private val indexFunc: (T) -&gt; Int
+
+  private var data: Array&lt;Any?&gt; = arrayOfNulls&lt;Any?&gt;(2)
+
+  // 存储data的索引的元素的父节点索引
+  private var parent = Array(2) { -1 }
+
+  // 存储data的索引的元素的子节点索引列表
+  private var children = Array&lt;MutableList&lt;Int&gt;&gt;(2) { mutableListOf() }
+
+  private var count: Int = 0
+
+  constructor(indexFunc: (T) -&gt; Int) {
+    this.indexFunc = indexFunc
+  }
+
+  override fun size(): Int = this.count
+
+  override fun contains(value: T): Boolean {
+    return false
+  }
+
+  override fun add(value: T): Boolean {
+    val index = indexFunc(value)
+    require(index &gt;= 0) { &quot;Index must be non-negative&quot; }
+    expand(index + 1)
+    if (data[index] == null) {
+      // 如果当前索引位置没有元素，则添加新元素
+      data[index] = value
+      parent[index] = index
+      count++
+    } else {
+      // 如果当前索引位置已经有元素，替换
+      data[index] = value
+    }
+    return true
+  }
+
+  private fun expand(newSize: Int) {
+    if (newSize &gt; data.size) {
+      val newData = Array&lt;Any?&gt;(newSize) { null }
+      val newParent = Array(newSize) { -1 }
+      val newChildren = Array&lt;MutableList&lt;Int&gt;&gt;(newSize) { mutableListOf() }
+      System.arraycopy(data, 0, newData, 0, data.size)
+      System.arraycopy(parent, 0, newParent, 0, parent.size)
+      System.arraycopy(children, 0, newChildren, 0, children.size)
+      data = newData
+      parent = newParent
+      children = newChildren
+    }
+  }
+
+  override fun union(value1: T, value2: T): Boolean {
+    val v1Index = indexFunc(value1)
+    val v2Index = indexFunc(value2)
+
+    if (v1Index &lt; 0) {
+      log.equals(&quot;Index for value1 must be non-negative&quot;)
+      return false
     }
 
-    private val indexFunc: (T) -&gt; Int
-
-    private var data: Array&lt;Any?&gt; = arrayOfNulls&lt;Any?&gt;(2)
-
-    // 存储data的索引的元素的父节点索引
-    private var parent = Array(2) { -1 }
-
-    // 存储data的索引的元素的子节点索引列表
-    private var children = Array&lt;MutableList&lt;Int&gt;&gt;(2) { mutableListOf() }
-
-    private var count: Int = 0
-
-    constructor(indexFunc: (T) -&gt; Int) {
-        this.indexFunc = indexFunc
+    if (v2Index &lt; 0) {
+      log.equals(&quot;Index for value2 must be non-negative&quot;)
+      return false
     }
 
-    override fun size(): Int = this.count
-
-    override fun contains(value: T): Boolean {
-        return false
+    if (v1Index == v2Index) {
+      log.debug(&quot;Both values are the same, no union needed&quot;)
+      return false
     }
 
-    override fun add(value: T): Boolean {
-        val index = indexFunc(value)
-        if (index &lt; 0) {
-            throw IllegalArgumentException(&quot;Index must be non-negative&quot;)
+    // update parent when add
+    this.add(value1)
+    this.add(value2)
+
+    this.union(v1Index, v2Index)
+    return true
+  }
+
+  private fun union(v1Index: Int, v2Index: Int) {
+    val v1ParentIndex = getParent(v1Index)
+    val v2ParentIndex = getParent(v2Index)
+
+    if (v1ParentIndex == v2ParentIndex) {
+      return
+    }
+
+    children[v1ParentIndex].add(v2ParentIndex)
+    children[v1ParentIndex].addAll(
+      children[v2ParentIndex].apply {
+        this.forEach {
+          // Update the parent of all children from v2 to v1
+          parent[it] = v1ParentIndex
         }
-        expand(index + 1)
-        if (data[index] == null) {
-            // 如果当前索引位置没有元素，则添加新元素
-            data[index] = value
-            parent[index] = index
-            count++
-        } else {
-            // 如果当前索引位置已经有元素，替换
-            data[index] = value
-        }
-        return true
+      },
+    )
+    children[v2ParentIndex].clear()
+
+    parent[v2ParentIndex] = v1ParentIndex
+    parent[v2Index] = v1ParentIndex
+
+  }
+
+  private fun getParent(valueIndex: Int): Int {
+    return if (valueIndex.indexInArr(parent)) {
+      parent[valueIndex]
+    } else {
+      -1
     }
+  }
 
-    private fun expand(newSize: Int) {
-        if (newSize &gt; data.size) {
-            val newData = Array&lt;Any?&gt;(newSize) { null }
-            val newParent = Array(newSize) { -1 }
-            val newChildren = Array&lt;MutableList&lt;Int&gt;&gt;(newSize) { mutableListOf() }
-            System.arraycopy(data, 0, newData, 0, data.size)
-            System.arraycopy(parent, 0, newParent, 0, parent.size)
-            System.arraycopy(children, 0, newChildren, 0, children.size)
-            data = newData
-            parent = newParent
-            children = newChildren
-        }
+  private fun getParent(value: T): Int {
+    val curIndex = indexFunc(value)
+    return if (curIndex.indexInArr(parent)) {
+      parent[curIndex]
+    } else {
+      -1
     }
+  }
 
-    override fun union(value1: T, value2: T): Boolean {
-        val v1Index = indexFunc(value1)
-        val v2Index = indexFunc(value2)
-
-        if (v1Index &lt; 0) {
-            log.equals(&quot;Index for value1 must be non-negative&quot;)
-            return false
-        }
-
-        if (v2Index &lt; 0) {
-            log.equals(&quot;Index for value2 must be non-negative&quot;)
-            return false
-        }
-
-        if (v1Index == v2Index) {
-            log.debug(&quot;Both values are the same, no union needed&quot;)
-            return false
-        }
-
-        // update parent when add
-        this.add(value1)
-        this.add(value2)
-
-        this.union(v1Index, v2Index)
-        return true
+  override fun isConnected(value1: T, value2: T): Boolean {
+    val v1Index = indexFunc(value1)
+    val v2Index = indexFunc(value2)
+    if (!v1Index.indexInArr(parent) || !v2Index.indexInArr(parent)) {
+      return false
     }
+    val parent1 = getParent(value1)
+    val parent2 = getParent(value2)
 
-    private fun union(v1Index: Int, v2Index: Int) {
-        val v1ParentIndex = getParent(v1Index)
-        val v2ParentIndex = getParent(v2Index)
-
-        if (v1ParentIndex == v2ParentIndex) {
-            return
-        }
-
-        children[v1ParentIndex].add(v2ParentIndex)
-        children[v1ParentIndex].addAll(
-            children[v2ParentIndex].apply {
-                this.forEach {
-                    // Update the parent of all children from v2 to v1
-                    parent[it] = v1ParentIndex
-                }
-            }
-        )
-        children[v2ParentIndex].clear()
-
-        parent[v2ParentIndex] = v1ParentIndex
-        parent[v2Index] = v1ParentIndex
-
+    if (parent1 == -1 || parent2 == -1) {
+      return false
     }
+    return parent1 == parent2
+  }
 
-    private fun getParent(valueIndex: Int): Int {
-        return if (valueIndex.indexInArr(parent)) {
-            parent[valueIndex]
-        } else {
-            -1
-        }
-    }
+  override fun clear() {
+    this.data = arrayOfNulls&lt;Any?&gt;(2)
+    this.parent = Array(2) { -1 }
+    this.children = Array(2) { mutableListOf() }
+    this.count = 0
+  }
 
-    private fun getParent(value: T): Int {
-        val curIndex = indexFunc(value)
-        return if (curIndex.indexInArr(parent)) {
-            parent[curIndex]
-        } else {
-            -1
-        }
-    }
-
-    override fun isConnected(value1: T, value2: T): Boolean {
-        val v1Index = indexFunc(value1)
-        val v2Index = indexFunc(value2)
-        if (!v1Index.indexInArr(parent) || !v2Index.indexInArr(parent)) {
-            return false
-        }
-        val parent1 = getParent(value1)
-        val parent2 = getParent(value2)
-
-        if (parent1 == -1 || parent2 == -1) {
-            return false
-        }
-        return parent1 == parent2
-    }
-
-    override fun clear() {
-        this.data = arrayOfNulls&lt;Any?&gt;(2)
-        this.parent = Array(2) { -1 }
-        this.children = Array(2) { mutableListOf() }
-        this.count = 0
-    }
-
-    internal fun &lt;T&gt; Int.indexInArr(arr: Array&lt;T&gt;): Boolean {
-        return this &gt;= 0 &amp;&amp; this &lt; arr.size
-    }
+  internal fun &lt;T&gt; Int.indexInArr(arr: Array&lt;T&gt;): Boolean {
+    return this &gt;= 0 &amp;&amp; this &lt; arr.size
+  }
 
 }
-</div></section><section class="chapter"><h3 id="tree-id-union-find" data-toc="tree-id-union-find">Tree Id Union Find</h3><aside class="prompt" data-type="tip" data-title="" id="vf9rkm_21"><p id="vf9rkm_23">连接对象的唯一标识符</p></aside><div class="code-block" data-lang="kotlin">
+</div></section><section class="chapter"><h3 id="treeidunionfind-kt" data-toc="treeidunionfind-kt">TreeIdUnionFind.kt</h3><p id="-bp3owz_27">源码： <code class="code" id="-bp3owz_29">uf/TreeIdUnionFind.kt</code></p><div class="code-block" data-lang="kotlin">
+/**
+ * TreeIdUnionFind 连接对象的唯一标识符
+ */
 class TreeIdUnionFind&lt;T, ID : Comparable&lt;ID&gt;&gt;(
-    private val identifierFunction: (T) -&gt; ID
+  private val identifierFunction: (T) -&gt; ID,
 ) : UnionFind&lt;T&gt; {
 
-    private val storage: TreeMap&lt;ID, Node&gt; = TreeMap()
+  private val storage: TreeMap&lt;ID, Node&gt; = TreeMap()
 
-    override fun contains(value: T): Boolean {
-        return doContains(value)
+  override fun contains(value: T): Boolean {
+    return doContains(value)
+  }
+
+  private fun doContains(data: T): Boolean {
+    val id = getIdentifier(data) ?: return false
+    return storage.containsKey(id)
+  }
+
+  override fun size(): Int {
+    return storage.size
+  }
+
+  override fun add(value: T): Boolean {
+    val identifier = getIdentifier(value) ?: return false
+    return doAdd(Node(identifier), check = true) != null
+  }
+
+  private fun doAdd(addNode: Node, check: Boolean): Node? {
+    val id = addNode.id
+    return if (storage.containsKey(id)) {
+      if (check) {
+        null
+      } else {
+        storage[id]
+      }
+    } else {
+      storage[id] = addNode
+      addNode
+    }
+  }
+
+  override fun union(value1: T, value2: T): Boolean {
+    val xNode = doAdd(Node(getIdentifier(value1) ?: return false), check = false)
+    val yNode = doAdd(Node(getIdentifier(value2) ?: return false), check = false)
+
+    if (xNode == null || yNode == null) {
+      return false
     }
 
-    private fun doContains(data: T): Boolean {
-        val id = getIdentifier(data) ?: return false
-        return storage.containsKey(id)
+    union(xNode, yNode)
+    return true
+  }
+
+  private fun union(src: Node, cur: Node) {
+    val srcParent = getParent(src)
+    val curParent = getParent(cur)
+
+    // 已经连接
+    if (idEquals(srcParent.id, curParent.id)) {
+      return
     }
 
-    override fun size(): Int {
-        return storage.size
+    // 树压缩
+    curParent.parent = srcParent
+    srcParent.children.add(curParent)
+
+    srcParent.children.addAll(curParent.children)
+    curParent.children.forEach { child -&gt;
+      child.parent = srcParent
+    }
+    curParent.children.clear()
+  }
+
+  private fun getParent(node: Node): Node {
+    return node.parent?.let { getParent(it) } ?: node
+  }
+
+  override fun isConnected(value1: T, value2: T): Boolean {
+    if (!contains(value1) || !contains(value2)) {
+      return false
     }
 
-    override fun add(value: T): Boolean {
-        val identifier = getIdentifier(value) ?: return false
-        return doAdd(Node(identifier), check = true) != null
-    }
+    val id1 = getIdentifier(value1)!!
+    val id2 = getIdentifier(value2)!!
+    val node1 = storage[id1]!!
+    val node2 = storage[id2]!!
 
-    private fun doAdd(addNode: Node, check: Boolean): Node? {
-        val id = addNode.id
-        return if (storage.containsKey(id)) {
-            if (check) {
-                null
-            } else {
-                storage[id]
-            }
-        } else {
-            storage[id] = addNode
-            addNode
-        }
-    }
+    return idEquals(getParent(node1).id, getParent(node2).id)
+  }
 
-    override fun union(value1: T, value2: T): Boolean {
-        val xNode = doAdd(Node(getIdentifier(value1) ?: return false), check = false)
-        val yNode = doAdd(Node(getIdentifier(value2) ?: return false), check = false)
+  private fun getIdentifier(data: T): ID? {
+    return identifierFunction(data)
+  }
 
-        if (xNode == null || yNode == null) {
-            return false
-        }
+  // 先比较 equals 再比较 compareTo
+  private fun idEquals(id1: ID, id2: ID): Boolean {
+    return id1 == id2 || id1.compareTo(id2) == 0
+  }
 
-        union(xNode, yNode)
-        return true
-    }
+  override fun clear() {
+    storage.clear()
+  }
 
-    private fun union(src: Node, cur: Node) {
-        val srcParent = getParent(src)
-        val curParent = getParent(cur)
-
-        // 已经连接
-        if (idEquals(srcParent.id, curParent.id)) {
-            return
-        }
-
-        // 树压缩
-        curParent.parent = srcParent
-        srcParent.children.add(curParent)
-
-        srcParent.children.addAll(curParent.children)
-        curParent.children.forEach { child -&gt;
-            child.parent = srcParent
-        }
-        curParent.children.clear()
-    }
-
-    private fun getParent(node: Node): Node {
-        return node.parent?.let { getParent(it) } ?: node
-    }
-
-    override fun isConnected(value1: T, value2: T): Boolean {
-        if (!contains(value1) || !contains(value2)) {
-            return false
-        }
-
-        val id1 = getIdentifier(value1)!!
-        val id2 = getIdentifier(value2)!!
-        val node1 = storage[id1]!!
-        val node2 = storage[id2]!!
-
-        return idEquals(getParent(node1).id, getParent(node2).id)
-    }
-
-    private fun getIdentifier(data: T): ID? {
-        return identifierFunction(data)
-    }
-
-    // 先比较 equals 再比较 compareTo
-    private fun idEquals(id1: ID, id2: ID): Boolean {
-        return id1 == id2 || id1.compareTo(id2) == 0
-    }
-
-    override fun clear() {
-        storage.clear()
-    }
-
-    /**
-     * 内部节点类
-     */
-    private inner class Node(val id: ID) {
-        var parent: Node? = null
-        val children: MutableList&lt;Node&gt; = mutableListOf()
-    }
+  /**
+   * 内部节点类
+   */
+  private inner class Node(val id: ID) {
+    var parent: Node? = null
+    val children: MutableList&lt;Node&gt; = mutableListOf()
+  }
 
 }
-</div></section></section><section class="chapter"><h2 id="tree-union-find" data-toc="tree-union-find">Tree Union Find</h2><aside class="prompt" data-type="tip" data-title="" id="vf9rkm_24"><p id="vf9rkm_26">连接对象本身</p></aside><div class="code-block" data-lang="kotlin">
+</div></section><section class="chapter"><h3 id="treeunionfind-kt" data-toc="treeunionfind-kt">TreeUnionFind.kt</h3><p id="-bp3owz_30">源码： <code class="code" id="-bp3owz_32">uf/TreeUnionFind.kt</code></p><div class="code-block" data-lang="kotlin">
+/**
+ * TreeUnionFind 连接对象本身
+ */
 class TreeUnionFind&lt;T&gt; : UnionFind&lt;T&gt; {
 
-    private val comparator: Comparator&lt;T&gt;
-    private val storage: TreeMap&lt;T, Node&lt;T&gt;&gt;
+  private val comparator: Comparator&lt;T&gt;
+  private val storage: TreeMap&lt;T, Node&lt;T&gt;&gt;
 
-    constructor(comparator: Comparator&lt;T&gt;) {
-        this.comparator = comparator
-        this.storage = TreeMap(comparator)
+  constructor(comparator: Comparator&lt;T&gt;) {
+    this.comparator = comparator
+    this.storage = TreeMap(comparator)
+  }
+
+  override fun size(): Int = this.storage.size
+
+  override fun contains(value: T): Boolean {
+    return this.storage.containsKey(value)
+  }
+
+  override fun add(value: T): Boolean {
+    if (this.storage.containsKey(value)) {
+      return false
+    }
+    doAdd(value)
+    return true
+  }
+
+  private fun doAdd(value: T): Node&lt;T&gt; {
+    val node = storage[value]
+    return if (node == null) {
+      storage[value] = Node(value)
+      storage[value]!!
+    } else {
+      node
+    }
+  }
+
+  override fun union(value1: T, value2: T): Boolean {
+    val node1 = doAdd(value1)
+    val node2 = doAdd(value2)
+
+    if (comparator.compare(node1.data, node2.data) == 0) {
+      return false
     }
 
-    override fun size(): Int = this.storage.size
+    val parent1 = getParent(node1)
+    val parent2 = getParent(node2)
 
-    override fun contains(value: T): Boolean {
-        return this.storage.containsKey(value)
+    if (comparator.compare(parent1.data, parent2.data) == 0) {
+      return true
     }
 
-    override fun add(value: T): Boolean {
-        if (this.storage.containsKey(value)) {
-            return false
-        }
-        doAdd(value)
-        return true
+    parent1.children.addAll(
+      parent2.children.apply {
+        forEach { it.parent = parent1 }
+      },
+    )
+    parent2.children.clear()
+
+    parent2.parent = parent1
+    parent1.children.add(parent2)
+
+    return true
+  }
+
+  private fun getParent(node: Node&lt;T&gt;): Node&lt;T&gt; {
+    var current = node
+    while (current.parent != null) {
+      current = current.parent!!
     }
+    return current
+  }
 
-    private fun doAdd(value: T): Node&lt;T&gt; {
-        val node = storage[value]
-        return if (node == null) {
-            storage[value] = Node(value)
-            storage[value]!!
-        } else {
-            node
-        }
+  override fun isConnected(value1: T, value2: T): Boolean {
+    val node1 = storage[value1] ?: return false
+    val node2 = storage[value2] ?: return false
+
+    val parent1 = getParent(node1)
+    val parent2 = getParent(node2)
+
+    return comparator.compare(parent1.data, parent2.data) == 0
+  }
+
+  override fun clear() {
+    this.storage.clear()
+  }
+
+  inner class Node&lt;T&gt; {
+    var parent: Node&lt;T&gt;? = null
+
+    val data: T
+    val children: MutableList&lt;Node&lt;T&gt;&gt; = mutableListOf()
+
+    constructor(data: T) {
+      this.data = data
     }
-
-    override fun union(value1: T, value2: T): Boolean {
-        val node1 = doAdd(value1)
-        val node2 = doAdd(value2)
-
-        if (comparator.compare(node1.data, node2.data) == 0) {
-            return false
-        }
-
-        val parent1 = getParent(node1)
-        val parent2 = getParent(node2)
-
-        if (comparator.compare(parent1.data, parent2.data) == 0) {
-            return true
-        }
-
-        parent1.children.addAll(parent2.children.apply {
-            forEach { it.parent = parent1 }
-        })
-        parent2.children.clear()
-
-        parent2.parent = parent1
-        parent1.children.add(parent2)
-
-        return true
-    }
-
-    private fun getParent(node: Node&lt;T&gt;): Node&lt;T&gt; {
-        var current = node
-        while (current.parent != null) {
-            current = current.parent!!
-        }
-        return current
-    }
-
-    override fun isConnected(value1: T, value2: T): Boolean {
-        val node1 = storage[value1] ?: return false
-        val node2 = storage[value2] ?: return false
-
-        val parent1 = getParent(node1)
-        val parent2 = getParent(node2)
-
-        return comparator.compare(parent1.data, parent2.data) == 0
-    }
-
-    override fun clear() {
-        this.storage.clear()
-    }
-
-    inner class Node&lt;T&gt; {
-        var parent: Node&lt;T&gt;? = null
-
-        val data: T
-        val children: MutableList&lt;Node&lt;T&gt;&gt; = mutableListOf()
-
-        constructor(data: T) {
-            this.data = data
-        }
-    }
+  }
 
 }
-</div></section><div class="last-modified">19 August 2026</div><div data-feedback-placeholder="true"></div><div class="navigation-links _bottom"><a href="data-structures.html" class="navigation-links__prev">Data structures</a><a href="heap.html" class="navigation-links__next">Heap</a></div></article><div id="disqus_thread"></div></div></section></main></div><script src="https://resources.jetbrains.com/writerside/apidoc/6.27.0-b1156/app.js"></script></body></html>
+</div></section></section><div class="last-modified">20 August 2026</div><div data-feedback-placeholder="true"></div><div class="navigation-links _bottom"><a href="search.html" class="navigation-links__prev">Search</a><a href="heap.html" class="navigation-links__next">Heap</a></div></article><div id="disqus_thread"></div></div></section></main></div><script src="https://resources.jetbrains.com/writerside/apidoc/6.27.0-b1156/app.js"></script></body></html>

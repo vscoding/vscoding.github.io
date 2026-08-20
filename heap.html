@@ -1,5 +1,5 @@
 <!DOCTYPE html SYSTEM "about:legacy-compat">
-<html lang="en-US" data-preset="contrast" data-primary-color="#307FFF" data-link-color="#307FFF" data-link-dark-color="#90C695" data-content-max-width="1250" data-resizable-sidebar="true" data-sidebar-width="300"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="UTF-8"><meta name="built-on" content="2026-08-19T01:49:31.805329908"><link rel="canonical" href="https://blog.kubectl.org/heap.html" data-react-helmet="true"><title>Heap | Mind and Hand</title><script type="application/json" id="virtual-toc-data">[{"id":"mdi3sx_7","level":0,"title":"定义通用接口","anchor":"#mdi3sx_7"},{"id":"mdi3sx_8","level":0,"title":"实现","anchor":"#mdi3sx_8"}]</script><script type="application/json" id="topic-shortcuts"></script><link href="https://resources.jetbrains.com/writerside/apidoc/6.27.0-b1156/app.css" rel="stylesheet"><link href="static/custom.css" rel="stylesheet"><meta name="msapplication-TileColor" content="#000000"><link rel="apple-touch-icon" sizes="180x180" href="https://jetbrains.com/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="https://jetbrains.com/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="https://jetbrains.com/favicon-16x16.png"><meta name="msapplication-TileImage" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-144x144.png"><meta name="msapplication-square70x70logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-70x70.png"><meta name="msapplication-square150x150logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-150x150.png"><meta name="msapplication-wide310x150logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-310x150.png"><meta name="msapplication-square310x310logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-310x310.png"><meta name="image" content=""><!-- Open Graph --><meta property="og:title" content="Heap | Mind and Hand"><meta property="og:description" content=""><meta property="og:image" content=""><meta property="og:site_name" content="Mind and Hand Help"><meta property="og:type" content="website"><meta property="og:locale" content="en_US"><meta property="og:url" content="https://blog.kubectl.org/heap.html"><!-- End Open Graph --><!-- Twitter Card --><meta name="twitter:card" content="summary_large_image"><meta name="twitter:site" content=""><meta name="twitter:title" content="Heap | Mind and Hand"><meta name="twitter:description" content=""><meta name="twitter:creator" content=""><meta name="twitter:image:src" content=""><!-- End Twitter Card --><!-- Schema.org WebPage --><script type="application/ld+json">{
+<html lang="en-US" data-preset="contrast" data-primary-color="#307FFF" data-link-color="#307FFF" data-link-dark-color="#90C695" data-content-max-width="1250" data-resizable-sidebar="true" data-sidebar-width="300"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="UTF-8"><meta name="built-on" content="2026-08-20T08:42:32.80860326"><link rel="canonical" href="https://blog.kubectl.org/heap.html" data-react-helmet="true"><title>Heap | Mind and Hand</title><script type="application/json" id="virtual-toc-data">[{"id":"complexity","level":0,"title":"Complexity","anchor":"#complexity"},{"id":"current-implementation","level":0,"title":"Current Implementation","anchor":"#current-implementation"},{"id":"heap-kt","level":1,"title":"Heap.kt","anchor":"#heap-kt"},{"id":"heapimpl-kt","level":1,"title":"HeapImpl.kt","anchor":"#heapimpl-kt"}]</script><script type="application/json" id="topic-shortcuts"></script><link href="https://resources.jetbrains.com/writerside/apidoc/6.27.0-b1156/app.css" rel="stylesheet"><link href="static/custom.css" rel="stylesheet"><meta name="msapplication-TileColor" content="#000000"><link rel="apple-touch-icon" sizes="180x180" href="https://jetbrains.com/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="https://jetbrains.com/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="https://jetbrains.com/favicon-16x16.png"><meta name="msapplication-TileImage" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-144x144.png"><meta name="msapplication-square70x70logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-70x70.png"><meta name="msapplication-square150x150logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-150x150.png"><meta name="msapplication-wide310x150logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-310x150.png"><meta name="msapplication-square310x310logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-310x310.png"><meta name="image" content=""><!-- Open Graph --><meta property="og:title" content="Heap | Mind and Hand"><meta property="og:description" content=""><meta property="og:image" content=""><meta property="og:site_name" content="Mind and Hand Help"><meta property="og:type" content="website"><meta property="og:locale" content="en_US"><meta property="og:url" content="https://blog.kubectl.org/heap.html"><!-- End Open Graph --><!-- Twitter Card --><meta name="twitter:card" content="summary_large_image"><meta name="twitter:site" content=""><meta name="twitter:title" content="Heap | Mind and Hand"><meta name="twitter:description" content=""><meta name="twitter:creator" content=""><meta name="twitter:image:src" content=""><!-- End Twitter Card --><!-- Schema.org WebPage --><script type="application/ld+json">{
     "@context": "http://schema.org",
     "@type": "WebPage",
     "@id": "https://blog.kubectl.org/heap.html#webpage",
@@ -13,228 +13,234 @@
     "@id": "https://blog.kubectl.org/#website",
     "url": "https://blog.kubectl.org/",
     "name": "Mind and Hand Help"
-}</script><!-- End Schema.org --></head><body data-id="heap" data-main-title="Heap" data-article-props="{&quot;seeAlsoStyle&quot;:&quot;links&quot;}" data-template="article" data-breadcrumbs="cs.md|Computer Science &amp; Technology///dsa.md|Data Structures and Algorithms///data-structures.md|Data structures"><div class="wrapper"><main class="panel _main"><header class="panel__header"><div class="container"><h3>Mind and Hand  Help</h3><div class="panel-trigger"></div></div></header><section class="panel__content"><div class="container"><article class="article" data-shortcut-switcher="inactive"><h1 data-toc="heap" id="heap.md">Heap</h1><p id="mdi3sx_3"><span class="control" id="mdi3sx_9">堆</span> ，是一种特殊的完全二叉树，满足以下性质：</p><ul class="list _bullet" id="mdi3sx_4"><li class="list__item" id="mdi3sx_10"><p id="mdi3sx_12">最大堆：父节点都大于左右子节点</p></li><li class="list__item" id="mdi3sx_11"><p id="mdi3sx_13">最小堆：父节点都小于左右子节点</p></li></ul><p id="mdi3sx_5"><span class="control" id="mdi3sx_14">堆中核心方法</span></p><ul class="list _bullet" id="mdi3sx_6"><li class="list__item" id="mdi3sx_15"><p id="mdi3sx_18"><code class="code" id="mdi3sx_19">siftUp(index)</code></p></li><li class="list__item" id="mdi3sx_16"><p id="mdi3sx_20"><code class="code" id="mdi3sx_21">siftDown(index)</code></p></li><li class="list__item" id="mdi3sx_17"><p id="mdi3sx_22"><code class="code" id="mdi3sx_23">heapify()</code></p></li></ul><section class="chapter"><h2 id="mdi3sx_7" data-toc="mdi3sx_7">定义通用接口</h2><div class="code-block" data-lang="kotlin">
+}</script><!-- End Schema.org --></head><body data-id="heap" data-main-title="Heap" data-article-props="{&quot;seeAlsoStyle&quot;:&quot;links&quot;}" data-template="article" data-breadcrumbs="cs.md|Computer Science &amp; Technology///dsa.md|Data Structures and Algorithms///search.md|Search"><div class="wrapper"><main class="panel _main"><header class="panel__header"><div class="container"><h3>Mind and Hand  Help</h3><div class="panel-trigger"></div></div></header><section class="panel__content"><div class="container"><article class="article" data-shortcut-switcher="inactive"><h1 data-toc="heap" id="heap.md">Heap</h1><p id="-vecqew_4">堆是满足父子顺序约束的完全二叉树。最大堆的父节点不小于子节点，最小堆的父节点不大于子节点。</p><section class="chapter"><h2 id="complexity" data-toc="complexity">Complexity</h2><ul class="list _bullet" id="-vecqew_7"><li class="list__item" id="-vecqew_9"><p id="-vecqew_12">查看堆顶： <code class="code" id="-vecqew_13">O(1)</code></p></li><li class="list__item" id="-vecqew_10"><p id="-vecqew_14">插入和移除堆顶： <code class="code" id="-vecqew_15">O(log n)</code></p></li><li class="list__item" id="-vecqew_11"><p id="-vecqew_16">批量建堆： <code class="code" id="-vecqew_17">O(n)</code></p></li></ul><p id="-vecqew_8">实现的核心是 <code class="code" id="-vecqew_18">siftUp</code>、 <code class="code" id="-vecqew_19">siftDown</code> 和 <code class="code" id="-vecqew_20">heapify</code>。</p></section><section class="chapter"><h2 id="current-implementation" data-toc="current-implementation">Current Implementation</h2><section class="chapter"><h3 id="heap-kt" data-toc="heap-kt">Heap.kt</h3><p id="-vecqew_23">源码： <code class="code" id="-vecqew_25">tree/heap/Heap.kt</code></p><div class="code-block" data-lang="kotlin">
+/**
+ * Heap
+ */
 interface Heap&lt;T&gt; {
 
-    fun isEmpty(): Boolean {
-        return size() == 0
-    }
+  fun isEmpty(): Boolean {
+    return size() == 0
+  }
 
-    fun size(): Int
+  fun size(): Int
 
-    fun add(value: T)
+  fun add(value: T)
 
-    fun peek(): T?
+  fun peek(): T?
 
-    fun extract(): T?
+  fun extract(): T?
 
-    fun getType(): HeapType
+  fun getType(): HeapType
 
-    fun clear()
+  fun clear()
 }
 
 enum class HeapType {
-    MIN_HEAP,
-    MAX_HEAP
+  MIN_HEAP,
+  MAX_HEAP
 }
-</div></section><section class="chapter"><h2 id="mdi3sx_8" data-toc="mdi3sx_8">实现</h2><div class="code-block" data-lang="kotlin">
+</div></section><section class="chapter"><h3 id="heapimpl-kt" data-toc="heapimpl-kt">HeapImpl.kt</h3><p id="-vecqew_26">源码： <code class="code" id="-vecqew_28">tree/heap/HeapImpl.kt</code></p><div class="code-block" data-lang="kotlin">
+/**
+ * HeapImpl
+ */
 class HeapImpl&lt;T&gt; : Heap&lt;T&gt; {
 
-    companion object {
-        val log = getLogger(HeapImpl::class.java)
-        const val DEFAULT_CAPACITY = 7
-        val DEFAULT_HEAP_TYPE = HeapType.MIN_HEAP
+  companion object {
+    val log = getLogger(HeapImpl::class.java)
+    const val DEFAULT_CAPACITY = 7
+    val DEFAULT_HEAP_TYPE = HeapType.MIN_HEAP
+  }
+
+  private val type: HeapType
+  private var comparator: Comparator&lt;T&gt;?
+
+  private var count: Int = 0
+  private var capacity: Int = DEFAULT_CAPACITY
+  private var data: Array&lt;Any?&gt; = arrayOfNulls&lt;Any?&gt;(DEFAULT_CAPACITY)
+
+  constructor() : this(DEFAULT_HEAP_TYPE, null)
+
+  constructor(type: HeapType) : this(type, null)
+
+  constructor(type: HeapType, comparator: Comparator&lt;T&gt;?) {
+    this.type = type
+    this.comparator = comparator
+  }
+
+  constructor(arr: Array&lt;T&gt;) : this(arr, DEFAULT_HEAP_TYPE, null)
+
+  constructor(arr: Array&lt;T&gt;, type: HeapType) : this(arr, type, null)
+
+  constructor(arr: Array&lt;T&gt;, type: HeapType, comparator: Comparator&lt;T&gt;? = null) {
+    this.type = type
+    this.comparator = comparator
+    initArray(arr)
+  }
+
+  override fun size(): Int = this.count
+
+  override fun add(value: T) {
+    expand(count + 1)
+    this.data[count++] = value
+    siftUp(count - 1)
+  }
+
+  private fun expand(size: Int) {
+    if (size &lt;= capacity) {
+      return
     }
+    // 7 -&gt; 15 -&gt; 31
+    val newCap = capacity * 2 + 1
 
-    private val type: HeapType
-    private var comparator: Comparator&lt;T&gt;?
+    val newData = arrayOfNulls&lt;Any?&gt;(newCap)
+    System.arraycopy(data, 0, newData, 0, capacity)
+    log.debug(&quot;heap expand : $capacity -&gt; $newCap&quot;)
+    this.capacity = newCap
+    this.data = newData
+  }
 
-    private var count: Int = 0
-    private var capacity: Int = DEFAULT_CAPACITY
-    private var data: Array&lt;Any?&gt; = arrayOfNulls&lt;Any?&gt;(DEFAULT_CAPACITY)
-
-    constructor() : this(DEFAULT_HEAP_TYPE, null)
-
-    constructor(type: HeapType) : this(type, null)
-
-    constructor(type: HeapType, comparator: Comparator&lt;T&gt;?) {
-        this.type = type
-        this.comparator = comparator
+  override fun peek(): T? {
+    return if (isEmpty()) {
+      null
+    } else {
+      @Suppress(&quot;UNCHECKED_CAST&quot;)
+      data[0] as T
     }
+  }
 
-    constructor(arr: Array&lt;T&gt;) : this(arr, DEFAULT_HEAP_TYPE, null)
-
-    constructor(arr: Array&lt;T&gt;, type: HeapType) : this(arr, type, null)
-
-    constructor(arr: Array&lt;T&gt;, type: HeapType, comparator: Comparator&lt;T&gt;? = null) {
-        this.type = type
-        this.comparator = comparator
-        initArray(arr)
+  @Suppress(&quot;UNCHECKED_CAST&quot;)
+  override fun extract(): T? {
+    return if (isEmpty()) {
+      null
+    } else {
+      val extract = data[0] as T
+      // 将最后一个元素放到根节点
+      data[0] = data[count - 1]
+      data[count - 1] = null
+      count--
+      siftDown(0)
+      reduce(count)
+      extract
     }
+  }
 
-    override fun size(): Int = this.count
-
-    override fun add(value: T) {
-        expand(count + 1)
-        this.data[count++] = value
-        siftUp(count - 1)
+  private fun reduce(size: Int) {
+    if (size &lt; DEFAULT_CAPACITY) {
+      return
     }
-
-    private fun expand(size: Int) {
-        if (size &lt;= capacity) {
-            return
-        }
-        // 7 -&gt; 15 -&gt; 31
-        val newCap = capacity * 2 + 1
-
-        val newData = arrayOfNulls&lt;Any?&gt;(newCap)
-        System.arraycopy(data, 0, newData, 0, capacity)
-        log.debug(&quot;heap expand : $capacity -&gt; $newCap&quot;)
-        this.capacity = newCap
-        this.data = newData
+    // 31 -&gt; 15 -&gt; 7
+    val newCap = (capacity - 1) / 2
+    if (size == newCap) {
+      val newData = arrayOfNulls&lt;Any?&gt;(newCap)
+      System.arraycopy(data, 0, newData, 0, newCap)
+      log.debug(&quot;heap reduce : $capacity -&gt; $newCap&quot;)
+      this.capacity = newCap
+      this.data = newData
     }
+  }
 
-    override fun peek(): T? {
-        return if (isEmpty()) {
-            null
-        } else {
-            @Suppress(&quot;UNCHECKED_CAST&quot;)
-            data[0] as T
-        }
-    }
-
-    @Suppress(&quot;UNCHECKED_CAST&quot;)
-    override fun extract(): T? {
-        return if (isEmpty()) {
-            null
-        } else {
-            val extract = data[0] as T
-            // 将最后一个元素放到根节点
-            data[0] = data[count - 1]
-            data[count - 1] = null
-            count--
-            siftDown(0)
-            reduce(count)
-            extract
-        }
-    }
-
-    private fun reduce(size: Int) {
-        if (size &lt; DEFAULT_CAPACITY) {
-            return
-        }
-        // 31 -&gt; 15 -&gt; 7
-        val newCap = (capacity - 1) / 2
-        if (size == newCap) {
-            val newData = arrayOfNulls&lt;Any?&gt;(newCap)
-            System.arraycopy(data, 0, newData, 0, newCap)
-            log.debug(&quot;heap reduce : $capacity -&gt; $newCap&quot;)
-            this.capacity = newCap
-            this.data = newData
-        }
-    }
-
-    private fun compare(a: T, b: T): Boolean {
-        return if (comparator != null) {
-            if (type == HeapType.MIN_HEAP)
-                comparator!!.compare(a, b) &lt; 0
-            else {
-                comparator!!.compare(a, b) &gt; 0
-            }
-        } else {
-            // 检查 a 和 b 是否都实现了 Comparable 接口
-            if (a is Comparable&lt;*&gt; &amp;&amp; b is Comparable&lt;*&gt;) {
-                @Suppress(&quot;UNCHECKED_CAST&quot;)
-                val comparison = (a as Comparable&lt;T&gt;).compareTo(b)
-                if (type == HeapType.MIN_HEAP)
-                    comparison &lt; 0
-                else
-                    comparison &gt; 0
-            } else {
-                throw IllegalArgumentException(&quot;元素必须实现 Comparable 接口或提供 Comparator&quot;)
-            }
-        }
-    }
-
-    private fun siftUp(index: Int) {
-        var cur = index
-        var parent = (index - 1) / 2
-
+  private fun compare(a: T, b: T): Boolean {
+    return if (comparator != null) {
+      if (type == HeapType.MIN_HEAP)
+        comparator!!.compare(a, b) &lt; 0
+      else {
+        comparator!!.compare(a, b) &gt; 0
+      }
+    } else {
+      // 检查 a 和 b 是否都实现了 Comparable 接口
+      if (a is Comparable&lt;*&gt; &amp;&amp; b is Comparable&lt;*&gt;) {
         @Suppress(&quot;UNCHECKED_CAST&quot;)
-        while (cur &gt; 0 &amp;&amp; compare(data[cur] as T, data[parent] as T)) {
-            // 交换 当前节点 和 父节点
-            data.swap(cur, parent)
-            cur = parent
-            parent = (cur - 1) / 2
-        }
+        val comparison = (a as Comparable&lt;T&gt;).compareTo(b)
+        if (type == HeapType.MIN_HEAP)
+          comparison &lt; 0
+        else
+          comparison &gt; 0
+      } else {
+        throw IllegalArgumentException(&quot;元素必须实现 Comparable 接口或提供 Comparator&quot;)
+      }
     }
+  }
+
+  private fun siftUp(index: Int) {
+    var cur = index
+    var parent = (index - 1) / 2
 
     @Suppress(&quot;UNCHECKED_CAST&quot;)
-    private fun siftDown(index: Int) {
-        var curIndex = index
-        var left = 2 * index + 1
-        var right = 2 * index + 2
-
-        // 左节点必须存在
-        while (left &lt;= count - 1) {
-            // 假设左子节点更小
-            var targetIndex = left
-
-            // 实际右子节点存在并更小
-            if (right &lt;= count - 1 &amp;&amp; compare(data[right] as T, data[left] as T)) {
-                targetIndex = right
-            }
-
-            // 比较 子节点 与 当前节点
-            if (compare(data[targetIndex] as T, data[curIndex] as T)) {
-                data.swap(targetIndex, curIndex)
-                curIndex = targetIndex
-                left = 2 * curIndex + 1
-                right = 2 * curIndex + 2
-            } else {
-                break
-            }
-        }
+    while (cur &gt; 0 &amp;&amp; compare(data[cur] as T, data[parent] as T)) {
+      // 交换 当前节点 和 父节点
+      data.swap(cur, parent)
+      cur = parent
+      parent = (cur - 1) / 2
     }
+  }
 
-    private fun initArray(arr: Array&lt;T&gt;) {
-        if (arr.isEmpty()) {
-            return
-        }
-        this.count = arr.size
+  @Suppress(&quot;UNCHECKED_CAST&quot;)
+  private fun siftDown(index: Int) {
+    var curIndex = index
+    var left = 2 * index + 1
+    var right = 2 * index + 2
 
-        var calculateCap = DEFAULT_CAPACITY
-        while (calculateCap &lt; count) {
-            calculateCap = calculateCap * 2 + 1
-        }
-        this.capacity = calculateCap
+    // 左节点必须存在
+    while (left &lt;= count - 1) {
+      // 假设左子节点更小
+      var targetIndex = left
 
-        this.data = arrayOfNulls&lt;Any?&gt;(calculateCap)
-        System.arraycopy(arr, 0, this.data, 0, count)
+      // 实际右子节点存在并更小
+      if (right &lt;= count - 1 &amp;&amp; compare(data[right] as T, data[left] as T)) {
+        targetIndex = right
+      }
 
-        this.heapify()
+      // 比较 子节点 与 当前节点
+      if (compare(data[targetIndex] as T, data[curIndex] as T)) {
+        data.swap(targetIndex, curIndex)
+        curIndex = targetIndex
+        left = 2 * curIndex + 1
+        right = 2 * curIndex + 2
+      } else {
+        break
+      }
     }
+  }
 
-    private fun heapify() {
-        // 从最后一个非叶子节点开始向下调整
-        for (i in (count / 2 - 1) downTo 0) {
-            siftDown(i)
-        }
+  private fun initArray(arr: Array&lt;T&gt;) {
+    if (arr.isEmpty()) {
+      return
     }
+    this.count = arr.size
 
-    override fun getType(): HeapType = this.type
-
-    override fun clear() {
-        this.data = arrayOfNulls&lt;Any?&gt;(DEFAULT_CAPACITY)
-        this.count = 0
-        this.capacity = DEFAULT_CAPACITY
+    var calculateCap = DEFAULT_CAPACITY
+    while (calculateCap &lt; count) {
+      calculateCap = calculateCap * 2 + 1
     }
+    this.capacity = calculateCap
 
-    private fun Array&lt;Any?&gt;.swap(index1: Int, index2: Int) {
-        val temp = this[index1]
-        this[index1] = this[index2]
-        this[index2] = temp
+    this.data = arrayOfNulls&lt;Any?&gt;(calculateCap)
+    System.arraycopy(arr, 0, this.data, 0, count)
+
+    this.heapify()
+  }
+
+  private fun heapify() {
+    // 从最后一个非叶子节点开始向下调整
+    for (i in (count / 2 - 1) downTo 0) {
+      siftDown(i)
     }
+  }
+
+  override fun getType(): HeapType = this.type
+
+  override fun clear() {
+    this.data = arrayOfNulls&lt;Any?&gt;(DEFAULT_CAPACITY)
+    this.count = 0
+    this.capacity = DEFAULT_CAPACITY
+  }
+
+  private fun Array&lt;Any?&gt;.swap(index1: Int, index2: Int) {
+    val temp = this[index1]
+    this[index1] = this[index2]
+    this[index2] = temp
+  }
 
 }
-</div></section><div class="last-modified">19 August 2026</div><div data-feedback-placeholder="true"></div><div class="navigation-links _bottom"><a href="union-find.html" class="navigation-links__prev">Union Find</a><a href="search-tree.html" class="navigation-links__next">Search Tree</a></div></article><div id="disqus_thread"></div></div></section></main></div><script src="https://resources.jetbrains.com/writerside/apidoc/6.27.0-b1156/app.js"></script></body></html>
+</div></section></section><div class="last-modified">20 August 2026</div><div data-feedback-placeholder="true"></div><div class="navigation-links _bottom"><a href="union-find.html" class="navigation-links__prev">Union Find</a><a href="search-tree.html" class="navigation-links__next">Search Tree</a></div></article><div id="disqus_thread"></div></div></section></main></div><script src="https://resources.jetbrains.com/writerside/apidoc/6.27.0-b1156/app.js"></script></body></html>

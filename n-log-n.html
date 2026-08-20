@@ -1,0 +1,138 @@
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html lang="en-US" data-preset="contrast" data-primary-color="#307FFF" data-link-color="#307FFF" data-link-dark-color="#90C695" data-content-max-width="1250" data-resizable-sidebar="true" data-sidebar-width="300"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="UTF-8"><meta name="built-on" content="2026-08-20T08:42:32.755041373"><link rel="canonical" href="https://blog.kubectl.org/n-log-n.html" data-react-helmet="true"><title>O(n log n) Sort Algorithms | Mind and Hand</title><script type="application/json" id="virtual-toc-data">[{"id":"vygmo_6","level":0,"title":"当前实现","anchor":"#vygmo_6"},{"id":"quicksort-kt","level":1,"title":"QuickSort.kt","anchor":"#quicksort-kt"},{"id":"mergesort-kt","level":1,"title":"MergeSort.kt","anchor":"#mergesort-kt"}]</script><script type="application/json" id="topic-shortcuts"></script><link href="https://resources.jetbrains.com/writerside/apidoc/6.27.0-b1156/app.css" rel="stylesheet"><link href="static/custom.css" rel="stylesheet"><meta name="msapplication-TileColor" content="#000000"><link rel="apple-touch-icon" sizes="180x180" href="https://jetbrains.com/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="https://jetbrains.com/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="https://jetbrains.com/favicon-16x16.png"><meta name="msapplication-TileImage" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-144x144.png"><meta name="msapplication-square70x70logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-70x70.png"><meta name="msapplication-square150x150logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-150x150.png"><meta name="msapplication-wide310x150logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-310x150.png"><meta name="msapplication-square310x310logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-310x310.png"><meta name="image" content=""><!-- Open Graph --><meta property="og:title" content="O(n log n) Sort Algorithms | Mind and Hand"><meta property="og:description" content=""><meta property="og:image" content=""><meta property="og:site_name" content="Mind and Hand Help"><meta property="og:type" content="website"><meta property="og:locale" content="en_US"><meta property="og:url" content="https://blog.kubectl.org/n-log-n.html"><!-- End Open Graph --><!-- Twitter Card --><meta name="twitter:card" content="summary_large_image"><meta name="twitter:site" content=""><meta name="twitter:title" content="O(n log n) Sort Algorithms | Mind and Hand"><meta name="twitter:description" content=""><meta name="twitter:creator" content=""><meta name="twitter:image:src" content=""><!-- End Twitter Card --><!-- Schema.org WebPage --><script type="application/ld+json">{
+    "@context": "http://schema.org",
+    "@type": "WebPage",
+    "@id": "https://blog.kubectl.org/n-log-n.html#webpage",
+    "url": "https://blog.kubectl.org/n-log-n.html",
+    "name": "O(n log n) Sort Algorithms | Mind and Hand",
+    "description": "",
+    "image": "",
+    "inLanguage":"en-US"
+}</script><!-- End Schema.org --><!-- Schema.org WebSite --><script type="application/ld+json">{
+    "@type": "WebSite",
+    "@id": "https://blog.kubectl.org/#website",
+    "url": "https://blog.kubectl.org/",
+    "name": "Mind and Hand Help"
+}</script><!-- End Schema.org --></head><body data-id="n-log-n" data-main-title="O(n log n) Sort Algorithms" data-article-props="{&quot;seeAlsoStyle&quot;:&quot;links&quot;}" data-template="article" data-breadcrumbs="cs.md|Computer Science &amp; Technology///dsa.md|Data Structures and Algorithms///sort.md|Sort Algorithms"><div class="wrapper"><main class="panel _main"><header class="panel__header"><div class="container"><h3>Mind and Hand  Help</h3><div class="panel-trigger"></div></div></header><section class="panel__content"><div class="container"><article class="article" data-shortcut-switcher="inactive"><h1 data-toc="n-log-n" id="n-log-n.md">O(n log n) Sort Algorithms</h1><p id="vygmo_4">当前实现包括基于分区的快速排序和基于合并的归并排序。</p><div class="table-wrapper"><table class="wide" id="vygmo_5"><thead><tr class="ijRowHead" id="vygmo_7"><th id="vygmo_10"><p>算法</p></th><th id="vygmo_11"><p>平均时间</p></th><th id="vygmo_12"><p>最坏时间</p></th><th id="vygmo_13"><p>主要额外空间</p></th><th id="vygmo_14"><p>稳定性</p></th></tr></thead><tbody><tr id="vygmo_8"><td id="vygmo_15"><p>快速排序</p></td><td id="vygmo_16"><p><code class="code" id="vygmo_20">O(n log n)</code></p></td><td id="vygmo_17"><p><code class="code" id="vygmo_21">O(n&sup2;)</code></p></td><td id="vygmo_18"><p>平均 <code class="code" id="vygmo_22">O(log n)</code> 递归栈</p></td><td id="vygmo_19"><p>不稳定</p></td></tr><tr id="vygmo_9"><td id="vygmo_23"><p>归并排序</p></td><td id="vygmo_24"><p><code class="code" id="vygmo_28">O(n log n)</code></p></td><td id="vygmo_25"><p><code class="code" id="vygmo_29">O(n log n)</code></p></td><td id="vygmo_26"><p><code class="code" id="vygmo_30">O(n)</code></p></td><td id="vygmo_27"><p>稳定</p></td></tr></tbody></table></div><section class="chapter"><h2 id="vygmo_6" data-toc="vygmo_6">当前实现</h2><section class="chapter"><h3 id="quicksort-kt" data-toc="quicksort-kt">QuickSort.kt</h3><p id="vygmo_33">源码： <code class="code" id="vygmo_35">sort/impl/QuickSort.kt</code></p><div class="code-block" data-lang="kotlin">
+/**
+ * QuickSort
+ */
+class QuickSort&lt;T : Comparable&lt;T&gt;&gt; : Sort&lt;T&gt; {
+
+  override fun sort(arr: Array&lt;T&gt;) {
+    if (arr.isEmpty() || arr.size == 1) return
+    quickSort(arr, 0, arr.size - 1)
+  }
+
+  private fun quickSort(array: Array&lt;T&gt;, left: Int, right: Int) {
+    if (left &gt;= right) return
+
+    val pivotIndex = oneWay(array, left, right)
+
+    quickSort(array, left, pivotIndex - 1)
+    quickSort(array, pivotIndex + 1, right)
+
+  }
+
+  private fun oneWay(arr: Array&lt;T&gt;, left: Int, right: Int): Int {
+    val pivot = arr[left]
+
+    var start = left + 1
+    var end = right
+
+    while (true) {
+      if (arr[start] &lt;= pivot) {
+        start++
+      } else {
+        arr.swap(end, start)
+        end--
+      }
+      // 极限情况
+      // case1: start=r+1 pivot 全小于 arr[l+1...r]
+      // case2: end=l     pivot 全大于等于 arr[l+1...r]
+      // 终止的本质是 start=end+1
+      if (start &gt; end) {
+        break
+      }
+    }
+
+    arr.swap(left, end)
+    return end
+  }
+
+  private fun twoWay(arr: Array&lt;T&gt;, left: Int, right: Int): Int {
+    val pivot = arr[left]
+    var start = left + 1
+    var end = right
+
+    while (true) {
+      while (start &lt;= end &amp;&amp; arr[start] &lt; pivot) {
+        start++
+      }
+      while (end &gt;= start &amp;&amp; arr[end] &gt;= pivot) {
+        end--
+      }
+
+      if (start &gt; end) {
+        break
+      }
+      arr.swap(start, end)
+    }
+
+    arr.swap(left, end)
+    return end
+  }
+
+}
+</div></section><section class="chapter"><h3 id="mergesort-kt" data-toc="mergesort-kt">MergeSort.kt</h3><p id="vygmo_36">源码： <code class="code" id="vygmo_38">sort/impl/MergeSort.kt</code></p><div class="code-block" data-lang="kotlin">
+/**
+ * MergeSort
+ */
+class MergeSort&lt;T : Comparable&lt;T&gt;&gt; : Sort&lt;T&gt; {
+
+  override fun sort(arr: Array&lt;T&gt;) {
+    if (arr.isEmpty() || arr.size == 1) return
+    this.divide(arr, 0, arr.size - 1)
+  }
+
+  private fun divide(array: Array&lt;T&gt;, left: Int, right: Int) {
+    if (left &gt;= right) return
+
+    val mid = (left + right) / 2
+    divide(array, left, mid)
+    divide(array, mid + 1, right)
+    merge(array, left, mid, right)
+  }
+
+  private fun merge(array: Array&lt;T&gt;, left: Int, mid: Int, right: Int) {
+    val size = right - left + 1
+    val tmp: Array&lt;Comparable&lt;T&gt;&gt; = Array(size) { array[left] }
+
+    var x = left
+    var y = mid + 1
+    var tmpIndex = 0
+
+    // 处理左右两个子数组，直到其中一个处理完
+    while (x &lt;= mid &amp;&amp; y &lt;= right) {
+      tmp[tmpIndex++] = if (array[x] &lt;= array[y]) {
+        array[x++]
+      } else {
+        array[y++]
+      }
+    }
+
+    // 处理左子数组剩余元素
+    while (x &lt;= mid) {
+      tmp[tmpIndex++] = array[x++]
+    }
+
+    // 处理右子数组剩余元素
+    while (y &lt;= right) {
+      tmp[tmpIndex++] = array[y++]
+    }
+    // 将临时数组中的元素复制回原数组
+    System.arraycopy(tmp, 0, array, left, size)
+  }
+
+}
+</div></section></section><div class="last-modified">20 August 2026</div><div data-feedback-placeholder="true"></div><div class="navigation-links _bottom"><a href="quadratic.html" class="navigation-links__prev">O(n&sup2;) Sort Algorithms</a><a href="search.html" class="navigation-links__next">Search</a></div></article><div id="disqus_thread"></div></div></section></main></div><script src="https://resources.jetbrains.com/writerside/apidoc/6.27.0-b1156/app.js"></script></body></html>

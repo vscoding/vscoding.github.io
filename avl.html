@@ -1,5 +1,5 @@
 <!DOCTYPE html SYSTEM "about:legacy-compat">
-<html lang="en-US" data-preset="contrast" data-primary-color="#307FFF" data-link-color="#307FFF" data-link-dark-color="#90C695" data-content-max-width="1250" data-resizable-sidebar="true" data-sidebar-width="300"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="UTF-8"><meta name="built-on" content="2026-08-19T01:49:31.835880037"><link rel="canonical" href="https://blog.kubectl.org/avl.html" data-react-helmet="true"><title>AVL Tree | Mind and Hand</title><script type="application/json" id="virtual-toc-data">[{"id":"avl-implementation","level":0,"title":"AVL树的实现","anchor":"#avl-implementation"},{"id":"tqzz8m_5","level":0,"title":"关键的旋转逻辑","anchor":"#tqzz8m_5"}]</script><script type="application/json" id="topic-shortcuts"></script><link href="https://resources.jetbrains.com/writerside/apidoc/6.27.0-b1156/app.css" rel="stylesheet"><link href="static/custom.css" rel="stylesheet"><meta name="msapplication-TileColor" content="#000000"><link rel="apple-touch-icon" sizes="180x180" href="https://jetbrains.com/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="https://jetbrains.com/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="https://jetbrains.com/favicon-16x16.png"><meta name="msapplication-TileImage" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-144x144.png"><meta name="msapplication-square70x70logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-70x70.png"><meta name="msapplication-square150x150logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-150x150.png"><meta name="msapplication-wide310x150logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-310x150.png"><meta name="msapplication-square310x310logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-310x310.png"><meta name="image" content=""><!-- Open Graph --><meta property="og:title" content="AVL Tree | Mind and Hand"><meta property="og:description" content=""><meta property="og:image" content=""><meta property="og:site_name" content="Mind and Hand Help"><meta property="og:type" content="website"><meta property="og:locale" content="en_US"><meta property="og:url" content="https://blog.kubectl.org/avl.html"><!-- End Open Graph --><!-- Twitter Card --><meta name="twitter:card" content="summary_large_image"><meta name="twitter:site" content=""><meta name="twitter:title" content="AVL Tree | Mind and Hand"><meta name="twitter:description" content=""><meta name="twitter:creator" content=""><meta name="twitter:image:src" content=""><!-- End Twitter Card --><!-- Schema.org WebPage --><script type="application/ld+json">{
+<html lang="en-US" data-preset="contrast" data-primary-color="#307FFF" data-link-color="#307FFF" data-link-dark-color="#90C695" data-content-max-width="1250" data-resizable-sidebar="true" data-sidebar-width="300"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="UTF-8"><meta name="built-on" content="2026-08-20T08:42:32.866793296"><link rel="canonical" href="https://blog.kubectl.org/avl.html" data-react-helmet="true"><title>AVL Tree | Mind and Hand</title><script type="application/json" id="virtual-toc-data">[{"id":"current-implementation","level":0,"title":"Current Implementation","anchor":"#current-implementation"},{"id":"avltree-kt","level":1,"title":"AVLTree.kt","anchor":"#avltree-kt"},{"id":"avlrotate-kt","level":1,"title":"AVLRotate.kt","anchor":"#avlrotate-kt"}]</script><script type="application/json" id="topic-shortcuts"></script><link href="https://resources.jetbrains.com/writerside/apidoc/6.27.0-b1156/app.css" rel="stylesheet"><link href="static/custom.css" rel="stylesheet"><meta name="msapplication-TileColor" content="#000000"><link rel="apple-touch-icon" sizes="180x180" href="https://jetbrains.com/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="https://jetbrains.com/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="https://jetbrains.com/favicon-16x16.png"><meta name="msapplication-TileImage" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-144x144.png"><meta name="msapplication-square70x70logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-70x70.png"><meta name="msapplication-square150x150logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-150x150.png"><meta name="msapplication-wide310x150logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-310x150.png"><meta name="msapplication-square310x310logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-310x310.png"><meta name="image" content=""><!-- Open Graph --><meta property="og:title" content="AVL Tree | Mind and Hand"><meta property="og:description" content=""><meta property="og:image" content=""><meta property="og:site_name" content="Mind and Hand Help"><meta property="og:type" content="website"><meta property="og:locale" content="en_US"><meta property="og:url" content="https://blog.kubectl.org/avl.html"><!-- End Open Graph --><!-- Twitter Card --><meta name="twitter:card" content="summary_large_image"><meta name="twitter:site" content=""><meta name="twitter:title" content="AVL Tree | Mind and Hand"><meta name="twitter:description" content=""><meta name="twitter:creator" content=""><meta name="twitter:image:src" content=""><!-- End Twitter Card --><!-- Schema.org WebPage --><script type="application/ld+json">{
     "@context": "http://schema.org",
     "@type": "WebPage",
     "@id": "https://blog.kubectl.org/avl.html#webpage",
@@ -13,213 +13,227 @@
     "@id": "https://blog.kubectl.org/#website",
     "url": "https://blog.kubectl.org/",
     "name": "Mind and Hand Help"
-}</script><!-- End Schema.org --></head><body data-id="avl" data-main-title="AVL Tree" data-article-props="{&quot;seeAlsoStyle&quot;:&quot;links&quot;}" data-template="article" data-breadcrumbs="cs.md|Computer Science &amp; Technology///dsa.md|Data Structures and Algorithms///data-structures.md|Data structures///search-tree.md|Search Tree"><div class="wrapper"><main class="panel _main"><header class="panel__header"><div class="container"><h3>Mind and Hand  Help</h3><div class="panel-trigger"></div></div></header><section class="panel__content"><div class="container"><article class="article" data-shortcut-switcher="inactive"><h1 data-toc="avl" id="avl.md">AVL Tree</h1><p id="tqzz8m_3">基础的二分搜索树本身增删不保证平衡，AVL通过旋转保证了二分搜索树的绝对平衡</p><section class="chapter"><h2 id="avl-implementation" data-toc="avl-implementation">AVL树的实现</h2><aside class="prompt" data-type="tip" data-title="" id="tqzz8m_6"><p id="tqzz8m_8">树定基础定义引用二分搜索树</p></aside><div class="code-block" data-lang="kotlin">
+}</script><!-- End Schema.org --></head><body data-id="avl" data-main-title="AVL Tree" data-article-props="{&quot;seeAlsoStyle&quot;:&quot;links&quot;}" data-template="article" data-breadcrumbs="cs.md|Computer Science &amp; Technology///dsa.md|Data Structures and Algorithms///search.md|Search///search-tree.md|Search Tree"><div class="wrapper"><main class="panel _main"><header class="panel__header"><div class="container"><h3>Mind and Hand  Help</h3><div class="panel-trigger"></div></div></header><section class="panel__content"><div class="container"><article class="article" data-shortcut-switcher="inactive"><h1 data-toc="avl" id="avl.md">AVL Tree</h1><p id="-1rs9j5_4">AVL 树通过旋转限制左右子树高度差，使查找、插入和删除保持 <code class="code" id="-1rs9j5_6">O(log n)</code> 。当前实现复用二叉搜索树的公共定义。</p><section class="chapter"><h2 id="current-implementation" data-toc="current-implementation">Current Implementation</h2><section class="chapter"><h3 id="avltree-kt" data-toc="avltree-kt">AVLTree.kt</h3><p id="-1rs9j5_9">源码： <code class="code" id="-1rs9j5_11">tree/bst/AVLTree.kt</code></p><div class="code-block" data-lang="kotlin">
+/**
+ * AVLTree
+ */
 class AVLTree&lt;K : Comparable&lt;K&gt;, V&gt; : BST&lt;K, V&gt; {
-    private var root: BSTNode&lt;K, V&gt;? = null
-    private var count = 0
+  private var root: BSTNode&lt;K, V&gt;? = null
+  private var count = 0
 
-    override fun size(): Int = this.count
+  override fun size(): Int = this.count
 
-    override fun getRoot(): BSTNode&lt;K, V&gt;? = this.root
+  override fun getRoot(): BSTNode&lt;K, V&gt;? = this.root
 
-    override fun insert(key: K, value: V) {
-        root = add(root, key, value)
+  override fun insert(key: K, value: V) {
+    root = add(root, key, value)
+  }
+
+  private fun add(node: BSTNode&lt;K, V&gt;?, k: K, v: V): BSTNode&lt;K, V&gt; {
+    if (node == null) {
+      count++
+      return BasicBSTNode(k, v)
     }
+    when {
+      k &lt; node.getKey() -&gt; {
+        node.setLeft(add(node.getLeft(), k, v)).updateHeight()
+      }
 
-    private fun add(node: BSTNode&lt;K, V&gt;?, k: K, v: V): BSTNode&lt;K, V&gt; {
-        if (node == null) {
-            count++
-            return BasicBSTNode(k, v)
-        }
-        when {
-            k &lt; node.getKey() -&gt; {
-                node.setLeft(add(node.getLeft(), k, v)).updateHeight()
-            }
+      k &gt; node.getKey() -&gt; {
+        node.setRight(add(node.getRight(), k, v)).updateHeight()
+      }
 
-            k &gt; node.getKey() -&gt; {
-                node.setRight(add(node.getRight(), k, v)).updateHeight()
-            }
-
-            else -&gt; {
-                node.setValue(v)
-            }
-        }
-        return node.updateHeight().rebalance(Action.ADD)
+      else -&gt; {
+        node.setValue(v)
+      }
     }
+    return node.updateHeight().rebalance(Action.ADD)
+  }
 
-    override fun remove(k: K): V? {
-        return getNode(k)?.let { node -&gt;
-            val rtV = node.getValue()
-            root = remove(root, k, rtV)
-            rtV
-        }
+  override fun remove(key: K): V? {
+    return getNode(key)?.let { node -&gt;
+      val rtV = node.getValue()
+      root = doRemove(root, key, rtV)
+      rtV
     }
+  }
 
-    private fun remove(node: BSTNode&lt;K, V&gt;?, k: K, v: V): BSTNode&lt;K, V&gt;? {
-        if (node == null) {
-            return null
-        }
-        when {
-            k &lt; node.getKey() -&gt; node.setLeft(remove(node.getLeft(), k, v))
-
-            k &gt; node.getKey() -&gt; node.setRight(remove(node.getRight(), k, v))
-
-            else -&gt; {
-                if (node.getLeft() == null &amp;&amp; node.getRight() == null) {
-                    count--
-                    return null
-                }
-
-                // 剩余三种情况  左不空+右不空 左不空+右空  左空+右不空
-                if (node.getLeft() != null) {
-                    // 左不空+右不空 左不空+右空
-                    val leftMax = getMax(node.getLeft())!!
-
-                    node.setKey(leftMax.getKey())
-                        .setValue(leftMax.getValue())
-                    remove(node.getLeft(), leftMax.getKey(), leftMax.getValue())
-                } else {
-                    // 左空+右不空
-                    val rightMin = getMin(node.getRight())!!
-                    node.setKey(rightMin.getKey())
-                        .setValue(rightMin.getValue())
-                    node.setRight(remove(node.getRight(), rightMin.getKey(), rightMin.getValue()))
-                }
-
-            }
-        }
-        return node.updateHeight().rebalance(Action.REMOVE)
+  /**
+   * Removes a key-value pair from the binary search tree, rebalances the tree if necessary,
+   * and updates node heights accordingly.
+   * @param node the current node being inspected in the tree during removal. Can be null.
+   * @param k the key of the node to be removed.
+   * @param v the value associated with the key that is being removed.
+   * @return the updated subtree root after the removal operation and potential rebalancing.
+   */
+  private fun doRemove(node: BSTNode&lt;K, V&gt;?, k: K, v: V): BSTNode&lt;K, V&gt;? {
+    if (node == null) {
+      return null
     }
+    when {
+      k &lt; node.getKey() -&gt; node.setLeft(doRemove(node.getLeft(), k, v))
 
-    override fun clear() {
-        this.root = null
-        this.count = 0
+      k &gt; node.getKey() -&gt; node.setRight(doRemove(node.getRight(), k, v))
+
+      else -&gt; {
+        if (node.getLeft() == null &amp;&amp; node.getRight() == null) {
+          count--
+          return null
+        }
+
+        // 剩余三种情况  左不空+右不空 左不空+右空  左空+右不空
+        if (node.getLeft() != null) {
+          // 左不空+右不空 左不空+右空
+          val leftMax = getMax(node.getLeft())!!
+
+          node.setKey(leftMax.getKey())
+            .setValue(leftMax.getValue())
+          doRemove(node.getLeft(), leftMax.getKey(), leftMax.getValue())
+        } else {
+          // 左空+右不空
+          val rightMin = getMin(node.getRight())!!
+          node.setKey(rightMin.getKey())
+            .setValue(rightMin.getValue())
+          node.setRight(doRemove(node.getRight(), rightMin.getKey(), rightMin.getValue()))
+        }
+
+      }
     }
+    return node.updateHeight().rebalance(Action.REMOVE)
+  }
+
+  override fun clear() {
+    this.root = null
+    this.count = 0
+  }
 
 }
 
 /**
  * Retrieves the height of the specified binary search tree (BST) node.
  * If the node is null, returns 0.
- *
  * @param node the node for which the height is to be determined; can be null
  * @return the height of the node, or 0 if the node is null
  */
 internal fun &lt;K : Comparable&lt;K&gt;, V&gt; getNodeHeight(node: BSTNode&lt;K, V&gt;?): Int {
-    return node?.getHeight() ?: 0
+  return node?.getHeight() ?: 0
 }
 
 internal fun &lt;K : Comparable&lt;K&gt;, V&gt; BSTNode&lt;K, V&gt;.updateHeight(): BSTNode&lt;K, V&gt; {
-    val max = max(getNodeHeight(this.getLeft()), getNodeHeight(this.getRight()))
-    this.setHeight(max + 1)
-    return this
+  val max = max(getNodeHeight(this.getLeft()), getNodeHeight(this.getRight()))
+  this.setHeight(max + 1)
+  return this
 }
-</div></section><section class="chapter"><h2 id="tqzz8m_5" data-toc="tqzz8m_5">关键的旋转逻辑</h2><div class="code-block" data-lang="kotlin">
+</div></section><section class="chapter"><h3 id="avlrotate-kt" data-toc="avlrotate-kt">AVLRotate.kt</h3><p id="-1rs9j5_12">源码： <code class="code" id="-1rs9j5_14">tree/bst/AVLRotate.kt</code></p><div class="code-block" data-lang="kotlin">
+val log = getLogger(AVLTree::class.java)
+
 internal enum class Action {
-    ADD, REMOVE
+  ADD, REMOVE
 }
 
 internal fun &lt;K : Comparable&lt;K&gt;, V&gt; BSTNode&lt;K, V&gt;.getBalanceFactor(): Int =
-    getNodeHeight(this.getLeft()) - getNodeHeight(this.getRight())
+  getNodeHeight(this.getLeft()) - getNodeHeight(this.getRight())
 
 internal fun Int.valueIn(min: Int, max: Int): Boolean {
-    if (min &gt; max) {
-        throw IllegalArgumentException(&quot;min should be less than or equal to max&quot;)
-    }
-    return this in min..max
+  require(max &gt;= min) {
+    &quot;max should be greater than or equal to min&quot;
+  }
+  return this in min..max
 }
 
 internal fun &lt;K : Comparable&lt;K&gt;, V&gt; BSTNode&lt;K, V&gt;.rebalance(action: Action): BSTNode&lt;K, V&gt; {
-    val balanceFactor = this.getBalanceFactor()
-    if (balanceFactor.valueIn(-1, 1)) {
-        return this
+  val balanceFactor = this.getBalanceFactor()
+  if (balanceFactor.valueIn(-1, 1)) {
+    return this
+  }
+
+  log.debug(&quot;balanceFactor: {}, action: {}, node: {}&quot;, balanceFactor, action, this)
+  return when (action) {
+    Action.ADD -&gt; {
+      // Rebalances left‑heavy node after insertion via rotations
+      when {
+        (balanceFactor == 2 &amp;&amp; this.getLeft()!!.getBalanceFactor() == 1) -&gt; this.ll()
+        (balanceFactor == 2 &amp;&amp; this.getLeft()!!.getBalanceFactor() == -1) -&gt; this.lr()
+        (balanceFactor == -2 &amp;&amp; this.getRight()!!.getBalanceFactor() == -1) -&gt; this.rr()
+        (balanceFactor == -2 &amp;&amp; this.getRight()!!.getBalanceFactor() == 1) -&gt; this.rl()
+        else -&gt; throw IllegalStateException(&quot;balanceFactor: $balanceFactor, action: $action, node: $this&quot;)
+      }
     }
 
-    log.debug(&quot;balanceFactor: {}, action: {}, node: {}&quot;, balanceFactor, action, this)
-    return when (action) {
-        Action.ADD -&gt; {
-            when {
-                balanceFactor == 2 &amp;&amp; this.getLeft()!!.getBalanceFactor() == 1 -&gt; this.ll()
-                balanceFactor == 2 &amp;&amp; this.getLeft()!!.getBalanceFactor() == -1 -&gt; this.lr()
-                balanceFactor == -2 &amp;&amp; this.getRight()!!.getBalanceFactor() == -1 -&gt; this.rr()
-                balanceFactor == -2 &amp;&amp; this.getRight()!!.getBalanceFactor() == 1 -&gt; this.rl()
-                else -&gt; throw IllegalStateException(&quot;balanceFactor: $balanceFactor, action: $action, node: $this&quot;)
-            }
-        }
-
-        Action.REMOVE -&gt; {
-            when {
-                balanceFactor == 2 &amp;&amp; this.getLeft()!!.getBalanceFactor() &gt;= 0 -&gt; this.ll()
-                balanceFactor == 2 &amp;&amp; this.getLeft()!!.getBalanceFactor() &lt; 0 -&gt; this.lr()
-                balanceFactor == -2 &amp;&amp; this.getRight()!!.getBalanceFactor() &lt;= 0 -&gt; this.rr()
-                balanceFactor == -2 &amp;&amp; this.getRight()!!.getBalanceFactor() &gt; 0 -&gt; this.rl()
-                else -&gt; throw IllegalStateException(&quot;balanceFactor: $balanceFactor, action: $action, node: $this&quot;)
-            }
-        }
+    Action.REMOVE -&gt; {
+      // Rebalances right‑heavy node after removal via rotations
+      when {
+        (balanceFactor == 2 &amp;&amp; this.getLeft()!!.getBalanceFactor() &gt;= 0) -&gt; this.ll()
+        (balanceFactor == 2 &amp;&amp; this.getLeft()!!.getBalanceFactor() &lt; 0) -&gt; this.lr()
+        (balanceFactor == -2 &amp;&amp; this.getRight()!!.getBalanceFactor() &lt;= 0) -&gt; this.rr()
+        (balanceFactor == -2 &amp;&amp; this.getRight()!!.getBalanceFactor() &gt; 0) -&gt; this.rl()
+        else -&gt; throw IllegalStateException(&quot;balanceFactor: $balanceFactor, action: $action, node: $this&quot;)
+      }
     }
+  }
 
 }
 
 internal fun &lt;K : Comparable&lt;K&gt;, V&gt; BSTNode&lt;K, V&gt;.ll(): BSTNode&lt;K, V&gt; {
-    return this.rotateNodeAndLeft()
+  return this.rotateNodeAndLeft()
 }
 
 internal fun &lt;K : Comparable&lt;K&gt;, V&gt; BSTNode&lt;K, V&gt;.rr(): BSTNode&lt;K, V&gt; {
-    return this.rotateNodeAndRight()
+  return this.rotateNodeAndRight()
 }
 
 internal fun &lt;K : Comparable&lt;K&gt;, V&gt; BSTNode&lt;K, V&gt;.lr(): BSTNode&lt;K, V&gt; {
-    /*
-        x
-       /
-       y
-        \
-        z
-     */
-    return this.setLeft(
-        this.getLeft()?.rotateNodeAndRight()
-    ).updateHeight().rotateNodeAndLeft()
+  /*
+      x
+     /
+     y
+      \
+      z
+   */
+  return this.setLeft(
+    this.getLeft()?.rotateNodeAndRight(),
+  ).updateHeight().rotateNodeAndLeft()
 }
 
 internal fun &lt;K : Comparable&lt;K&gt;, V&gt; BSTNode&lt;K, V&gt;.rl(): BSTNode&lt;K, V&gt; {
-    /*
-       x
-        \
-         y
-        /
-      z
-    */
+  /*
+     x
+      \
+       y
+      /
+    z
+  */
 
-    return this.setRight(
-        this.getRight()?.rotateNodeAndLeft()
-    ).updateHeight().rotateNodeAndRight()
+  return this.setRight(
+    this.getRight()?.rotateNodeAndLeft(),
+  ).updateHeight().rotateNodeAndRight()
 }
 
 internal fun &lt;K : Comparable&lt;K&gt;, V&gt; BSTNode&lt;K, V&gt;.rotateNodeAndRight(): BSTNode&lt;K, V&gt; {
-    /*
-        n                 x
-       / \               / \
-      ?   x            n   b?
-         / \          / \
-        a?  b?       ?  a?
-     */
-    val x = this.getRight() ?: return this
-    // 先更新下层节点的高度
-    this.setRight(x.getLeft()).updateHeight()
-    // 再更新新节点的高度
-    return x.setLeft(this).updateHeight()
+  /*
+      n                 x
+     / \               / \
+    ?   x            n   b?
+       / \          / \
+      a?  b?       ?  a?
+   */
+  val x = this.getRight() ?: return this
+  // 先更新下层节点的高度
+  this.setRight(x.getLeft()).updateHeight()
+  // 再更新新节点的高度
+  return x.setLeft(this).updateHeight()
 }
 
 internal fun &lt;K : Comparable&lt;K&gt;, V&gt; BSTNode&lt;K, V&gt;.rotateNodeAndLeft(): BSTNode&lt;K, V&gt; {
-    /*
-            n              x
-           / \             / \
-          x   ?          a?  n
-         / \                / \
-        a?  b?             b?  ?
-     */
-    val x = this.getLeft() ?: return this
-    this.setLeft(x.getRight()).updateHeight()
-    return x.setRight(this).updateHeight()
+  /*
+          n              x
+         / \             / \
+        x   ?          a?  n
+       / \                / \
+      a?  b?             b?  ?
+   */
+  val x = this.getLeft() ?: return this
+  this.setLeft(x.getRight()).updateHeight()
+  return x.setRight(this).updateHeight()
 }
-</div></section><div class="last-modified">19 August 2026</div><div data-feedback-placeholder="true"></div><div class="navigation-links _bottom"><a href="bst.html" class="navigation-links__prev">Binary Search Tree</a><a href="tt-tree.html" class="navigation-links__next">Two-Three Tree</a></div></article><div id="disqus_thread"></div></div></section></main></div><script src="https://resources.jetbrains.com/writerside/apidoc/6.27.0-b1156/app.js"></script></body></html>
+</div></section></section><div class="last-modified">20 August 2026</div><div data-feedback-placeholder="true"></div><div class="navigation-links _bottom"><a href="bst.html" class="navigation-links__prev">Binary Search Tree</a><a href="tt-tree.html" class="navigation-links__next">Two-Three Tree</a></div></article><div id="disqus_thread"></div></div></section></main></div><script src="https://resources.jetbrains.com/writerside/apidoc/6.27.0-b1156/app.js"></script></body></html>

@@ -1,5 +1,5 @@
 <!DOCTYPE html SYSTEM "about:legacy-compat">
-<html lang="en-US" data-preset="contrast" data-primary-color="#307FFF" data-link-color="#307FFF" data-link-dark-color="#90C695" data-content-max-width="1250" data-resizable-sidebar="true" data-sidebar-width="300"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="UTF-8"><meta name="built-on" content="2026-08-19T01:49:24.798458214"><link rel="canonical" href="https://blog.kubectl.org/lua-access-control.html" data-react-helmet="true"><title>Access Control | Mind and Hand</title><script type="application/json" id="virtual-toc-data">[]</script><script type="application/json" id="topic-shortcuts"></script><link href="https://resources.jetbrains.com/writerside/apidoc/6.27.0-b1156/app.css" rel="stylesheet"><link href="static/custom.css" rel="stylesheet"><meta name="msapplication-TileColor" content="#000000"><link rel="apple-touch-icon" sizes="180x180" href="https://jetbrains.com/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="https://jetbrains.com/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="https://jetbrains.com/favicon-16x16.png"><meta name="msapplication-TileImage" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-144x144.png"><meta name="msapplication-square70x70logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-70x70.png"><meta name="msapplication-square150x150logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-150x150.png"><meta name="msapplication-wide310x150logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-310x150.png"><meta name="msapplication-square310x310logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-310x310.png"><meta name="image" content=""><!-- Open Graph --><meta property="og:title" content="Access Control | Mind and Hand"><meta property="og:description" content=""><meta property="og:image" content=""><meta property="og:site_name" content="Mind and Hand Help"><meta property="og:type" content="website"><meta property="og:locale" content="en_US"><meta property="og:url" content="https://blog.kubectl.org/lua-access-control.html"><!-- End Open Graph --><!-- Twitter Card --><meta name="twitter:card" content="summary_large_image"><meta name="twitter:site" content=""><meta name="twitter:title" content="Access Control | Mind and Hand"><meta name="twitter:description" content=""><meta name="twitter:creator" content=""><meta name="twitter:image:src" content=""><!-- End Twitter Card --><!-- Schema.org WebPage --><script type="application/ld+json">{
+<html lang="en-US" data-preset="contrast" data-primary-color="#307FFF" data-link-color="#307FFF" data-link-dark-color="#90C695" data-content-max-width="1250" data-resizable-sidebar="true" data-sidebar-width="300"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="UTF-8"><meta name="built-on" content="2026-08-20T08:42:23.847408857"><link rel="canonical" href="https://blog.kubectl.org/lua-access-control.html" data-react-helmet="true"><title>Access Control | Mind and Hand</title><script type="application/json" id="virtual-toc-data">[]</script><script type="application/json" id="topic-shortcuts"></script><link href="https://resources.jetbrains.com/writerside/apidoc/6.27.0-b1156/app.css" rel="stylesheet"><link href="static/custom.css" rel="stylesheet"><meta name="msapplication-TileColor" content="#000000"><link rel="apple-touch-icon" sizes="180x180" href="https://jetbrains.com/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="https://jetbrains.com/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="https://jetbrains.com/favicon-16x16.png"><meta name="msapplication-TileImage" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-144x144.png"><meta name="msapplication-square70x70logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-70x70.png"><meta name="msapplication-square150x150logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-150x150.png"><meta name="msapplication-wide310x150logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-310x150.png"><meta name="msapplication-square310x310logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-310x310.png"><meta name="image" content=""><!-- Open Graph --><meta property="og:title" content="Access Control | Mind and Hand"><meta property="og:description" content=""><meta property="og:image" content=""><meta property="og:site_name" content="Mind and Hand Help"><meta property="og:type" content="website"><meta property="og:locale" content="en_US"><meta property="og:url" content="https://blog.kubectl.org/lua-access-control.html"><!-- End Open Graph --><!-- Twitter Card --><meta name="twitter:card" content="summary_large_image"><meta name="twitter:site" content=""><meta name="twitter:title" content="Access Control | Mind and Hand"><meta name="twitter:description" content=""><meta name="twitter:creator" content=""><meta name="twitter:image:src" content=""><!-- End Twitter Card --><!-- Schema.org WebPage --><script type="application/ld+json">{
     "@context": "http://schema.org",
     "@type": "WebPage",
     "@id": "https://blog.kubectl.org/lua-access-control.html#webpage",
@@ -13,48 +13,52 @@
     "@id": "https://blog.kubectl.org/#website",
     "url": "https://blog.kubectl.org/",
     "name": "Mind and Hand Help"
-}</script><!-- End Schema.org --></head><body data-id="lua-access-control" data-main-title="Access Control" data-article-props="{&quot;seeAlsoStyle&quot;:&quot;links&quot;}" data-template="article" data-breadcrumbs="develop.md|Develop///lang-lua.md|Lua"><div class="wrapper"><main class="panel _main"><header class="panel__header"><div class="container"><h3>Mind and Hand  Help</h3><div class="panel-trigger"></div></div></header><section class="panel__content"><div class="container"><article class="article" data-shortcut-switcher="inactive"><h1 data-toc="lua-access-control" id="lua-access-control.md">Access Control</h1><aside class="prompt" data-type="tip" data-title="" id="-u2itp8_3"><p id="-u2itp8_8">基于 <code class="code" id="-u2itp8_9">Lua</code> 的访问控制设计</p></aside><p id="-u2itp8_4"><span class="control" id="-u2itp8_10">整体逻辑</span> ：基于 <code class="code" id="-u2itp8_11">group_ip</code> 获取规则组，白名单或黑名单的模式匹配请求上下文，获取访问控制结果</p><p id="-u2itp8_5"><span class="control" id="-u2itp8_12">规则管理器 <code class="code" id="-u2itp8_13">manager</code>模块化提供</span> ，匹配时提供核心方法</p><ul class="list _bullet" id="-u2itp8_6"><li class="list__item" id="-u2itp8_14"><p id="-u2itp8_17"><span class="control" id="-u2itp8_18"><code class="code" id="-u2itp8_20">function get_rules(group_id)</code></span> ：基于 <code class="code" id="-u2itp8_19">group_id</code> 获取的规则列表方法</p></li><li class="list__item" id="-u2itp8_15"><p id="-u2itp8_21"><span class="control" id="-u2itp8_23"><code class="code" id="-u2itp8_25">function get_value_func(rule)</code></span>: 基于 <code class="code" id="-u2itp8_24">rule</code> 自生获取对应的 function</p><ul class="list _bullet" id="-u2itp8_22"><li class="list__item" id="-u2itp8_26"><p id="-u2itp8_28">设计的 <code class="code" id="-u2itp8_29">operator</code> 为 <code class="code" id="-u2itp8_30">function</code> 时，会寻找规则中的 方法规则进行匹配</p></li><li class="list__item" id="-u2itp8_27"><p id="-u2itp8_31">方法规则的设计目的是为了，对于规则中无法通过简单的字符串匹配的场景，实现更复杂的匹配</p></li></ul></li><li class="list__item" id="-u2itp8_16"><p id="-u2itp8_32"><span class="control" id="-u2itp8_34"><code class="code" id="-u2itp8_36">function get_internal_function(rule)</code></span>: 基于 <code class="code" id="-u2itp8_35">rule</code> 自生获取对应的内置 function</p><ul class="list _bullet" id="-u2itp8_33"><li class="list__item" id="-u2itp8_37"><p id="-u2itp8_39">设计的 <code class="code" id="-u2itp8_40">operator</code> 为 <code class="code" id="-u2itp8_41">@function</code> 时，会寻找规则中的 内置方法规则进行匹配</p></li><li class="list__item" id="-u2itp8_38"><p id="-u2itp8_42">内置方法规则的设计目的是为了，提供一些常用的匹配方法，方便用户直接使用</p></li></ul></li></ul><div class="code-block" data-lang="lua">
+}</script><!-- End Schema.org --></head><body data-id="lua-access-control" data-main-title="Access Control" data-article-props="{&quot;seeAlsoStyle&quot;:&quot;links&quot;}" data-template="article" data-breadcrumbs="develop.md|Develop///lang-lua.md|Lua"><div class="wrapper"><main class="panel _main"><header class="panel__header"><div class="container"><h3>Mind and Hand  Help</h3><div class="panel-trigger"></div></div></header><section class="panel__content"><div class="container"><article class="article" data-shortcut-switcher="inactive"><h1 data-toc="lua-access-control" id="lua-access-control.md">Access Control</h1><aside class="prompt" data-type="tip" data-title="" id="wd6fzf_3"><p id="wd6fzf_5">基于 <code class="code" id="wd6fzf_6">Lua</code> 的访问控制设计</p></aside><div class="code-block" data-lang="lua">
+-- 访问控制（ACL）规则匹配控制器
+-- 提供基于规则列表的匹配与检查：黑名单（命中即拒绝）、白名单（命中即放行）
+
 local _M = {}
 
-local ac_utils = require(&quot;lua_modules.http_req.access_control.ac_utils&quot;)
+local obj_utils = require(&quot;lua_libs.commons.obj_utils&quot;)
+local string_utils = require(&quot;lua_libs.commons.string_utils&quot;)
+local ac_utils = require(&quot;lua_libs.http_req.access_control.ac_utils&quot;)
 
--- 匹配规则
--- @param field_val 字段值
--- @param operator 操作符
--- @param value 规则值
--- @param rule 规则本身，可以适配更多复杂场景
--- @param manager 可选的存储对象，默认为 rules_manager
--- @return boolean 是否匹配
-local function match_rule(field_val, operator, value, rule, manager)
-    if not field_val or not operator then
-        return false
-    end
+-- 判断单条规则是否命中当前请求
+-- 规则结构示例：{field=&quot;host&quot;, operator=&quot;equals&quot;, value=&quot;example.com&quot;, effect=&quot;deny&quot;}
+-- @param ctx 请求上下文，rule.field 对应的字段值取自 ctx
+-- @param rule 规则本身
+-- @param manager 可选的规则管理器，默认为 rules_manager
+-- @return boolean 是否命中
+local function match_rule(ctx, rule, manager)
+    -- 取出参与匹配的三要素：字段值（来自 ctx）、操作符、规则值
+    local field_val, operator, value = ctx[rule.field], rule.operator, rule.value
 
-    -- 方法,获取方法函数
-    if operator == &quot;function&quot; then
-        -- 获取计算值的函数
+    -- value_func：通过回调函数计算匹配结果，函数入参为字段值 field_val
+    if operator == &quot;value_func&quot; then
+        -- 获取计算匹配结果的函数
         local value_func, err = ac_utils.get_value_func(rule, manager)
         if not value_func then
-            ngx.log(ngx.ERR, &quot;failed to get function rule: &quot;, err or &quot;unknown error&quot;)
+            ngx.log(ngx.ERR, &quot;failed to get value_func rule: &quot;, err or &quot;unknown error&quot;)
             return false
         end
 
-        if type(value_func) ~= &quot;function&quot; then
-            ngx.log(ngx.ERR, &quot;value_func must be a function when operator is 'function'&quot;)
+        if not obj_utils.is_function(value_func) then
+            ngx.log(ngx.ERR, &quot;value_func must be a function when operator is 'value_func'&quot;)
             return false
         end
-        -- 调用函数并确保返回布尔值
+        -- 调用函数，函数异常或返回非布尔值时视为不命中
         local ok, res = pcall(value_func, field_val)
         if not ok then
             return false
         end
-        if type(res) ~= &quot;boolean&quot; then
+
+        if not obj_utils.is_boolean(res) then
             return false
         end
         return res
     end
 
-    -- 方法，获取内置的方法
+    -- @function：调用内置函数完成匹配，函数入参为整个请求上下文 ctx
     if operator == &quot;@function&quot; then
         local func, err = ac_utils.get_internal_function(rule, manager)
         if not func then
@@ -62,23 +66,41 @@ local function match_rule(field_val, operator, value, rule, manager)
             return false
         end
 
-        if type(func) ~= &quot;function&quot; then
+        if not obj_utils.is_function(func) then
             ngx.log(ngx.ERR, &quot;func must be a function when operator is '@function'&quot;)
             return false
         end
 
-        -- 调用函数并确保返回布尔值
-        local ok, res = pcall(func, field_val)
+        -- 调用函数，函数异常或返回非布尔值时视为不命中
+        local ok, res = pcall(func, ctx)
         if not ok then
             return false
         end
-        if type(res) ~= &quot;boolean&quot; then
+        if not obj_utils.is_boolean(res) then
             return false
         end
         return res
     end
 
-    --一些通用的操作符
+    -- 通用操作符：field_val 和 value 均须为非空字符串，否则跳过该规则
+    local field_val_blank = string_utils.is_blank(field_val)
+    local value_blank = string_utils.is_blank(value)
+    if field_val_blank or value_blank then
+        ngx.log(
+            ngx.WARN,
+            &quot;ACL rule skipped because field_val or value is blank/non-string: operator=&quot;,
+            tostring(operator),
+            &quot;, field=&quot;,
+            tostring(rule.field),
+            &quot;, field_val_type=&quot;,
+            type(field_val),
+            &quot;, value_type=&quot;,
+            type(value)
+        )
+        return false
+    end
+
+    -- 支持的通用操作符：equals / not_equals / prefix / suffix / contains / regex / in
     if operator == &quot;equals&quot; then
         return field_val == value
     elseif operator == &quot;not_equals&quot; then
@@ -92,86 +114,81 @@ local function match_rule(field_val, operator, value, rule, manager)
     elseif operator == &quot;regex&quot; then
         return ngx.re.find(field_val, value, &quot;jo&quot;) ~= nil
     elseif operator == &quot;in&quot; then
-        -- 支持逗号分隔字符串或 table
-        if type(value) == &quot;string&quot; then
-            for v in value:gmatch(&quot;[^,]+&quot;) do
-                if field_val == v then
-                    return true
-                end
-            end
-        elseif type(value) == &quot;table&quot; then
-            for _, v in ipairs(value) do
-                if field_val == v then
-                    return true
-                end
+        -- 规则值以英文逗号分隔，字段值命中任意一项即匹配
+        for v in value:gmatch(&quot;[^,]+&quot;) do
+            if field_val == v then
+                return true
             end
         end
         return false
     else
-        -- 未知操作符
+        -- 未知操作符：视为不命中
         return false
     end
 end
 
 -- 核心检查函数
--- 白名单检查是只要有一条规则命中就放行
--- 黑名单检查是只要有一条规则命中就拒绝
+-- 黑名单模式：命中 effect=&quot;deny&quot; 的规则即拒绝，未命中默认放行
+-- 白名单模式：命中 effect=&quot;allow&quot; 的规则即放行，未命中默认拒绝
 -- @param ctx 请求上下文
--- @param rules 规则列表 一个规则示例 {field=&quot;host&quot;, operator=&quot;equals&quot;, value=&quot;example.com&quot;, effect=&quot;deny&quot;}
--- @param mode 检查模式 &quot;whitelist&quot; 或 &quot;blacklist&quot;
+-- @param rules 规则列表，规则示例 {field=&quot;host&quot;, operator=&quot;equals&quot;, value=&quot;example.com&quot;, effect=&quot;deny&quot;}
+-- @param mode 检查模式：&quot;whitelist&quot; 或 &quot;blacklist&quot;，默认为 &quot;blacklist&quot;
 -- @param manager 可选的规则管理器，默认为 rules_manager
--- @return boolean 是否允许通过
+-- @return allowed boolean 是否允许通过；rule 命中的规则（未命中时为 nil）
 local function check_ctx(ctx, rules, mode, manager)
     mode = mode or &quot;blacklist&quot;
 
     for _, rule in ipairs(rules) do
-        local field_val = ctx[rule.field] -- 获取指定字段的值
-        if field_val and match_rule(field_val, rule.operator, rule.value, rule, manager) then
+        if match_rule(ctx, rule, manager) then
+            -- 规则命中：黑名单命中 deny 即拒绝，白名单命中 allow 即放行
             if mode == &quot;blacklist&quot; and rule.effect == &quot;deny&quot; then
-                return false
+                return false, rule
             elseif mode == &quot;whitelist&quot; and rule.effect == &quot;allow&quot; then
-                return true
+                return true, rule
             end
         end
     end
 
-    -- 如果没有任何规则命中
+    -- 规则列表为空时记录告警
+    if #rules == 0 then
+        ngx.log(ngx.WARN, &quot;No rules provided for access control check in mode: &quot;, mode)
+    end
+
+    -- 没有任何规则命中：黑名单默认放行，白名单默认拒绝
     if mode == &quot;blacklist&quot; then
-        return true -- 默认放行
+        return true, nil
     else
-        return false -- 默认拒绝
+        return false, nil
     end
 end
 
--- 通用检查函数
+-- 模块方法：按指定模式执行访问控制检查
 -- @param ctx 请求上下文
 -- @param rules 规则列表
--- @param mode 检查模式 &quot;whitelist&quot; 或 &quot;blacklist&quot;
+-- @param mode 检查模式：&quot;whitelist&quot; 或 &quot;blacklist&quot;
 -- @param manager 可选的规则管理器，默认为 rules_manager
--- @return boolean 是否允许通过
+-- @return allowed boolean 是否允许通过；rule 命中的规则（未命中时为 nil）
 function _M.check_ctx(ctx, rules, mode, manager)
     return check_ctx(ctx, rules, mode, manager)
 end
 
--- 白名单检查
--- 只要有一条规则命中就放行
+-- 模块方法：白名单检查（命中 effect=&quot;allow&quot; 的规则即放行，未命中默认拒绝）
 -- @param ctx 请求上下文
 -- @param rules 规则列表
 -- @param manager 可选的规则管理器，默认为 rules_manager
--- @return boolean 是否允许通过
+-- @return allowed boolean 是否允许通过；rule 命中的规则（未命中时为 nil）
 function _M.check_ctx_whitelist(ctx, rules, manager)
     return check_ctx(ctx, rules, &quot;whitelist&quot;, manager)
 end
 
--- 黑名单检查
--- 只要有一条规则命中就拒绝
+-- 模块方法：黑名单检查（命中 effect=&quot;deny&quot; 的规则即拒绝，未命中默认放行）
 -- @param ctx 请求上下文
 -- @param rules 规则列表
 -- @param manager 可选的规则管理器，默认为 rules_manager
--- @return boolean 是否允许通过
+-- @return allowed boolean 是否允许通过；rule 命中的规则（未命中时为 nil）
 function _M.check_ctx_blacklist(ctx, rules, manager)
     return check_ctx(ctx, rules, &quot;blacklist&quot;, manager)
 end
 
 return _M
-</div><div class="last-modified">19 August 2026</div><div data-feedback-placeholder="true"></div><div class="navigation-links _bottom"><a href="lang-lua.html" class="navigation-links__prev">Lua</a><a href="lua-ac-redis-rules-operator.html" class="navigation-links__next">Redis Rules Operator</a></div></article><div id="disqus_thread"></div></div></section></main></div><script src="https://resources.jetbrains.com/writerside/apidoc/6.27.0-b1156/app.js"></script></body></html>
+</div><div class="last-modified">20 August 2026</div><div data-feedback-placeholder="true"></div><div class="navigation-links _bottom"><a href="lang-lua.html" class="navigation-links__prev">Lua</a><a href="lua-ac-redis-rules-operator.html" class="navigation-links__next">Redis Rules Operator</a></div></article><div id="disqus_thread"></div></div></section></main></div><script src="https://resources.jetbrains.com/writerside/apidoc/6.27.0-b1156/app.js"></script></body></html>

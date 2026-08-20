@@ -1,5 +1,5 @@
 <!DOCTYPE html SYSTEM "about:legacy-compat">
-<html lang="en-US" data-preset="contrast" data-primary-color="#307FFF" data-link-color="#307FFF" data-link-dark-color="#90C695" data-content-max-width="1250" data-resizable-sidebar="true" data-sidebar-width="300"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="UTF-8"><meta name="built-on" content="2026-08-19T01:49:31.821355091"><link rel="canonical" href="https://blog.kubectl.org/bst.html" data-react-helmet="true"><title>Binary Search Tree | Mind and Hand</title><script type="application/json" id="virtual-toc-data">[{"id":"u6jbqy_5","level":0,"title":"定义","anchor":"#u6jbqy_5"},{"id":"u6jbqy_8","level":1,"title":"操作定义","anchor":"#u6jbqy_8"},{"id":"u6jbqy_9","level":1,"title":"节点定义","anchor":"#u6jbqy_9"},{"id":"u6jbqy_6","level":0,"title":"实现","anchor":"#u6jbqy_6"},{"id":"u6jbqy_7","level":0,"title":"问题","anchor":"#u6jbqy_7"}]</script><script type="application/json" id="topic-shortcuts"></script><link href="https://resources.jetbrains.com/writerside/apidoc/6.27.0-b1156/app.css" rel="stylesheet"><link href="static/custom.css" rel="stylesheet"><meta name="msapplication-TileColor" content="#000000"><link rel="apple-touch-icon" sizes="180x180" href="https://jetbrains.com/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="https://jetbrains.com/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="https://jetbrains.com/favicon-16x16.png"><meta name="msapplication-TileImage" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-144x144.png"><meta name="msapplication-square70x70logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-70x70.png"><meta name="msapplication-square150x150logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-150x150.png"><meta name="msapplication-wide310x150logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-310x150.png"><meta name="msapplication-square310x310logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-310x310.png"><meta name="image" content=""><!-- Open Graph --><meta property="og:title" content="Binary Search Tree | Mind and Hand"><meta property="og:description" content=""><meta property="og:image" content=""><meta property="og:site_name" content="Mind and Hand Help"><meta property="og:type" content="website"><meta property="og:locale" content="en_US"><meta property="og:url" content="https://blog.kubectl.org/bst.html"><!-- End Open Graph --><!-- Twitter Card --><meta name="twitter:card" content="summary_large_image"><meta name="twitter:site" content=""><meta name="twitter:title" content="Binary Search Tree | Mind and Hand"><meta name="twitter:description" content=""><meta name="twitter:creator" content=""><meta name="twitter:image:src" content=""><!-- End Twitter Card --><!-- Schema.org WebPage --><script type="application/ld+json">{
+<html lang="en-US" data-preset="contrast" data-primary-color="#307FFF" data-link-color="#307FFF" data-link-dark-color="#90C695" data-content-max-width="1250" data-resizable-sidebar="true" data-sidebar-width="300"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="UTF-8"><meta name="built-on" content="2026-08-20T08:42:32.844567617"><link rel="canonical" href="https://blog.kubectl.org/bst.html" data-react-helmet="true"><title>Binary Search Tree | Mind and Hand</title><script type="application/json" id="virtual-toc-data">[{"id":"current-implementation","level":0,"title":"Current Implementation","anchor":"#current-implementation"},{"id":"bst-kt","level":1,"title":"BST.kt","anchor":"#bst-kt"},{"id":"bstnode-kt","level":1,"title":"BSTNode.kt","anchor":"#bstnode-kt"},{"id":"bstutils-kt","level":1,"title":"BSTUtils.kt","anchor":"#bstutils-kt"},{"id":"basicbst-kt","level":1,"title":"BasicBST.kt","anchor":"#basicbst-kt"}]</script><script type="application/json" id="topic-shortcuts"></script><link href="https://resources.jetbrains.com/writerside/apidoc/6.27.0-b1156/app.css" rel="stylesheet"><link href="static/custom.css" rel="stylesheet"><meta name="msapplication-TileColor" content="#000000"><link rel="apple-touch-icon" sizes="180x180" href="https://jetbrains.com/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="https://jetbrains.com/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="https://jetbrains.com/favicon-16x16.png"><meta name="msapplication-TileImage" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-144x144.png"><meta name="msapplication-square70x70logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-70x70.png"><meta name="msapplication-square150x150logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-150x150.png"><meta name="msapplication-wide310x150logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-310x150.png"><meta name="msapplication-square310x310logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-310x310.png"><meta name="image" content=""><!-- Open Graph --><meta property="og:title" content="Binary Search Tree | Mind and Hand"><meta property="og:description" content=""><meta property="og:image" content=""><meta property="og:site_name" content="Mind and Hand Help"><meta property="og:type" content="website"><meta property="og:locale" content="en_US"><meta property="og:url" content="https://blog.kubectl.org/bst.html"><!-- End Open Graph --><!-- Twitter Card --><meta name="twitter:card" content="summary_large_image"><meta name="twitter:site" content=""><meta name="twitter:title" content="Binary Search Tree | Mind and Hand"><meta name="twitter:description" content=""><meta name="twitter:creator" content=""><meta name="twitter:image:src" content=""><!-- End Twitter Card --><!-- Schema.org WebPage --><script type="application/ld+json">{
     "@context": "http://schema.org",
     "@type": "WebPage",
     "@id": "https://blog.kubectl.org/bst.html#webpage",
@@ -13,292 +13,418 @@
     "@id": "https://blog.kubectl.org/#website",
     "url": "https://blog.kubectl.org/",
     "name": "Mind and Hand Help"
-}</script><!-- End Schema.org --></head><body data-id="bst" data-main-title="Binary Search Tree" data-article-props="{&quot;seeAlsoStyle&quot;:&quot;links&quot;}" data-template="article" data-breadcrumbs="cs.md|Computer Science &amp; Technology///dsa.md|Data Structures and Algorithms///data-structures.md|Data structures///search-tree.md|Search Tree"><div class="wrapper"><main class="panel _main"><header class="panel__header"><div class="container"><h3>Mind and Hand  Help</h3><div class="panel-trigger"></div></div></header><section class="panel__content"><div class="container"><article class="article" data-shortcut-switcher="inactive"><h1 data-toc="bst" id="bst.md">Binary Search Tree</h1><p id="u6jbqy_4">基础的二分搜索树</p><section class="chapter"><h2 id="u6jbqy_5" data-toc="u6jbqy_5">定义</h2><section class="chapter"><h3 id="u6jbqy_8" data-toc="u6jbqy_8">操作定义</h3><div class="code-block" data-lang="kotlin">
-interface BST&lt;K : Comparable&lt;K&gt;, V&gt; : KVOperation&lt;K, V&gt; {
+}</script><!-- End Schema.org --></head><body data-id="bst" data-main-title="Binary Search Tree" data-article-props="{&quot;seeAlsoStyle&quot;:&quot;links&quot;}" data-template="article" data-breadcrumbs="cs.md|Computer Science &amp; Technology///dsa.md|Data Structures and Algorithms///search.md|Search///search-tree.md|Search Tree"><div class="wrapper"><main class="panel _main"><header class="panel__header"><div class="container"><h3>Mind and Hand  Help</h3><div class="panel-trigger"></div></div></header><section class="panel__content"><div class="container"><article class="article" data-shortcut-switcher="inactive"><h1 data-toc="bst" id="bst.md">Binary Search Tree</h1><p id="-1c8x0t_4">二叉搜索树要求任一节点左子树中的键小于该节点，右子树中的键大于该节点。平均查找、插入和删除复杂度为 <code class="code" id="-1c8x0t_6">O(log n)</code> ；树退化时最坏为 <code class="code" id="-1c8x0t_7">O(n)</code>。</p><section class="chapter"><h2 id="current-implementation" data-toc="current-implementation">Current Implementation</h2><section class="chapter"><h3 id="bst-kt" data-toc="bst-kt">BST.kt</h3><p id="-1c8x0t_12">源码： <code class="code" id="-1c8x0t_14">tree/bst/BST.kt</code></p><div class="code-block" data-lang="kotlin">
+interface BST&lt;K : Comparable&lt;K&gt;, V&gt; : KVOperator&lt;K, V&gt; {
 
-    /**
-     * Retrieves the root node of the binary search tree (BST).
-     *
-     * @return the root node of the BST, or null if the tree is empty
-     */
-    fun getRoot(): BSTNode&lt;K, V&gt;?
+  /**
+   * Retrieves the root node of the binary search tree (BST).
+   * @return the root node of the BST, or null if the tree is empty
+   */
+  fun getRoot(): BSTNode&lt;K, V&gt;?
 
+  /**
+   * Determines whether the binary search tree (BST) contains the specified key.
+   * @param key the key to search for in the binary search tree
+   * @return true if the key exists in the tree, false otherwise
+   */
+  override fun contains(key: K): Boolean {
+    return getNode(key) != null
+  }
 
-    /**
-     * Determines whether the binary search tree (BST) contains the specified key.
-     *
-     * @param key the key to search for in the binary search tree
-     * @return true if the key exists in the tree, false otherwise
-     */
-    override fun contains(key: K): Boolean {
-        return getNode(key) != null
+  /**
+   * Retrieves the value associated with the specified key in the binary search tree (BST).
+   */
+  override fun get(key: K): V? {
+    return getNode(key)?.getValue()
+  }
+
+  /**
+   * Retrieves the node associated with the specified key in the binary search tree (BST).
+   * @param key the key to search for in the binary search tree
+   * @return the node corresponding to the given key, or null if the key is not found
+   */
+  fun getNode(key: K): BSTNode&lt;K, V&gt;? {
+    return getNode(getRoot(), key)
+  }
+
+  /**
+   * Determines whether the binary search tree (BST) satisfies the properties of a valid BST.
+   * @return true if the tree is a valid binary search tree, false otherwise
+   */
+  fun isBst(): Boolean {
+    return isBST(node = getRoot())
+  }
+
+  /**
+   * Retrieves the minimum node in the binary search tree (BST).
+   * @return the node containing the smallest key in the tree, or null if the tree is empty
+   */
+  fun getMin(): BSTNode&lt;K, V&gt;? {
+    return getMin(getRoot())
+  }
+
+  /**
+   * Retrieves the maximum node in the binary search tree (BST).
+   * @return the node containing the largest key in the tree, or null if the tree is empty
+   */
+  fun getMax(): BSTNode&lt;K, V&gt;? {
+    return getMax(getRoot())
+  }
+
+  fun preorder(action: (BSTNode&lt;K, V&gt;) -&gt; Unit) {
+    getRoot()?.preorder(action)
+  }
+
+  fun inorder(action: (BSTNode&lt;K, V&gt;) -&gt; Unit) {
+    getRoot()?.inorder(action)
+  }
+
+  fun postorder(action: (BSTNode&lt;K, V&gt;) -&gt; Unit) {
+    getRoot()?.postorder(action)
+  }
+
+  fun bfs(action: (BSTNode&lt;K, V&gt;) -&gt; Unit) {
+    getRoot()?.bfs(action)
+  }
+
+  fun &lt;K : Comparable&lt;K&gt;, V&gt; BSTNode&lt;K, V&gt;.preorder(action: (BSTNode&lt;K, V&gt;) -&gt; Unit) {
+    action(this)
+    getLeft()?.preorder(action)
+    getRight()?.preorder(action)
+  }
+
+  fun &lt;K : Comparable&lt;K&gt;, V&gt; BSTNode&lt;K, V&gt;.inorder(action: (BSTNode&lt;K, V&gt;) -&gt; Unit) {
+    getLeft()?.inorder(action)
+    action(this)
+    getRight()?.inorder(action)
+  }
+
+  fun &lt;K : Comparable&lt;K&gt;, V&gt; BSTNode&lt;K, V&gt;.postorder(action: (BSTNode&lt;K, V&gt;) -&gt; Unit) {
+    getLeft()?.postorder(action)
+    getRight()?.postorder(action)
+    action(this)
+  }
+
+  fun &lt;K : Comparable&lt;K&gt;, V&gt; BSTNode&lt;K, V&gt;.bfs(action: (BSTNode&lt;K, V&gt;) -&gt; Unit) {
+    val queue = ArrayDeque&lt;BSTNode&lt;K, V&gt;&gt;()
+    queue.add(this)
+
+    while (queue.isNotEmpty()) {
+      val first = queue.removeFirst()
+      action(first)
+
+      first.getLeft()?.let { queue.addLast(it) }
+      first.getRight()?.let { queue.addLast(it) }
     }
-
-    /**
-     * Retrieves the value associated with the specified key in the binary search tree (BST).
-     */
-    override fun get(key: K): V? {
-        return getNode(key)?.getValue()
-    }
-
-    /**
-     * Retrieves the node associated with the specified key in the binary search tree (BST).
-     *
-     * @param key the key to search for in the binary search tree
-     * @return the node corresponding to the given key, or null if the key is not found
-     */
-    fun getNode(key: K): BSTNode&lt;K, V&gt;? {
-        return getNode(getRoot(), key)
-    }
-
-    /**
-     * Determines whether the binary search tree (BST) satisfies the properties of a valid BST.
-     *
-     * @return true if the tree is a valid binary search tree, false otherwise
-     */
-    fun isBst(): Boolean {
-        return isBST(node = getRoot())
-    }
-
-    /**
-     * Retrieves the minimum node in the binary search tree (BST).
-     *
-     * @return the node containing the smallest key in the tree, or null if the tree is empty
-     */
-    fun getMin(): BSTNode&lt;K, V&gt;? {
-        return getMin(getRoot())
-    }
-
-    /**
-     * Retrieves the maximum node in the binary search tree (BST).
-     *
-     * @return the node containing the largest key in the tree, or null if the tree is empty
-     */
-    fun getMax(): BSTNode&lt;K, V&gt;? {
-        return getMax(getRoot())
-    }
-
-    fun preorder(action: (BSTNode&lt;K, V&gt;) -&gt; Unit) {
-        getRoot()?.preorder(action)
-    }
-
-    fun inorder(action: (BSTNode&lt;K, V&gt;) -&gt; Unit) {
-        getRoot()?.inorder(action)
-    }
-
-    fun postorder(action: (BSTNode&lt;K, V&gt;) -&gt; Unit) {
-        getRoot()?.postorder(action)
-    }
-
-    fun bfs(action: (BSTNode&lt;K, V&gt;) -&gt; Unit) {
-        getRoot()?.bfs(action)
-    }
-
-    fun &lt;K : Comparable&lt;K&gt;, V&gt; BSTNode&lt;K, V&gt;.preorder(action: (BSTNode&lt;K, V&gt;) -&gt; Unit) {
-        action.apply { this }
-
-        getLeft()?.preorder(action)
-        getRight()?.preorder(action)
-    }
-
-    fun &lt;K : Comparable&lt;K&gt;, V&gt; BSTNode&lt;K, V&gt;.inorder(action: (BSTNode&lt;K, V&gt;) -&gt; Unit) {
-        getLeft()?.inorder(action)
-        action.apply { this }
-        getRight()?.inorder(action)
-    }
-
-    fun &lt;K : Comparable&lt;K&gt;, V&gt; BSTNode&lt;K, V&gt;.postorder(action: (BSTNode&lt;K, V&gt;) -&gt; Unit) {
-        getLeft()?.postorder(action)
-        getRight()?.postorder(action)
-        action.apply { this }
-    }
-
-    fun &lt;K : Comparable&lt;K&gt;, V&gt; BSTNode&lt;K, V&gt;.bfs(action: (BSTNode&lt;K, V&gt;) -&gt; Unit) {
-        val queue = ArrayDeque&lt;BSTNode&lt;K, V&gt;&gt;()
-        queue.add(this)
-
-        while (queue.isNotEmpty()) {
-            val current = queue.removeFirst()
-            action(current)
-
-            current.getLeft()?.let { queue.addLast(it) }
-            current.getRight()?.let { queue.addLast(it) }
-        }
-    }
+  }
 
 }
-</div></section><section class="chapter"><h3 id="u6jbqy_9" data-toc="u6jbqy_9">节点定义</h3><div class="code-block" data-lang="kotlin">
+</div></section><section class="chapter"><h3 id="bstnode-kt" data-toc="bstnode-kt">BSTNode.kt</h3><p id="-1c8x0t_15">源码： <code class="code" id="-1c8x0t_17">tree/bst/BSTNode.kt</code></p><div class="code-block" data-lang="kotlin">
+/**
+ * BSTNode
+ */
 interface BSTNode&lt;K : Comparable&lt;K&gt;, V&gt; {
 
-    /**
-     * 节点高度，定义为节点到根节点的高度
-     */
-    fun getHeight(): Int
+  /**
+   * 节点高度，定义为节点到根节点的高度
+   */
+  fun getHeight(): Int
 
-    fun setHeight(height: Int): BSTNode&lt;K, V&gt;
+  fun setHeight(height: Int): BSTNode&lt;K, V&gt;
 
-    fun getKey(): K
+  fun getKey(): K
 
-    fun setKey(key: K): BSTNode&lt;K, V&gt;
+  fun setKey(key: K): BSTNode&lt;K, V&gt;
 
-    fun getValue(): V
+  fun getValue(): V
 
-    fun setValue(value: V): BSTNode&lt;K, V&gt;
+  fun setValue(value: V): BSTNode&lt;K, V&gt;
 
-    fun getLeft(): BSTNode&lt;K, V&gt;?
+  fun getLeft(): BSTNode&lt;K, V&gt;?
 
-    fun setLeft(left: BSTNode&lt;K, V&gt;?): BSTNode&lt;K, V&gt;
+  fun setLeft(left: BSTNode&lt;K, V&gt;?): BSTNode&lt;K, V&gt;
 
-    fun getRight(): BSTNode&lt;K, V&gt;?
+  fun getRight(): BSTNode&lt;K, V&gt;?
 
-    fun setRight(right: BSTNode&lt;K, V&gt;?): BSTNode&lt;K, V&gt;
+  fun setRight(right: BSTNode&lt;K, V&gt;?): BSTNode&lt;K, V&gt;
 
-    fun isLeaf(): Boolean {
-        return this.getLeft() == null &amp;&amp; this.getRight() == null
-    }
+  fun isLeaf(): Boolean {
+    return this.getLeft() == null &amp;&amp; this.getRight() == null
+  }
 }
-</div></section></section><section class="chapter"><h2 id="u6jbqy_6" data-toc="u6jbqy_6">实现</h2><div class="code-block" data-lang="kotlin">
+</div></section><section class="chapter"><h3 id="bstutils-kt" data-toc="bstutils-kt">BSTUtils.kt</h3><p id="-1c8x0t_18">源码： <code class="code" id="-1c8x0t_20">tree/bst/BSTUtils.kt</code></p><div class="code-block" data-lang="kotlin">
+const val DEFAULT_HEIGHT = 1
+
+internal fun &lt;K : Comparable&lt;K&gt;, V&gt; isBST(node: BSTNode&lt;K, V&gt;?): Boolean {
+  return isBSTHelper(node, null, null)
+}
+
+private fun &lt;K : Comparable&lt;K&gt;, V&gt; isBSTHelper(node: BSTNode&lt;K, V&gt;?, minVal: K?, maxVal: K?): Boolean {
+  if (node == null) return true
+  val key = node.getKey()
+
+  // 检查当前节点是否违反边界条件
+  if ((minVal != null &amp;&amp; key &lt;= minVal) || (maxVal != null &amp;&amp; key &gt;= maxVal)) {
+    return false
+  }
+
+  // 递归检查左右子树，更新边界
+  return isBSTHelper(node.getLeft(), minVal, key) &amp;&amp;
+      isBSTHelper(node.getRight(), key, maxVal)
+}
+
+internal fun &lt;K : Comparable&lt;K&gt;, V&gt; getNode(node: BSTNode&lt;K, V&gt;?, k: K): BSTNode&lt;K, V&gt;? {
+  return if (node == null) {
+    null
+  } else {
+    when {
+      k &lt; node.getKey() -&gt; getNode(node.getLeft(), k)
+      k &gt; node.getKey() -&gt; getNode(node.getRight(), k)
+      else -&gt; node // Found the node
+    }
+  }
+}
+
+internal fun &lt;K : Comparable&lt;K&gt;, V&gt; getMin(node: BSTNode&lt;K, V&gt;?): BSTNode&lt;K, V&gt;? {
+  return node?.getLeft()?.let { getMin(it) } ?: node
+}
+
+internal fun &lt;K : Comparable&lt;K&gt;, V&gt; getMax(node: BSTNode&lt;K, V&gt;?): BSTNode&lt;K, V&gt;? {
+  return node?.getRight()?.let { getMax(it) } ?: node
+}
+
+internal fun &lt;K : Comparable&lt;K&gt;, V&gt; printBST(root: BSTNode&lt;K, V&gt;?) {
+  if (root == null) {
+    println(&quot;empty tree&quot;)
+    return
+  }
+
+  val height = root.getHeight()
+  val rows = height * 2
+  val cols = (1 shl (height + 1)) - 1  // 2^(height+1) - 1
+
+  val matrix = Array(rows) { Array(cols) { &quot; &quot; } }
+
+  // 填充矩阵
+  fillMatrixSimplified(matrix, root, 0, 0, cols - 1)
+
+  // 打印矩阵，跳过全空行
+  matrix.forEach { row -&gt;
+    if (row.any { it != &quot; &quot; }) {
+      row.forEach { print(it) }
+      println()
+    }
+  }
+}
+
+private fun &lt;K : Comparable&lt;K&gt;, V&gt; fillMatrixSimplified(
+  matrix: Array&lt;Array&lt;String&gt;&gt;,
+  node: BSTNode&lt;K, V&gt;?,
+  row: Int,
+  left: Int,
+  right: Int,
+) {
+  if (node == null || row &gt;= matrix.size) {
+    return
+  }
+
+  val mid = (left + right) / 2
+
+  // 放置当前节点
+  if (mid in matrix[0].indices) {
+    matrix[row][mid] = node.getKey().toString()
+  }
+
+  // 间隔行用于放置连接线
+  val nextRow = row + 2
+
+  // 处理左子树
+  node.getLeft()?.let { leftChild -&gt;
+    // 计算左子节点的位置
+    val leftChildMid = (left + mid - 1) / 2
+
+    // 绘制简化连接线 (只在中间位置放一个/)
+    if (row + 1 &lt; matrix.size) {
+      val connectorPos = (mid + leftChildMid) / 2
+      if (connectorPos in matrix[0].indices) {
+        matrix[row + 1][connectorPos] = &quot;/&quot;
+      }
+    }
+
+    // 递归填充左子树
+    fillMatrixSimplified(matrix, leftChild, nextRow, left, mid - 1)
+  }
+
+  // 处理右子树
+  node.getRight()?.let { rightChild -&gt;
+    // 计算右子节点的位置
+    val rightChildMid = (mid + 1 + right) / 2
+
+    // 绘制简化连接线 (只在中间位置放一个\)
+    if (row + 1 &lt; matrix.size) {
+      val connectorPos = (mid + rightChildMid) / 2
+      if (connectorPos in matrix[0].indices) {
+        matrix[row + 1][connectorPos] = &quot;\\&quot;
+      }
+    }
+
+    // 递归填充右子树
+    fillMatrixSimplified(matrix, rightChild, nextRow, mid + 1, right)
+  }
+
+}
+</div></section><section class="chapter"><h3 id="basicbst-kt" data-toc="basicbst-kt">BasicBST.kt</h3><p id="-1c8x0t_21">源码： <code class="code" id="-1c8x0t_23">tree/bst/BasicBST.kt</code></p><div class="code-block" data-lang="kotlin">
+/**
+ * BasicBST
+ */
 class BasicBST&lt;K : Comparable&lt;K&gt;, V&gt; : BST&lt;K, V&gt; {
-    private var root: BSTNode&lt;K, V&gt;? = null
-    private var count = 0
+  private var root: BSTNode&lt;K, V&gt;? = null
+  private var count = 0
 
-    override fun size(): Int = this.count
+  override fun size(): Int = this.count
 
-    override fun getRoot(): BSTNode&lt;K, V&gt;? = this.root
+  override fun getRoot(): BSTNode&lt;K, V&gt;? = this.root
 
-    /**
-     * Adds a key-value pair to the binary search tree (BST). If the key already exists,
-     * updates the value associated with the key.
-     *
-     * @param key the key to insert or update in the BST
-     * @param value the value to associate with the specified key
-     */
-    override fun insert(key: K, value: V) {
-        root = add(root, key, value)
+  /**
+   * Adds a key-value pair to the binary search tree (BST). If the key already exists,
+   * updates the value associated with the key.
+   * @param key the key to insert or update in the BST
+   * @param value the value to associate with the specified key
+   */
+  override fun insert(key: K, value: V) {
+    root = add(root, key, value)
+  }
+
+  private fun add(node: BSTNode&lt;K, V&gt;?, k: K, v: V): BSTNode&lt;K, V&gt; {
+    if (node == null) {
+      count++
+      return BasicBSTNode(k, v)
     }
 
-    private fun add(node: BSTNode&lt;K, V&gt;?, k: K, v: V): BSTNode&lt;K, V&gt; {
-        if (node == null) {
-            count++
-            return BasicBSTNode(k, v)
-        }
+    when {
+      k &lt; node.getKey() -&gt; node.setLeft(add(node.getLeft(), k, v))
 
-        when {
-            k &lt; node.getKey() -&gt; node.setLeft(add(node.getLeft(), k, v))
+      k &gt; node.getKey() -&gt; node.setRight(add(node.getRight(), k, v))
 
-            k &gt; node.getKey() -&gt; node.setRight(add(node.getRight(), k, v))
-
-            else -&gt; {
-                node.setValue(v)
-            }
-        }
-        return node.updateHeight()
+      else -&gt; {
+        node.setValue(v)
+      }
     }
+    return node.updateHeight()
+  }
 
-    override fun remove(k: K): V? {
-        return getNode(k)?.let { node -&gt;
-            val rtV = node.getValue()
-            root = remove(root, k)
-            rtV
-        }
+  override fun remove(key: K): V? {
+    return getNode(key)?.let { node -&gt;
+      val rtV = node.getValue()
+      root = doRemove(root, key)
+      rtV
     }
+  }
 
-    private fun remove(node: BSTNode&lt;K, V&gt;?, k: K): BSTNode&lt;K, V&gt;? {
-        if (node == null) {
-            return null
-        }
-        when {
-            k &lt; node.getKey() -&gt; {
-                node.setLeft(remove(node.getLeft(), k))
-            }
-
-            k &gt; node.getKey() -&gt; {
-                node.setRight(remove(node.getRight(), k))
-            }
-
-            else -&gt; {
-                // Node to be removed found
-                if (node.getLeft() == null &amp;&amp; node.getRight() == null) {
-                    // 左右子节点都为空
-                    this.count--
-                    return null
-                }
-                // 剩余三种情况  左不空+右不空 左不空+右空  左空+右不空
-                node.getLeft()?.let { leftChild -&gt;
-                    // 左不空+右不空 左不空+右空
-                    getMax(leftChild)!!.let { leftMax -&gt;
-                        node.setKey(leftMax.getKey())
-                            .setValue(leftMax.getValue())
-                            .setLeft(remove(leftChild, leftMax.getKey()))
-                    }
-                } ?: run {
-                    // 左空+右不空：选择右子树最小值作为替换节点
-                    getMin(node.getRight())!!.let { rightMin -&gt;
-                        node.setKey(rightMin.getKey())
-                            .setValue(rightMin.getValue())
-                            .setRight(remove(node.getRight(), rightMin.getKey()))
-                    }
-                }
-            }
-        }
-        return node.updateHeight()
+  /**
+   * Removes a node with the specified key from the binary search tree (BST).
+   * If the key exists, the corresponding node is removed, and the tree structure
+   * is adjusted to maintain the BST properties.
+   * @param node the current node being evaluated during the recursive traversal
+   * @param k the key of the node to be removed
+   * @return the updated subtree after removing the specified node
+   */
+  private fun doRemove(node: BSTNode&lt;K, V&gt;?, k: K): BSTNode&lt;K, V&gt;? {
+    if (node == null) {
+      return null
     }
+    when {
+      k &lt; node.getKey() -&gt; {
+        node.setLeft(doRemove(node.getLeft(), k))
+      }
 
-    override fun clear() {
-        this.root = null
-        this.count = 0
+      k &gt; node.getKey() -&gt; {
+        node.setRight(doRemove(node.getRight(), k))
+      }
+
+      else -&gt; {
+        // Node to be removed found
+        if (node.getLeft() == null &amp;&amp; node.getRight() == null) {
+          // 左右子节点都为空
+          this.count--
+          return null
+        }
+        // 剩余三种情况  左不空+右不空 左不空+右空  左空+右不空
+        node.getLeft()?.let { leftChild -&gt;
+          // 左不空+右不空 左不空+右空
+          getMax(leftChild)!!.let { leftMax -&gt;
+            node.setKey(leftMax.getKey())
+              .setValue(leftMax.getValue())
+              .setLeft(doRemove(leftChild, leftMax.getKey()))
+          }
+        } ?: run {
+          // 左空+右不空：选择右子树最小值作为替换节点
+          getMin(node.getRight())!!.let { rightMin -&gt;
+            node.setKey(rightMin.getKey())
+              .setValue(rightMin.getValue())
+              .setRight(doRemove(node.getRight(), rightMin.getKey()))
+          }
+        }
+      }
     }
+    return node.updateHeight()
+  }
+
+  override fun clear() {
+    this.root = null
+    this.count = 0
+  }
 }
 
 internal class BasicBSTNode&lt;K : Comparable&lt;K&gt;, V&gt; : BSTNode&lt;K, V&gt; {
-    private var height: Int
-    private var key: K
-    private var value: V
-    private var left: BSTNode&lt;K, V&gt;?
-    private var right: BSTNode&lt;K, V&gt;?
+  private var height: Int
+  private var key: K
+  private var value: V
+  private var left: BSTNode&lt;K, V&gt;?
+  private var right: BSTNode&lt;K, V&gt;?
 
-    internal constructor(key: K, value: V) {
-        this.key = key
-        this.value = value
-        this.height = DEFAULT_HEIGHT
-        this.left = null
-        this.right = null
-    }
+  internal constructor(key: K, value: V) {
+    this.key = key
+    this.value = value
+    this.height = DEFAULT_HEIGHT
+    this.left = null
+    this.right = null
+  }
 
-    override fun getHeight(): Int = height
+  override fun getHeight(): Int = height
 
-    override fun setHeight(height: Int): BSTNode&lt;K, V&gt; {
-        this.height = height
-        return this
-    }
+  override fun setHeight(height: Int): BSTNode&lt;K, V&gt; {
+    this.height = height
+    return this
+  }
 
-    override fun getKey(): K = this.key
+  override fun getKey(): K = this.key
 
-    override fun setKey(key: K): BSTNode&lt;K, V&gt; = this.apply {
-        this.key = key
-    }
+  override fun setKey(key: K): BSTNode&lt;K, V&gt; = this.apply {
+    this.key = key
+  }
 
-    override fun getValue(): V = this.value
+  override fun getValue(): V = this.value
 
-    override fun setValue(value: V): BSTNode&lt;K, V&gt; = this.apply {
-        this.value = value
-    }
+  override fun setValue(value: V): BSTNode&lt;K, V&gt; = this.apply {
+    this.value = value
+  }
 
-    override fun getLeft(): BSTNode&lt;K, V&gt;? = this.left
+  override fun getLeft(): BSTNode&lt;K, V&gt;? = this.left
 
-    override fun setLeft(left: BSTNode&lt;K, V&gt;?): BSTNode&lt;K, V&gt; = this.apply {
-        this.left = left
-    }
+  override fun setLeft(left: BSTNode&lt;K, V&gt;?): BSTNode&lt;K, V&gt; = this.apply {
+    this.left = left
+  }
 
-    override fun getRight(): BSTNode&lt;K, V&gt;? = this.right
+  override fun getRight(): BSTNode&lt;K, V&gt;? = this.right
 
-    override fun setRight(right: BSTNode&lt;K, V&gt;?): BSTNode&lt;K, V&gt; = this.apply {
-        this.right = right
-    }
+  override fun setRight(right: BSTNode&lt;K, V&gt;?): BSTNode&lt;K, V&gt; = this.apply {
+    this.right = right
+  }
 
-    override fun toString(): String {
-        return &quot;BSTNode(key=$key, value=$value)&quot;
-    }
+  override fun toString(): String {
+    return &quot;BSTNode(key=$key, value=$value)&quot;
+  }
 
 }
-</div></section><section class="chapter"><h2 id="u6jbqy_7" data-toc="u6jbqy_7">问题</h2><p id="u6jbqy_13">普通的二分搜索树在极端情况下会退化成链表</p></section><div class="last-modified">19 August 2026</div><div data-feedback-placeholder="true"></div><div class="navigation-links _bottom"><a href="search-tree.html" class="navigation-links__prev">Search Tree</a><a href="avl.html" class="navigation-links__next">AVL Tree</a></div></article><div id="disqus_thread"></div></div></section></main></div><script src="https://resources.jetbrains.com/writerside/apidoc/6.27.0-b1156/app.js"></script></body></html>
+</div></section></section><div class="last-modified">20 August 2026</div><div data-feedback-placeholder="true"></div><div class="navigation-links _bottom"><a href="search-tree.html" class="navigation-links__prev">Search Tree</a><a href="avl.html" class="navigation-links__next">AVL Tree</a></div></article><div id="disqus_thread"></div></div></section></main></div><script src="https://resources.jetbrains.com/writerside/apidoc/6.27.0-b1156/app.js"></script></body></html>

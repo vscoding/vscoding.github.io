@@ -1,5 +1,5 @@
 <!DOCTYPE html SYSTEM "about:legacy-compat">
-<html lang="en-US" data-preset="contrast" data-primary-color="#307FFF" data-link-color="#307FFF" data-link-dark-color="#90C695" data-content-max-width="1250" data-resizable-sidebar="true" data-sidebar-width="300"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="UTF-8"><meta name="built-on" content="2026-08-19T01:49:31.990460913"><link rel="canonical" href="https://blog.kubectl.org/dijkstra.html" data-react-helmet="true"><title>Single-Source Shortest Path | Mind and Hand</title><script type="application/json" id="virtual-toc-data">[]</script><script type="application/json" id="topic-shortcuts"></script><link href="https://resources.jetbrains.com/writerside/apidoc/6.27.0-b1156/app.css" rel="stylesheet"><link href="static/custom.css" rel="stylesheet"><meta name="msapplication-TileColor" content="#000000"><link rel="apple-touch-icon" sizes="180x180" href="https://jetbrains.com/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="https://jetbrains.com/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="https://jetbrains.com/favicon-16x16.png"><meta name="msapplication-TileImage" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-144x144.png"><meta name="msapplication-square70x70logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-70x70.png"><meta name="msapplication-square150x150logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-150x150.png"><meta name="msapplication-wide310x150logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-310x150.png"><meta name="msapplication-square310x310logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-310x310.png"><meta name="image" content=""><!-- Open Graph --><meta property="og:title" content="Single-Source Shortest Path | Mind and Hand"><meta property="og:description" content=""><meta property="og:image" content=""><meta property="og:site_name" content="Mind and Hand Help"><meta property="og:type" content="website"><meta property="og:locale" content="en_US"><meta property="og:url" content="https://blog.kubectl.org/dijkstra.html"><!-- End Open Graph --><!-- Twitter Card --><meta name="twitter:card" content="summary_large_image"><meta name="twitter:site" content=""><meta name="twitter:title" content="Single-Source Shortest Path | Mind and Hand"><meta name="twitter:description" content=""><meta name="twitter:creator" content=""><meta name="twitter:image:src" content=""><!-- End Twitter Card --><!-- Schema.org WebPage --><script type="application/ld+json">{
+<html lang="en-US" data-preset="contrast" data-primary-color="#307FFF" data-link-color="#307FFF" data-link-dark-color="#90C695" data-content-max-width="1250" data-resizable-sidebar="true" data-sidebar-width="300"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="UTF-8"><meta name="built-on" content="2026-08-20T08:42:33.05274262"><link rel="canonical" href="https://blog.kubectl.org/dijkstra.html" data-react-helmet="true"><title>Single-Source Shortest Path | Mind and Hand</title><script type="application/json" id="virtual-toc-data">[{"id":"-3do4i_4","level":0,"title":"当前实现","anchor":"#-3do4i_4"}]</script><script type="application/json" id="topic-shortcuts"></script><link href="https://resources.jetbrains.com/writerside/apidoc/6.27.0-b1156/app.css" rel="stylesheet"><link href="static/custom.css" rel="stylesheet"><meta name="msapplication-TileColor" content="#000000"><link rel="apple-touch-icon" sizes="180x180" href="https://jetbrains.com/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="https://jetbrains.com/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="https://jetbrains.com/favicon-16x16.png"><meta name="msapplication-TileImage" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-144x144.png"><meta name="msapplication-square70x70logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-70x70.png"><meta name="msapplication-square150x150logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-150x150.png"><meta name="msapplication-wide310x150logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-310x150.png"><meta name="msapplication-square310x310logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-310x310.png"><meta name="image" content=""><!-- Open Graph --><meta property="og:title" content="Single-Source Shortest Path | Mind and Hand"><meta property="og:description" content=""><meta property="og:image" content=""><meta property="og:site_name" content="Mind and Hand Help"><meta property="og:type" content="website"><meta property="og:locale" content="en_US"><meta property="og:url" content="https://blog.kubectl.org/dijkstra.html"><!-- End Open Graph --><!-- Twitter Card --><meta name="twitter:card" content="summary_large_image"><meta name="twitter:site" content=""><meta name="twitter:title" content="Single-Source Shortest Path | Mind and Hand"><meta name="twitter:description" content=""><meta name="twitter:creator" content=""><meta name="twitter:image:src" content=""><!-- End Twitter Card --><!-- Schema.org WebPage --><script type="application/ld+json">{
     "@context": "http://schema.org",
     "@type": "WebPage",
     "@id": "https://blog.kubectl.org/dijkstra.html#webpage",
@@ -13,240 +13,251 @@
     "@id": "https://blog.kubectl.org/#website",
     "url": "https://blog.kubectl.org/",
     "name": "Mind and Hand Help"
-}</script><!-- End Schema.org --></head><body data-id="dijkstra" data-main-title="Single-Source Shortest Path" data-article-props="{&quot;seeAlsoStyle&quot;:&quot;links&quot;}" data-template="article" data-breadcrumbs="cs.md|Computer Science &amp; Technology///dsa.md|Data Structures and Algorithms///graph.md|Graph Theory"><div class="wrapper"><main class="panel _main"><header class="panel__header"><div class="container"><h3>Mind and Hand  Help</h3><div class="panel-trigger"></div></div></header><section class="panel__content"><div class="container"><article class="article" data-shortcut-switcher="inactive"><h1 data-toc="dijkstra" id="dijkstra.md">Single-Source Shortest Path</h1><p id="-sq6sfd_3">Dijkstra's algorithm is a classic algorithm used to find the shortest path from a starting node to all other nodes in a weighted graph with non-negative edge weights. It is widely used in various applications, including network routing, geographic mapping, and game development.</p><p id="-sq6sfd_4"><span class="control" id="-sq6sfd_6">具体实现</span></p><div class="code-block" data-lang="kotlin">
-class Dijkstra(graph: Graph) : GraphCompute(graph) {
+}</script><!-- End Schema.org --></head><body data-id="dijkstra" data-main-title="Single-Source Shortest Path" data-article-props="{&quot;seeAlsoStyle&quot;:&quot;links&quot;}" data-template="article" data-breadcrumbs="cs.md|Computer Science &amp; Technology///dsa.md|Data Structures and Algorithms///graph.md|Graph Theory///algorithms.md|Graph Algorithms"><div class="wrapper"><main class="panel _main"><header class="panel__header"><div class="container"><h3>Mind and Hand  Help</h3><div class="panel-trigger"></div></div></header><section class="panel__content"><div class="container"><article class="article" data-shortcut-switcher="inactive"><h1 data-toc="dijkstra" id="dijkstra.md">Single-Source Shortest Path</h1><p id="-3do4i_3">Dijkstra 算法从指定源点出发，通过最小优先队列逐步确定到其他顶点的最短距离。它适用于边权非负的图；使用邻接表和优先队列时，典型复杂度为 <code class="code" id="-3do4i_5">O((V + E) log V)</code>。</p><section class="chapter"><h2 id="-3do4i_4" data-toc="-3do4i_4">当前实现</h2><section class="chapter"><h3 id="dijkstra-kt" data-toc="dijkstra-kt">Dijkstra.kt</h3><p id="-3do4i_7">源码： <code class="code" id="-3do4i_9">graph/compute/Dijkstra.kt</code></p><div class="code-block" data-lang="kotlin">
+/**
+ * Dijkstra 最短路径算法
+ */
+class Dijkstra(graph: Graph) : GraphChecker(graph) {
 
-    init {
-        checkEmpty()
+  init {
+    checkEmpty()
+  }
+
+  /**
+   * 计算从源点到所有其他点的最短路径
+   */
+  fun compute(source: String): Result {
+    return compute(source, null)
+  }
+
+  /**
+   * 计算最短路径，支持断点过滤
+   * @param source 源点名称
+   * @param brokenFilter 需要过滤的断点集合
+   */
+  fun compute(source: String, brokenFilter: Set&lt;String&gt;?): Result {
+    val sourceV = checkVertex(source, true)
+
+    // 处理断点过滤器
+    val validBrokenFilter = brokenFilter?.let { filter -&gt;
+      filter.map { name -&gt; checkVertex(name, false) }
+        .map { it.name }
+        .filter { it != sourceV.name }
+        .toMutableSet()
+        .takeIf { it.isNotEmpty() }
     }
 
-    fun compute(source: String): Result {
-        return compute(source, null)
+    val record = Result(sourceV, graph)
+
+    // 初始化最小堆：局部最优更新到全局最优
+    val minHeap = graph.adjacentEdges(sourceV.id).map { edge -&gt;
+      val weight = if (graph.isWeighted()) edge.weight else DEFAULT_UNWEIGHTED_VALUE
+      TotalWeight(edge, weight).also { tw -&gt;
+        val otherVertexId = tw.edge.to.id
+        record.dynamicDistanceToSource[otherVertexId] = tw.totalWeight
+        record.dynamicPathFrom[otherVertexId] = tw.edge
+      }
+    }.let { list -&gt;
+      PriorityQueue&lt;TotalWeight&gt;(compareBy { it.totalWeight }).apply {
+        addAll(list)
+      }
     }
 
-    fun compute(source: String, brokenFilter: Set&lt;String&gt;?): Result {
-        val sourceV = checkVertex(source, true)
+    // 设置源点
+    record.calculateCompleted[sourceV.id] = true
+    record.dynamicDistanceToSource[sourceV.id] = 0.0
+    record.dynamicPathFrom[sourceV.id] = null
 
-        // 处理断点过滤器
-        val validBrokenFilter = brokenFilter?.let { filter -&gt;
-            filter.map { name -&gt; checkVertex(name, false) }
-                .map { it.name }
-                .filter { it != sourceV.name }
-                .toMutableSet()
-                .takeIf { it.isNotEmpty() }
+    // Dijkstra 主循环
+    while (minHeap.isNotEmpty()) {
+      val min = minHeap.poll()
+      if (!compute(min, minHeap, record, validBrokenFilter)) {
+        break
+      }
+    }
+    return record
+  }
+
+  /**
+   * 单步计算逻辑
+   */
+  private fun compute(
+    min: TotalWeight,
+    minHeap: PriorityQueue&lt;TotalWeight&gt;,
+    record: Result,
+    brokenFilter: MutableSet&lt;String&gt;?,
+  ): Boolean {
+    val completed = record.calculateCompleted
+    val dts = record.dynamicDistanceToSource
+    val pathFrom = record.dynamicPathFrom
+
+    val pivotVertex = min.edge.to
+    if (completed[pivotVertex.id]) {
+      return true
+    }
+
+    val toW = dts[pivotVertex.id]!!
+    val updatedEdges = graph.adjacentEdges(pivotVertex.id)
+
+    updatedEdges.forEach { updatedEdge -&gt;
+      val toto = updatedEdge.to
+      if (completed[toto.id]) {
+        return@forEach
+      }
+      val updatedWeight = updatedEdge.weight + toW
+      val totoDis = dts[toto.id]
+      when {
+        totoDis == null -&gt; {
+          // 没有到达过
+          dts[toto.id] = updatedWeight
+          pathFrom[toto.id] = updatedEdge
+          minHeap.add(TotalWeight(updatedEdge, updatedWeight))
         }
 
-        val record = Result(sourceV, graph)
-
-        // 初始化最小堆：局部最优更新到全局最优
-        val minHeap = graph.adjacentEdges(sourceV.id).map { edge -&gt;
-            val weight = if (graph.isWeighted()) edge.weight else DEFAULT_UNWEIGHTED_VALUE
-            TotalWeight(edge, weight).also { tw -&gt;
-                val otherVertexId = tw.edge.to.id
-                record.dynamicDistanceToSource[otherVertexId] = tw.totalWeight
-                record.dynamicPathFrom[otherVertexId] = tw.edge
-            }
-        }.let { list -&gt;
-            PriorityQueue&lt;TotalWeight&gt;(compareBy { it.totalWeight }).apply {
-                addAll(list)
-            }
+        updatedWeight &lt; totoDis -&gt; {
+          // 更新最短路径
+          dts[toto.id] = updatedWeight
+          pathFrom[toto.id] = updatedEdge
+          minHeap.add(TotalWeight(updatedEdge, updatedWeight))
         }
+      }
+    }
 
-        // 设置源点
-        record.calculateCompleted[sourceV.id] = true
-        record.dynamicDistanceToSource[sourceV.id] = 0.0
-        record.dynamicPathFrom[sourceV.id] = null
+    completed[pivotVertex.id] = true
+    return !canBeBroken(brokenFilter, pivotVertex.name)
+  }
 
-        // Dijkstra 主循环
-        while (minHeap.isNotEmpty()) {
-            val min = minHeap.poll()
-            if (!compute(min, minHeap, record, validBrokenFilter)) {
-                break
-            }
-        }
-        return record
+  /**
+   * 检查是否可以提前终止（所有断点都已处理）
+   */
+  private fun canBeBroken(breakFilter: MutableSet&lt;String&gt;?, complete: String): Boolean {
+    if (breakFilter == null) {
+      return false
+    }
+    breakFilter.remove(complete)
+    return breakFilter.isEmpty()
+  }
+
+  /**
+   * 总权重数据类
+   */
+  private data class TotalWeight(val edge: Edge, val totalWeight: Double)
+
+  /**
+   * Dijkstra算法计算结果
+   */
+  class Result internal constructor(
+    private val source: Vertex,
+    private val graph: Graph,
+  ) {
+    internal val calculateCompleted = BooleanArray(graph.getVertexesNum())
+    internal val dynamicDistanceToSource = arrayOfNulls&lt;Double&gt;(graph.getVertexesNum())
+    internal val dynamicPathFrom = arrayOfNulls&lt;Edge&gt;(graph.getVertexesNum())
+
+    /**
+     * 获取到目标点的最短路径
+     */
+    fun getRoutes(destName: String): List&lt;Edge&gt; {
+      var destV = graph.vertexIndex().getVertex(destName) ?: return emptyList()
+
+      if (destV.id &gt;= dynamicPathFrom.size) {
+        return emptyList()
+      }
+
+      val reversedRoutes = mutableListOf&lt;Edge&gt;()
+      while (source.name != destV.name) {
+        val edge = dynamicPathFrom[destV.id] ?: break
+        reversedRoutes.add(edge)
+        destV = edge.from
+      }
+
+      return reversedRoutes.reversed()
     }
 
     /**
-     * 单步计算逻辑
+     * 获取到目标点的最短距离
      */
-    private fun compute(
-        min: TotalWeight,
-        minHeap: PriorityQueue&lt;TotalWeight&gt;,
-        record: Result,
-        brokenFilter: MutableSet&lt;String&gt;?
-    ): Boolean {
-        val completed = record.calculateCompleted
-        val dts = record.dynamicDistanceToSource
-        val pathFrom = record.dynamicPathFrom
-
-        val pivotVertex = min.edge.to
-        if (completed[pivotVertex.id]) {
-            return true
-        }
-
-        val toW = dts[pivotVertex.id]!!
-        val updatedEdges = graph.adjacentEdges(pivotVertex.id)
-
-        updatedEdges.forEach { updatedEdge -&gt;
-            val toto = updatedEdge.to
-            if (completed[toto.id]) {
-                return@forEach
-            }
-            val updatedWeight = updatedEdge.weight + toW
-            val totoDis = dts[toto.id]
-            when {
-                totoDis == null -&gt; {
-                    // 没有到达过
-                    dts[toto.id] = updatedWeight
-                    pathFrom[toto.id] = updatedEdge
-                    minHeap.add(TotalWeight(updatedEdge, updatedWeight))
-                }
-
-                updatedWeight &lt; totoDis -&gt; {
-                    // 更新最短路径
-                    dts[toto.id] = updatedWeight
-                    pathFrom[toto.id] = updatedEdge
-                    minHeap.add(TotalWeight(updatedEdge, updatedWeight))
-                }
-            }
-        }
-
-        completed[pivotVertex.id] = true
-        return !canBeBroken(brokenFilter, pivotVertex.name)
+    fun getDistance(destName: String): Double? {
+      val destV = graph.vertexIndex().getVertex(destName) ?: return null
+      return dynamicDistanceToSource[destV.id]
     }
 
     /**
-     * 检查是否可以提前终止（所有断点都已处理）
+     * 检查是否有到目标点的路径
      */
-    private fun canBeBroken(breakFilter: MutableSet&lt;String&gt;?, complete: String): Boolean {
-        if (breakFilter == null) {
-            return false
-        }
-        breakFilter.remove(complete)
-        return breakFilter.isEmpty()
+    fun hasPath(destName: String): Boolean {
+      return getDistance(destName) != null
     }
 
     /**
-     * 总权重数据类
+     * 获取所有可达点的最短距离
      */
-    private data class TotalWeight(val edge: Edge, val totalWeight: Double)
+    fun getAllDistances(): Map&lt;String, Double&gt; {
+      return buildMap {
+        graph.getVertexes().forEach { vertex -&gt;
+          dynamicDistanceToSource[vertex.id]?.let { distance -&gt;
+            put(vertex.name, distance)
+          }
+        }
+      }
+    }
 
     /**
-     * Dijkstra算法计算结果
+     * 打印路径信息
      */
-    class Result internal constructor(
-        private val source: Vertex,
-        private val graph: Graph
-    ) {
-        internal val calculateCompleted = BooleanArray(graph.getVertexesNum())
-        internal val dynamicDistanceToSource = arrayOfNulls&lt;Double&gt;(graph.getVertexesNum())
-        internal val dynamicPathFrom = arrayOfNulls&lt;Edge&gt;(graph.getVertexesNum())
+    fun printRoutes(edges: List&lt;Edge&gt;) {
+      if (edges.isEmpty()) {
+        println(&quot;No route found&quot;)
+        return
+      }
 
-        /**
-         * 获取到目标点的最短路径
-         */
-        fun getRoutes(destName: String): List&lt;Edge&gt; {
-            var destV = graph.vertexIndex().getVertex(destName) ?: return emptyList()
+      val lastEdge = edges.last()
+      val target = lastEdge.to.name
+      val distance = dynamicDistanceToSource[lastEdge.to.id]
 
-            if (destV.id &gt;= dynamicPathFrom.size) {
-                return emptyList()
-            }
-
-            val reversedRoutes = mutableListOf&lt;Edge&gt;()
-            while (source.name != destV.name) {
-                val edge = dynamicPathFrom[destV.id] ?: break
-                reversedRoutes.add(edge)
-                destV = edge.from
-            }
-
-            return reversedRoutes.reversed()
-        }
-
-        /**
-         * 获取到目标点的最短距离
-         */
-        fun getDistance(destName: String): Double? {
-            val destV = graph.vertexIndex().getVertex(destName) ?: return null
-            return dynamicDistanceToSource[destV.id]
-        }
-
-        /**
-         * 检查是否有到目标点的路径
-         */
-        fun hasPath(destName: String): Boolean {
-            return getDistance(destName) != null
-        }
-
-        /**
-         * 获取所有可达点的最短距离
-         */
-        fun getAllDistances(): Map&lt;String, Double&gt; {
-            return buildMap {
-                graph.getVertexes().forEach { vertex -&gt;
-                    dynamicDistanceToSource[vertex.id]?.let { distance -&gt;
-                        put(vertex.name, distance)
-                    }
-                }
-            }
-        }
-
-        /**
-         * 打印路径信息
-         */
-        fun printRoutes(edges: List&lt;Edge&gt;) {
-            if (edges.isEmpty()) {
-                println(&quot;No route found&quot;)
-                return
-            }
-
-            val lastEdge = edges.last()
-            val target = lastEdge.to.name
-            val distance = dynamicDistanceToSource[lastEdge.to.id]
-
-            println(
-                &quot;&quot;&quot;
+      println(
+        &quot;&quot;&quot;
                 Shortest Path:
                   source: [${source.name}] target: [$target]
-                &quot;&quot;&quot;.trimIndent()
-            )
+                &quot;&quot;&quot;.trimIndent(),
+      )
 
-            println(&quot;Distance: $distance = ${edges.joinToString(&quot; + &quot;) { it.weight.toString() }}&quot;)
+      println(&quot;Distance: $distance = ${edges.joinToString(&quot; + &quot;) { it.weight.toString() }}&quot;)
 
-            print(&quot;Route: &quot;)
-            edges.forEachIndexed { index, edge -&gt;
-                val from = edge.from.name
-                val weight = edge.weight
+      print(&quot;Route: &quot;)
+      edges.forEachIndexed { index, edge -&gt;
+        val from = edge.from.name
+        val weight = edge.weight
 
-                when (index) {
-                    edges.size - 1 -&gt; {
-                        val to = edge.to.name
-                        println(&quot;[$from] --$weight-&gt; [$to]&quot;)
-                    }
+        when (index) {
+          edges.size - 1 -&gt; {
+            val to = edge.to.name
+            println(&quot;[$from] --$weight-&gt; [$to]&quot;)
+          }
 
-                    else -&gt; print(&quot;[$from] --$weight-&gt; &quot;)
-                }
-            }
-            println()
+          else -&gt; print(&quot;[$from] --$weight-&gt; &quot;)
         }
-
-        /**
-         * 打印所有最短路径
-         */
-        fun printAllPaths() {
-            println(&quot;=== Dijkstra Shortest Paths from [${source.name}] ===&quot;)
-            graph.getVertexes()
-                .filter { it.name != source.name }
-                .forEach { vertex -&gt;
-                    val routes = getRoutes(vertex.name)
-                    if (routes.isNotEmpty()) {
-                        printRoutes(routes)
-                    } else {
-                        println(&quot;No path to [${vertex.name}]&quot;)
-                    }
-                }
-        }
+      }
+      println()
     }
 
+    /**
+     * 打印所有最短路径
+     */
+    fun printAllRoutes() {
+      println(&quot;=== Dijkstra Shortest Paths from [${source.name}] ===&quot;)
+      graph.getVertexes()
+        .filter { it.name != source.name }
+        .forEach { vertex -&gt;
+          val routes = getRoutes(vertex.name)
+          if (routes.isNotEmpty()) {
+            printRoutes(routes)
+          } else {
+            println(&quot;No path to [${vertex.name}]&quot;)
+          }
+        }
+    }
+  }
+
 }
-</div><div class="last-modified">19 August 2026</div><div data-feedback-placeholder="true"></div><div class="navigation-links _bottom"><a href="graph-mst.html" class="navigation-links__prev">Minimum Spanning Tree (Undirected)</a><a href="cycle-analyzer.html" class="navigation-links__next">Cycle Analyzer</a></div></article><div id="disqus_thread"></div></div></section></main></div><script src="https://resources.jetbrains.com/writerside/apidoc/6.27.0-b1156/app.js"></script></body></html>
+</div></section></section><div class="last-modified">20 August 2026</div><div data-feedback-placeholder="true"></div><div class="navigation-links _bottom"><a href="minimum-spanning-tree.html" class="navigation-links__prev">Minimum Spanning Tree (Undirected)</a><a href="cycle-analysis.html" class="navigation-links__next">Cycle Analysis</a></div></article><div id="disqus_thread"></div></div></section></main></div><script src="https://resources.jetbrains.com/writerside/apidoc/6.27.0-b1156/app.js"></script></body></html>

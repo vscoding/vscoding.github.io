@@ -1,0 +1,112 @@
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html lang="en-US" data-preset="contrast" data-primary-color="#307FFF" data-link-color="#307FFF" data-link-dark-color="#90C695" data-content-max-width="1250" data-resizable-sidebar="true" data-sidebar-width="300"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="UTF-8"><meta name="built-on" content="2026-08-20T08:42:32.770497642"><link rel="canonical" href="https://blog.kubectl.org/search.html" data-react-helmet="true"><title>Search | Mind and Hand</title><script type="application/json" id="virtual-toc-data">[{"id":"topics","level":0,"title":"Topics","anchor":"#topics"},{"id":"common-data-structure-interfaces-and-builders","level":0,"title":"Common Data Structure Interfaces and Builders","anchor":"#common-data-structure-interfaces-and-builders"},{"id":"datastructure-kt","level":1,"title":"DataStructure.kt","anchor":"#datastructure-kt"},{"id":"treebuilder-kt","level":1,"title":"TreeBuilder.kt","anchor":"#treebuilder-kt"}]</script><script type="application/json" id="topic-shortcuts"></script><link href="https://resources.jetbrains.com/writerside/apidoc/6.27.0-b1156/app.css" rel="stylesheet"><link href="static/custom.css" rel="stylesheet"><meta name="msapplication-TileColor" content="#000000"><link rel="apple-touch-icon" sizes="180x180" href="https://jetbrains.com/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="https://jetbrains.com/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="https://jetbrains.com/favicon-16x16.png"><meta name="msapplication-TileImage" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-144x144.png"><meta name="msapplication-square70x70logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-70x70.png"><meta name="msapplication-square150x150logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-150x150.png"><meta name="msapplication-wide310x150logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-310x150.png"><meta name="msapplication-square310x310logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-310x310.png"><meta name="image" content=""><!-- Open Graph --><meta property="og:title" content="Search | Mind and Hand"><meta property="og:description" content=""><meta property="og:image" content=""><meta property="og:site_name" content="Mind and Hand Help"><meta property="og:type" content="website"><meta property="og:locale" content="en_US"><meta property="og:url" content="https://blog.kubectl.org/search.html"><!-- End Open Graph --><!-- Twitter Card --><meta name="twitter:card" content="summary_large_image"><meta name="twitter:site" content=""><meta name="twitter:title" content="Search | Mind and Hand"><meta name="twitter:description" content=""><meta name="twitter:creator" content=""><meta name="twitter:image:src" content=""><!-- End Twitter Card --><!-- Schema.org WebPage --><script type="application/ld+json">{
+    "@context": "http://schema.org",
+    "@type": "WebPage",
+    "@id": "https://blog.kubectl.org/search.html#webpage",
+    "url": "https://blog.kubectl.org/search.html",
+    "name": "Search | Mind and Hand",
+    "description": "",
+    "image": "",
+    "inLanguage":"en-US"
+}</script><!-- End Schema.org --><!-- Schema.org WebSite --><script type="application/ld+json">{
+    "@type": "WebSite",
+    "@id": "https://blog.kubectl.org/#website",
+    "url": "https://blog.kubectl.org/",
+    "name": "Mind and Hand Help"
+}</script><!-- End Schema.org --></head><body data-id="search" data-main-title="Search" data-article-props="{&quot;seeAlsoStyle&quot;:&quot;links&quot;}" data-template="article" data-breadcrumbs="cs.md|Computer Science &amp; Technology///dsa.md|Data Structures and Algorithms"><div class="wrapper"><main class="panel _main"><header class="panel__header"><div class="container"><h3>Mind and Hand  Help</h3><div class="panel-trigger"></div></div></header><section class="panel__content"><div class="container"><article class="article" data-shortcut-switcher="inactive"><h1 data-toc="search" id="search.md">Search</h1><p id="-sypos4_4">本组包含集合连通性、优先级访问、有序查找、编码树和按前缀查找等基础结构。</p><section class="chapter"><h2 id="topics" data-toc="topics">Topics</h2><ul class="list _bullet" id="-sypos4_7"><li class="list__item" id="-sypos4_8"><p id="-sypos4_14"><a href="union-find.html" id="-sypos4_15" data-tooltip="并查集用于维护互不相交的集合，并快速判断两个元素是否属于同一集合。当前代码提供基于连续索引、外部唯一标识和元素自身的三种实现。">并查集</a> ：判断和合并元素所属集合。</p></li><li class="list__item" id="-sypos4_9"><p id="-sypos4_16"><a href="heap.html" id="-sypos4_17" data-tooltip="堆是满足父子顺序约束的完全二叉树。最大堆的父节点不小于子节点，最小堆的父节点不大于子节点。">堆</a> ：快速访问当前最大值或最小值。</p></li><li class="list__item" id="-sypos4_10"><p id="-sypos4_18"><a href="search-tree.html" id="-sypos4_19" data-tooltip="搜索树通过有序键组织数据。普通二叉搜索树提供基础有序查找；AVL 树通过旋转维持严格平衡；二三树通过多关键字节点保持所有叶子处于同一深度。">搜索树</a> ：维护有序键值数据。</p></li><li class="list__item" id="-sypos4_11"><p id="-sypos4_20"><a href="skip-list.html" id="-sypos4_21" data-tooltip="跳表在有序链表之上建立随机索引层。设晋升概率为 p，期望查找、插入和删除复杂度为 O(log n)，最坏为 O(n)。">跳表</a> ：通过概率索引层加速有序链表查找。</p></li><li class="list__item" id="-sypos4_12"><p id="-sypos4_22"><a href="huffman.html" id="-sypos4_23" data-tooltip="哈夫曼树反复合并权重最小的两个节点，用于构造无前缀冲突的变长编码。对于 k 个不同符号，使用最小堆构造时复杂度为 O(k log k)。">哈夫曼树</a> ：根据权重构造最优前缀编码树。</p></li><li class="list__item" id="-sypos4_13"><p id="-sypos4_24"><a href="trie.html" id="-sypos4_25" data-tooltip="Trie 按字符逐层组织字符串。每个节点的子节点集合构成下一层查找结构，因此这里也称为“树套树”。对于长度为 L 的字符串，插入和精确查找通常需要 O(L) 次层级访问。">Trie 树（树套树）</a> ：按字符层级组织字符串并支持前缀查找。</p></li></ul></section><section class="chapter"><h2 id="common-data-structure-interfaces-and-builders" data-toc="common-data-structure-interfaces-and-builders">Common Data Structure Interfaces and Builders</h2><section class="chapter"><h3 id="datastructure-kt" data-toc="datastructure-kt">DataStructure.kt</h3><p id="-sypos4_28">源码： <code class="code" id="-sypos4_30">DataStructure.kt</code></p><div class="code-block" data-lang="kotlin">
+/**
+ * Key-Value DataStructure 统一定义 key value 的统一操作
+ */
+interface KVOperator&lt;K, V&gt; {
+
+  /**
+   * Checks if the data structure contains no elements.
+   * @return `true` if the data structure is empty, `false` otherwise.
+   */
+  fun isEmpty(): Boolean = size() == 0
+
+  /**
+   * Returns the number of key-value pairs present in the data structure.
+   * @return The total count of key-value pairs in the data structure.
+   */
+  fun size(): Int
+
+  /**
+   * Checks if the specified key exists in the data structure.
+   * @param key The key to look for in the data structure.
+   * @return `true` if the key exists, `false` otherwise.
+   */
+  fun contains(key: K): Boolean
+
+  /**
+   * Retrieves the value associated with the specified key from the data structure.
+   * @param key The key whose associated value is to be returned.
+   * @return The value associated with the specified key, or `null` if the key does not exist.
+   */
+  fun get(key: K): V?
+
+  /**
+   * Inserts a key-value pair into the data structure. If the key already exists, the value is updated with the new value.
+   * @param key The key to be inserted or updated.
+   * @param value The value associated with the key.
+   */
+  fun insert(key: K, value: V)
+
+  /**
+   * Removes the entry associated with the specified key from the data structure.
+   * @param key The key whose associated entry is to be removed.
+   * @return The value of the removed entry, or `null` if the key does not exist.
+   */
+  fun remove(key: K): V?
+
+  /**
+   * 清空
+   */
+  fun clear()
+}
+
+interface Printable {
+  fun print() {
+    TODO(&quot;Not yet implemented&quot;)
+  }
+}
+</div></section><section class="chapter"><h3 id="treebuilder-kt" data-toc="treebuilder-kt">TreeBuilder.kt</h3><p id="-sypos4_31">源码： <code class="code" id="-sypos4_33">tree/TreeBuilder.kt</code></p><div class="code-block" data-lang="kotlin">
+object TreeBuilder {
+  /**
+   * Creates a new basic binary search tree (BST).
+   */
+  fun &lt;K : Comparable&lt;K&gt;, V&gt; buildBasicBST(): BST&lt;K, V&gt; = BasicBST()
+
+
+  /**
+   * Builds an empty AVL tree that implements the Binary Search Tree (BST) interface.
+   * AVL trees maintain a balanced structure, ensuring that the height difference between
+   * the left and right subtrees of any node is at most one. This guarantees logarithmic
+   * time complexity for insertion, deletion, and search operations.
+   * @return an instance of an empty AVL tree implementing BST
+   */
+  fun &lt;K : Comparable&lt;K&gt;, V&gt; buildAVLTree(): BST&lt;K, V&gt; = AVLTree()
+
+
+  /**
+   * Builds and returns a new instance of a 2-3 Tree (TTTree).
+   * The resulting TTTree is a balanced binary search tree
+   * that maintains data in sorted order and supports key-based
+   * value retrieval, insertion, and deletion operations.
+   * @return A new instance of TTTree implementation.
+   */
+  fun &lt;K : Comparable&lt;K&gt;, V&gt; buildTTTree(): TTTree&lt;K, V&gt; = TTTreeImpl()
+
+
+  /**
+   * Builds a SkipList with the specified maximum level and probability factor.
+   * @param maxLevel the maximum number of levels in the SkipList. Defaults to DEFAULT_MAX_LEVEL.
+   * @param p the probability factor that determines level assignment. Defaults to DEFAULT_P.
+   * @return a new instance of SkipList initialized with the given parameters.
+   */
+  fun &lt;K : Comparable&lt;K&gt;, V&gt; buildSkipList(maxLevel: Int = DEFAULT_MAX_LEVEL, p: Double = DEFAULT_P): SkipList&lt;K, V&gt; {
+    return SkipListImpl(maxLevel, p)
+  }
+
+}
+</div></section></section><div class="last-modified">20 August 2026</div><div data-feedback-placeholder="true"></div><div class="navigation-links _bottom"><a href="n-log-n.html" class="navigation-links__prev">O(n log n) Sort Algorithms</a><a href="union-find.html" class="navigation-links__next">Union Find</a></div></article><div id="disqus_thread"></div></div></section></main></div><script src="https://resources.jetbrains.com/writerside/apidoc/6.27.0-b1156/app.js"></script></body></html>
