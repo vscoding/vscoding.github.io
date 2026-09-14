@@ -1,0 +1,157 @@
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html lang="en-US" data-preset="contrast" data-primary-color="#307FFF" data-link-color="#307FFF" data-link-dark-color="#90C695" data-content-max-width="1250" data-resizable-sidebar="true" data-sidebar-width="300"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="UTF-8"><meta name="built-on" content="2026-09-14T08:30:18.486553117"><link rel="canonical" href="https://blog.kubectl.org/nodejs-project.html" data-react-helmet="true"><title>Node.js + TypeScript 工程化 | Mind and Hand</title><script type="application/json" id="virtual-toc-data">[{"id":"tzggce_4","level":0,"title":"工程化目标","anchor":"#tzggce_4"},{"id":"tzggce_5","level":0,"title":"环境与版本","anchor":"#tzggce_5"},{"id":"tzggce_6","level":0,"title":"初始化项目","anchor":"#tzggce_6"},{"id":"tzggce_7","level":0,"title":"推荐目录结构","anchor":"#tzggce_7"},{"id":"typescript","level":0,"title":"TypeScript 配置","anchor":"#typescript"},{"id":"tzggce_9","level":0,"title":"依赖与脚本","anchor":"#tzggce_9"},{"id":"eslint-prettier","level":0,"title":"ESLint 与 Prettier","anchor":"#eslint-prettier"},{"id":"editorconfig","level":0,"title":"EditorConfig","anchor":"#editorconfig"},{"id":"tzggce_12","level":0,"title":"环境变量","anchor":"#tzggce_12"},{"id":"git","level":0,"title":"Git 忽略规则","anchor":"#git"},{"id":"tzggce_14","level":0,"title":"日常开发流程","anchor":"#tzggce_14"},{"id":"tzggce_15","level":0,"title":"工程化检查清单","anchor":"#tzggce_15"}]</script><script type="application/json" id="topic-shortcuts"></script><link href="https://resources.jetbrains.com/writerside/apidoc/6.29.0-b98/app.css" rel="stylesheet"><link href="static/custom.css" rel="stylesheet"><meta name="msapplication-TileColor" content="#000000"><link rel="apple-touch-icon" sizes="180x180" href="https://jetbrains.com/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="https://jetbrains.com/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="https://jetbrains.com/favicon-16x16.png"><meta name="msapplication-TileImage" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-144x144.png"><meta name="msapplication-square70x70logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-70x70.png"><meta name="msapplication-square150x150logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-150x150.png"><meta name="msapplication-wide310x150logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-310x150.png"><meta name="msapplication-square310x310logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-310x310.png"><meta name="image" content=""><!-- Open Graph --><meta property="og:title" content="Node.js + TypeScript 工程化 | Mind and Hand"><meta property="og:description" content=""><meta property="og:image" content=""><meta property="og:site_name" content="Mind and Hand Help"><meta property="og:type" content="website"><meta property="og:locale" content="en_US"><meta property="og:url" content="https://blog.kubectl.org/nodejs-project.html"><!-- End Open Graph --><!-- Twitter Card --><meta name="twitter:card" content="summary_large_image"><meta name="twitter:site" content=""><meta name="twitter:title" content="Node.js + TypeScript 工程化 | Mind and Hand"><meta name="twitter:description" content=""><meta name="twitter:creator" content=""><meta name="twitter:image:src" content=""><!-- End Twitter Card --><!-- Schema.org WebPage --><script type="application/ld+json">{
+    "@context": "http://schema.org",
+    "@type": "WebPage",
+    "@id": "https://blog.kubectl.org/nodejs-project.html#webpage",
+    "url": "https://blog.kubectl.org/nodejs-project.html",
+    "name": "Node.js + TypeScript 工程化 | Mind and Hand",
+    "description": "",
+    "image": "",
+    "inLanguage":"en-US"
+}</script><!-- End Schema.org --><!-- Schema.org WebSite --><script type="application/ld+json">{
+    "@type": "WebSite",
+    "@id": "https://blog.kubectl.org/#website",
+    "url": "https://blog.kubectl.org/",
+    "name": "Mind and Hand Help"
+}</script><!-- End Schema.org --></head><body data-id="nodejs-project" data-main-title="Node.js + TypeScript 工程化" data-article-props="{&quot;seeAlsoStyle&quot;:&quot;links&quot;}" data-template="article" data-breadcrumbs="develop.md|Develop///nodejs.md|NodeJS"><div class="wrapper"><main class="panel _main"><header class="panel__header"><div class="container"><h3>Mind and Hand  Help</h3><div class="panel-trigger"></div></div></header><section class="panel__content"><div class="container"><article class="article" data-shortcut-switcher="inactive"><h1 data-toc="nodejs-project" id="nodejs-project.md">Node.js + TypeScript 工程化</h1><aside class="prompt" data-type="tip" data-title="" id="tzggce_3"><p id="tzggce_16">记录日常 Node.js + TypeScript 项目开发中常用的目录结构、工具链与工程规范。示例使用 <code class="code" id="tzggce_17">pnpm</code> ，也可以按团队习惯替换为 <code class="code" id="tzggce_18">npm</code> 或 <code class="code" id="tzggce_19">yarn</code>。</p></aside><section class="chapter"><h2 id="tzggce_4" data-toc="tzggce_4">工程化目标</h2><p id="tzggce_20">工程化不是简单地堆叠工具，而是通过统一约定降低协作和维护成本：</p><ul class="list _bullet" id="tzggce_21"><li class="list__item" id="tzggce_22"><p id="tzggce_27"><span class="control" id="tzggce_28">环境一致</span> ：固定 Node.js 与包管理器版本，减少&ldquo;在我的机器上可以运行&rdquo;的问题。</p></li><li class="list__item" id="tzggce_23"><p id="tzggce_29"><span class="control" id="tzggce_30">类型安全</span> ：使用 TypeScript 提前发现类型错误，并明确源码与构建产物的边界。</p></li><li class="list__item" id="tzggce_24"><p id="tzggce_31"><span class="control" id="tzggce_32">代码一致</span> ：使用 ESLint、Prettier 和 EditorConfig 统一检查与格式化规则。</p></li><li class="list__item" id="tzggce_25"><p id="tzggce_33"><span class="control" id="tzggce_34">流程可重复</span> ：将开发、构建、检查和测试等操作收敛到 <code class="code" id="tzggce_35">package.json</code> 脚本中。</p></li><li class="list__item" id="tzggce_26"><p id="tzggce_36"><span class="control" id="tzggce_37">配置可管理</span> ：区分不同环境的配置，不将密钥提交到代码仓库。</p></li></ul></section><section class="chapter"><h2 id="tzggce_5" data-toc="tzggce_5">环境与版本</h2><p id="tzggce_38">建议使用 <a href="https://github.com/nvm-sh/nvm" id="tzggce_45" data-external="true" rel="noopener noreferrer" target="_blank">nvm</a>、 <a href="https://github.com/Schniz/fnm" id="tzggce_46" data-external="true" rel="noopener noreferrer" target="_blank">fnm</a> 或 <a href="https://volta.sh/" id="tzggce_47" data-external="true" rel="noopener noreferrer" target="_blank">Volta</a> 管理 Node.js 版本，并在项目根目录通过 <code class="code" id="tzggce_48">.nvmrc</code> 固定版本：</p><div class="code-block" data-lang="none">
+24
+</div><p id="tzggce_40">通过 <code class="code" id="tzggce_49">package.json</code> 声明运行时和包管理器要求：</p><div class="code-block" data-lang="json">
+{
+  &quot;engines&quot;: {
+    &quot;node&quot;: &quot;&gt;=24&quot;
+  },
+  &quot;packageManager&quot;: &quot;pnpm@10.0.0&quot;
+}
+</div><p id="tzggce_42">开启 Corepack 后，团队成员可以使用项目声明的包管理器版本：</p><div class="code-block" data-lang="bash">
+corepack enable
+pnpm install
+</div><p id="tzggce_44">版本号应根据项目实际运行环境调整；生产环境、CI 和本地开发应尽量保持一致。</p></section><section class="chapter"><h2 id="tzggce_6" data-toc="tzggce_6">初始化项目</h2><div class="code-block" data-lang="bash">
+mkdir node-typescript-app
+cd node-typescript-app
+pnpm init
+pnpm add -D typescript tsx @types/node
+pnpm exec tsc --init
+</div><ul class="list _bullet" id="tzggce_51"><li class="list__item" id="tzggce_52"><p id="tzggce_55"><code class="code" id="tzggce_56">typescript</code> ：提供类型检查器和 TypeScript 编译器 <code class="code" id="tzggce_57">tsc</code>。</p></li><li class="list__item" id="tzggce_53"><p id="tzggce_58"><code class="code" id="tzggce_59">tsx</code> ：开发阶段直接运行 TypeScript，适合本地启动和脚本执行。</p></li><li class="list__item" id="tzggce_54"><p id="tzggce_60"><code class="code" id="tzggce_61">@types/node</code> ：提供 Node.js 内置模块和全局变量的类型定义。</p></li></ul></section><section class="chapter"><h2 id="tzggce_7" data-toc="tzggce_7">推荐目录结构</h2><div class="code-block" data-lang="none">
+project-root/
+├── src/
+│   ├── config/            # 配置读取与校验
+│   ├── modules/           # 按业务领域组织的模块
+│   ├── shared/            # 跨模块复用的代码
+│   └── index.ts           # 应用入口
+├── tests/                 # 自动化测试
+├── scripts/               # 构建、迁移等辅助脚本
+├── dist/                  # 编译产物，不提交到仓库
+├── .env.example           # 环境变量示例
+├── .editorconfig
+├── .gitignore
+├── .nvmrc
+├── .prettierignore
+├── .prettierrc.json
+├── eslint.config.js
+├── package.json
+├── pnpm-lock.yaml
+├── tsconfig.json
+└── README.md
+</div><p id="tzggce_63">目录结构应服务于项目规模。小型项目不必提前创建所有目录；当职责真正出现时再拆分，避免只有一两个文件却形成过深的目录层级。</p></section><section class="chapter"><h2 id="typescript" data-toc="typescript">TypeScript 配置</h2><p id="tzggce_64">以下配置适合以现代 Node.js ESM 方式运行的项目：</p><div class="code-block" data-lang="json">
+{
+  &quot;compilerOptions&quot;: {
+    &quot;target&quot;: &quot;ES2022&quot;,
+    &quot;module&quot;: &quot;NodeNext&quot;,
+    &quot;moduleResolution&quot;: &quot;NodeNext&quot;,
+    &quot;rootDir&quot;: &quot;src&quot;,
+    &quot;outDir&quot;: &quot;dist&quot;,
+    &quot;strict&quot;: true,
+    &quot;noUncheckedIndexedAccess&quot;: true,
+    &quot;exactOptionalPropertyTypes&quot;: true,
+    &quot;esModuleInterop&quot;: true,
+    &quot;forceConsistentCasingInFileNames&quot;: true,
+    &quot;skipLibCheck&quot;: true,
+    &quot;sourceMap&quot;: true
+  },
+  &quot;include&quot;: [
+    &quot;src/**/*.ts&quot;
+  ],
+  &quot;exclude&quot;: [
+    &quot;node_modules&quot;,
+    &quot;dist&quot;
+  ]
+}
+</div><p id="tzggce_66">同时在 <code class="code" id="tzggce_69">package.json</code> 中设置 <code class="code" id="tzggce_70">&quot;type&quot;: &quot;module&quot;</code> 。采用 <code class="code" id="tzggce_71">NodeNext</code> 时，本地模块的导入路径需要遵循 Node.js ESM 规则：</p><div class="code-block" data-lang="ts">
+import {loadConfig} from './config/index.js'
+</div><p id="tzggce_68">虽然源码是 <code class="code" id="tzggce_72">.ts</code> 文件，导入路径仍写 <code class="code" id="tzggce_73">.js</code> ，因为编译后由 Node.js 加载的是 JavaScript 文件。如果项目使用 CommonJS，应统一调整 <code class="code" id="tzggce_74">module</code>、 <code class="code" id="tzggce_75">moduleResolution</code> 和 <code class="code" id="tzggce_76">package.json</code> ，不要混用两套模块规范。</p></section><section class="chapter"><h2 id="tzggce_9" data-toc="tzggce_9">依赖与脚本</h2><p id="tzggce_77">业务运行必需的包放入 <code class="code" id="tzggce_81">dependencies</code> ，只在开发、构建或测试阶段使用的工具放入 <code class="code" id="tzggce_82">devDependencies</code> 。锁文件应提交到代码仓库，以保证安装结果可重复。</p><p id="tzggce_78">将团队日常命令统一定义在 <code class="code" id="tzggce_83">package.json</code> 中：</p><div class="code-block" data-lang="json">
+{
+  &quot;type&quot;: &quot;module&quot;,
+  &quot;scripts&quot;: {
+    &quot;dev&quot;: &quot;tsx watch src/index.ts&quot;,
+    &quot;build&quot;: &quot;tsc -p tsconfig.json&quot;,
+    &quot;start&quot;: &quot;node dist/index.js&quot;,
+    &quot;typecheck&quot;: &quot;tsc -p tsconfig.json --noEmit&quot;,
+    &quot;lint&quot;: &quot;eslint .&quot;,
+    &quot;lint:fix&quot;: &quot;eslint . --fix&quot;,
+    &quot;format&quot;: &quot;prettier . --write&quot;,
+    &quot;format:check&quot;: &quot;prettier . --check&quot;,
+    &quot;check&quot;: &quot;pnpm typecheck &amp;&amp; pnpm lint &amp;&amp; pnpm format:check&quot;
+  }
+}
+</div><p id="tzggce_80">脚本名称尽量表达职责，而不是实现细节。CI 与本地都调用相同脚本，避免维护两套检查逻辑。</p></section><section class="chapter"><h2 id="eslint-prettier" data-toc="eslint-prettier">ESLint 与 Prettier</h2><p id="tzggce_84">安装代码检查和格式化工具：</p><div class="code-block" data-lang="bash">
+pnpm add -D eslint @eslint/js typescript-eslint \
+  prettier eslint-config-prettier
+</div><p id="tzggce_86"><code class="code" id="tzggce_91">eslint.config.js</code> 使用 ESLint Flat Config：</p><div class="code-block" data-lang="javascript">
+import eslint from '@eslint/js'
+import prettier from 'eslint-config-prettier'
+import tseslint from 'typescript-eslint'
+
+export default tseslint.config(
+    {
+        ignores: ['dist/**', 'coverage/**'],
+    },
+    eslint.configs.recommended,
+    ...tseslint.configs.recommended,
+    prettier,
+)
+</div><p id="tzggce_88"><code class="code" id="tzggce_92">.prettierrc.json</code> 只保留团队明确需要的格式约定：</p><div class="code-block" data-lang="json">
+{
+  &quot;semi&quot;: false,
+  &quot;singleQuote&quot;: true,
+  &quot;trailingComma&quot;: &quot;all&quot;
+}
+</div><p id="tzggce_90">ESLint 负责发现潜在代码问题，Prettier 负责代码排版。 <code class="code" id="tzggce_93">eslint-config-prettier</code> 用于关闭两者之间可能冲突的格式规则。</p></section><section class="chapter"><h2 id="editorconfig" data-toc="editorconfig">EditorConfig</h2><p id="tzggce_94"><code class="code" id="tzggce_97">.editorconfig</code> 为不同编辑器提供基础格式约定：</p><div class="code-block" data-lang="ini">
+root = true
+
+[*]
+charset = utf-8
+end_of_line = lf
+insert_final_newline = true
+indent_style = space
+indent_size = 2
+trim_trailing_whitespace = true
+
+[*.md]
+trim_trailing_whitespace = false
+</div><p id="tzggce_96">EditorConfig 只解决基础编辑行为，不能替代 ESLint 和 Prettier。</p></section><section class="chapter"><h2 id="tzggce_12" data-toc="tzggce_12">环境变量</h2><p id="tzggce_98">本地配置写入 <code class="code" id="tzggce_101">.env</code> ，并将 <code class="code" id="tzggce_102">.env</code> 加入 <code class="code" id="tzggce_103">.gitignore</code> 。仓库只提交不包含真实密钥的 <code class="code" id="tzggce_104">.env.example</code>：</p><div class="code-block" data-lang="none">
+NODE_ENV=development
+PORT=3000
+DATABASE_URL=postgresql://user:password@localhost:5432/app
+</div><p id="tzggce_100">应用启动时应集中读取并校验环境变量，避免在业务代码中到处访问 <code class="code" id="tzggce_105">process.env</code> 。缺少必填配置时应尽早失败，而不是运行到具体请求时才报错。</p></section><section class="chapter"><h2 id="git" data-toc="git">Git 忽略规则</h2><div class="code-block" data-lang="gitignore">
+node_modules/
+dist/
+coverage/
+.env
+.env.*
+!.env.example
+*.log
+.DS_Store
+</div><p id="tzggce_107">不要忽略包管理器锁文件。对于应用项目，锁文件是保证本地、CI 与生产安装结果一致的重要组成部分。</p></section><section class="chapter"><h2 id="tzggce_14" data-toc="tzggce_14">日常开发流程</h2><div class="code-block" data-lang="bash">
+# 安装依赖
+pnpm install
+
+# 启动开发环境
+pnpm dev
+
+# 提交前执行完整检查
+pnpm check
+
+# 构建并运行编译产物
+pnpm build
+pnpm start
+</div><p id="tzggce_109">推荐在持续集成中至少执行以下步骤：</p><ol class="list _decimal" id="tzggce_110" type="1"><li class="list__item" id="tzggce_111"><p id="tzggce_115">使用锁文件安装依赖： <code class="code" id="tzggce_116">pnpm install --frozen-lockfile</code>。</p></li><li class="list__item" id="tzggce_112"><p id="tzggce_117">执行类型检查、ESLint 和格式检查： <code class="code" id="tzggce_118">pnpm check</code>。</p></li><li class="list__item" id="tzggce_113"><p id="tzggce_119">执行自动化测试（项目引入测试框架后）。</p></li><li class="list__item" id="tzggce_114"><p id="tzggce_120">执行生产构建： <code class="code" id="tzggce_121">pnpm build</code>。</p></li></ol></section><section class="chapter"><h2 id="tzggce_15" data-toc="tzggce_15">工程化检查清单</h2><ul class="list _checkbox" id="tzggce_122"><li class="list__item" id="tzggce_123"><p>Node.js 和包管理器版本已明确。</p></li><li class="list__item" id="tzggce_124"><p>锁文件已提交，CI 使用冻结锁文件安装依赖。</p></li><li class="list__item" id="tzggce_125"><p>TypeScript 已开启严格模式，源码和构建产物目录已分离。</p></li><li class="list__item" id="tzggce_126"><p>ESM 或 CommonJS 已统一选型，没有混用模块规范。</p></li><li class="list__item" id="tzggce_127"><p>开发、检查、测试、构建和启动命令已收敛为项目脚本。</p></li><li class="list__item" id="tzggce_128"><p>ESLint、Prettier 与 EditorConfig 职责清晰且规则不冲突。</p></li><li class="list__item" id="tzggce_129"><p>环境变量有示例文件，真实密钥不会进入代码仓库。</p></li><li class="list__item" id="tzggce_130"><p>提交前检查与 CI 使用相同命令。</p></li></ul></section><div class="last-modified">14 September 2026</div><div data-feedback-placeholder="true"></div><div class="navigation-links _bottom"><a href="nodejs.html" class="navigation-links__prev">NodeJS</a><a href="kotlin.html" class="navigation-links__next">kotlin</a></div></article><div id="disqus_thread"></div></div></section></main></div><script src="https://resources.jetbrains.com/writerside/apidoc/6.29.0-b98/app.js"></script></body></html>
