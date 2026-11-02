@@ -1,12 +1,20 @@
 :root {
     font-size: 13px;
     /* 设置基础字体大小 */
+    /* 保留原生西文字体，明确中文回退；等宽代码字体继续使用原生配置。 */
+    --rs-font-family-jb-sans: 'JetBrains Sans', Inter, -apple-system, BlinkMacSystemFont,
+        'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Droid Sans', 'Helvetica Neue', Arial,
+        'PingFang SC', 'Microsoft YaHei', 'Noto Sans CJK SC', sans-serif;
     /* --rs-font-family-mono: 'JetBrains Mono', Consolas, Monaco, 'Courier New', monospace; */
     --wh-flow-unit: 16px;
     --wh-flow-unit-m: 24px;
 }
 
 /* Writerside internal overrides: upgrade Writerside 后需要回归检查这些 class。 */
+
+.article .article__p {
+    line-height: 1.7;
+}
 
 /* 调整提示块内边距 */
 .prompt__wrapper {
@@ -20,21 +28,25 @@ pre[class*="language-"] code,
 }
 
 .article__h1 {
-    font-size: 35px;
+    font-size: 32px;
+    line-height: 1.3;
     margin-top: 10px;
     padding: 5px 0;
 }
 
 .article__h2 {
-    font-size: 27px;
+    font-size: 26px;
+    line-height: 1.35;
 }
 
 .article__h3 {
     font-size: 22px;
+    line-height: 1.4;
 }
 
 .article__h4 {
     font-size: 18px;
+    line-height: 1.45;
 }
 
 /* 不显示 Powered by */
@@ -45,4 +57,20 @@ pre[class*="language-"] code,
 /* 不显示 Last Modified */
 .sub-title__edit-info {
     display: none;
+}
+
+/* Writerside 2026.10: only adjust the desktop on-page TOC, not the site tree. */
+@media (min-width: 1280px) {
+    :root {
+        --wh-virtual-toc-width: 280px;
+    }
+}
+
+.app__virtual-toc-sidebar .app__virtual-toc .toc-item {
+    margin-block: 4px;
+    padding-block: 9px;
+    line-height: 1.6;
+    overflow-wrap: anywhere;
+    white-space: normal;
+    text-overflow: clip;
 }
